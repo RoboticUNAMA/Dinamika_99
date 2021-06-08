@@ -1,3 +1,11 @@
+'''
+    Filename        : ball_calibration.py
+    Description     : Calibration Program To Get Ball Color Information
+    Created By      : Arjuna Panji Prakarsa
+    Date            : 06/06/2021
+    Python Version  : 3.6.9
+'''
+
 import cv2
 import numpy as np
 

@@ -4,6 +4,7 @@ Dinamika_99 adalah nama tim robot KRSBI Beroda UNAMA pada Kontes Robot Indonesia
 ## Requirements
 | Libraries | Version |
 | --------- | ------- |
+| Python | 3.6.9 |
 | numpy | 1.19.5 |
 | opencv-contrib-python | 4.5.2.52 |
 | opencv-python | 4.5.2.52 |
