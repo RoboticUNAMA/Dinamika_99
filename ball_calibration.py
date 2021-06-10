@@ -107,7 +107,7 @@ while True:
 
 
     cv2.imshow(window_name, morph)
-    #cv2.imshow("Frame", frame)
+    cv2.imshow("Frame", frame)
 
     k = cv2.waitKey(1) & 0xFF
     if k == 27:
@@ -115,4 +115,4 @@ while True:
         cv2.destroyAllWindows()
         setBallInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH)
         break
-    print("di edit oleh ulik ni bro")
+    
