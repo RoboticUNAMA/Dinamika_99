@@ -32,7 +32,7 @@ def setBallInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
         print("Data warna bola tidak di simpan")
 
 FRONT_CAM = 0
-OMNI_CAM = 1
+OMNI_CAM = 2
 
 window_name = 'Ball Calibration'
 cv2.namedWindow(window_name)
@@ -58,7 +58,8 @@ cv2.setTrackbarPos('Threshold', window_name, ballColor[6])
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 # Create opencv video capture object
-cap = cv2.VideoCapture(FRONT_CAM)
+#cap = cv2.VideoCapture(FRONT_CAM)
+cap = cv2.VideoCapture(OMNI_CAM)
 
 # Set frame size
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
@@ -107,7 +108,7 @@ while True:
 
 
     cv2.imshow(window_name, morph)
-    cv2.imshow("Frame", frame)
+    #cv2.imshow("Frame", frame)
 
     k = cv2.waitKey(1) & 0xFF
     if k == 27:
@@ -115,4 +116,3 @@ while True:
         cv2.destroyAllWindows()
         setBallInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH)
         break
-    
