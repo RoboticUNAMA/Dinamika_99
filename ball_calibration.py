@@ -115,3 +115,4 @@ while True:
         cv2.destroyAllWindows()
         setBallInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH)
         break
+    print("di edit oleh ulik ni bro")
