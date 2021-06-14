@@ -22,27 +22,27 @@ def getBallInfo():
     return info
 
 ## initialize
-font = cv2.FONT_HERSEY_SIMPLEX
+font = cv2.FONT_HERSHEY_SIMPLEX
 date = str(datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S"))
-#FRONT_CAM = 0   # front camera
+FRONT_CAM = 0   # front camera
 #OMNI_CAM = 1    # omni camera
 
 ## create opencv video capture object
-#FRONT_CAP = cv2.VideoCapture(FRONT_CAM) 
+FRONT_CAP = cv2.VideoCapture(FRONT_CAM) 
 #OMNI_CAP = cv2.VideoCapture(OMNI_CAM)
 
 ## set frame size
-#FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
-#FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 400)
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 400)
 
 #OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
 #OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 400)
 
-## get center of the frame
-#_, frame1 = FRONT_CAP.read()
-#rows,cols = frame1.shape
-#cenX_frame1 = int(cols/2)
-#cenY_frame1 = int(rows/2)
+# get center of the frame
+_, frame1 = FRONT_CAP.read()
+_, rows,cols = frame1.shape
+cenX_frame1 = int(cols/2)
+cenY_frame1 = int(rows/2)
 
 #_, frame2 = OMNI_CAP.read()
 #rows,cols = frame2.shape
@@ -53,7 +53,7 @@ ballColor = getBallInfo()
 
 while(True):
     ## read frame
-    #_, frame1 = FRONT_CAP.read()
+    _, frame1 = FRONT_CAP.read()
     #_, frame2 = OMNI_CAP.read()
 
     lowerBall = np.array([ballColor[0],ballColor[1],ballColor[2]])
@@ -66,7 +66,7 @@ while(True):
     blur = cv2.medianBlur(hsv, 5)
 
     # create a mask from blurred frame
-    BALL_MASK = cv2.inRange(blue, lowerBall, upperBall)
+    BALL_MASK = cv2.inRange(blur, lowerBall, upperBall)
 
     # convert to black and white image
     _, BALL_THRESH = cv2.threshold(BALL_MASK, 127, 255, 0)
@@ -76,19 +76,29 @@ while(True):
     BALL_MORPH = cv2.morphologyEx(BALL_THRESH, cv2.MORPH_CLOSE, kernal, iterations = 2)
 
     # find contours
-    _, ballContours, _ = cv2.findContours(BALL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    ballContours = sorted(contours, key=lambda x:cv2.contourArea(x), reverse=True)
+    ballContours, _ = cv2.findContours(BALL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+    ballContours = sorted(ballContours, key=lambda x:cv2.contourArea(x), reverse=True)
 
     for ballContour in ballContours:
         area = cv2.contourArea(ballContour)
         if area > 1000:
             (x,y,w,h) = cv2.boundingRect(ballContour)
-            cv2.putText(frame, "X: "+str(x)+" Y: "+str(y), (520, 20), font, 0.5, (0,0,255),2)
+            cv2.putText(frame1, "X: "+str(x)+" Y: "+str(y), (520, 20), font, 0.5, (0,0,255),2)
             cenX_ball = (x+x+w)/2
             cenY_ball = (y+y+h)/2
-            predicted = kfObj.Estimate(cenX, cenY)
+            #predicted = kfObj.Estimate(cenX, cenY)
 
             # draw actual coordinate from segmentation
-            cv2.circle(frame, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
-            cv2.line(frame, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
-            cv2.putText(frame, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)))
+            cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+            cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
+            cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+            break
+
+    #cv2.imshow("Morph", BALL_MORPH)
+    cv2.imshow("Frame", frame1)
+
+    k = cv2.waitKey(1) & 0xFF
+    if k == 27:
+        FRONT_CAP.release()
+        cv2.destroyAllWindows()
+        break
