@@ -24,6 +24,7 @@ def getBallInfo():
 ## initialize
 font = cv2.FONT_HERSHEY_SIMPLEX
 date = str(datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S"))
+
 FRONT_CAM = 0   # front camera
 #OMNI_CAM = 1    # omni camera
 
@@ -83,6 +84,9 @@ while(True):
         area = cv2.contourArea(ballContour)
         if area > 1000:
             (x,y,w,h) = cv2.boundingRect(ballContour)
+
+            #cv2.rectangle(frame1,(x,y),(x+w,y+h),(0,255,0),2)
+
             cv2.putText(frame1, "X: "+str(x)+" Y: "+str(y), (520, 20), font, 0.5, (0,0,255),2)
             cenX_ball = (x+x+w)/2
             cenY_ball = (y+y+h)/2
@@ -101,4 +105,5 @@ while(True):
     if k == 27:
         FRONT_CAP.release()
         cv2.destroyAllWindows()
+
         break
