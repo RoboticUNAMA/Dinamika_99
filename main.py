@@ -14,8 +14,8 @@ from time import sleep
 
 def serialMotor():
     port = '/dev/ttyUSB0'
-    baudrate = '9600'
-    timeout = '1'
+    baudrate = 9600
+    timeout = 1
     serial.Serial(port, baudrate, timeout)
 
 def getBallInfo():
@@ -25,8 +25,7 @@ def getBallInfo():
         info.append(int(i))
     return info
 
-def getGoalInfo():sleep(jeda_serial)
-            db.write
+def getGoalInfo():
     infoFile = open("goalColor.txt","r")
     info = []
     for i in infoFile:
@@ -39,8 +38,8 @@ def nothing(x):
 
 def main():
     # serial motor driver
-    #motor = serial.Serial(port='/dev/ttyUSB0', baudrate="9600", timeout=1) 
-    motor = serialMotor()
+    motor = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=1) 
+    #motor = serialMotor()
 
     # serial dribble
     db = serial.Serial(port='/dev/ttyUSB1', baudrate="9600", timeout=1)
@@ -86,6 +85,8 @@ def main():
     ballColor = getBallInfo()
     goalColor = getGoalInfo()
 
+    wait = 0
+
     while(True):
         ## read frame
         _, frame1 = FRONT_CAP.read()
@@ -95,7 +96,7 @@ def main():
         lowerBall = np.array([ballColor[0],ballColor[1],ballColor[2]])
         upperBall = np.array([ballColor[3],ballColor[4],ballColor[5]])
         lowerGoal = np.array([goalColor[0],goalColor[1],goalColor[2]])
-        upperGoal = np.array([goalColor[3],goalColor[4],goalColor[5]])
+        upperGoal = np.array([goalColor[3],goalColor[4],goalColor[5]])    
 
         # convert frame from BGR to HSV
         hsv = cv2.cvtColor(frame1, cv2.COLOR_BGR2HSV)
@@ -104,10 +105,9 @@ def main():
         blur = cv2.medianBlur(hsv, 5)
 
         # create a mask from blurred frame
-        BALL_MASK = cv2.inRange(blur, lowerGoal, upperGoal)
+        BALL_MASK = cv2.inRange(blur, lowerBall, upperBall)
         GOAL_MASK = cv2.inRange(blur, lowerGoal, upperGoal)
-sleep(jeda_serial)
-            db.write
+
         # convert to black and white image
         _, BALL_THRESH = cv2.threshold(BALL_MASK, 127, 255, 0)
         _, GOAL_THRESH = cv2.threshold(GOAL_MASK, 127, 255, 0)
@@ -144,7 +144,7 @@ sleep(jeda_serial)
                 if cenX_ball > inner_left and cenX_ball < inner_right:
                     # bola di depan robot
                     # kirim serial maju
-                    motor.write(b"MAJU\n")
+                    motor.write(b"MAJU\n")                
                 elif cenX_ball < inner_left and cenX_ball < inner_right:
                     # bola di kiri robot
                     # kirim serial putar kiri
@@ -169,12 +169,14 @@ sleep(jeda_serial)
         #cv2.rectangle(frame1, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
         #cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
 
-        #cv2.imshow("Morph", BALL_MORPH)
+        cv2.imshow("Morph", BALL_MORPH)
         cv2.imshow("Frame", frame1)
-        #print(area)
+        #print(ballColor)
 
         k = cv2.waitKey(1) & 0xFF
         if k == 27:
+            motor.write(b"BERHENTI")
+            db.write(b"DB OFF")
             FRONT_CAP.release()
             cv2.destroyAllWindows()
             break

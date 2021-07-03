@@ -25,7 +25,7 @@ def getBallInfo():
 
 def setBallInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
     value = str(LOW_H)+"\n"+str(LOW_S)+"\n"+str(LOW_V)+"\n"+str(UPP_H)+"\n"+str(UPP_S)+"\n"+str(UPP_V)+"\n"+str(TH)
-    userInput = input("Simpan data warna", obj_name, "? (y/n): ")
+    userInput = input("Simpan data warna {}? (y/n): ".format(obj_name))
     if userInput == "y" or userInput == "Y":
         infoFile = open(file_color, "w")
         infoFile.write(value)
@@ -34,8 +34,8 @@ def setBallInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
     else:
         print("Data warna", obj_name, "tidak di simpan")
 
-FRONT_CAM = 2
-OMNI_CAM = 1
+FRONT_CAM = 0
+#OMNI_CAM = 2
 
 window_name = obj_name
 cv2.namedWindow(window_name)
