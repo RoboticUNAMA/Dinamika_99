@@ -1,16 +1,16 @@
 '''
-    Filename        : ball_calibration.py
+    Filename        : goal_calibration.py
     Description     : Calibration Program To Get Ball Color Information
     Created By      : Arjuna Panji Prakarsa
-    Date            : 06/06/2021
+    Date            : 25/06/2021
     Python Version  : 3.6.9
 '''
 
 import cv2
 import numpy as np
 
-obj_name = "bola"
-file_color = "ballColor.txt"
+obj_name = "gawang"
+file_color = "goalColor.txt"
 
 def nothing(x):
     #print(x)
@@ -23,9 +23,11 @@ def getBallInfo():
         info.append(int(i))
     return info
 
+def condition
+
 def setBallInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
     value = str(LOW_H)+"\n"+str(LOW_S)+"\n"+str(LOW_V)+"\n"+str(UPP_H)+"\n"+str(UPP_S)+"\n"+str(UPP_V)+"\n"+str(TH)
-    userInput = input("Simpan data warna {}? (y/n): ".format(obj_name))
+    userInput = input("Simpan data warna gawang? (y/n): ")
     if userInput == "y" or userInput == "Y":
         infoFile = open(file_color, "w")
         infoFile.write(value)
@@ -34,8 +36,8 @@ def setBallInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
     else:
         print("Data warna", obj_name, "tidak di simpan")
 
-FRONT_CAM = 0
-#OMNI_CAM = 2
+FRONT_CAM = 2
+OMNI_CAM = 1
 
 window_name = obj_name
 cv2.namedWindow(window_name)
