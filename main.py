@@ -13,16 +13,10 @@ import serial
 from time import sleep
 
 def serialMotor():
-    port = '/dev/ttyUSB0'
-    baudrate = 9600
-    timeout = 1
-    serial.Serial(port, baudrate, timeout)
+    serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 
 def serialDribble():
-    port = '/dev/ttyUSB1'
-    baudrate = 9600
-    timeout = 1
-    serial.Serial(port, baudrate, timeout)
+    serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=1)
 
 def getBallInfo():
     infoFile = open("ballColor.txt","r")
@@ -122,7 +116,7 @@ def main():
         # refine the image using morphological transformation
         kernal = np.ones((5,5), np.uint8)
         BALL_MORPH = cv2.morphologyEx(BALL_THRESH, cv2.MORPH_CLOSE, kernal, iterations = 2)
-        BALL_MORPH = cv2.morphologyEx(BALL_THRESH, cv2.MORPH_CLOSE, kernal, iterations = 2)
+        GOAL_MORPH = cv2.morphologyEx(GOAL_THRESH, cv2.MORPH_CLOSE, kernal, iterations = 2)
 
         # find contours
         ballContours, _ = cv2.findContours(BALL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -194,7 +188,7 @@ def main():
         #cv2.rectangle(frame1, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
         #cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
 
-        cv2.imshow("Morph", BALL_MORPH)
+        #cv2.imshow("Morph", BALL_MORPH)
         cv2.imshow("Frame", frame1)
         #print(ballColor)
 
