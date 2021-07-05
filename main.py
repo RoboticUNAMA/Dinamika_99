@@ -11,6 +11,7 @@ import numpy as np
 import datetime
 import serial
 from time import sleep
+from arjuna import KalmanFilter
 
 def serialMotor():
     serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
@@ -32,17 +33,11 @@ def getGoalInfo():
         info.append(int(i))
     return info
 
-def nothing(x):
-    #print(x)
-    pass
-
 def main():
     # serial motor driver
-    #motor = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=1) 
     motor = serialMotor()
 
     # serial dribble
-    #db = serial.Serial(port='/dev/ttyUSB1', baudrate="9600", timeout=1)
     db = serialDribble()
 
     # initialize
@@ -85,6 +80,8 @@ def main():
 
     ballColor = getBallInfo()
     goalColor = getGoalInfo()
+    kfObj = KalmanFilter()
+    predictedCoords = np.zeros((2,1), np.floats32)
 
     wait = 0
 
@@ -132,12 +129,24 @@ def main():
                 cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
                 cenX_ball = (x_ball+x_ball+w_ball)/2
                 cenY_ball = (y_ball+y_ball+h_ball)/2
-                #predicted = kfObj.Estimate(cenX, cenY)
+                predicted = kfObj.Estimate(cenX_ball, cenY_ball)
 
                 # draw actual coordinate from segmentation
                 cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+
+                # Draw Kalman Filter Predicted output
+                cv2.circle(frame1, (predictedCoords[0], predictedCoords[1]), 20, [255,0,0], 2, 8)
+                cv2.line(frame1, 
+                        (predictedCoords[0] + 16, predictedCoords[1] - 15), 
+                        (predictedCoords[0] + 50, predictedCoords[1] - 30),
+                        [255, 0, 0], 2, 8)
+                cv2.putText(frame1,
+                        "Predicted", 
+                        (int(predictedCoords[0] + 50),
+                        int(predictedCoords[1] - 30)), 
+                        font, 0.5, [255, 0, 0], 2)
 
                 # ada bola, mulai hitung
                 wait = 10
