@@ -1,4 +1,4 @@
-'l''
+'''
     Filename        : goal_calibration.py
     Description     : Calibration Program To Get Ball Color Information
     Created By      : Arjuna Panji Prakarsa
@@ -40,7 +40,7 @@ def setInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
     else:
         print("Data warna", obj_name, "tidak di simpan")
 
-FRONT_CAM = 2
+FRONT_CAM = 0
 OMNI_CAM = 1
 
 window_name = obj_name

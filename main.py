@@ -24,13 +24,6 @@ class KalmanFilter:
         predicted = self.kf.predict()
         return predicted
 
-
-def serialMotor():
-    serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
-
-def serialDribble():
-    serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=1)
-
 def getBallInfo():
     infoFile = open("ballColor.txt","r")
     info = []
@@ -47,10 +40,10 @@ def getGoalInfo():
 
 def main():
     # serial motor driver
-    motor = serialMotor()
+    motor = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 
     # serial dribble
-    db = serialDribble()
+    db = serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=1)
 
     # initialize
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -63,8 +56,8 @@ def main():
     #OMNI_CAP = cv2.VideoCapture(OMNI_CAM)
 
     # set frame size
-    FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
-    FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 400)
+    FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 360)
 
     #OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
     #OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 400)
@@ -81,19 +74,19 @@ def main():
     #cenY_frame2 = int(rows/2)
 
     # define center area of the frame 1
-    inner_left = cenX_frame1 - 50
-    outer_left = cenX_frame1 - 100
-    inner_right = cenX_frame1 + 50
-    outer_right = cenX_frame1 + 100
-    inner_top = cenY_frame1 - 50
-    outer_top = cenY_frame1 - 100
-    inner_bottom = cenY_frame1 + 50
-    outer_bottom = cenY_frame1 + 100
+    inner_left = cenX_frame1 - 100
+    outer_left = cenX_frame1 - 225 
+    inner_right = cenX_frame1 + 100
+    outer_right = cenX_frame1 + 225
+    inner_top = cenY_frame1 - 100
+    outer_top = cenY_frame1 - 150
+    inner_bottom = cenY_frame1 + 100
+    outer_bottom = cenY_frame1 + 150
 
     ballColor = getBallInfo()
     goalColor = getGoalInfo()
     kfObj = KalmanFilter()
-    predictedCoords = np.zeros((2,1), np.floats32)
+    predictedCoords = np.zeros((2,1), np.float32)
 
     wait = 0
 
@@ -149,16 +142,16 @@ def main():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
 
                 # Draw Kalman Filter Predicted output
-                cv2.circle(frame1, (predictedCoords[0], predictedCoords[1]), 20, [255,0,0], 2, 8)
-                cv2.line(frame1, 
-                        (predictedCoords[0] + 16, predictedCoords[1] - 15), 
-                        (predictedCoords[0] + 50, predictedCoords[1] - 30),
-                        [255, 0, 0], 2, 8)
-                cv2.putText(frame1,
-                        "Predicted", 
-                        (int(predictedCoords[0] + 50),
-                        int(predictedCoords[1] - 30)), 
-                        font, 0.5, [255, 0, 0], 2)
+                #cv2.circle(frame1, (predictedCoords[0], predictedCoords[1]), 20, [255,0,0], 2, 8)
+                #cv2.line(frame1, 
+                        #(predictedCoords[0] + 16, predictedCoords[1] - 15), 
+                        #(predictedCoords[0] + 50, predictedCoords[1] - 30),
+                        #[255, 0, 0], 2, 8)
+                #cv2.putText(frame1,
+                        #"Predicted", 
+                        #(int(predictedCoords[0] + 50),
+                        #int(predictedCoords[1] - 30)), 
+                        #font, 0.5, [255, 0, 0], 2)
 
                 # ada bola, mulai hitung
                 wait = 10
@@ -170,21 +163,24 @@ def main():
                     # bola di depan robot
                     # kirim serial maju
                     motor.write(b"MAJU\n")
+                    print("DEPAN")
                     
                 elif cenX_ball < inner_left and cenX_ball < inner_right:
                     # bola di kiri robot
                     # kirim serial putar kiri
-                    motor.write(b"PUTAR KIRI\n")
+                    motor.write(b"BELOK KIRI\n")
+                    print("KIRI")
                     
                 elif cenX_ball > inner_left and cenX_ball > inner_right:
                     # bola di kanan robot
                     # kirim serial putar kanan
-                    motor.write(b"PUTAR KANAN\n")
+                    motor.write(b"BELOK KANAN\n")
+                    print("KANAN")
                 break
 
         for goalContour in goalContours:
             goal_area = cv2.contourArea(goalContour)
-            if goal_area > 5000:
+            if goal_area > 500:
                 (x_goal, y_goal, w_goal, h_goal) = cv2.boundingRect(goalContour)
                 cenX_goal = (x_goal+x_goal+w_goal)/2
                 cenY_goal = (y_goal+y_goal+h_goal)/2
@@ -206,8 +202,8 @@ def main():
         # displays
 
         ## uncomment this to show center area of the frame 1
-        #cv2.rectangle(frame1, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
-        #cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
+        cv2.rectangle(frame1, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
+        cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
 
         #cv2.imshow("Morph", BALL_MORPH)
         cv2.imshow("Frame", frame1)
