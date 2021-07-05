@@ -18,6 +18,12 @@ def serialMotor():
     timeout = 1
     serial.Serial(port, baudrate, timeout)
 
+def serialDribble():
+    port = '/dev/ttyUSB1'
+    baudrate = 9600
+    timeout = 1
+    serial.Serial(port, baudrate, timeout)
+
 def getBallInfo():
     infoFile = open("ballColor.txt","r")
     info = []
@@ -38,11 +44,12 @@ def nothing(x):
 
 def main():
     # serial motor driver
-    motor = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=1) 
-    #motor = serialMotor()
+    #motor = serial.Serial('/dev/ttyUSB0', baudrate=9600, timeout=1) 
+    motor = serialMotor()
 
     # serial dribble
-    db = serial.Serial(port='/dev/ttyUSB1', baudrate="9600", timeout=1)
+    #db = serial.Serial(port='/dev/ttyUSB1', baudrate="9600", timeout=1)
+    db = serialDribble()
 
     # initialize
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -109,8 +116,8 @@ def main():
         GOAL_MASK = cv2.inRange(blur, lowerGoal, upperGoal)
 
         # convert to black and white image
-        _, BALL_THRESH = cv2.threshold(BALL_MASK, 127, 255, 0)
-        _, GOAL_THRESH = cv2.threshold(GOAL_MASK, 127, 255, 0)
+        _, BALL_THRESH = cv2.threshold(BALL_MASK, ballColor[6], 255, 0)
+        _, GOAL_THRESH = cv2.threshold(GOAL_MASK, goalColor[6], 255, 0)
 
         # refine the image using morphological transformation
         kernal = np.ones((5,5), np.uint8)
@@ -121,13 +128,16 @@ def main():
         ballContours, _ = cv2.findContours(BALL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         ballContours = sorted(ballContours, key=lambda x:cv2.contourArea(x), reverse=True)
 
+        goalContours, _ = cv2.findContours(GOAL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        goalContours = sorted(goalContours, key=lambda x:cv2.contourArea(x), reverse=True)
+
         for ballContour in ballContours:
-            area = cv2.contourArea(ballContour)
-            if (area) > 500:
-                (x,y,w,h) = cv2.boundingRect(ballContour)
-                cv2.putText(frame1, "X: "+str(x)+" Y: "+str(y), (520, 20), font, 0.5, (0,0,255),2)
-                cenX_ball = (x+x+w)/2
-                cenY_ball = (y+y+h)/2
+            ball_area = cv2.contourArea(ballContour)
+            if ball_area > 500:
+                (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
+                cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
+                cenX_ball = (x_ball+x_ball+w_ball)/2
+                cenY_ball = (y_ball+y_ball+h_ball)/2
                 #predicted = kfObj.Estimate(cenX, cenY)
 
                 # draw actual coordinate from segmentation
@@ -144,17 +154,32 @@ def main():
                 if cenX_ball > inner_left and cenX_ball < inner_right:
                     # bola di depan robot
                     # kirim serial maju
-                    motor.write(b"MAJU\n")                
+                    motor.write(b"MAJU\n")
+                    
                 elif cenX_ball < inner_left and cenX_ball < inner_right:
                     # bola di kiri robot
                     # kirim serial putar kiri
                     motor.write(b"PUTAR KIRI\n")
+                    
                 elif cenX_ball > inner_left and cenX_ball > inner_right:
                     # bola di kanan robot
                     # kirim serial putar kanan
                     motor.write(b"PUTAR KANAN\n")
                 break
 
+        for goalContour in goalContours:
+            goal_area = cv2.contourArea(goalContour)
+            if goal_area > 5000:
+                (x_goal, y_goal, w_goal, h_goal) = cv2.boundingRect(goalContour)
+                cenX_goal = (x_goal+x_goal+w_goal)/2
+                cenY_goal = (y_goal+y_goal+h_goal)/2
+                #predicted = kfObj.Estimate(cenX, cenY)
+
+                # draw actual coordinate from segmentation
+                cv2.rectangle(frame1, (x_goal, y_goal), ((x_goal+w_goal),(y_goal+h_goal)), [255,0,0], 2)
+                cv2.putText(frame1, "Gawang", (x_goal, y_goal), font, 0.5, [0,255,0], 2)
+                break
+ 
         wait -= 1
         if wait <= 0:
             wait = 0
