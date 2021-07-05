@@ -16,14 +16,14 @@ def nothing(x):
     #print(x)
     pass
 
-def getBallInfo():
+def getInfo():
     infoFile = open(file_color,"r")
     info = []
     for i in infoFile:
         info.append(int(i))
     return info
 
-def setBallInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
+def setInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
     value = str(LOW_H)+"\n"+str(LOW_S)+"\n"+str(LOW_V)+"\n"+str(UPP_H)+"\n"+str(UPP_S)+"\n"+str(UPP_V)+"\n"+str(TH)
     userInput = input("Simpan data warna {}? (y/n): ".format(obj_name))
     if userInput == "y" or userInput == "Y":
@@ -47,7 +47,7 @@ cv2.createTrackbar('U_S', window_name, 0, 255, nothing)
 cv2.createTrackbar('U_V', window_name, 0, 255, nothing)
 cv2.createTrackbar('Threshold', window_name, 0, 255, nothing)
 
-obj_color = getBallInfo()
+obj_color = getInfo()
 
 cv2.setTrackbarPos('L_H', window_name, obj_color[0])
 cv2.setTrackbarPos('L_S', window_name, obj_color[1])
@@ -108,7 +108,6 @@ while True:
     contours, _ = cv2.findContours(morph, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     contours = sorted(contours, key=lambda x:cv2.contourArea(x), reverse=True)
 
-
     cv2.imshow(window_name, morph)
     cv2.imshow("Frame", frame)
 
@@ -116,6 +115,6 @@ while True:
     if k == 27:
         cap.release()
         cv2.destroyAllWindows()
-        setBallInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH)
+        setInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH)
         break
     

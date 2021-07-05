@@ -1,21 +1,21 @@
 // PWM MOTOR
 #define kanan_depan_pwm         3
-#define kiri_depan_pwm          2 // pwm gak berfungsi, ganti pin 6
-#define kanan_belakang_pwm      4 // pwm gak berfungsi, ganti pin 10
+#define kiri_depan_pwm          9
+#define kanan_belakang_pwm      10
 #define kiri_belakang_pwm       5
 
 // MOTOR KANAN DEPAN
-#define kanan_depan_maju        6 // ganti pin 2
+#define kanan_depan_maju        6
 #define kanan_depan_mundur      7
 
 // MOTOR KIRI DEPAN
-#define kiri_depan_maju         9 
+#define kiri_depan_maju         2 
 #define kiri_depan_mundur       8 
 
 
 // MOTOR KANAN BELAKANG
 #define kanan_belakang_maju     11 
-#define kanan_belakang_mundur   10 // ganti pin 4
+#define kanan_belakang_mundur   4
 
 
 // MOTOR KIRI BELAKANG
@@ -23,9 +23,9 @@
 #define kiri_belakang_mundur    13
 
 
-int cepat = 150;
-int sedang = 150;
-int lambat = 150;
+int cepat = 120;
+int sedang = 80;
+int lambat = 50;
 int count = 0;
 String data;
 

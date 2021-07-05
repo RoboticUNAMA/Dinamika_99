@@ -1,4 +1,4 @@
-'l''
+'''
     Filename        : goal_calibration.py
     Description     : Calibration Program To Get Ball Color Information
     Created By      : Arjuna Panji Prakarsa
@@ -9,17 +9,17 @@
 import cv2
 import numpy as np
 
-obj_name = "gawang"
-file_color = "goalColor.txt"
-img = 'gawang.jpg'
+obj_name = "bola"
+file_color = "ballColor.txt"
+path = 'gawang.jpg'
 
 def nothing(x):
     #print(x)
     pass
 
 def readFromImage():
-    img = cv2.imread('gawang.jpg', cv2.IMREAD_COLOR)
-    img = cv2.resize(img, (600,400))
+    img = cv2.imread(path, cv2.IMREAD_COLOR)
+    img = cv2.resize(img, (500,400))
     return img
 
 def getInfo():
@@ -39,9 +39,6 @@ def setInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
         infoFile.close()
     else:
         print("Data warna", obj_name, "tidak di simpan")
-
-FRONT_CAM = 2
-OMNI_CAM = 1
 
 window_name = obj_name
 cv2.namedWindow(window_name)
@@ -66,23 +63,9 @@ cv2.setTrackbarPos('Threshold', window_name, obj_color[6])
 # Define font
 font = cv2.FONT_HERSHEY_SIMPLEX
 
-# Create opencv video capture object
-cap = cv2.VideoCapture(FRONT_CAM)
-
-# Set frame size
-cap.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
-cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 400)
-
-# Get center of the frame
-_, frame = cap.read()
-rows, cols, _ = frame.shape
-cenX_frame = int(cols/2)
-cenY_frame = int(rows/2)
-
 while True:
     # Read frame
-    _, frame = cap.read()
-    #frame = readFromImage()
+    frame = readFromImage()
 
     LOW_H = cv2.getTrackbarPos('L_H', window_name)
     LOW_S = cv2.getTrackbarPos('L_S', window_name)
@@ -121,7 +104,6 @@ while True:
 
     k = cv2.waitKey(1) & 0xFF
     if k == 27:
-        cap.release()
         cv2.destroyAllWindows()
         setInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH)
         break
