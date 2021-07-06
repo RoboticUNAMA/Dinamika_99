@@ -48,7 +48,7 @@ def main():
     # initialize
     font = cv2.FONT_HERSHEY_SIMPLEX
     date = str(datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S"))
-    FRONT_CAM = 0   # front camera
+    FRONT_CAM = 1   # front camera
     #OMNI_CAM = 1    # omni camera
 
     # create opencv video capture object
@@ -129,7 +129,7 @@ def main():
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
-            if ball_area > 500:
+            if ball_area > 50:
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
                 cenX_ball = (x_ball+x_ball+w_ball)/2

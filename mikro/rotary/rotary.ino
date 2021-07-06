@@ -60,7 +60,7 @@ void loop() {
     Serial.println(data);
   }
   if (data == "DB ON") {
-    db_on(512);
+    db_on(255);
   }
   else if (data == "DB OFF") {
     db_off();

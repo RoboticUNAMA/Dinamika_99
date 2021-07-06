@@ -1,34 +1,34 @@
 import serial
-import keyboard
 
 motor = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 db = serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=1)
 
 while(True):
-    if keyboard.is_pressed('w'):
+    arah = input("Arah = ")
+
+    if arah == 'w':
         motor.write(b"MAJU\n")
-        print("MAJU")
-    elif keyboard.press('a'):
+    elif arah == 'a':
         motor.write(b"GESER KIRI\n")
-    elif keyboard.press('s'):
+    elif arah == 's':
         motor.write(b"MUNDUR\n")
-    elif keyboard.press('d'):
-        motor.write(b"GESER KANAN")
-    elif keyboard.press('q'):
+    elif arah == 'd':
+        motor.write(b"GESER KANAN\n")
+    elif arah == 'q':
         motor.write(b"BELOK KIRI\n")
-    elif keyboard.press('e'):
+    elif arah == 'e':
         motor.write(b"BELOK KANAN\n")
-    elif keyboard.press('z'):
+    elif arah == 'z':
         motor.write(b"PUTAR KIRI\n")
-    elif keyboard.press('x'):
+    elif arah == 'x':
         motor.write(b"PUTAR KIRI\n")
-    elif keyboard.press('r'):
+    elif arah == 'r':
         motor.write(b"SERONG KIRI\n")
-    elif keyboard.press('t'):
+    elif arah == 't':
         motor.write(b"SERONG KANAN\n")
-    elif keyboard.press('1'):
+    elif arah == '1':
         motor.write(b"BERHENTI\n")
-    elif keyboard.press('0'):
+    elif arah == '0':
         db.write(b"DB OFF\n")
-    elif keyboard.press('9'):
+    elif arah == '9':
         db.write(b"DB ON\n")
