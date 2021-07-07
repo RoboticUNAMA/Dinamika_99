@@ -72,7 +72,7 @@ def main():
 
     _, frame2 = OMNI_CAP.read()
     rows1, cols1, _ = frame2.shape
-    cenX_frame2 = 290
+    cenX_frame2 = 235
     cenY_frame2 = int(rows1/2)
 
     # define center area of the frame 1
@@ -85,6 +85,11 @@ def main():
     inner_bottom = cenY_frame1 + 100
     outer_bottom = cenY_frame1 + 150
 
+    xAwal = 100
+    xAkhir = 380
+    yAwal = 95
+    yAkhir = 210
+    
     ballColor = getBallInfo()
     goalColor = getGoalInfo()
     kfObj = KalmanFilter()
@@ -92,8 +97,8 @@ def main():
 
     wait = 0
 
-    speed_awal = 180.0
-    Kp = 1.0
+    speed_awal = 140.0
+    Kp = 5.0
     Kd = 5.0
     Ki = 0.0
     error = 0.0
@@ -104,8 +109,27 @@ def main():
     I = 0.0
     D = 0.0
     PID = 0.0
+    
+    dki =  115
+    dka = -60
+    bki = 80
+    bka = 70
 
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                  
+    sleep(1)
+    
+        
+    dki =  0
+    dka = 0
+    bki = 0
+    bka = 0
+
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                  
+    state = "CARI BOLA"
     while(True):
+        print(state)
         ## read frame
         _, frame1 = FRONT_CAP.read()
         _, frame2 = OMNI_CAP.read()
@@ -145,7 +169,7 @@ def main():
 
         # find contours
         ballContours, _ = cv2.findContours(BALL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        ballContours = sorted(ballContours, key=lambda x:cv2.contourArea(x), reverse=True)
+        ballContous = sorted(ballContours, key=lambda x:cv2.contourArea(x), reverse=True)
         
         ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
@@ -168,55 +192,164 @@ def main():
                 cv2.line(frame2, (int(cenX_ball1), int(cenY_ball1 + 20)), (int(cenX_ball1 + 50), int(cenY_ball1 + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball1 + 50), int(cenY_ball1 + 20)), font, 0.5, [0,255,0], 2)
                 
-                print(cenX_ball1)
+                #print(cenX_ball1)
+                
+                if cenX_ball1 > xAwal and cenX_ball1 < xAkhir and cenY_ball1 > yAwal and cenY_ball1 < yAkhir:
+                    dki =  0
+                    dka = 0
+                    bki = 0
+                    bka = 0
+                    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                    state = "LURUS BOLA"
+                    
+                if cenX_ball1 < 200  and state == "LURUS BOLA":
+                    dki =  100
+                    dka = 50
+                    bki = -60
+                    bka = 80
+                    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8')) 
+                    print("LURUS KANAN")
+                    
+                elif cenX_ball1 > 230 and state == "LURUS BOLA":
+                    dki =  -100
+                    dka = -50
+                    bki = 60
+                    bka = -80
+                    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8')) 
+                    print("LURUS KIRI")
+                else:
+                    dki =  0
+                    dka = 0
+                    bki = 0
+                    bka = 0
+                    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                    state == "MAJU DRIBBLING"
+                    
+                if state == "MAJU DRIBBLING":
+                    if cenX_ball1 < 200  and state == "LURUS BOLA":
+                        dki =  -100
+                        dka = 50
+                        bki = 60
+                        bka = 50
+                        motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8')) 
+                        print("PUTAR KANAN")
+                    
+                    elif cenX_ball1 > 230 and state == "LURUS BOLA":
+                        dki =  100
+                        dka = -50
+                        bki = -60
+                        bka = -50
+                        motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8')) 
+                        print("PUTAR KIRI")
+                    else:
+                        dki =  100
+                        dka = -50
+                        bki = 60
+                        bka = 50
+                        motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                        print("MAJU")
+                        
+                        if cenX_ball1 > 200 and cenX_ball1 < 230 and cenY_ball1 > 150 and cenY_ball1 < yAkhir:
+                            dki =  0
+                            dka = 0
+                            bki = 0
+                            bka = 0
+                            motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                            state == "DAPAT BOLA"
+                    
+                
+                
+              
                
-                
-                error =  cenX_frame2 - cenX_ball1
-                selisih_error = error_sebelumnya - error
-                jumlah_error += (0.001 * error)
-                error_sebelumnya = error
-                P = Kp * error
-                D = Kd * selisih_error
-                I = Ki * jumlah_error
-                PID = P + I  +D
-                PID /= 2
-                #print(PID)
-                if PID > 40 :
-                    PID = 40
-                if PID < -40 :
-                    PID = -40
+               
+                if state == "CARI BOLA":
+                    if cenY_ball1 <200:
+                        if cenX_ball1 < cenX_frame2:
+                           error =  cenX_ball1 - cenX_frame2
+                           selisih_error = error_sebelumnya - error
+                           jumlah_error += (0.001 * error)
+                           error_sebelumnya = error
+                           P = Kp * error
+                           D = Kd * selisih_error
+                           I = Ki * jumlah_error
+                           PID = P + I  +D
+                           PID = PID /20
+                           dki = speed_awal + 40
+                           dka = -PID
+                           bki = PID + 10
+                           bka = speed_awal 
+                           
+                           motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                          
+                           print(PID)
+                                   
+                        elif cenX_ball1 > cenX_frame2:
+                           error = cols1 - cenX_ball1
+                           selisih_error = error_sebelumnya - error
+                           jumlah_error += (0.001 * error)
+                           error_sebelumnya = error
+                           P = Kp * error
+                           D = Kd * selisih_error
+                           I = Ki * jumlah_error
+                           PID = P + I  +D
+                           PID = PID /20
+                           dki =  PID +40
+                           dka = -speed_awal
+                           bki = speed_awal + 10
+                           bka = PID 
+
+                           motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                      
+                           print(PID)
+                               
+                    else :
+                         #motor.write(b"#M|STP|0\n")
+                        error =  cenX_frame2 - cenX_ball1
+                        selisih_error = error_sebelumnya - error
+                        jumlah_error += (0.001 * error)
+                        error_sebelumnya = error
+                        P = Kp * error
+                        D = Kd * selisih_error
+                        I = Ki * jumlah_error
+                        PID = P + I  +D
+                        PID /= 2
+                        #print(PID)
+                        if PID > 40 :
+                            PID = 40
+                        if PID < -40 :
+                            PID = -40
+                            
+                        if cenX_ball1 < 340 and cenX_ball1 > 250 : 
+                            PID = -PID
+                            
+                            dki =  PID
+                            dka = PID
+                            bki = PID 
+                            bka = -PID
+                            
+                            motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                            
+                            sleep(0.1)
+                            
+                            PID = 0
+                        
+                            dki =  PID
+                            dka = PID
+                            bki = PID 
+                            bka = -PID
+                            
+                            motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                            
+                        else :
+                        
+                            dki =  PID
+                            dka = PID
+                            bki = PID 
+                            bka = -PID
+                            
+                            motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
                     
-                if cenX_ball1 < 340 and cenX_ball1 > 250 : 
-                    PID = -PID
-                    
-                    dki =  PID
-                    dka = PID
-                    bki = PID 
-                    bka = -PID
-                    
-                    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-                    
-                    sleep(0.1)
-                    
-                    PID = 0
-                
-                    dki =  PID
-                    dka = PID
-                    bki = PID 
-                    bka = -PID
-                    
-                    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-                    
-                else :
-                
-                    dki =  PID
-                    dka = PID
-                    bki = PID 
-                    bka = -PID
-                    
-                    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-                
-             
+                 
                     
                
                     
@@ -320,9 +453,10 @@ def main():
         ## uncomment this to show center area of the frame 1
         cv2.rectangle(frame1, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
         cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
+        cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
         cv2.imshow("Kamra Atas", frame2)
-        cv2.imshow("Kamera Depan", frame1)
+        #cv2.imshow("Kamera Depan", frame1)
         #print(ballColor)
 
         k = cv2.waitKey(1) & 0xFF
