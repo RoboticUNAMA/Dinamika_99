@@ -21,11 +21,11 @@
 // DRIBBLE
 #define dbKanan_cw    7
 #define dbKanan_ccw   8
-#define dbKanan_pwm   4
+#define dbKanan_pwm   5
 
-#define dbKiri_cw     9
-#define dbKiri_ccw    10
-#define dbKiri_pwm    12
+#define dbKiri_cw     2
+#define dbKiri_ccw    3
+#define dbKiri_pwm    6
 
 int spd_db = 512;
 String data;
@@ -63,6 +63,13 @@ void loop() {
   else if(data == "DB OFF"){
     db_off();
   }
+//analogWrite(6, 255);
+//digitalWrite(2, HIGH);
+//digitalWrite(3, LOW);
+//
+//analogWrite(5, 255);
+//digitalWrite(7, HIGH);
+//digitalWrite(8, LOW);
 //db_on(512);
 //  delay(5000);
 //  db_off();
