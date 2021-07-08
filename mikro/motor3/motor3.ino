@@ -9,8 +9,8 @@
 #define kanan_depan_mundur      7
 
 // MOTOR KIRI DEPAN
-#define kiri_depan_maju         2
-#define kiri_depan_mundur       8
+#define kiri_depan_maju         8
+#define kiri_depan_mundur       2
 
 
 // MOTOR KANAN BELAKANG
@@ -19,8 +19,8 @@
 
 
 // MOTOR KIRI BELAKANG
-#define kiri_belakang_maju      12
-#define kiri_belakang_mundur    13
+#define kiri_belakang_maju      13
+#define kiri_belakang_mundur    12
 
 float Kp = 5;
 float Kd = 5;
@@ -91,14 +91,12 @@ void loop() {
   if (cmd == "STP") {
     motor_stop();
   }
+
   //Serial.println(idmotor);
   //   mtrDepanKiri(100);
   //   mtrDepanKanan(-40);
   //   mtrBlkKanan(100);
   //   mtrBlkKiri(50);
-
-
-
 }
 
 void mtrDepanKiri(int spd)

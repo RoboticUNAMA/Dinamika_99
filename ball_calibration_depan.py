@@ -1,26 +1,20 @@
 '''
-    Filename        : goal_calibration.py
+    Filename        : ball_calibration.py
     Description     : Calibration Program To Get Ball Color Information
     Created By      : Arjuna Panji Prakarsa
-    Date            : 25/06/2021
+    Date            : 06/06/2021
     Python Version  : 3.6.9
 '''
 
 import cv2
 import numpy as np
 
-obj_name = "gawang"
-file_color = "goalColor.txt"
-img = 'gawang.jpg'
+obj_name = "bola"
+file_color = "ballColor.txt"
 
 def nothing(x):
     #print(x)
     pass
-
-def readFromImage():
-    img = cv2.imread('gawang.jpg', cv2.IMREAD_COLOR)
-    img = cv2.resize(img, (600,400))
-    return img
 
 def getInfo():
     infoFile = open(file_color,"r")
@@ -40,8 +34,8 @@ def setInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
     else:
         print("Data warna", obj_name, "tidak di simpan")
 
-FRONT_CAM = 0
-OMNI_CAM = 1
+FRONT_CAM = 1 
+#OMNI_CAM = 1
 
 window_name = obj_name
 cv2.namedWindow(window_name)
@@ -82,7 +76,6 @@ cenY_frame = int(rows/2)
 while True:
     # Read frame
     _, frame = cap.read()
-    #frame = readFromImage()
 
     LOW_H = cv2.getTrackbarPos('L_H', window_name)
     LOW_S = cv2.getTrackbarPos('L_S', window_name)
@@ -114,7 +107,6 @@ while True:
     # Find contours
     contours, _ = cv2.findContours(morph, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     contours = sorted(contours, key=lambda x:cv2.contourArea(x), reverse=True)
-
 
     cv2.imshow(window_name, morph)
     cv2.imshow("Frame", frame)

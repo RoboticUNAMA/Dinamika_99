@@ -3,62 +3,108 @@ import serial
 motor = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 db = serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=1)
 
-speed_awal = 80
+speed_awal = 120
+
+def maju():
+    dki = speed_awal
+    dka = -speed_awal
+    bki = speed_awal
+    bka = speed_awal
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    print("maju")
+
+def mundur():
+    dki = -speed_awal
+    dka = speed_awal
+    bki = -speed_awal
+    bka = -speed_awal
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    print("mundur")
+
+def berhenti():
+    dki = 0
+    dka = 0
+    bki = 0
+    bka = 0
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    print("berhenti")
+
+def serongKanan():
+    dki = speed_awal
+    dka = 0#-speed_awal
+    bki = 0#speed_awal
+    bka = speed_awal
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    print("serong kanan")
+
+def serongKiri():
+    dki = 0#speed_awal
+    dka = -speed_awal
+    bki = speed_awal
+    bka = 0#speed_awal
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    print("serong kiri")
+
+def geserKanan():
+    dki = speed_awal
+    dka = speed_awal
+    bki = -speed_awal
+    bka = speed_awal
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    print("geser kanan")
+
+def geserKiri():
+    dki = -speed_awal
+    dka = -speed_awal
+    bki = speed_awal
+    bka = -speed_awal
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    print("geser kiri")
+
+def putarKanan():
+    dki = speed_awal
+    dka = speed_awal
+    bki = speed_awal
+    bka = -speed_awal
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    print("putar kanan")
+
+def putarKiri():
+    dki = -speed_awal
+    dka = -speed_awal
+    bki = -speed_awal
+    bka = speed_awal
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    print("putar kiri")
 
 while(True):
     arah = input("Arah = ")
 
     if arah == 'w':
-       dki = speed_awal
-       dka = -speed_awal + 30
-       bki = speed_awal + 15
-       bka = speed_awal 
-       motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+        maju()
     elif arah == 'a':
-       dki =  speed_awal
-       dka = -speed_awal
-       bki = -speed_awal
-       bka = -speed_awal 
-       motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+        geserKiri()
     elif arah == 's':
-       dki = -speed_awal
-       dka = speed_awal - 30 
-       bki = -speed_awal
-       bka = -speed_awal
-       motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+        mundur()
     elif arah == 'd':
-       dki = -speed_awal
-       dka = speed_awal
-       bki = speed_awal
-       bka = speed_awal 
-       motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+        geserKanan()
     elif arah == 'q':
-       dki = -speed_awal
-       dka = -speed_awal
-       bki = speed_awal
-       bka = -speed_awal 
-       motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+        serongKiri()
     elif arah == 'e':
-       dki = speed_awal +50
-       dka = speed_awal
-       bki = -speed_awal - 10
-       bka = speed_awal 
-       motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+        serongKanan()
     elif arah == 'z':
-        motor.write(b"PUTAR KIRI\n")
+        putarKiri()
     elif arah == 'x':
-        motor.write(b"PUTAR KIRI\n")
-    elif arah == 'r':
-        motor.write(b"SERONG KIRI\n")
-    elif arah == 't':
-        motor.write(b"SERONG KANAN\n")
+        putarKanan()
     elif arah == '1':
-       dki = 0
-       dka = 0
-       bki = 0
-       bka = 0
-       motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+        berhenti()
     elif arah == '0':
         db.write(b"DB OFF\n")
     elif arah == '9':
         db.write(b"DB ON\n")
+    elif arah == '8':
+        db.write(b"TENDANG\n")
+    elif arah == '7':
+        db.write(b"PASSING\n")
+    else:
+        berhenti()

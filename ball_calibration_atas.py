@@ -10,7 +10,7 @@ import cv2
 import numpy as np
 
 obj_name = "bola"
-file_color = "ballColor.txt"
+file_color = "ballColor1.txt"
 
 def nothing(x):
     #print(x)
@@ -34,8 +34,8 @@ def setInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
     else:
         print("Data warna", obj_name, "tidak di simpan")
 
-FRONT_CAM = 0
-#OMNI_CAM = 2
+FRONT_CAM = 0 
+#OMNI_CAM = 1
 
 window_name = obj_name
 cv2.namedWindow(window_name)
