@@ -52,46 +52,46 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  if(Serial.available() > 0){
+//put your main code here, to run repeatedly:
+  if (Serial.available() > 0) {
     data = Serial.readStringUntil('\n');
     Serial.println(data);
   }
-  if(data == "DB ON"){
-   db_on(512); 
+  if (data == "DB ON") {
+    db_on(255);
   }
-  else if(data == "DB OFF"){
+  else if (data == "DB OFF") {
     db_off();
   }
-//analogWrite(6, 255);
-//digitalWrite(2, HIGH);
-//digitalWrite(3, LOW);
-//
-//analogWrite(5, 255);
-//digitalWrite(7, HIGH);
-//digitalWrite(8, LOW);
-//db_on(512);
-//  delay(5000);
-//  db_off();
-//  delay(1000);
+  //analogWrite(6, 255);
+  //digitalWrite(2, LOW);
+  //digitalWrite(3, HIGH);
+  //
+  //analogWrite(5, 255);
+  //digitalWrite(7, HIGH);
+  //digitalWrite(8, LOW);
+  //db_on(512);
+  //  delay(5000);
+  //  db_off();
+  //  delay(1000);
 }
 
-void db_on(int spd){
-  analogWrite(dbKanan_pwm, spd);
-  digitalWrite(dbKanan_cw, HIGH);
-  digitalWrite(dbKanan_ccw, LOW);
+void db_on(int spd) {
+  analogWrite(6, spd);
+  digitalWrite(2, LOW);
+  digitalWrite(3, HIGH);
 
-  analogWrite(dbKiri_pwm, spd);
-  digitalWrite(dbKiri_cw, HIGH);
-  digitalWrite(dbKiri_ccw, LOW);
+  analogWrite(5, spd);
+  digitalWrite(7, HIGH);
+  digitalWrite(8, LOW);
 }
 
-void db_off(){
-  analogWrite(dbKanan_pwm, 0);
-  digitalWrite(dbKanan_cw, LOW);
-  digitalWrite(dbKanan_ccw, LOW);
+void db_off() {
+  analogWrite(6, 0);
+  digitalWrite(2, LOW);
+  digitalWrite(3, LOW);
 
-  analogWrite(dbKiri_pwm, 0);
-  digitalWrite(dbKiri_cw, LOW);
-  digitalWrite(dbKiri_ccw, LOW);
+  analogWrite(5, 0);
+  digitalWrite(7, LOW);
+  digitalWrite(8, LOW);
 }

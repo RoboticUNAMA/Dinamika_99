@@ -110,12 +110,12 @@ def main():
     D = 0.0
     PID = 0.0
     
-    dki =  115
-    dka = -60
-    bki = 80
-    bka = 70
-
+    dki =  80
+    dka = -50
+    bki = 95
+    bka = 80
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    print("MAJU")
                   
     sleep(1)
     
@@ -194,7 +194,7 @@ def main():
                 
                 #print(cenX_ball1)
                 
-                if cenX_ball1 > xAwal and cenX_ball1 < xAkhir and cenY_ball1 > yAwal and cenY_ball1 < yAkhir:
+                if cenX_ball1 > xAwal and cenX_ball1 < xAkhir and cenY_ball1 > yAwal and cenY_ball1 < yAkhir and state == "CARI BOLA":
                     dki =  0
                     dka = 0
                     bki = 0
@@ -202,62 +202,78 @@ def main():
                     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
                     state = "LURUS BOLA"
                     
-                if cenX_ball1 < 200  and state == "LURUS BOLA":
-                    dki =  100
-                    dka = 50
-                    bki = -60
-                    bka = 80
-                    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8')) 
-                    print("LURUS KANAN")
-                    
-                elif cenX_ball1 > 230 and state == "LURUS BOLA":
-                    dki =  -100
-                    dka = -50
-                    bki = 60
-                    bka = -80
-                    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8')) 
-                    print("LURUS KIRI")
-                else:
-                    dki =  0
-                    dka = 0
-                    bki = 0
-                    bka = 0
-                    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-                    state == "MAJU DRIBBLING"
+                if state == "LURUS BOLA"  :
+                    if cenX_ball1 < 200  :
+                        dki =  130
+                        dka = 80
+                        bki = -90
+                        bka = 80
+                        motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8')) 
+                        print("LURUS KANAN")
+                        
+                    elif cenX_ball1 > 230 :
+                        dki =  -130
+                        dka = -80
+                        bki = 90
+                        bka = -80
+                        motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8')) 
+                        print("LURUS KIRI")
+                    else:
+                        dki =  0
+                        dka = 0
+                        bki = 0
+                        bka = 0
+                        motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                        state = "MAJU DRIBBLING"
+                        db.write(b"DB ON\n")
                     
                 if state == "MAJU DRIBBLING":
-                    if cenX_ball1 < 200  and state == "LURUS BOLA":
-                        dki =  -100
-                        dka = 50
-                        bki = 60
-                        bka = 50
+                    if cenX_ball1 < 220  :
+                        dki =  -55
+                        dka = 55
+                        bki = 55
+                        bka = 55
                         motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8')) 
                         print("PUTAR KANAN")
                     
-                    elif cenX_ball1 > 230 and state == "LURUS BOLA":
-                        dki =  100
-                        dka = -50
-                        bki = -60
-                        bka = -50
+                    elif cenX_ball1 > 250 :
+                        dki =  55
+                        dka = -55
+                        bki = -55
+                        bka = -55
                         motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8')) 
                         print("PUTAR KIRI")
                     else:
-                        dki =  100
+                    
+                        dki =  80
                         dka = -50
-                        bki = 60
-                        bka = 50
+                        bki = 95
+                        bka = 80
                         motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
                         print("MAJU")
                         
-                        if cenX_ball1 > 200 and cenX_ball1 < 230 and cenY_ball1 > 150 and cenY_ball1 < yAkhir:
+                        if cenX_ball1 > 224 and cenX_ball1 < 244 and cenY_ball1 > 164 and cenY_ball1 < yAkhir:
                             dki =  0
                             dka = 0
                             bki = 0
                             bka = 0
                             motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-                            state == "DAPAT BOLA"
+                            state = "DAPAT BOLA"
                     
-                
+                            dki =  80
+                            dka = -80
+                            bki = -80
+                            bka = -80
+                            motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8')) 
+                            print("PUTAR KIRI")
+                            
+                            sleep(2)
+                            dki =  0
+                            dka = 0
+                            bki = 0
+                            bka = 0
+                            motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+                            
                 
               
                
