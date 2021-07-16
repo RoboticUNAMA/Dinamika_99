@@ -1,23 +1,24 @@
 import serial
 
-motor = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
-db = serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=1)
+motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
+db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 
-speed_awal = 120
+speed_awal = 100
+adj = speed_awal*0.2
 
 def maju():
-    dki = speed_awal
-    dka = -speed_awal
-    bki = speed_awal
-    bka = speed_awal
+    dki = -speed_awal - adj
+    dka = speed_awal
+    bki = -speed_awal
+    bka = speed_awal + adj
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
     print("maju")
 
 def mundur():
-    dki = -speed_awal
-    dka = speed_awal
-    bki = -speed_awal
-    bka = -speed_awal
+    dki = speed_awal + adj
+    dka = -speed_awal
+    bki = speed_awal
+    bka = -speed_awal - adj
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
     print("mundur")
 
@@ -30,7 +31,7 @@ def berhenti():
     print("berhenti")
 
 def serongKanan():
-    dki = speed_awal
+    dki = -speed_awal
     dka = 0#-speed_awal
     bki = 0#speed_awal
     bka = speed_awal
@@ -39,40 +40,40 @@ def serongKanan():
 
 def serongKiri():
     dki = 0#speed_awal
-    dka = -speed_awal
-    bki = speed_awal
+    dka = speed_awal
+    bki = -speed_awal
     bka = 0#speed_awal
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
     print("serong kiri")
 
 def geserKanan():
-    dki = speed_awal
-    dka = speed_awal
-    bki = -speed_awal
-    bka = speed_awal
+    dki = -speed_awal - adj
+    dka = -speed_awal
+    bki = speed_awal
+    bka = speed_awal + adj
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
     print("geser kanan")
 
 def geserKiri():
-    dki = -speed_awal
-    dka = -speed_awal
-    bki = speed_awal
-    bka = -speed_awal
+    dki = speed_awal + adj
+    dka = speed_awal
+    bki = -speed_awal
+    bka = -speed_awal - adj
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
     print("geser kiri")
 
 def putarKanan():
-    dki = speed_awal
-    dka = speed_awal
-    bki = speed_awal
+    dki = -speed_awal
+    dka = -speed_awal
+    bki = -speed_awal
     bka = -speed_awal
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
     print("putar kanan")
 
 def putarKiri():
-    dki = -speed_awal
-    dka = -speed_awal
-    bki = -speed_awal
+    dki = speed_awal
+    dka = speed_awal
+    bki = speed_awal
     bka = speed_awal
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
     print("putar kiri")

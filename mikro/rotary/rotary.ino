@@ -1,36 +1,14 @@
-// ROTARY
-
-//// MOTOR KANAN DEPAN
-//#define kanan_depan_maju        A0
-//#define kanan_depan_mundur      A1
-//
-//// MOTOR KIRI DEPAN
-//#define kiri_depan_maju         A2
-//#define kiri_depan_mundur       A3
-//
-//
-//// MOTOR KANAN BELAKANG
-//#define kanan_belakang_maju     A4
-//#define kanan_belakang_mundur   A5
-//
-//
-//// MOTOR KIRI BELAKANG
-//#define kiri_belakang_maju      A6
-//#define kiri_belakang_mundur    A7
-
 // DRIBBLE
-#define db_kanan_cw    2
-#define db_kanan_ccw   4
-#define db_kanan_pwm   3
-
-#define db_kiri_cw     13
-#define db_kiri_ccw    12
-#define db_kiri_pwm    11
+#define dribble_cw      4
+#define dribble_ccw     2
+#define dribble_pwm     3
+#define dribble_limit   A0
 
 // KICKER
-#define tendang_cw  8
-#define tendang_ccw 7
-#define tendang_pwm 10
+#define tendang_cw      6
+#define tendang_ccw     7
+#define tendang_pwm     5
+#define tendang_limit   A1
 
 int spd_db = 255;
 String data;
@@ -39,30 +17,27 @@ bool kick = false;
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  //  pinMode(kanan_depan_maju, INPUT);
-  //  pinMode(kanan_depan_mundur, INPUT);
-  //  pinMode(kiri_depan_maju, INPUT);
-  //  pinMode(kiri_depan_mundur, INPUT);
-  //
-  //  pinMode(kanan_belakang_maju, INPUT);
-  //  pinMode(kanan_belakang_mundur, INPUT);
-  //  pinMode(kiri_belakang_maju, INPUT);
-  //  pinMode(kiri_belakang_mundur, INPUT);
-
-  pinMode(db_kanan_cw, OUTPUT);
-  pinMode(db_kanan_ccw, OUTPUT);
-  pinMode(db_kiri_cw, OUTPUT);
-  pinMode(db_kiri_ccw, OUTPUT);
-  pinMode(db_kanan_pwm, OUTPUT);
-  pinMode(db_kiri_pwm, OUTPUT);
+  pinMode(dribble_cw, OUTPUT);
+  pinMode(dribble_ccw, OUTPUT);
+  pinMode(dribble_pwm, OUTPUT);
 
   pinMode(tendang_cw, OUTPUT);
   pinMode(tendang_ccw, OUTPUT);
   pinMode(tendang_pwm, OUTPUT);
+
+  pinMode(dribble_limit, INPUT_PULLUP);
+  pinMode(tendang_limit, INPUT_PULLUP);
 }
 
 void loop() {
-  //put your main code here, to run repeatedly:
+//  if(digitalRead(tendang_limit) == HIGH){
+//    db_off();
+//  }
+//  else if(digitalRead(tendang_limit) == LOW){
+//    db_on(255);
+//  }
+//  Serial.println(digitalRead(tendang_limit));
+//  delay(1000);
   if (Serial.available() > 0) {
     data = Serial.readStringUntil('\n');
     Serial.println(data);
@@ -129,21 +104,13 @@ void off_tendang() {
 }
 
 void db_on(int spd) {
-  analogWrite(db_kanan_pwm, spd);
-  digitalWrite(db_kanan_cw, LOW);
-  digitalWrite(db_kanan_ccw, HIGH);
-
-  analogWrite(db_kiri_pwm, spd);
-  digitalWrite(db_kiri_cw, HIGH);
-  digitalWrite(db_kiri_ccw, LOW);
+  analogWrite(dribble_pwm, spd);
+  digitalWrite(dribble_cw, HIGH);
+  digitalWrite(dribble_ccw, LOW);
 }
 
 void db_off() {
-  analogWrite(db_kanan_pwm, 0);
-  digitalWrite(db_kanan_cw, LOW);
-  digitalWrite(db_kanan_ccw, LOW);
-
-  analogWrite(db_kiri_pwm, 0);
-  digitalWrite(db_kiri_cw, LOW);
-  digitalWrite(db_kiri_ccw, LOW);
+  analogWrite(dribble_pwm, 0);
+  digitalWrite(dribble_cw, LOW);
+  digitalWrite(dribble_ccw, LOW);
 }

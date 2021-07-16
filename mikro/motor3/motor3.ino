@@ -1,26 +1,22 @@
-// PWM MOTOR
-#define kanan_depan_pwm         3
-#define kiri_depan_pwm          9
-#define kanan_belakang_pwm      10
-#define kiri_belakang_pwm       5
-
 // MOTOR KANAN DEPAN
-#define kanan_depan_maju        6
-#define kanan_depan_mundur      7
+#define kanan_depan_pwm         3
+#define kanan_depan_maju        2
+#define kanan_depan_mundur      4
 
 // MOTOR KIRI DEPAN
-#define kiri_depan_maju         8
-#define kiri_depan_mundur       2
-
+#define kiri_depan_pwm          5
+#define kiri_depan_maju         7
+#define kiri_depan_mundur       8
 
 // MOTOR KANAN BELAKANG
-#define kanan_belakang_maju     11
-#define kanan_belakang_mundur   4
-
+#define kanan_belakang_pwm      6
+#define kanan_belakang_maju     9
+#define kanan_belakang_mundur   10
 
 // MOTOR KIRI BELAKANG
-#define kiri_belakang_maju      13
-#define kiri_belakang_mundur    12
+#define kiri_belakang_pwm       11
+#define kiri_belakang_maju      12
+#define kiri_belakang_mundur    13
 
 float Kp = 5;
 float Kd = 5;

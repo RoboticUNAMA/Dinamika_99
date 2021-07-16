@@ -21,13 +21,10 @@ OMNI_CAM = 0    # omni camera
 speed_awal = 100
 
 # serial motor driver
-motor = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
+motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
 
 # serial dribble
-db = serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=1)
-
-def setMotor(dki, dka, bki, bka):
-    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 
 def getObjectInfo(param):
     if param == 1:
@@ -95,8 +92,65 @@ def PID(centerObj, centerFrame):
     I = Ki * selisih_error
     D = Kd * jumlah_error
     PID = P + I + D
-    PID = PID / 5
+    PID = PID / 6
     return PID
+
+def maju(pid):
+    dki = -pid
+    dka = pid
+    bki = -pid
+    bka = pid
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+
+def mundur(pid):
+    dki = pid
+    dka = -pid
+    bki = pid
+    bka = -pid
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+
+def geser(pid):
+    dki = -pid
+    dka = -pid
+    bki = pid
+    bka = pid
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+
+def putarKiri(pid):
+    dki = pid
+    dka = pid
+    bki = pid
+    bka = pid
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+
+def putarKanan(pid):
+    dki = -pid
+    dka = -pid
+    bki = -pid
+    bka = -pid
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+
+def serongKiri(pid):
+    dki = 0
+    dka = pid*2
+    bki = -pid*2
+    bka = 0
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+
+def serongKanan(pid):
+    dki = -pid*2
+    dka = 0
+    bki = 0
+    bka = pid*2
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+
+def berhenti():
+    dki = 0
+    dka = 0
+    bki = 0
+    bka = 0
+    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+
 
 def main():
     # create opencv video capture object
@@ -126,8 +180,12 @@ def main():
     inner_bottom = cenY_frame1 + 100
     outer_bottom = cenY_frame1 + 150
 
+    # read object 
+    lBall1, uBall1, thBall1 = getObjectInfo(1) # param 1 = ball, param 2 = goal
+    lBall2, uBall2, thBall2 = getObjectInfo(2) # param 1 = ball, param 2 = goal
+
     wait = 0
-    state = "CARI BOLA"
+    state = "TUNGGU BOLA"
 
     #serongKiri()
     #sleep(1)
@@ -141,10 +199,7 @@ def main():
         _, frame1 = cap1.read()
         _, frame2 = cap2.read()
 
-        # read object 
-        lBall1, uBall1, thBall1 = getObjectInfo(1) # param 1 = ball, param 2 = goal
-        lBall2, uBall2, thBall2 = getObjectInfo(2) # param 1 = ball, param 2 = goal
-
+        
         ballContours1 = imageProcessing(frame1, lBall1, uBall1, thBall1)
         ballContours2 = imageProcessing(frame2, lBall2, uBall2, thBall2)
 
@@ -169,43 +224,63 @@ def main():
                 if cenX_ball2 <= 180:
                     # bola di kanan robot
                     pid = PID(cenX_ball2, 190)
-                    print("Kanan: "+str(pid))
-                    if pid > 0 and pid < 35 or pid > -35 and pid < 0:
+                    #print("Kanan: "+str(pid))
+                    if pid > 0 and pid < 32 or pid > -32 and pid < 0:
                         pid = 0
                         state = "ADA BOLA"
-                    setMotor(pid,pid,pid,pid)
+                    #putarKanan(pid) 
                 elif cenX_ball2 >= 200:
                     # bola di kiri robot
                     pid = PID(cenX_ball2, 190)
-                    print("Kiri: "+str(pid))
-                    if pid > 0 and pid < 35 or pid > -35 and pid < 0:
+                    #print("Kiri: "+str(pid))
+                    if pid > 0 and pid < 32 or pid > -32 and pid < 0:
                         pid = 0
                         state = "ADA BOLA"
-                    setMotor(pid,pid,pid,pid)
+                    #putarKiri(pid)
                 elif cenX_ball2 > 180 and cenX_ball2 < 200:
                     # motor maju
-                    db.write(b"DB ON\n")
-                    setMotor(-100,100,-100,100)
+                    #db.write(b"DB ON\n")
+                    #maju(100)
+                    pass
 
-        if state == "ADA BOLA" and cenX_ball1 > 0 and cenY_ball1 > 0:
+        elif state == "ADA BOLA" and cenX_ball1 > 0 and cenY_ball1 > 0:
             if cenY_ball1 > 0 and cenY_ball1 < 210:
                 # motor maju
-                setMotor(-100,100,-100,100)
+                #maju(100)
                 wait = 10
             else:
-                setMotor(0,0,0,0)
+                berhenti()
                 state = "CARI BOLA"
 
-        print(state)
+        elif state == "TUNGGU BOLA" and cenX_ball1 > 0 and cenX_ball2 > 0 and wait <= 0:
+            wait = 10
+            if cenX_ball1 < 130:
+                # bola di kiri robot
+                pid = PID(cenX_ball1, 230)
+                print("Kiri: "+str(pid))
+                geser(pid-(pid*0.5))
 
-        wait -= 1
-        if wait <= 0:
-            wait = 0
-            state = "CARI BOLA"
+            elif cenX_ball1 > 330:
+                # bola di kanan robot
+                pid = PID(cenX_ball1, 230)
+                print("Kanan: "+str(pid))
+                geser(pid-(pid*0.5))
+            elif cenX_ball1 > 220 and cenX_ball1 < 240:
+                print("Bola Tepat di Depan Robot")
+                db.write(b"DB ON\n")
+                berhenti()
+
+        #print(cenX_ball1)
+
+        if state != "CARI BOLA" and wait <= 0:
+            print("TIDAK ADA BOLA")
+            #state = "CARI BOLA"
             # bola hilang
             # kirim serial matikan dribble dan motor
             db.write(b"DB OFF\n")
-            setMotor(0,0,0,0)
+            berhenti()
+
+        wait -= 1
 
         # displays
 
@@ -221,9 +296,10 @@ def main():
 
         k = cv2.waitKey(1) & 0xFF
         if k == 27:
-            setMotor(0,0,0,0)
+            berhenti() 
             db.write(b"DB OFF")
-            frame1.release()
+            cap1.release()
+            cap2.release()
             cv2.destroyAllWindows()
             break
 
