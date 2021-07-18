@@ -95,64 +95,75 @@ def PID(centerObj, centerFrame):
     PID = PID / 6
     return PID
 
-def maju(pid):
+def maju(motor, pid):
     dki = -pid
     dka = pid
     bki = -pid
     bka = pid
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
 
-def mundur(pid):
+def mundur(motor, pid):
     dki = pid
     dka = -pid
     bki = pid
     bka = -pid
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
 
-def geser(pid):
+def geser(motor, pid):
     dki = -pid
     dka = -pid
     bki = pid
     bka = pid
+    motor.open()
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    motor.close()
 
-def putarKiri(pid):
+def putarKiri(motor, pid):
     dki = pid
     dka = pid
     bki = pid
     bka = pid
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
 
-def putarKanan(pid):
+def putarKanan(motor, pid):
     dki = -pid
     dka = -pid
     bki = -pid
     bka = -pid
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
 
-def serongKiri(pid):
+def serongKiri(motor, pid):
     dki = 0
     dka = pid*2
     bki = -pid*2
     bka = 0
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
 
-def serongKanan(pid):
+def serongKanan(motor, pid):
     dki = -pid*2
     dka = 0
     bki = 0
     bka = pid*2
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
 
-def berhenti():
+def berhenti(motor):
     dki = 0
     dka = 0
     bki = 0
     bka = 0
+    motor.open()
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
+    motor.close()
 
 
 def main():
+    # serial motor driver
+    motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
+    motor.close()
+
+    # serial dribble
+    #db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
+
     # create opencv video capture object
     cap1 = cv2.VideoCapture(FRONT_CAM) 
     cap2= cv2.VideoCapture(OMNI_CAM) 
@@ -254,31 +265,33 @@ def main():
 
         elif state == "TUNGGU BOLA" and cenX_ball1 > 0 and cenX_ball2 > 0 and wait <= 0:
             wait = 10
-            if cenX_ball1 < 130:
+            if cenX_ball1 < 200:
                 # bola di kiri robot
                 pid = PID(cenX_ball1, 230)
                 print("Kiri: "+str(pid))
-                geser(pid-(pid*0.5))
+                #geser(motor,pid-(pid*0.5))
+                geser(motor, -60)
 
-            elif cenX_ball1 > 330:
+            elif cenX_ball1 > 260:
                 # bola di kanan robot
                 pid = PID(cenX_ball1, 230)
                 print("Kanan: "+str(pid))
-                geser(pid-(pid*0.5))
-            elif cenX_ball1 > 220 and cenX_ball1 < 240:
+                #geser(motor,pid-(pid*0.5))
+                geser(motor, 60)
+            elif cenX_ball1 > 200 and cenX_ball1 < 260:
                 print("Bola Tepat di Depan Robot")
-                db.write(b"DB ON\n")
-                berhenti()
+                #db.write(b"DB ON\n")
+                berhenti(motor)
 
-        #print(cenX_ball1)
+        print(state)
 
         if state != "CARI BOLA" and wait <= 0:
             print("TIDAK ADA BOLA")
             #state = "CARI BOLA"
             # bola hilang
             # kirim serial matikan dribble dan motor
-            db.write(b"DB OFF\n")
-            berhenti()
+            #db.write(b"DB OFF\n")
+            berhenti(motor)
 
         wait -= 1
 
@@ -296,8 +309,8 @@ def main():
 
         k = cv2.waitKey(1) & 0xFF
         if k == 27:
-            berhenti() 
-            db.write(b"DB OFF")
+            berhenti(motor) 
+            #db.write(b"DB OFF")
             cap1.release()
             cap2.release()
             cv2.destroyAllWindows()

@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-class Detection:
+class Camera:
     def __init__(self, src, fileColor):
         self.color = fileColor
         self.cap = cv2.VideoCapture(src)  # Prepare the camera...
@@ -77,7 +77,7 @@ class Detection:
         return self.area, self.x, self.y, self.w, self.h, self.cenX, self.cenY
 
 def main():
-    cam = Detection(2, 'ballColor.txt')
+    cam = Camera(2, 'ballColor.txt')
     while True:
         area, x, y, w, h, cenX, cenY = cam.get_object(500)
         #print(area, x, y, w, h, cenX, cenY)

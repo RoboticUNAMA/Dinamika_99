@@ -2,7 +2,6 @@ import serial
 
 motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
 db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
-
 speed_awal = 100
 adj = speed_awal*0.2
 
@@ -13,6 +12,7 @@ def maju():
     bka = speed_awal + adj
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
     print("maju")
+    motor.flush()
 
 def mundur():
     dki = speed_awal + adj
