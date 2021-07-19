@@ -5,7 +5,7 @@ def main():
     green = [0,255,0]
     cam1 = Camera(1, 'ballColor.txt')
     cam2 = Camera(0, 'ballColor1.txt')
-    motor = serial.Serial('/dev/ttyAMC0', 9600, timeout=1)
+    motor = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
     db = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     motor.close()
     db.close()
