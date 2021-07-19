@@ -1,5 +1,7 @@
 from detection import Detection
 from controller import *
+motor = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+db = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
 
 def main():
     green = [0,255,0]
