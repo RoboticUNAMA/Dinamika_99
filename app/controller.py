@@ -91,6 +91,25 @@ def reset(db):
     db.write(b"RESET\n")
     db.close()
 
+def PID(centerObj, centerFrame):
+    Kp = 5.0
+    Kd = 5.0
+    Ki = 0.0
+    error = 0.0
+    error_sebelumnya = 0.0
+    selisih_error = 0.0
+    jumlah_error = 0.0
+    error = centerObj - centerFrame
+    error_sebelumnya = error
+    selisi_error = error_sebelumnya - error
+    jumlah_error += (0.001 * error)
+    P = Kp * error
+    I = Ki * selisih_error
+    D = Kd * jumlah_error
+    PID = P + I + D
+    PID = PID / 6
+    return PID
+
 def main():
     motor = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
     db = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
@@ -126,7 +145,7 @@ def main():
         elif key == 'r':
             reset(db)
         else:
-            berhenti(motor, spd)
+            berhenti(motor)
             db_off(db)
             reset(db)
 
