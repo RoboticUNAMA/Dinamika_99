@@ -3,41 +3,40 @@ motor = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
 db = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
 
 def maju(motor, pwm):
-    dki = -pwm
+    dki = -pwm-(pwm*0.5)
     dka = pwm
     bki = -pwm
-    bka = pwm
+    bka = pwm+(pwm*0.5)
     motor.open()
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|" + str(bki) + "\n").encode("utf-8"))
     motor.close()
 
 def mundur(motor, pwm):
-    dki = pwm
+    dki = pwm+(pwm*0.5)
     dka = -pwm
     bki = pwm
-    bka = -pwm
+    bka = -pwm-(pwm*0.5)
     motor.open()
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|" + str(bki) + "\n").encode("utf-8"))
     motor.close()
 
 def geser(motor, pwm):
-    dki = pwm
-    dka = pwm
-    bki = -pwm
-    bka = -pwm
+    dki = -pwm-(pwm*0.5)
+    dka = -pwm
+    bki = pwm
+    bka = pwm+(pwm*0.5)
     motor.open()
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|" + str(bki) + "\n").encode("utf-8"))
     motor.close()
 
 def putar(motor, pwm):
-    dki = pwm
+    dki = pwm+(pwm*0.5)
     dka = pwm
     bki = pwm
-    bka = pwm
+    bka = pwm+(pwm*0.5)
     motor.open()
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|" + str(bki) + "\n").encode("utf-8"))
     motor.close()
-
 
 def serongKiri(motor, pwm):
     dki = 0
@@ -49,10 +48,10 @@ def serongKiri(motor, pwm):
     motor.close()
 
 def serongKanan(motor, pwm):
-    dki = -pwm*2
+    dki = -pwm*2-(pwm*0.5)
     dka = 0
     bki = 0
-    bka = pwm*2
+    bka = pwm*2+(pwm*0.5)
     motor.open()
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|" + str(bki) + "\n").encode("utf-8"))
     motor.close()
@@ -115,15 +114,15 @@ def main():
     db = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     motor.close()
     db.close()
-    spd = 100
+    spd = 60
     while True:
         key = input("Input = ")
         if key == 'w':
             maju(motor, spd)
         elif key == 'a':
-            geser(motor, spd)
+            geser(motor, -spd)
         elif key == 'd':
-            geser(-spd)
+            geser(motor, spd)
         elif key == 's':
             mundur(motor, spd)
         elif key == 'q':
@@ -133,7 +132,7 @@ def main():
         elif key == 'z':
             putar(motor, spd)
         elif key == 'x':
-            putar(-spd)
+            putar(motor, -spd)
         elif key == '9':
             db_on(db)
         elif key == '0':
