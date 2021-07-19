@@ -17,8 +17,14 @@ def main():
         area2, x2, y2, w2, h2, cenX2, cenY2 = cam2.get_object(10)
         cam1.display("Front Cam", "Bola", green, 0)
         cam2.display("Omni Cam", "Bola", green, 0)
-        if cenX1 > 0:
-            maju(motor, spd)
+        if cenX1 > 0 and cenX1 < 220:
+            pid = PID(cenX1, 240)
+            geser(motor, pid)
+        elif cenX1 > 260:
+            pid = PID(cenX1, 240)
+            geser(motor, pid)
+        else:
+            berhenti(motor)
 
 if __name__ == '__main__':
     # execute main program

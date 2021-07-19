@@ -1,5 +1,5 @@
 from tkinter import *
-from camera import *
+from detection import *
 
 class gui:
     def __init__(self, frame1):
@@ -9,11 +9,11 @@ class gui:
         self.frame1 = frame1 
     
     def display(self):
-        self.frame1 = Canvas(
+        self.canvas = Canvas(
                 self.root, 
                 width = 480, 
                 height = 270)
-        self.frame1.pack()
+        self.canvas.pack()
         self.root.mainloop()
 
     def update(self):
@@ -21,6 +21,6 @@ class gui:
         ret, frame = self.frame1.get_frame()
         self.window.after(5, self.update)
 
-frame = camera(2)
+frame = Camera(2, 'ballColor.txt')
 window = gui(frame)
 window.display()
