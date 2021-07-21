@@ -34,7 +34,7 @@ def setInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
     else:
         print("Data warna", obj_name, "tidak di simpan")
 
-FRONT_CAM = 1 
+FRONT_CAM = 0 
 #OMNI_CAM = 1
 
 window_name = obj_name
@@ -109,7 +109,6 @@ while True:
     contours = sorted(contours, key=lambda x:cv2.contourArea(x), reverse=True)
 
     cv2.imshow(window_name, morph)
-    cv2.imshow("Frame", frame)
 
     k = cv2.waitKey(1) & 0xFF
     if k == 27:

@@ -13,23 +13,24 @@ class Camera:
         if self.ret:  # frame captures without errors...
             pass
     
-    def display(self, title, text, color, draw):
+    def display(self, title, text, draw):
         self.ret, self.frame = self.cap.read()
         self.height, self.width, _ = self.frame.shape
         self.title = title
+        cv2.putText(self.frame, self.title,(10,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, [0,0,255], 2)
+        cv2.putText(self.frame, ("X: "+str(int(self.cenX))+" Y: "+str(int(self.cenY))),(300,15), cv2.FONT_HERSHEY_SIMPLEX, 0.5, [0,255,0], 2)
         if self.ret:  # frame captures without errors...
             pass        
         # draw 0 = circle, draw 1 = rectangle
         if draw == 0 and self.cenX > 0 and self.cenY > 0:
-            cv2.circle(self.frame, (int(self.cenX), int(self.cenY)), 20, color, 2, 8)
-            cv2.line(self.frame, (int(self.cenX), int(self.cenY + 20)), (int(self.cenX + 50), int(self.cenY + 20)), color, 2, 8)
-            cv2.putText(self.frame, text, (int(self.cenX + 50), int(self.cenY + 20)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
+            cv2.circle(self.frame, (int(self.cenX), int(self.cenY)), 20, [0,255,0], 2, 8)
+            cv2.line(self.frame, (int(self.cenX), int(self.cenY + 20)), (int(self.cenX + 50), int(self.cenY + 20)), [0,255,0], 2, 8)
+            cv2.putText(self.frame, text, (int(self.cenX + 50), int(self.cenY + 20)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, [0,255,0], 2)
+            
         elif draw == 1 and self.cenX > 0 and self.cenY > 0:
-            cv2.rectangle(self.frame, (self.x, self.y), (self.w, self.h), color, 2)
-            cv2.putText(self.frame, text, (int(self.cenX + 50), int(self.cenY + 20)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color, 2)
-
-        cv2.imshow(self.title, self.frame)
-        cv2.waitKey(1)
+            cv2.rectangle(self.frame, (self.x, self.y), (self.w, self.h), [0,255,0], 2)
+            cv2.putText(self.frame, text, (int(self.cenX + 50), int(self.cenY + 20)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, [0,255,0], 2)
+        return self.frame
 
     def get_center_frame(self):
         self.centerX = int(self.width/2)
@@ -77,11 +78,13 @@ class Camera:
         return self.area, self.x, self.y, self.w, self.h, self.cenX, self.cenY
 
 def main():
-    cam = Camera(2, 'ballColor.txt')
+    cam = Camera(3, 'ballColor.txt')
     while True:
         area, x, y, w, h, cenX, cenY = cam.get_object(500)
         #print(area, x, y, w, h, cenX, cenY)
-        cam.display('Frame', 'Bola', [0,255,0], 0)
+        frame = cam.display('Frame', 'Bola', [0,255,0], 0)
+        cv2.imshow("Frame", frame)
+        cv2.waitKey(1)
 
 if __name__ == "__main__":
     # execute main program
