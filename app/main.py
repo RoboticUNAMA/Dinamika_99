@@ -26,7 +26,7 @@ def main():
     sleep(1)
 
     # initial variables
-    delay = 3
+    delay = 2
     count = 0
     wait = 0
     mode = "-"
@@ -114,32 +114,53 @@ def main():
                 cv2.FONT_HERSHEY_SIMPLEX, 0.7, [0,255,0], 2) 
 
         # show windows
-        window = np.concatenate((frame1, frame2), axis=1)
+        window = np.concatenate((frame2, frame1), axis=0)
         cv2.imshow(main_window, window)
         cv2.imshow(control_window, frmPanel)
         #cv2.moveWindow(window_name, 200,100 )
 
         # conditioning
-        if opsiVal == 0 and state == "START":
-            state = "CARI BOLA"
+        if opsiVal == 0 and engine == "START":
+            db_on(db)
+            cv2.setTrackbarPos("State", control_window, 1)
+        elif opsiVal == 0 and engine == "STOP":
+            db_off(db)
 
-        elif opsiVal == 1 and state == "START":
-            #geser(motor, -80)
-            #sleep(delay)
-            #maju(motor, 80)
-            #sleep(delay)
-            state = "CARI BOLA"
+        elif opsiVal == 1 and engine == "START":
+            geser(motor, -80)
+            sleep(delay)
+            maju(motor, 80)
+            sleep(delay)
+            berhenti(motor)
+            cv2.setTrackbarPos("State", control_window, 1)
+            cv2.setTrackbarPos("Opsi", control_window, 0)
 
-        elif opsiVal == 2 and state == "START":
-            #serongKiri(motor, 120)
-            #sleep(delay)
-            #maju(motor, 80)
-            #sleep(delay)
-            state = "CARI BOLA"
+        elif opsiVal == 2 and engine == "START":
+            serongKiri(motor, 120)
+            sleep(delay)
+            maju(motor, 80)
+            sleep(delay)
+            berhenti(motor)
+            cv2.setTrackbarPos("State", control_window, 1)
+            cv2.setTrackbarPos("Opsi", control_window, 0)
 
-        elif state == "CARI BOLA":
-            #db_on(db)
-            print(state)
+        # cari bola
+        if state == "Cari Bola" and engine == "START" and control == "False":
+            if cenX2 >= 100 and cenX2 < 190 and cenY2 <= 50:
+                # bola di depan kanan
+                serongKanan(motor, 40)
+
+            elif cenX2 > 193 and cenX2 <= 280 and cenY2 <= 50:
+                #bola di depan kiri
+                serongKiri(motor, 40)
+
+            elif cenX2 >= 190 and cenX2 <= 193 and cenY2 <= 55:
+                maju(motor, 50)
+                db_on(db)
+
+            elif cenX2 >= 190 and cenX2 <= 193 and cenY2 > 55:
+                berhenti(motor)
+                db_off(db)
 
         # keyboard control
         k = cv2.waitKey(1)
@@ -196,7 +217,7 @@ def main():
                 db_on(db)
             elif k == ord('0'):
                 db_off(db)
-            else:
+            elif k == 32:
                 berhenti(motor)
                 db_off(db)
 

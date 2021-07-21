@@ -30,7 +30,10 @@ class Camera:
         elif draw == 1 and self.cenX > 0 and self.cenY > 0:
             cv2.rectangle(self.frame, (self.x, self.y), (self.w, self.h), [0,255,0], 2)
             cv2.putText(self.frame, text, (int(self.cenX + 50), int(self.cenY + 20)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, [0,255,0], 2)
-        return self.frame
+
+        if self.title == "Omni Cam":
+            cv2.rectangle(self.frame, (100,10), (280, 53), [255,0,0],2)
+        return self.frame 
 
     def get_center_frame(self):
         self.centerX = int(self.width/2)
