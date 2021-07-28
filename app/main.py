@@ -17,8 +17,8 @@ def nothing(x):
     pass
 
 def main():
-    cam1 = Camera(FRONT_CAM, 'ballColor.txt')
-    cam2 = Camera(OMNI_CAM, 'ballColor1.txt')
+    cam1 = Camera(FRONT_CAM, 'ballColor1.txt')
+    cam2 = Camera(OMNI_CAM, 'magenta.txt')
     motor = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
     db = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     motor.close()
@@ -44,7 +44,7 @@ def main():
 
     control_window = "Control Panel"
     cv2.namedWindow(control_window)
-    cv2.createTrackbar('State', control_window, 0, 2, nothing)
+    cv2.createTrackbar('State', control_window, 0, 9, nothing)
     cv2.createTrackbar('Engine', control_window, 1, 2, nothing)
     cv2.createTrackbar('Mode', control_window, 0, 2, nothing)
     cv2.createTrackbar('Opsi', control_window, 0, 9, nothing)
@@ -55,7 +55,7 @@ def main():
         area1, x1, y1, w1, h1, cenX1, cenY1 = cam1.get_object(500)
         area2, x2, y2, w2, h2, cenX2, cenY2 = cam2.get_object(10)
         frame1 = cam1.display("Front Cam", "Bola", 0)
-        frame2 = cam2.display("Omni Cam", "Bola", 0)
+        frame2 = cam2.display("Omni Cam", "Magenta", 0)
         frmPanel = cv2.imread('bg.png')
 
         # get trackbar value
@@ -73,6 +73,8 @@ def main():
             state = "Cari Bola"
         elif stateVal == 2:
             state = "Tunggu Bola"
+        elif stateVal == 3:
+            state = "Operan"
         cv2.putText(
                 frmPanel, "State: "+state, (5,20),
                 cv2.FONT_HERSHEY_SIMPLEX, 0.7, [0,255,0], 2) 
@@ -122,7 +124,7 @@ def main():
         # conditioning
         if opsiVal == 0 and engine == "START":
             db_on(db)
-            cv2.setTrackbarPos("State", control_window, 1)
+
         elif opsiVal == 0 and engine == "STOP":
             db_off(db)
 
@@ -161,6 +163,40 @@ def main():
             elif cenX2 >= 190 and cenX2 <= 193 and cenY2 > 55:
                 berhenti(motor)
                 db_off(db)
+
+        # tunggu bola
+        if state == "Tunggu Bola" and engine == "START" and control == "False":
+            if cenX2 >= 100 and cenX2 < 190 and cenY2 <= 50:
+                # bola di depan kanan
+                geser(motor, 40)
+
+            elif cenX2 > 193 and cenX2 <= 280 and cenY2 <= 50:
+                #bola di depan kiri
+                geser(motor, -40)
+
+            elif cenX2 >= 190 and cenX2 <= 193 and cenY2 <= 55:
+                berhenti(motor)
+                db_on(db)
+
+            elif cenX2 >= 190 and cenX2 <= 193 and cenY2 > 55:
+                berhenti(motor)
+                db_off(db)
+
+        if state == "Operan" and engine =="START" and control == "False":
+            if cenX2 < 180:
+                putar(motor, -25)
+            elif cenX2 > 200:
+                putar(motor, 25)
+            else:
+                berhenti(motor)
+                if cekBola == "0":
+                    tendang(db)
+                    sleep(1)
+
+        db.open()
+        cekBola = db.readline().decode('utf-8')
+        cekBola = cekBola[0:1]
+        db.close()
 
         # keyboard control
         k = cv2.waitKey(1)
