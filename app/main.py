@@ -183,7 +183,7 @@ def putarDerajat(derajat_tujuan, dribble) :
                 else :
                     setMotor(motor,speed,speed,speed,speed)
 
-def terimaBola():
+def arahRobotDepan():
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
     rows, cols, _ = frame1.shape
@@ -205,7 +205,7 @@ def terimaBola():
     outer_bottom = cenY_frame1 + 150
 
     # read ball color
-    ballColor = getBallInfo()
+    ballColor = getMagentaInfo()
     lowerBall = np.array([ballColor[0],ballColor[1],ballColor[2]])
     upperBall = np.array([ballColor[3],ballColor[4],ballColor[5]])
 
@@ -265,6 +265,9 @@ def terimaBola():
                 print("DAPAT BOLA")
                 state = "FINISH"    
          
+        ada = 0
+        pas =0
+
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
             if ball_area > 500:
@@ -278,39 +281,43 @@ def terimaBola():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if state == "START" :
-                    if cenX_ball > outer_right :
-                        dari = "kanan"
-                        setMotor(motor,80,80,-80,-80)
+                if cenX_ball < 150  :
+                    setMotor(motor,-30,-30,-30,-30)
                     
-                    elif cenX_ball < outer_left :
-                        dari = "kiri"
-                        setMotor(motor,-80,-80,80,80)
-                        
-                    elif cenX_ball > inner_right :
-                        dari = "kanan"
-                        setMotor(motor,50,50,-50,-50)
-               
-                    elif cenX_ball < inner_left :
-                        dari = "kiri"
-                        setMotor(motor,-50,-50,50,50)
+                elif cenX_ball > 420  :
+                    setMotor(motor,30,30,30,30)
                     
-                    else : 
-                        if dari == "kanan" :
-                            setMotor(motor,-50,-50,50,50)
-                            sleep(0.1)    
-                            setMotor(motor,0,0,0,0)
-                            sleep(0.1)
-                            dari = ""
-                        if dari == "kiri" :
-                            setMotor(motor,50,50,-50,-50)
-                            sleep(0.1)    
-                            setMotor(motor,0,0,0,0)
-                            sleep(0.1)
-                            dari = ""
-                        else :
-                            setMotor(motor,0,0,0,0)
+                elif cenX_ball < 290  :
+                    setMotor(motor,-35,-35,-35,-35)
+                    sleep(0.1)
+                    setMotor(motor,0,0,0,0)
+                    dari = "kanan"
+                    print("PUTAR KANAN")
+                
+                elif cenX_ball > 320 :
+                
+                    setMotor(motor,35,35,35,35)
+                    sleep(0.1)
+                    setMotor(motor,0,0,0,0)
+                    dari = "kiri"
+                    print("PUTAR KIRI")
+                else :
+                    pas = 1
                 break
+        
+        if state == "FINISH"  and pas == 1: 
+            setMotor(motor,0,0,0,0)
+            break        
+            
+        if ada == 0 :
+            if dari == "kanan" :
+                setMotor(motor,35,35,35,35)
+                sleep(0.1)
+                setMotor(motor,20,20,20,20)
+            else :
+                setMotor(motor,-35,-35,-35,-35)
+                sleep(0.1)
+                setMotor(motor,-20,-20,-20,-20)
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -478,7 +485,7 @@ def main():
     putarDerajat(87,0)
     putarDerajat(97,0)
     setMotor(motor, -80,80,-80,80) # motor maju
-    sleep(1.7)
+    sleep(1.9)
     setMotor(motor, 50,-50,50,-50) # REM maju
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
