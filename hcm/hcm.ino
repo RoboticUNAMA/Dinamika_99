@@ -69,6 +69,9 @@ void setup(void)
 void loop(void)
 {
   int dapat_bola = cekLimitDB(); // jika 0 = bola dapat, jika 1 bola tidak dapat
+  int lmtd = cekLimitTendang();
+  init_tendang(lmtd);
+  
   //int lm_tendang = cekLimitTendang(); // jika 0 = dapat limit
   if (dapat_bola == 0) {
     Serial.println("Dapat Bola");
@@ -99,14 +102,13 @@ void loop(void)
 
   else if (data == "TEND1") {
     data = "";
-    Serial.flush();
     tendang_keras();
 
   }
 
   else if (data == "TEND2") {
     data = "";
-    Serial.flush();
+    db_off();
     tendang_operan();
 
   }
@@ -183,12 +185,6 @@ void tendang_keras()
 
   delay(90);
 
-  while (lm == HIGH) {
-    analogWrite(tendang_pwm, 20);
-    digitalWrite(tendang_cw, HIGH);
-    digitalWrite(tendang_ccw, LOW);
-  }
-
   analogWrite(tendang_pwm, 0);
   digitalWrite(tendang_cw, LOW);
   digitalWrite(tendang_ccw, LOW);
@@ -197,19 +193,26 @@ void tendang_keras()
 void tendang_operan()
 {
   int lm = cekLimitTendang();
-  analogWrite(tendang_pwm, 200);
+  analogWrite(tendang_pwm, 225);
   digitalWrite(tendang_cw, LOW);
   digitalWrite(tendang_ccw, HIGH);
 
   delay(90);
 
-  while (lm == HIGH) {
-    analogWrite(tendang_pwm, 20);
-    digitalWrite(tendang_cw, HIGH);
-    digitalWrite(tendang_ccw, LOW);
-  }
-
   analogWrite(tendang_pwm, 0);
   digitalWrite(tendang_cw, LOW);
   digitalWrite(tendang_ccw, LOW);
+}
+void init_tendang(int limit){
+  if(limit == 1){
+    analogWrite(tendang_pwm, 30);
+    digitalWrite(tendang_cw, HIGH);
+    digitalWrite(tendang_ccw, LOW);
+  }
+  else{
+    analogWrite(tendang_pwm, 0);
+    digitalWrite(tendang_cw, LOW);
+    digitalWrite(tendang_ccw, LOW);
+  }
+    
 }
