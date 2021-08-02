@@ -312,10 +312,12 @@ def arahRobotDepan():
                         setMotor(motor,30,30,30,30)
                         sleep(0.1)
                         setMotor(motor,0,0,0,0)
+                        dari = ""
                     else :
                         setMotor(motor,-30,-30,-30,-30)
                         sleep(0.1)
                         setMotor(motor,0,0,0,0)
+                        dari = ""
                     
                     
                 # elif cenX_ball > 300  :
