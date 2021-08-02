@@ -719,62 +719,63 @@ def main():
 
     #cm.write(b"#450512")
 
-    putarDerajat(87,0)
-    putarDerajat(99,1)
+    # putarDerajat(87,0)
+    # putarDerajat(99,1)
 
-    setMotor(motor, -80,80,-80,80) # motor maju
-    sleep(1.9)
-    setMotor(motor, 50,-50,50,-50) # rem maju
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
+    # setMotor(motor, -80,80,-80,80) # motor maju
+    # sleep(1.9)
+    # setMotor(motor, 50,-50,50,-50) # rem maju
+    # sleep(0.1)
+    # setMotor(motor, 0,0,0,0)
 
-    arahBolaDepan()
+    # arahBolaDepan()
 
-    putarDerajat(86.5, 1)
+    # putarDerajat(86.5, 1)
 
+    # arahRobotDepan()
+
+    # # === init tendang
+    # dribbling(db, 0)
+    # sleep(1)
+    # dribbling(db, 0)
+    # sleep(0.5)
+    # tendang(db)
+    # # ================
+    # sleep(2)
+
+    # setMotor(motor, -80,-80,80,80) # motor geser kanan
+    # sleep(1.5)
+    # setMotor(motor, 50,50,-50,-50) # motor geser kanan
+    # sleep(0.1)
+    # setMotor(motor, 0,0,0,0)
+    # sleep(0.5)
+    # putarDerajat(98,1)
+    # arahBolaDepan()
+
+    # setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+    # sleep(0.64) 
+    # setMotor(motor, 50,50,50,50) # rem putar kanan
+    # sleep(0.1)
+    # setMotor(motor, 0,0,0,0) # motor stop
+
+    # # === init tendang
+    # dribbling(db, 0)
+    # sleep(1)
+    # dribbling(db, 0)
+    # sleep(0.5)
+    # tendang(db)
+    # # ================
+    # sleep(2)
+
+    # putarDerajat(87,0)
+    # sleep(0.2)
+
+    # setMotor(motor, 80,-80,80,-80) # motor mundur
+    # sleep(1.5)
+    # setMotor(motor, -50,50,-50,50) # rem mundur
+    # sleep(0.1)
+    # setMotor(motor, 0,0,0,0)
     arahRobotDepan()
-
-    # === init tendang
-    dribbling(db, 0)
-    sleep(1)
-    dribbling(db, 0)
-    sleep(0.5)
-    tendang(db)
-    # ================
-    sleep(2)
-
-    setMotor(motor, -80,-80,80,80) # motor geser kanan
-    sleep(1.5)
-    setMotor(motor, 50,50,-50,-50) # motor geser kanan
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-    sleep(0.5)
-    putarDerajat(98,1)
-    arahBolaDepan()
-
-    setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-    sleep(0.6) 
-    setMotor(motor, 50,50,50,50) # rem putar kanan
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0) # motor stop
-
-    # === init tendang
-    dribbling(db, 0)
-    sleep(1)
-    dribbling(db, 0)
-    sleep(0.5)
-    tendang(db)
-    # ================
-    sleep(2)
-
-    putarDerajat(87,0)
-    sleep(0.2)
-
-    setMotor(motor, 80,-80,80,-80) # motor mundur
-    sleep(1.5)
-    setMotor(motor, -50,50,-50,50) # rem mundur
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
 
 
 if __name__ == '__main__':
