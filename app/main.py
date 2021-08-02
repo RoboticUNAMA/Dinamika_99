@@ -303,10 +303,10 @@ def arahRobotDepan():
                 if cenX_ball > 0 and cenX_ball < 150  :
                     # kiri robot
                     #print("KIRI JAUH")
-                    setMotor(motor,25,25,25,25)
+                    setMotor(motor,28,28,28,28)
                 elif cenX_ball > 250:
                 #     #print("KANAN JAUH")
-                    setMotor(motor,-25,-25,-25,-25)
+                    setMotor(motor,-28,-28,-28,-28)
                 else:
                     setMotor(motor,0,0,0,0)
                     
