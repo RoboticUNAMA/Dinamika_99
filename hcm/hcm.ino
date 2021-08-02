@@ -22,6 +22,7 @@ Adafruit_HMC5883_Unified mag = Adafruit_HMC5883_Unified(12345);
 
 String data;
 int compass = 0;
+int bola = 0;
 
 void displaySensorDetails(void)
 {
@@ -73,11 +74,13 @@ void loop(void)
   init_tendang(lmtd);
   
   //int lm_tendang = cekLimitTendang(); // jika 0 = dapat limit
-  if (dapat_bola == 0) {
+  if (dapat_bola == 0 && bola == 0) {
     Serial.println("Dapat Bola");
+    bola = 1;
   }
-  else {
+  else if (dapat_bola == 1 && bola == 1{
     Serial.println("Tidak Dapat Bola");
+    bola = 0;
   }
   delay(10);
 
