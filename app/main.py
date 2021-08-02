@@ -13,7 +13,6 @@ from time import sleep
 
 # serial motor driver
 motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-motor.close()
 
 # serial dribble
 db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
@@ -103,9 +102,6 @@ def putarDerajat(derajat_tujuan, dribble) :
     clb = 0
         
     while(True) :
-        motor.close()
-        motor.open()
-        
         compass(db,1)
     
         if dribble == 1 :
@@ -466,11 +462,9 @@ def lurusArahBola(Ybola):
 def main():
     # serial motor driver
     motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-    motor.close()
 
     # serial dribble
     db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
-    db.close()
 
     #serial OpenCM
     #cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
