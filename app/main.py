@@ -645,7 +645,7 @@ def mulaiSerongKiri():
          
         pas = 0
 
-        if state == "FINISH"  or second > 100: 
+        if state == "FINISH"  or second > 25: 
             setMotor(motor,0,0,0,0)
             break
 
@@ -662,7 +662,7 @@ def mulaiSerongKiri():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball < inner_left :
+                if cenX_ball > inner_left :
                     setMotor(motor,-50,-50,50,50)
                     sleep(0.1)    
                     setMotor(motor,0,0,0,0)
