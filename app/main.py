@@ -303,9 +303,11 @@ def arahRobotDepan():
                 if cenX_ball > 0 and cenX_ball < 170  :
                     # kiri robot
                     #print("KIRI JAUH")
+                    dari = "kiri"
                     setMotor(motor,28,28,28,28)
                 elif cenX_ball > 230:
                 #     #print("KANAN JAUH")
+                    dari = "kanan"
                     setMotor(motor,-28,-28,-28,-28)
                 else:
                     setMotor(motor,0,0,0,0)
@@ -341,15 +343,15 @@ def arahRobotDepan():
             motor.close()
             break        
             
-        # if ada == 0 :
-        #     if dari == "kanan" :
-        #         setMotor(motor,35,35,35,35)
-        #         sleep(0.1)
-        #         setMotor(motor,20,20,20,20)
-        #     else :
-        #         setMotor(motor,-35,-35,-35,-35)
-        #         sleep(0.1)
-        #         setMotor(motor,-20,-20,-20,-20)
+        if ada == 0 :
+            if dari == "kanan" :
+                setMotor(motor,30,30,30,30)
+                sleep(0.1)
+                setMotor(motor,0,0,0,0)
+            else :
+                setMotor(motor,-30,-30,-30,-30)
+                sleep(0.1)
+                setMotor(motor,0,0,0,0)
 
         # displays
         ## uncomment this to show center area of the frame 1
