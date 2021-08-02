@@ -289,7 +289,6 @@ def arahRobotDepan():
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
-            print(ball_area)
             if ball_area > 500:
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
@@ -312,7 +311,7 @@ def arahRobotDepan():
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     dari = "kanan"
-                    print("PUTAR KANAN")
+                    #print("PUTAR KANAN")
                 
                 elif cenX_ball > 320 :
                 
@@ -320,7 +319,7 @@ def arahRobotDepan():
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     dari = "kiri"
-                    print("PUTAR KIRI")
+                    #print("PUTAR KIRI")
                 else :
                     pas = 1
                 break
