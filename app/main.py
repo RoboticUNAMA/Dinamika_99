@@ -636,7 +636,7 @@ def mulaiSerongKiri():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > inner_left :
+                if cenX_ball > inner_left + 50 :
                     setMotor(motor,0,-50,50,0)
                     sleep(0.1)    
                     setMotor(motor,0,0,0,0)
@@ -777,28 +777,11 @@ def lurusArahBola():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball > 0 and cenX_ball < 150  :
-                    # kiri robot
-                    #print("KIRI JAUH")
-                    dari = "kiri"
                     setMotor(motor,28,28,28,28)
                 elif cenX_ball > 250:
-                #     #print("KANAN JAUH")
-                    dari = "kanan"
                     setMotor(motor,-28,-28,-28,-28)
                 else:
-                    if dari == "kanan" :
-                        setMotor(motor,30,30,30,30)
-                        sleep(0.05)
-                        setMotor(motor,0,0,0,0)
-                        dari = "tengah"
-                    else :
-                        setMotor(motor,-30,-30,-30,-30)
-                        sleep(0.05)
-                        setMotor(motor,0,0,0,0)
-                        dari = "tengah"
-
-                if dari == "tengah":
-                    setMotor(motor,-60,60,-60,60)
+                    setMotor(motor,-50,50,-50,50)
                 break
         
         if state == "FINISH" and pas == 1: 
