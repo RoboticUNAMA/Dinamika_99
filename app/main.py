@@ -519,44 +519,44 @@ def main():
 
     #cm.write(b"#450512")
 
-    # putarDerajat(87,0)
-    # putarDerajat(97,0)
-    # setMotor(motor, -80,80,-80,80) # motor maju
-    # sleep(1.9)
-    # setMotor(motor, 50,-50,50,-50) # REM maju
-    # sleep(0.1)
-    # setMotor(motor, 0,0,0,0)
+    putarDerajat(87,0)
+    putarDerajat(97,0)
+    setMotor(motor, -80,80,-80,80) # motor maju
+    sleep(1.9)
+    setMotor(motor, 50,-50,50,-50) # REM maju
+    sleep(0.1)
+    setMotor(motor, 0,0,0,0)
 
-    # arahRobotDepan()
+    arahRobotDepan()
 
-    # putarDerajat(86.5, 1)
-    # # === init tendang
-    # dribbling(db, 0)
-    # sleep(1)
-    # dribbling(db, 0)
-    # sleep(0.5)
-    # tendang(db)
-    # sleep(0.5)
-    # # ================
+    putarDerajat(86.5, 1)
+    # === init tendang
+    dribbling(db, 0)
+    sleep(1)
+    dribbling(db, 0)
+    sleep(0.5)
+    tendang(db)
+    sleep(0.5)
+    # ================
 
-    # setMotor(motor, -80,-80,80,80) # motor geser kanan
-    # sleep(1.5)
-    # setMotor(motor, 50,50,-50,-50) # motor geser kanan
-    # sleep(0.1)
-    # setMotor(motor, 0,0,0,0)
-    # sleep(0.5)
+    setMotor(motor, -80,-80,80,80) # motor geser kanan
+    sleep(1.5)
+    setMotor(motor, 50,50,-50,-50) # motor geser kanan
+    sleep(0.1)
+    setMotor(motor, 0,0,0,0)
+    sleep(0.5)
     putarDerajat(98,1)
-    # arahRobotDepan()
+    arahRobotDepan()
     
-    # putarDerajat(86,1) # hadap gawang
-    # # === init tendang
-    # dribbling(db, 0)
-    # sleep(1)
-    # dribbling(db, 0)
-    # sleep(0.5)
-    # tendang(db)
-    # # ================
-    # sleep(1)
+    putarDerajat(86,1) # hadap gawang
+    # === init tendang
+    dribbling(db, 0)
+    sleep(1)
+    dribbling(db, 0)
+    sleep(0.5)
+    tendang(db)
+    # ================
+    sleep(1)
 
 if __name__ == '__main__':
     # execute main program
