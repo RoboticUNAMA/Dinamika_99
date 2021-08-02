@@ -478,7 +478,7 @@ def main():
     putarDerajat(87,0)
     putarDerajat(97,0)
     setMotor(motor, -80,80,-80,80) # motor maju
-    sleep(1)
+    sleep(2)
     setMotor(motor, 0,0,0,0)
 
 if __name__ == '__main__':
