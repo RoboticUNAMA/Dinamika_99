@@ -300,13 +300,13 @@ def arahRobotDepan():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > 0 and cenX_ball < 190  :
+                if cenX_ball > 0 and cenX_ball < 150  :
                     # kiri robot
                     #print("KIRI JAUH")
-                    setMotor(motor,30,30,30,30)
-                elif cenX_ball > 210:
+                    setMotor(motor,25,25,25,25)
+                elif cenX_ball > 250:
                 #     #print("KANAN JAUH")
-                    setMotor(motor,-30,-30,-30,-30)
+                    setMotor(motor,-25,-25,-25,-25)
                 else:
                     setMotor(motor,0,0,0,0)
                     
