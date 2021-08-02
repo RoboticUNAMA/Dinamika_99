@@ -234,7 +234,9 @@ def arahRobotDepan():
         #print(state)
         second += 1
         #print(second)
-        
+        for i in range(3):
+            FRONT_CAP.grab()
+            OMNI_CAP.grab()
         ## read frame
         _, frame1 = FRONT_CAP.read()
         _, frame2 = OMNI_CAP.read()
