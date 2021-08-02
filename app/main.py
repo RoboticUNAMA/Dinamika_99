@@ -811,10 +811,10 @@ def lurusArahBola(Ybola):
                     setMotor(motor,-speed ,speed,-speed,speed)
                 
                     if cenX_ball > inner_right :
-                        setMotor(motor, -27,-27,27,27) # motor geser kanan
+                        setMotor(motor, 28,28,28,28) # motor geser kanan
                         
                     elif cenX_ball < inner_left :
-                        setMotor(motor, 27,27,-27,-27) # motor geser kiri
+                        setMotor(motor, -28,-28,-28,-28) # motor geser kiri
                 else :
                     setMotor(motor,50,-50,50,-50)
                     sleep(0.1)    
