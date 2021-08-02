@@ -523,13 +523,13 @@ def main():
     putarDerajat(97,0)
     setMotor(motor, -80,80,-80,80) # motor maju
     sleep(1.9)
-    setMotor(motor, 50,-50,50,-50) # REM maju
+    setMotor(motor, 50,-50,50,-50) # rem maju
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
     arahRobotDepan()
 
-    putarDerajat(87, 1)
+    putarDerajat(86, 1)
 
     # === init tendang
     dribbling(db, 0)
@@ -537,8 +537,8 @@ def main():
     dribbling(db, 0)
     sleep(0.5)
     tendang(db)
-    sleep(0.5)
     # ================
+    sleep(1)
 
     setMotor(motor, -80,-80,80,80) # motor geser kanan
     sleep(1.5)
@@ -549,7 +549,7 @@ def main():
     putarDerajat(98,1)
     arahRobotDepan()
     
-    putarDerajat(82,1) # hadap gawang
+    putarDerajat(79,1) # hadap gawang
 
     # === init tendang
     dribbling(db, 0)
@@ -559,6 +559,16 @@ def main():
     tendang(db)
     # ================
     sleep(1)
+
+    putarDerajat(86,1)
+    sleep(0.2)
+
+    setMotor(motor, 80,-80,80,-80) # motor mundur
+    sleep(1)
+    setMotor(motor, -50,50,-50,50) # rem mundur
+    sleep(0.1)
+    setMotor(motor, 0,0,0,0)
+
 
 if __name__ == '__main__':
     # execute main program
