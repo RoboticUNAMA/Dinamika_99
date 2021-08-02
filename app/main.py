@@ -538,7 +538,7 @@ def main():
     sleep(0.5)
     tendang(db)
     # ================
-    sleep(1)
+    sleep(2)
 
     setMotor(motor, -80,-80,80,80) # motor geser kanan
     sleep(1.5)
@@ -549,7 +549,7 @@ def main():
     putarDerajat(98,1)
     arahRobotDepan()
     
-    putarDerajat(79,1) # hadap gawang
+    putarDerajat(80,1) # hadap gawang
 
     # === init tendang
     dribbling(db, 0)
@@ -558,7 +558,7 @@ def main():
     sleep(0.5)
     tendang(db)
     # ================
-    sleep(1)
+    sleep(2)
 
     putarDerajat(86,1)
     sleep(0.2)
