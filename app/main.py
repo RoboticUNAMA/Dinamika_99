@@ -523,13 +523,7 @@ def main():
     #cm.write(b"#450512")
 
     putarDerajat(87,0)
-    sleep(0.1)
-    setMotor(motor, 80,80,80,80) # putar kiri
-    sleep(0.3)
-    setMotor(motor, -50,-50,-50,-50) # rem putar kiri
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-    sleep(0.5)
+    putarDerajat(99,0)
 
     setMotor(motor, -80,80,-80,80) # motor maju
     sleep(1.9)
@@ -560,7 +554,7 @@ def main():
     arahRobotDepan()
 
     setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-    sleep(0.8) 
+    sleep(0.65) 
     setMotor(motor, 50,50,50,50) # rem putar kanan
     sleep(0.1)
     setMotor(motor, 0,0,0,0) # motor stop
