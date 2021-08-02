@@ -17,7 +17,6 @@ motor.close()
 
 # serial dribble
 db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
-db.close()
 
 #serial OpenCM
 #cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
@@ -104,9 +103,7 @@ def putarDerajat(derajat_tujuan, dribble) :
     clb = 0
         
     while(True) :
-        db.close()
         motor.close()
-        db.open()
         motor.open()
         
         compass(db,1)
