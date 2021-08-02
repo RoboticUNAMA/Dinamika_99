@@ -308,16 +308,16 @@ def arahRobotDepan():
                     dari = "kanan"
                     setMotor(motor,-28,-28,-28,-28)
                 else:
-                    if dari == "kiri" :
+                    if dari == "kanan" :
                         setMotor(motor,30,30,30,30)
                         sleep(0.1)
                         setMotor(motor,0,0,0,0)
-                        dari = ""
+                        dari = "tengah"
                     else :
                         setMotor(motor,-30,-30,-30,-30)
                         sleep(0.1)
                         setMotor(motor,0,0,0,0)
-                        dari = ""
+                        dari = "tengah"
                     
                     
                 # elif cenX_ball > 300  :
