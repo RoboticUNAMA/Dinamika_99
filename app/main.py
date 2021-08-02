@@ -568,7 +568,7 @@ def mulaiSerongKiri():
     outer_bottom = cenY_frame1 + 150
 
     # read magenta color
-    objColor = getMagentaInfo()
+    objColor = getBallInfo()
     lowerBall = np.array([objColor[0],objColor[1],objColor[2]])
     upperBall = np.array([objColor[3],objColor[4],objColor[5]])
 
