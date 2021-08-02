@@ -489,7 +489,7 @@ def arahRobotDepan():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > 0 and cenX_ball < 160  :
+                if cenX_ball > 0 and cenX_ball < 170  :
                     # kiri robot
                     #print("KIRI JAUH")
                     dari = "kiri"
@@ -773,12 +773,6 @@ def main():
     setMotor(motor, 80,-80,80,-80) # motor mundur
     sleep(1.5)
     setMotor(motor, -50,50,-50,50) # rem mundur
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-    
-    setMotor(motor, 50,50,-50,-50) # motor geser kanan
-    sleep(0.5)
-    setMotor(motor, 50,50,-50,-50) # motor geser kanan
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
