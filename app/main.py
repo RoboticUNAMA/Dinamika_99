@@ -788,12 +788,12 @@ def lurusArahBola():
                 else:
                     if dari == "kanan" :
                         setMotor(motor,30,30,30,30)
-                        sleep(0.1)
+                        sleep(0.05)
                         setMotor(motor,0,0,0,0)
                         dari = "tengah"
                     else :
                         setMotor(motor,-30,-30,-30,-30)
-                        sleep(0.1)
+                        sleep(0.05)
                         setMotor(motor,0,0,0,0)
                         dari = "tengah"
 
