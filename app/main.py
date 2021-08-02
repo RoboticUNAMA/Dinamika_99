@@ -50,7 +50,6 @@ def setMotor(ser,dki,dka,bki,bka) :
     bki = bki + (bki * 0)
     bka = bka + (bka * 0.3) 
     ser.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-    ser.close()
 
 def dribbling(ser,val) :
     if ser.isOpen() == False:
@@ -59,7 +58,6 @@ def dribbling(ser,val) :
         ser.write(b"DB ON\n")
     else : 
         ser.write(b"DB OFF\n")
-    ser.close()
 
 def compass(ser, val) :
     if ser.isOpen() == False:
@@ -68,26 +66,22 @@ def compass(ser, val) :
         ser.write(b"COMPASS ON\n")
     else:
         ser.write(b"COMPASS OFF\n")
-    ser.close()
 
 def bacaCompass(ser):
     if ser.isOpen() == False:
         ser.open()
     read = ser.readline().decode('utf-8','ignore')
-    ser.close()
     return read
 
 def tendang(ser):
     if ser.isOpen() == False:
         ser.open()
     ser.write(b"TEND1\n")
-    ser.close()
 
 def oper(ser):
     if ser.isOpen() == False:
         ser.open()
     ser.write(b"TEND2\n")
-    ser.close()
 
 def getBallInfo():
     infoFile = open("ballColor.txt","r")
@@ -133,6 +127,7 @@ def putarDerajat(derajat_tujuan, dribble) :
         if state == "FINISH" :
             compass(db, 0)
             db.close()
+            motor.close()
             break
  
         reading = bacaCompass(db)
@@ -229,6 +224,8 @@ def arahRobotDepan():
 
     dari = ""
     second = 0
+    startCount = 10
+    count = startCount
     speed = 60
     state = "START"
 
@@ -236,6 +233,11 @@ def arahRobotDepan():
     db.flush()
 
     while(True):
+        if count <= 0:
+            db.close()
+            motor.close()
+            count = startCount
+        count -= 1
         #print(state)
         second += 1
         #print(second)
@@ -274,6 +276,8 @@ def arahRobotDepan():
 
         if state == "FINISH":
             setMotor(motor,0,0,0,0)
+            db.close()
+            motor.close()
             break
 
         reading = db.readline().decode('utf-8','ignore')
@@ -325,6 +329,8 @@ def arahRobotDepan():
         
         if state == "FINISH"  and pas == 1: 
             setMotor(motor,0,0,0,0)
+            db.close()
+            motor.close()
             break        
             
         if ada == 0 :
