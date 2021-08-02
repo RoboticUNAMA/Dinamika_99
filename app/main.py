@@ -645,7 +645,7 @@ def mulaiSerongKiri():
          
         pas = 0
 
-        if state == "FINISH"  or second > 25: 
+        if state == "FINISH"  or second > 100: 
             setMotor(motor,0,0,0,0)
             break
 
