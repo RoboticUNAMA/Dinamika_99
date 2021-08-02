@@ -312,7 +312,7 @@ def arahRobotDepan():
                     
                 elif cenX_ball > 50 and cenX_ball < 150  :
                     #print("KIRI DEKAT")
-                    setMotor(motor,-35,-35,-35,-35)
+                    setMotor(motor,35,35,35,35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     dari = "kanan"
@@ -320,7 +320,7 @@ def arahRobotDepan():
                 
                 elif cenX_ball > 250 :
                     #print("KANAN DEKAT")
-                    setMotor(motor,35,35,35,35)
+                    setMotor(motor,-35,-35,-35,-35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     dari = "kiri"
