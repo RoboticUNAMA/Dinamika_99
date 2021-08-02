@@ -308,7 +308,7 @@ def arahRobotDepan():
                     dari = "kanan"
                     setMotor(motor,-28,-28,-28,-28)
                 else:
-                    if dari == "kanan" :
+                    if dari == "kiri" :
                         setMotor(motor,30,30,30,30)
                         sleep(0.1)
                         setMotor(motor,0,0,0,0)
