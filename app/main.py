@@ -121,7 +121,6 @@ def putarDerajat(derajat_tujuan, dribble) :
             
         if state == "FINISH" :
             compass(db, 0)
-            db.close()
             motor.close()
             break
  
@@ -229,7 +228,6 @@ def arahRobotDepan():
 
     while(True):
         if count <= 0:
-            db.close()
             motor.close()
             count = startCount
         count -= 1
@@ -271,7 +269,6 @@ def arahRobotDepan():
 
         if state == "FINISH":
             setMotor(motor,0,0,0,0)
-            db.close()
             motor.close()
             break
 
@@ -330,19 +327,18 @@ def arahRobotDepan():
         
         if state == "FINISH" and pas == 1: 
             setMotor(motor,0,0,0,0)
-            db.close()
             motor.close()
             break        
             
-        if ada == 0 :
-            if dari == "kanan" :
-                setMotor(motor,35,35,35,35)
-                sleep(0.1)
-                setMotor(motor,20,20,20,20)
-            else :
-                setMotor(motor,-35,-35,-35,-35)
-                sleep(0.1)
-                setMotor(motor,-20,-20,-20,-20)
+        # if ada == 0 :
+        #     if dari == "kanan" :
+        #         setMotor(motor,35,35,35,35)
+        #         sleep(0.1)
+        #         setMotor(motor,20,20,20,20)
+        #     else :
+        #         setMotor(motor,-35,-35,-35,-35)
+        #         sleep(0.1)
+        #         setMotor(motor,-20,-20,-20,-20)
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -516,10 +512,8 @@ def main():
     # sleep(0.1)
     # setMotor(motor, 0,0,0,0)
 
-    # arahRobotDepan()
-    # putarDerajat(97,0)
-    tendang(db)
-    sleep(0.2)
+    arahRobotDepan()
+    putarDerajat(97,0)
     tendang(db)
     sleep(1)
 
