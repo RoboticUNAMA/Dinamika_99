@@ -69,6 +69,11 @@ def compass(ser, val) :
         ser.write(b"COMPASS OFF\n")
     ser.close()
 
+def bacaCompass(ser):
+    ser.open()
+    ser.readline().decode('utf-8','ignore')
+    ser.close()
+
 def tendang(ser):
     ser.open()
     ser.write(b"TEND1\n")
@@ -121,13 +126,12 @@ def putarDerajat(derajat_tujuan, dribble) :
         if state == "FINISH" :
             compass(db, 0)
             break
-
-        db.open()  
-        reading = db.readline().decode('utf-8','ignore')
-        db.close()
+ 
+        reading = bacaCompass(db)
+        print(reading)
         
         if len(reading) > 0 :
-            print(reading)
+            #print(reading)
             head = reading[0:7]
             if  head == "Heading" :
                 degree = float(reading[10:-9])
