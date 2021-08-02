@@ -472,8 +472,11 @@ def main():
 
     #dummy 3 dan 8
     #cm.write(b"#450512")
-
+    putarDerajat(87,0)
     putarDerajat(97,0)
+    setMotor(motor, 80,-80,80,-80)
+    sleep(1)
+    setMotor(motor, 0,0,0,0)
 
 if __name__ == '__main__':
     # execute main program
