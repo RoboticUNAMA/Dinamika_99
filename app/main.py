@@ -273,8 +273,6 @@ def arahRobotDepan():
         if state == "FINISH":
             setMotor(motor,0,0,0,0)
             motor.close()
-            FRONT_CAP.release()
-            OMNI_CAP.release()
             cv2.destroyAllWindows()
             break
 
@@ -353,8 +351,6 @@ def arahRobotDepan():
         if state == "FINISH" and pas == 1: 
             setMotor(motor,0,0,0,0)
             motor.close()
-            FRONT_CAP.release()
-            OMNI_CAP.release()
             cv2.destroyAllWindows()
             break        
 
@@ -457,8 +453,6 @@ def lurusArahBola(Ybola):
 
         if state == "FINISH"  or second > 12:
             setMotor(motor,0,0,0,0)
-            FRONT_CAP.release()
-            OMNI_CAP.release()
             cv2.destroyAllWindows()
             break
          
