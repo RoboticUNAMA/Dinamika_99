@@ -739,7 +739,7 @@ def main():
     sleep(1)
     dribbling(db, 0)
     sleep(0.5)
-    tendang(db)
+    oper(db)
     # ================
     sleep(2)
 
@@ -773,6 +773,12 @@ def main():
     setMotor(motor, 80,-80,80,-80) # motor mundur
     sleep(1.5)
     setMotor(motor, -50,50,-50,50) # rem mundur
+    sleep(0.1)
+    setMotor(motor, 0,0,0,0)
+    
+    setMotor(motor, 50,50,-50,-50) # motor geser kanan
+    sleep(0.5)
+    setMotor(motor, 50,50,-50,-50) # motor geser kanan
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
