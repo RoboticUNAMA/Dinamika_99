@@ -508,16 +508,16 @@ def main():
     #dummy 3 dan 8
     #cm.write(b"#450512")
 
-    putarDerajat(87,0)
-    putarDerajat(97,0)
-    setMotor(motor, -80,80,-80,80) # motor maju
-    sleep(1.9)
-    setMotor(motor, 50,-50,50,-50) # REM maju
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
+    # putarDerajat(87,0)
+    # putarDerajat(97,0)
+    # setMotor(motor, -80,80,-80,80) # motor maju
+    # sleep(1.9)
+    # setMotor(motor, 50,-50,50,-50) # REM maju
+    # sleep(0.1)
+    # setMotor(motor, 0,0,0,0)
 
-    arahRobotDepan()
-    putarDerajat(97,0)
+    # arahRobotDepan()
+    # putarDerajat(97,0)
     tendang(db)
 
 if __name__ == '__main__':
