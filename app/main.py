@@ -49,41 +49,29 @@ def setMotor(ser,dki,dka,bki,bka) :
     dka = dka + (dka * 0)
     bki = bki + (bki * 0)
     bka = bka + (bka * 0.3) 
-    ser.open()
     ser.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-    ser.close()
 
 def dribbling(ser,val) :
-    ser.open()
     if val == 1 :
         ser.write(b"DB ON\n")
     else : 
         ser.write(b"DB OFF\n")
-    ser.close()
 
 def compass(ser, val) :
-    ser.open()
     if val == 1:
         ser.write(b"COMPASS ON\n")
     else:
         ser.write(b"COMPASS OFF\n")
-    ser.close()
 
 def bacaCompass(ser):
-    ser.open()
     read = ser.readline().decode('utf-8','ignore')
-    ser.close()
     return read
 
 def tendang(ser):
-    ser.open()
     ser.write(b"TEND1\n")
-    ser.close()
 
 def oper(ser):
-    ser.open()
     ser.write(b"TEND2\n")
-    ser.close()
 
 def getBallInfo():
     infoFile = open("ballColor.txt","r")
@@ -116,6 +104,10 @@ def putarDerajat(derajat_tujuan, dribble) :
     clb = 0
         
     while(True) :
+        db.close()
+        motor.close()
+        db.open()
+        motor.open()
         
         compass(db,1)
     
@@ -126,13 +118,13 @@ def putarDerajat(derajat_tujuan, dribble) :
             
         if state == "FINISH" :
             compass(db, 0)
+            db.close()
             break
  
         reading = bacaCompass(db)
-        print(reading)
         
         if len(reading) > 0 :
-            #print(reading)
+            print(reading)
             head = reading[0:7]
             if  head == "Heading" :
                 degree = float(reading[10:-9])
