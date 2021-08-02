@@ -212,10 +212,10 @@ def arahRobotDepan():
     inner_bottom = cenY_frame1 + 100
     outer_bottom = cenY_frame1 + 150
 
-    # read ball color
-    ballColor = getBallInfo()
-    lowerBall = np.array([ballColor[0],ballColor[1],ballColor[2]])
-    upperBall = np.array([ballColor[3],ballColor[4],ballColor[5]])
+    # read magenta color
+    objColor = getMagentaInfo()
+    lowerBall = np.array([objColor[0],objColor[1],objColor[2]])
+    upperBall = np.array([objColor[3],objColor[4],objColor[5]])
 
     dari = ""
     second = 0
@@ -300,7 +300,7 @@ def arahRobotDepan():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball < 120  :
+                if cenX_ball > 0 and cenX_ball < 120  :
                     # kiri robot
                     setMotor(motor,-30,-30,-30,-30)
                     
@@ -308,7 +308,7 @@ def arahRobotDepan():
                     # kanan robot
                     setMotor(motor,30,30,30,30)
                     
-                elif cenX_ball < 180  :
+                elif cenX_ball > 0 and cenX_ball < 180  :
                     setMotor(motor,-35,-35,-35,-35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
@@ -322,11 +322,13 @@ def arahRobotDepan():
                     setMotor(motor,0,0,0,0)
                     dari = "kiri"
                     #print("PUTAR KIRI")
-                else :
+                elif cenX_ball > 180 and cenX_ball < 220:
                     pas = 1
+                else:
+                    setMotor(motor, 0,0,0,0)
                 break
         
-        if state == "FINISH"  and pas == 1: 
+        if state == "FINISH" and pas == 1: 
             setMotor(motor,0,0,0,0)
             db.close()
             motor.close()
@@ -387,9 +389,9 @@ def lurusArahBola(Ybola):
     outer_bottom = cenY_frame1 + 150
 
     # read ball color
-    ballColor = getBallInfo()
-    lowerBall = np.array([ballColor[0],ballColor[1],ballColor[2]])
-    upperBall = np.array([ballColor[3],ballColor[4],ballColor[5]])
+    objColor = getBallInfo()
+    lowerBall = np.array([objColor[0],objColor[1],objColor[2]])
+    upperBall = np.array([objColor[3],objColor[4],objColor[5]])
 
     second = 0
     speed = 90
@@ -505,15 +507,18 @@ def main():
 
     #dummy 3 dan 8
     #cm.write(b"#450512")
-    # putarDerajat(87,0)
-    # putarDerajat(97,0)
-    # setMotor(motor, -80,80,-80,80) # motor maju
-    # sleep(1.9)
-    # setMotor(motor, 50,-50,50,-50) # REM maju
-    # sleep(0.1)
-    # setMotor(motor, 0,0,0,0)
+
+    putarDerajat(87,0)
+    putarDerajat(97,0)
+    setMotor(motor, -80,80,-80,80) # motor maju
+    sleep(1.9)
+    setMotor(motor, 50,-50,50,-50) # REM maju
+    sleep(0.1)
+    setMotor(motor, 0,0,0,0)
 
     arahRobotDepan()
+    putarDerajat(97,0)
+    tendang(db)
 
 if __name__ == '__main__':
     # execute main program
