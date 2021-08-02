@@ -97,6 +97,9 @@ def read_from_port(ser,que_output):
             que_output.put(500)
 
 def putarDerajat(derajat_tujuan, dribble) :
+    if db.isOpen() == False:
+        db.open()
+        
     speed = 70
     state = "START"
     clb = 0
