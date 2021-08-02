@@ -794,7 +794,7 @@ def lurusArahBola(Ybola):
             setMotor(motor,0,0,0,0)
             break
 
-        for ballContour in ballContours1:
+        for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
             if ball_area > 500:
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
@@ -931,7 +931,7 @@ def main():
         # lurusin
         putarDerajat(87,0)
         mulaiSerongKiri()
-        lurusArahBola(53)
+        lurusArahBola(300)
 
 
 if __name__ == '__main__':
