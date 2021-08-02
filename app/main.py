@@ -218,7 +218,7 @@ def arahRobotDepan():
     outer_bottom = cenY_frame1 + 150
 
     # read ball color
-    ballColor = getMagentaInfo()
+    ballColor = getBallInfo()
     lowerBall = np.array([ballColor[0],ballColor[1],ballColor[2]])
     upperBall = np.array([ballColor[3],ballColor[4],ballColor[5]])
 
