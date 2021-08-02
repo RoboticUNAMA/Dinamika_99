@@ -297,15 +297,15 @@ def arahRobotDepan():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > 0 and cenX_ball < 120  :
+                if cenX_ball > 0 and cenX_ball < 100  :
                     # kiri robot
                     setMotor(motor,-30,-30,-30,-30)
                     
-                elif cenX_ball > 280  :
+                elif cenX_ball > 300  :
                     # kanan robot
                     setMotor(motor,30,30,30,30)
                     
-                elif cenX_ball > 0 and cenX_ball < 150  :
+                elif cenX_ball > 100 and cenX_ball < 150  :
                     setMotor(motor,-35,-35,-35,-35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
@@ -313,7 +313,6 @@ def arahRobotDepan():
                     #print("PUTAR KANAN")
                 
                 elif cenX_ball > 250 :
-                
                     setMotor(motor,35,35,35,35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
@@ -321,7 +320,7 @@ def arahRobotDepan():
                     #print("PUTAR KIRI")
                 elif cenX_ball > 150 and cenX_ball < 250:
                     pas = 1
-                else:
+                elif cenX_ball <= 0:
                     setMotor(motor, 0,0,0,0)
                 break
         
@@ -330,15 +329,15 @@ def arahRobotDepan():
             motor.close()
             break        
             
-        # if ada == 0 :
-        #     if dari == "kanan" :
-        #         setMotor(motor,35,35,35,35)
-        #         sleep(0.1)
-        #         setMotor(motor,20,20,20,20)
-        #     else :
-        #         setMotor(motor,-35,-35,-35,-35)
-        #         sleep(0.1)
-        #         setMotor(motor,-20,-20,-20,-20)
+        if ada == 0 :
+            if dari == "kanan" :
+                setMotor(motor,35,35,35,35)
+                sleep(0.1)
+                setMotor(motor,20,20,20,20)
+            else :
+                setMotor(motor,-35,-35,-35,-35)
+                sleep(0.1)
+                setMotor(motor,-20,-20,-20,-20)
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -356,6 +355,8 @@ def arahRobotDepan():
         
         k = cv2.waitKey(1) & 0xFF
         if k == 27:
+            if motor.isOpen == False:
+                motor.open()
             motor.write(b"#M|STP|0\n")
             db.write(b"DB OFF")
             FRONT_CAP.release()
