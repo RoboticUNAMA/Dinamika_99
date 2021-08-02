@@ -695,7 +695,7 @@ def mulaiSerongKiri():
             break
 
 def main():
-    mode = input("Mode = ")
+    mode = int(input("Mode = "))
 
     # serial motor driver
     motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
