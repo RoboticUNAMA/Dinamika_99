@@ -20,8 +20,8 @@ db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 db.close()
 
 #serial OpenCM
-cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
-cm.close()
+#cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
+#cm.close()
 
 # index camera
 FRONT_CAM = 2
@@ -468,10 +468,22 @@ def lurusArahBola(Ybola):
 
 
 def main():
-    #dummy 3 dan 8
-    cm.write(b"#450512")
+    # serial motor driver
+    motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
+    motor.close()
 
-    putarDerajat(53,0)
+    # serial dribble
+    db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
+    db.close()
+
+    #serial OpenCM
+    #cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
+    #cm.close()
+
+    #dummy 3 dan 8
+    #cm.write(b"#450512")
+
+    putarDerajat(97,0)
 
 if __name__ == '__main__':
     # execute main program
