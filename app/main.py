@@ -720,7 +720,7 @@ def main():
     #cm.write(b"#450512")
 
     putarDerajat(87,0)
-    putarDerajat(99,0)
+    putarDerajat(99,1)
 
     setMotor(motor, -80,80,-80,80) # motor maju
     sleep(1.9)
