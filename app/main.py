@@ -901,7 +901,7 @@ def main():
         putarDerajat(87,0)
         sleep(0.5)
         mulaiSerongKiri()
-        lurusArahBola()
+        lurusArahBola(250)
 
 
 if __name__ == '__main__':
