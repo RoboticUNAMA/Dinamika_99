@@ -213,7 +213,7 @@ def arahRobotDepan():
     outer_bottom = cenY_frame1 + 150
 
     # read magenta color
-    objColor = getMagentaInfo()
+    objColor = getBallInfo()
     lowerBall = np.array([objColor[0],objColor[1],objColor[2]])
     upperBall = np.array([objColor[3],objColor[4],objColor[5]])
 
@@ -254,8 +254,8 @@ def arahRobotDepan():
         BALL_MASK1 = cv2.inRange(blur1, lowerBall, upperBall)
 
         # convert to black and white image
-        _, BALL_THRESH = cv2.threshold(BALL_MASK, ballColor[6], 255, 0)
-        _, BALL_THRESH1 = cv2.threshold(BALL_MASK1, ballColor[6], 255, 0)
+        _, BALL_THRESH = cv2.threshold(BALL_MASK, objColor[6], 255, 0)
+        _, BALL_THRESH1 = cv2.threshold(BALL_MASK1, objColor[6], 255, 0)
 
         # refine the image using morphological transformation
         kernal = np.ones((5,5), np.uint8)
