@@ -523,7 +523,9 @@ def main():
     #cm.write(b"#450512")
 
     putarDerajat(87,0)
-    putarDerajat(97,0)
+    sleep(0.1)
+    setMotor(motor, 80,80,80,80) # motor maju
+    sleep(0.5)
     setMotor(motor, -80,80,-80,80) # motor maju
     sleep(1.9)
     setMotor(motor, 50,-50,50,-50) # rem maju
@@ -532,7 +534,7 @@ def main():
 
     arahRobotDepan()
 
-    putarDerajat(87, 1)
+    putarDerajat(86.5, 1)
 
     # === init tendang
     dribbling(db, 0)
@@ -557,7 +559,6 @@ def main():
     setMotor(motor, 50,50,50,50) # motor putar kanan
     sleep(0.1)
     setMotor(motor, 0,0,0,0) # motor putar kanan
-    putarDerajat(80,1) # hadap gawang
 
     # === init tendang
     dribbling(db, 0)
