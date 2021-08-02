@@ -121,11 +121,13 @@ def putarDerajat(derajat_tujuan, dribble) :
         if state == "FINISH" :
             compass(db, 0)
             break
-            
+
+        db.open()  
         reading = db.readline().decode('utf-8','ignore')
+        db.close()
         
         if len(reading) > 0 :
-            #print(reading)
+            print(reading)
             head = reading[0:7]
             if  head == "Heading" :
                 degree = float(reading[10:-9])
