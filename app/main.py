@@ -273,6 +273,9 @@ def arahRobotDepan():
         if state == "FINISH":
             setMotor(motor,0,0,0,0)
             motor.close()
+            FRONT_CAP.release()
+            OMNI_CAP.release()
+            cv2.destroyAllWindows()
             break
 
         if db.isOpen() == False:
@@ -350,6 +353,9 @@ def arahRobotDepan():
         if state == "FINISH" and pas == 1: 
             setMotor(motor,0,0,0,0)
             motor.close()
+            FRONT_CAP.release()
+            OMNI_CAP.release()
+            cv2.destroyAllWindows()
             break        
 
         # displays
@@ -451,6 +457,9 @@ def lurusArahBola(Ybola):
 
         if state == "FINISH"  or second > 12:
             setMotor(motor,0,0,0,0)
+            FRONT_CAP.release()
+            OMNI_CAP.release()
+            cv2.destroyAllWindows()
             break
          
         for ballContour in ballContours:
@@ -548,8 +557,13 @@ def main():
     sleep(0.5)
     putarDerajat(98,1)
     arahRobotDepan()
-     
-    putarDerajat(76,1) # hadap gawang
+
+    setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+    sleep(0.5) 
+    setMotor(motor, 50,50,50,50) # motor putar kanan
+    sleep(0.1)
+    setMotor(motor, 0,0,0,0) # motor putar kanan
+    putarDerajat(80,1) # hadap gawang
 
     # === init tendang
     dribbling(db, 0)
