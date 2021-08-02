@@ -10,7 +10,7 @@ import cv2
 import numpy as np
 
 obj_name = "Robot Magenta"
-file_color = "magenta.txt"
+file_color = "magentaColor.txt"
 
 def nothing(x):
     #print(x)
