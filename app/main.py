@@ -901,7 +901,61 @@ def main():
         putarDerajat(87,0)
         sleep(0.5)
         mulaiSerongKiri()
-        lurusArahBola(250)
+        lurusArahBola(210)
+
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.2) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        arahRobotDepan()
+
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
+        # ================
+        sleep(2)
+
+        putarDerajat(87,0)
+        setMotor(motor, -80,-80,80,80) # motor geser kanan
+        sleep(1.5)
+        setMotor(motor, 50,50,-50,-50) # motor geser kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.5)
+
+        arahBolaDepan()
+
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.2) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        arahRobotDepan()
+
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
+        # ================
+        sleep(2)
+
+        putarDerajat(87,0)
+        sleep(0.2)
+
+        setMotor(motor, 80,-80,80,-80) # motor mundur
+        sleep(1.5)
+        setMotor(motor, -50,50,-50,50) # rem mundur
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+
 
 
 if __name__ == '__main__':
