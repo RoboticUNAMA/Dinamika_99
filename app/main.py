@@ -26,7 +26,7 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 FRONT_CAM = 1   # front camera
 OMNI_CAM = 0   # omni camera
 
- # create opencv video capture object
+# create opencv video capture object
 FRONT_CAP = cv2.VideoCapture(FRONT_CAM) 
 OMNI_CAP = cv2.VideoCapture(OMNI_CAM)
 
@@ -513,32 +513,6 @@ def arahRobotDepan():
 
                 if dari == "tengah":
                     state = "FINISH"
-                    
-                    
-                # elif cenX_ball > 300  :
-                #     # kanan robot
-                #     #print("KANAN JAUH")
-                #     setMotor(motor,30,30,30,30)
-                    
-                # elif cenX_ball > 50 and cenX_ball < 150  :
-                #     #print("KIRI DEKAT")
-                #     setMotor(motor,-35,-35,-35,-35)
-                #     sleep(0.1)
-                #     setMotor(motor,0,0,0,0)
-                #     dari = "kanan"
-                #     #print("PUTAR KANAN")
-                
-                # elif cenX_ball > 250 :
-                #     #print("KANAN DEKAT")
-                #     setMotor(motor,35,35,35,35)
-                #     sleep(0.1)
-                #     setMotor(motor,0,0,0,0)
-                #     dari = "kiri"
-                #     #print("PUTAR KIRI")
-                # elif cenX_ball > 150 and cenX_ball < 250:
-                #     pas = 1
-                # elif cenX_ball <= 0:
-                #     setMotor(motor, 0,0,0,0)
                 break
         
         if state == "FINISH" and pas == 1: 
@@ -572,7 +546,7 @@ def arahRobotDepan():
             cv2.destroyAllWindows()
             break
 
-def lurusArahBola(Ybola):
+def mulaiSerongKiri():
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
     rows, cols, _ = frame1.shape
@@ -593,22 +567,31 @@ def lurusArahBola(Ybola):
     inner_bottom = cenY_frame1 + 100
     outer_bottom = cenY_frame1 + 150
 
-    # read ball color
-    objColor = getBallInfo()
+    # read magenta color
+    objColor = getMagentaInfo()
     lowerBall = np.array([objColor[0],objColor[1],objColor[2]])
     upperBall = np.array([objColor[3],objColor[4],objColor[5]])
 
+    dari = ""
     second = 0
-    speed = 90
+    startCount = 10
+    count = startCount
+    speed = 80
     state = "START"
 
-    # maju
-    setMotor(motor,speed,-speed,speed,-speed)
+    dribbling(db,1)
+    db.flush()
+
+    setMotor(motor, 0,speed,-speed,0) # serong kiri
 
     while(True):
+        if count <= 0:
+            motor.close()
+            count = startCount
+        count -= 1
         #print(state)
         second += 1
-        print(second)
+        #print(second)
         for i in range(3):
             FRONT_CAP.grab()
             OMNI_CAP.grab()
@@ -629,8 +612,8 @@ def lurusArahBola(Ybola):
         BALL_MASK1 = cv2.inRange(blur1, lowerBall, upperBall)
 
         # convert to black and white image
-        _, BALL_THRESH = cv2.threshold(BALL_MASK, ballColor[6], 255, 0)
-        _, BALL_THRESH1 = cv2.threshold(BALL_MASK1, ballColor[6], 255, 0)
+        _, BALL_THRESH = cv2.threshold(BALL_MASK, objColor[6], 255, 0)
+        _, BALL_THRESH1 = cv2.threshold(BALL_MASK1, objColor[6], 255, 0)
 
         # refine the image using morphological transformation
         kernal = np.ones((5,5), np.uint8)
@@ -644,11 +627,28 @@ def lurusArahBola(Ybola):
         ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
 
-        if state == "FINISH"  or second > 12:
+        if state == "FINISH":
             setMotor(motor,0,0,0,0)
+            motor.close()
             cv2.destroyAllWindows()
             break
+
+        if db.isOpen() == False:
+            db.open()
+        reading = db.readline().decode('utf-8','ignore')
+        if len(reading) > 0 :
+            head = reading[0:5]
+            if  head == "Tidak" :
+                print("TIDAK DAPAT BOLA")
+                arahBolaDepan()
+                break    
          
+        pas = 0
+
+        if state == "FINISH"  or second > 25: 
+            setMotor(motor,0,0,0,0)
+            break
+
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
             if ball_area > 500:
@@ -656,25 +656,18 @@ def lurusArahBola(Ybola):
                 cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
                 cenX_ball = (x_ball+x_ball+w_ball)/2
                 cenY_ball = (y_ball+y_ball+h_ball)/2   
-                print(cenY_ball)
+                print(cenX_ball)
                 # draw actual coordinate from segmentation
                 cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenY_ball < Ybola :
-                    setMotor(motor, speed , -speed, speed, -speed)
-                    if cenX_ball > inner_right :
-                        setMotor(motor, speed + 10,-speed, speed, -speed -10)
-                    elif cenX_ball < inner_left :
-                        setMotor(motor, speed ,-speed -10,speed +10, -speed)
-                else :
-                    setMotor(motor,-50,50,-50,50)
+                if cenX_ball < inner_left :
+                    setMotor(motor,-50,-50,50,50)
                     sleep(0.1)    
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
-                    state = "FINISH"
-                break
+                    state = "FINISH"   
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -692,6 +685,8 @@ def lurusArahBola(Ybola):
         
         k = cv2.waitKey(1) & 0xFF
         if k == 27:
+            if motor.isOpen == False:
+                motor.open()
             motor.write(b"#M|STP|0\n")
             db.write(b"DB OFF")
             FRONT_CAP.release()
@@ -699,8 +694,9 @@ def lurusArahBola(Ybola):
             cv2.destroyAllWindows()
             break
 
-
 def main():
+    mode = input("Mode = ")
+
     # serial motor driver
     motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
 
@@ -719,62 +715,69 @@ def main():
 
     #cm.write(b"#450512")
 
-    putarDerajat(87,0)
-    putarDerajat(99,1)
+    if mode == 1:
+        # lurusin
+        putarDerajat(87,0)
+        putarDerajat(99,1)
 
-    setMotor(motor, -80,80,-80,80) # motor maju
-    sleep(1.9)
-    setMotor(motor, 50,-50,50,-50) # rem maju
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
+        setMotor(motor, -80,80,-80,80) # motor maju
+        sleep(1.9)
+        setMotor(motor, 50,-50,50,-50) # rem maju
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
 
-    arahBolaDepan()
+        arahBolaDepan()
 
-    putarDerajat(86.5, 1)
+        putarDerajat(86.5, 1)
 
-    arahRobotDepan()
+        arahRobotDepan()
 
-    # === init tendang
-    dribbling(db, 0)
-    sleep(1)
-    dribbling(db, 0)
-    sleep(0.5)
-    oper(db)
-    # ================
-    sleep(2)
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
+        # ================
+        sleep(2)
 
-    setMotor(motor, -80,-80,80,80) # motor geser kanan
-    sleep(1.5)
-    setMotor(motor, 50,50,-50,-50) # motor geser kanan
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-    sleep(0.5)
-    putarDerajat(98,1)
-    arahBolaDepan()
+        setMotor(motor, -80,-80,80,80) # motor geser kanan
+        sleep(1.5)
+        setMotor(motor, 50,50,-50,-50) # motor geser kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.5)
+        putarDerajat(98,1)
+        arahBolaDepan()
 
-    setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-    sleep(0.64) 
-    setMotor(motor, 50,50,50,50) # rem putar kanan
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0) # motor stop
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.64) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
 
-    # === init tendang
-    dribbling(db, 0)
-    sleep(1)
-    dribbling(db, 0)
-    sleep(0.5)
-    tendang(db)
-    # ================
-    sleep(2)
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        tendang(db)
+        # ================
+        sleep(2)
 
-    putarDerajat(87,0)
-    sleep(0.2)
+        putarDerajat(87,0)
+        sleep(0.2)
 
-    setMotor(motor, 80,-80,80,-80) # motor mundur
-    sleep(1.5)
-    setMotor(motor, -50,50,-50,50) # rem mundur
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
+        setMotor(motor, 80,-80,80,-80) # motor mundur
+        sleep(1.5)
+        setMotor(motor, -50,50,-50,50) # rem mundur
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+
+    elif mode == 2:
+        # lurusin
+        putarDerajat(87,0)
+        mulaiSerongKiri()
 
 
 if __name__ == '__main__':
