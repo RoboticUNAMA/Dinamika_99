@@ -545,7 +545,7 @@ def main():
     # sleep(0.1)
     # setMotor(motor, 0,0,0,0)
     # sleep(0.5)
-    # putarDerajat(98,1)
+    putarDerajat(98,1)
     # arahRobotDepan()
     
     # putarDerajat(86,1) # hadap gawang
