@@ -71,8 +71,9 @@ def compass(ser, val) :
 
 def bacaCompass(ser):
     ser.open()
-    ser.readline().decode('utf-8','ignore')
+    read = ser.readline().decode('utf-8','ignore')
     ser.close()
+    return read
 
 def tendang(ser):
     ser.open()
