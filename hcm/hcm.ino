@@ -78,7 +78,7 @@ void loop(void)
     Serial.println("Dapat Bola");
     bola = 1;
   }
-  else if (dapat_bola == 1 && bola == 1{
+  else if (dapat_bola == 1 && bola == 1){
     Serial.println("Tidak Dapat Bola");
     bola = 0;
   }
