@@ -43,7 +43,7 @@ OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
 OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 320)
 
 def setMotor(ser,dki,dka,bki,bka) :
-    if ser.isOpen == False:
+    if ser.isOpen() == False:
         ser.open()
     dki = dki + (dki * 0.3)
     dka = dka + (dka * 0)
@@ -52,7 +52,7 @@ def setMotor(ser,dki,dka,bki,bka) :
     ser.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
 
 def dribbling(ser,val) :
-    if ser.isOpen == False:
+    if ser.isOpen() == False:
         ser.open()
     if val == 1 :
         ser.write(b"DB ON\n")
@@ -60,7 +60,7 @@ def dribbling(ser,val) :
         ser.write(b"DB OFF\n")
 
 def compass(ser, val) :
-    if ser.isOpen == False:
+    if ser.isOpen() == False:
         ser.open()
     if val == 1:
         ser.write(b"COMPASS ON\n")
@@ -68,18 +68,18 @@ def compass(ser, val) :
         ser.write(b"COMPASS OFF\n")
 
 def bacaCompass(ser):
-    if ser.isOpen == False:
+    if ser.isOpen() == False:
         ser.open()
     read = ser.readline().decode('utf-8','ignore')
     return read
 
 def tendang(ser):
-    if ser.isOpen == False:
+    if ser.isOpen() == False:
         ser.open()
     ser.write(b"TEND1\n")
 
 def oper(ser):
-    if ser.isOpen == False:
+    if ser.isOpen() == False:
         ser.open()
     ser.write(b"TEND2\n")
 
