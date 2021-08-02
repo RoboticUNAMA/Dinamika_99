@@ -99,7 +99,7 @@ def read_from_port(ser,que_output):
 def putarDerajat(derajat_tujuan, dribble) :
     if db.isOpen() == False:
         db.open()
-        
+
     speed = 70
     state = "START"
     clb = 0
@@ -477,7 +477,7 @@ def main():
     #cm.write(b"#450512")
     putarDerajat(87,0)
     putarDerajat(97,0)
-    setMotor(motor, 80,-80,80,-80)
+    setMotor(motor, -80,80,-80,80) # motor maju
     sleep(1)
     setMotor(motor, 0,0,0,0)
 
