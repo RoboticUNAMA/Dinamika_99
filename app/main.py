@@ -667,7 +667,7 @@ def mulaiSerongKiri():
             cv2.destroyAllWindows()
             break
 
-def lurusArahBola():
+def lurusArahBola(Ybola):
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
     rows, cols, _ = frame1.shape
@@ -776,12 +776,13 @@ def lurusArahBola():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > 0 and cenX_ball < 150  :
-                    setMotor(motor,28,28,28,28)
-                elif cenX_ball > 250:
-                    setMotor(motor,-28,-28,-28,-28)
-                else:
-                    setMotor(motor,-50,50,-50,50)
+                if cenY_ball < Ybola:
+                    if cenX_ball > 0 and cenX_ball < 150  :
+                        setMotor(motor,28,28,28,28)
+                    elif cenX_ball > 250:
+                        setMotor(motor,-28,-28,-28,-28)
+                    else:
+                        setMotor(motor,-50,50,-50,50)
                 break
         
         if state == "FINISH" and pas == 1: 
