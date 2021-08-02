@@ -667,7 +667,7 @@ def mulaiSerongKiri():
             cv2.destroyAllWindows()
             break
 
-def lurusArahBola(Ybola):
+def lurusArahBola():
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
     rows, cols, _ = frame1.shape
@@ -915,8 +915,9 @@ def main():
     elif mode == 2:
         # lurusin
         putarDerajat(87,0)
+        sleep(0.5)
         mulaiSerongKiri()
-        lurusArahBola(300)
+        lurusArahBola()
 
 
 if __name__ == '__main__':
