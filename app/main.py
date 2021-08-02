@@ -283,13 +283,11 @@ def arahRobotDepan():
                 print("DAPAT BOLA")
                 state = "FINISH"    
          
-        ada = 0
         pas =0
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
             if ball_area > 500:
-                ada = 1
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
                 cenX_ball = (x_ball+x_ball+w_ball)/2
@@ -343,15 +341,14 @@ def arahRobotDepan():
             motor.close()
             break        
             
-        if ada == 0 :
-            if dari == "kanan" :
-                setMotor(motor,30,30,30,30)
-                sleep(0.1)
-                setMotor(motor,0,0,0,0)
-            else :
-                setMotor(motor,-30,-30,-30,-30)
-                sleep(0.1)
-                setMotor(motor,0,0,0,0)
+        if dari == "kanan" :
+            setMotor(motor,30,30,30,30)
+            sleep(0.1)
+            setMotor(motor,0,0,0,0)
+        else :
+            setMotor(motor,-30,-30,-30,-30)
+            sleep(0.1)
+            setMotor(motor,0,0,0,0)
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -517,6 +514,7 @@ def main():
     #cm.close()
 
     #dummy 3 dan 8
+
     #cm.write(b"#450512")
 
     putarDerajat(87,0)
@@ -528,7 +526,7 @@ def main():
     setMotor(motor, 0,0,0,0)
 
     arahRobotDepan()
-    putarDerajat(85,0)
+    putarDerajat(85,1)
 
     # === init tendang
     dribbling(db, 0)
@@ -547,7 +545,7 @@ def main():
     putarDerajat(99,0)
     arahRobotDepan()
     
-    putarDerajat(86,0) # hadap gawang
+    putarDerajat(86,1) # hadap gawang
     # === init tendang
     dribbling(db, 0)
     sleep(1)
