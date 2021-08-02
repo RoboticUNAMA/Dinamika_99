@@ -933,6 +933,7 @@ def main():
         # lurusin
         putarDerajat(87,0)
         mulaiSerongKiri()
+        lurusArahBola(53)
 
 
 if __name__ == '__main__':
