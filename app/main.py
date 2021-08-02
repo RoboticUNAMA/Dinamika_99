@@ -529,7 +529,8 @@ def main():
 
     arahRobotDepan()
 
-    putarDerajat(86.5, 1)
+    putarDerajat(87, 1)
+
     # === init tendang
     dribbling(db, 0)
     sleep(1)
@@ -548,7 +549,8 @@ def main():
     putarDerajat(98,1)
     arahRobotDepan()
     
-    putarDerajat(86,1) # hadap gawang
+    putarDerajat(82,1) # hadap gawang
+
     # === init tendang
     dribbling(db, 0)
     sleep(1)
