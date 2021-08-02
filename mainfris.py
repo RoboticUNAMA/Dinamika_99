@@ -1036,8 +1036,6 @@ def arahRobot():
             break
             
 def arahRobotKameraDpn():
-  
- 
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
     rows, cols, _ = frame1.shape
