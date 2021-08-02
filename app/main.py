@@ -889,7 +889,7 @@ def main():
         putarDerajat(87,0)
         sleep(0.5)
         mulaiSerongKiri()
-        lurusArahBola(300)
+        lurusArahBola()
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
         sleep(0.2) 
