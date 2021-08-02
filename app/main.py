@@ -518,6 +518,10 @@ def main():
     #cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
     #cm.close()
 
+    # initialize camera
+    _, frame1 = FRONT_CAP.read()
+    _, frame2 = OMNI_CAP.read()
+
     #dummy 3 dan 8
 
     #cm.write(b"#450512")
@@ -554,7 +558,7 @@ def main():
     arahRobotDepan()
 
     setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-    sleep(0.65) 
+    sleep(0.6) 
     setMotor(motor, 50,50,50,50) # rem putar kanan
     sleep(0.1)
     setMotor(motor, 0,0,0,0) # motor stop
