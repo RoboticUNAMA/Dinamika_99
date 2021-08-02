@@ -308,21 +308,21 @@ def arahRobotDepan():
                     # kanan robot
                     setMotor(motor,30,30,30,30)
                     
-                elif cenX_ball > 0 and cenX_ball < 180  :
+                elif cenX_ball > 0 and cenX_ball < 150  :
                     setMotor(motor,-35,-35,-35,-35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     dari = "kanan"
                     #print("PUTAR KANAN")
                 
-                elif cenX_ball > 220 :
+                elif cenX_ball > 250 :
                 
                     setMotor(motor,35,35,35,35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     dari = "kiri"
                     #print("PUTAR KIRI")
-                elif cenX_ball > 180 and cenX_ball < 220:
+                elif cenX_ball > 150 and cenX_ball < 250:
                     pas = 1
                 else:
                     setMotor(motor, 0,0,0,0)
