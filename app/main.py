@@ -1,280 +1,231 @@
+'''
+    Filename        : main.py
+    Description     : Object Detection Robot KRSBI Beroda UNAMA
+    Created By      : Arjuna Panji Prakarsa
+    Date            : 06/06/2021
+    Python Version  : 3.6.9
+'''
+
 import cv2
 import numpy as np
 import serial
 from time import sleep
-from detection import Camera
-from controller import *
 
-# serial
-motor = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-db = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+# serial motor driver
+motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
+motor.close()
+
+# serial dribble
+db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
+db.close()
+
+#serial OpenCM
+cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
+cm.close()
 
 # index camera
-FRONT_CAM = 1
+FRONT_CAM = 2
 OMNI_CAM = 0
+FONT = cv2.FONT_HERSHEY_SIMPLEX
 
-def nothing(x):
-    pass
+# initialize
+font = cv2.FONT_HERSHEY_SIMPLEX
+FRONT_CAM = 0   # front camera
+OMNI_CAM = 1   # omni camera
 
-def main():
-    cam1 = Camera(FRONT_CAM, 'ballColor1.txt')
-    cam2 = Camera(OMNI_CAM, 'magenta.txt')
-    motor = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-    db = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
-    motor.close()
-    db.close()
-    sleep(1)
+ # create opencv video capture object
+FRONT_CAP = cv2.VideoCapture(FRONT_CAM) 
+OMNI_CAP = cv2.VideoCapture(OMNI_CAM)
 
-    # initial variables
-    delay = 2
-    count = 0
-    wait = 0
-    mode = "-"
-    state = "IDLE"
-    nav = "BERHENTI"
+# set frame size
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 270)
 
-    #geser(motor, -100)
-    #time.sleep(1.7)
-    #maju(motor, 100)
-    #time.sleep(2.2)
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 320)
 
-    # create ui
-    main_window = "Dinamika_99 Main Program"
-    cv2.namedWindow(main_window)
+def setMotor(ser,dki,dka,bki,bka) :
+    dki = dki + (dki * 0.3)
+    dka = dka + (dka * 0)
+    bki = bki + (bki * 0)
+    bka = bka + (bka * 0.3) 
+    ser.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
 
-    control_window = "Control Panel"
-    cv2.namedWindow(control_window)
-    cv2.createTrackbar('State', control_window, 0, 9, nothing)
-    cv2.createTrackbar('Engine', control_window, 1, 2, nothing)
-    cv2.createTrackbar('Mode', control_window, 0, 2, nothing)
-    cv2.createTrackbar('Opsi', control_window, 0, 9, nothing)
-    cv2.createTrackbar('Control Mode', control_window, 0, 1, nothing)
+def dribble(ser,val) :
+    if val == 1 :
+        ser.write(b"DB ON\n")
+    else : 
+        ser.write(b"DB OFF\n")
 
+def compass(ser, val) :
+    if val == 1:
+        ser.write(b"COMPASS ON\n")
+    else:
+        ser.write(b"COMPASS OFF\n")
+
+def getBallInfo():
+    infoFile = open("ballColor.txt","r")
+    info = []
+    for i in infoFile:
+        info.append(int(i))
+    return info
+
+def getMagentaInfo():
+    infoFile = open("magentaColor.txt","r")
+    info = []
+    for i in infoFile:
+        info.append(int(i))
+    return info
+
+def read_from_port(ser,que_output):
     while True:
-        # get frames
-        area1, x1, y1, w1, h1, cenX1, cenY1 = cam1.get_object(500)
-        area2, x2, y2, w2, h2, cenX2, cenY2 = cam2.get_object(10)
-        frame1 = cam1.display("Front Cam", "Bola", 0)
-        frame2 = cam2.display("Omni Cam", "Magenta", 0)
-        frmPanel = cv2.imread('bg.png')
+        try : 
+            reading = ser.readline().decode()
+            if len(reading) > 0 :
+                degree = float(reading[10:-9])
+                #print(degree)
+                que_output.put(degree)
+        except : 
+            que_output.put(500)
 
-        # get trackbar value
-        engineVal = cv2.getTrackbarPos('Engine', control_window)
-        modeVal = cv2.getTrackbarPos('Mode', control_window)
-        stateVal = cv2.getTrackbarPos('State', control_window)
-        opsiVal = cv2.getTrackbarPos('Opsi', control_window)
-        controlVal = cv2.getTrackbarPos('Control Mode', control_window)
+def lurusArahBola(Ybola):
+     # get center of the frame
+    _, frame1 = FRONT_CAP.read()
+    rows, cols, _ = frame1.shape
+    cenX_frame1 = int(cols/2)
+    cenY_frame1 = int(rows/2)
 
-        # display trackbar value to panel frame
-        # TEXT STATE
-        if stateVal == 0:
-            state = "Idle"
-        elif stateVal == 1:
-            state = "Cari Bola"
-        elif stateVal == 2:
-            state = "Tunggu Bola"
-        elif stateVal == 3:
-            state = "Operan"
-        cv2.putText(
-                frmPanel, "State: "+state, (5,20),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, [0,255,0], 2) 
+    _, frame2 = OMNI_CAP.read()
+    rows1, cols1, _ = frame2.shape
+    cenX_frame2 = int(cols1/2)
+    cenY_frame2 = int(rows1/2)
+    
+    inner_left = cenX_frame1 - 100
+    outer_left = cenX_frame1 - 250 
+    inner_right = cenX_frame1 + 100
+    outer_right = cenX_frame1 + 250
+    inner_top = cenY_frame1 - 100
+    outer_top = cenY_frame1 - 150
+    inner_bottom = cenY_frame1 + 100
+    outer_bottom = cenY_frame1 + 150
 
-        # TEXT ENGINE
-        if engineVal == 2:
-            engine = "START"
-        elif engineVal == 0:
-            engine = "RETRY"
-        else:
-            engine = "STOP"
-        cv2.putText(
-                frmPanel, "Engine: "+engine, (5,50),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, [0,255,0], 2) 
+    # read ball color
+    ballColor = getBallInfo()
+    lowerBall = np.array([ballColor[0],ballColor[1],ballColor[2]])
+    upperBall = np.array([ballColor[3],ballColor[4],ballColor[5]])
 
-        # TEXT MODE
-        if modeVal == 1:
-            mode = "Kickoff Kiri"
-        elif modeVal == 2:
-            mode = "Kickoff Corner"
-        else:
-            mode = "Kickoff Kanan"
-        cv2.putText(
-                frmPanel, "Mode: "+mode, (5,80),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, [0,255,0], 2)  
+    second = 0
+    speed = 90
+    state = "START"
 
-        # TEXT OPSI
-        cv2.putText(
-                frmPanel, "Opsi: "+str(opsiVal), (5,110),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, [0,255,0], 2) 
+    # maju
+    motor.open()
+    setMotor(motor,speed,-speed,speed,-speed)
+    motor.close()
 
-        # TEXT CONTROL
-        if controlVal == 1:
-            control = "True"
-        else:
-            control = "False"
-        cv2.putText(
-                frmPanel, "Control: "+control, (5,140),
-                cv2.FONT_HERSHEY_SIMPLEX, 0.7, [0,255,0], 2) 
+    while(True):
+        #print(state)
+        second += 1
+        print(second)
+        for i in range(3):
+            FRONT_CAP.grab()
+            OMNI_CAP.grab()
+        ## read frame
+        _, frame1 = FRONT_CAP.read()
+        _, frame2 = OMNI_CAP.read()
+        
+        # convert frame from BGR to HSV
+        hsv = cv2.cvtColor(frame1, cv2.COLOR_BGR2HSV)
+        hsv1 = cv2.cvtColor(frame2, cv2.COLOR_BGR2HSV)
 
-        # show windows
-        window = np.concatenate((frame2, frame1), axis=0)
-        cv2.imshow(main_window, window)
-        cv2.imshow(control_window, frmPanel)
-        #cv2.moveWindow(window_name, 200,100 )
+        # blur the frame
+        blur = cv2.medianBlur(hsv, 5)
+        blur1 = cv2.medianBlur(hsv1, 5)
 
-        # conditioning
-        if opsiVal == 0 and engine == "START":
-            db_on(db)
+        # create a mask from blurred frame
+        BALL_MASK = cv2.inRange(blur, lowerBall, upperBall)
+        BALL_MASK1 = cv2.inRange(blur1, lowerBall, upperBall)
 
-        elif opsiVal == 0 and engine == "STOP":
-            db_off(db)
+        # convert to black and white image
+        _, BALL_THRESH = cv2.threshold(BALL_MASK, ballColor[6], 255, 0)
+        _, BALL_THRESH1 = cv2.threshold(BALL_MASK1, ballColor[6], 255, 0)
 
-        elif opsiVal == 1 and engine == "START":
-            geser(motor, -80)
-            sleep(delay)
-            maju(motor, 80)
-            sleep(delay)
-            berhenti(motor)
-            cv2.setTrackbarPos("State", control_window, 1)
-            cv2.setTrackbarPos("Opsi", control_window, 0)
+        # refine the image using morphological transformation
+        kernal = np.ones((5,5), np.uint8)
+        BALL_MORPH = cv2.morphologyEx(BALL_THRESH, cv2.MORPH_CLOSE, kernal, iterations = 2)
+        BALL_MORPH1 = cv2.morphologyEx(BALL_THRESH1, cv2.MORPH_CLOSE, kernal, iterations = 2)
 
-        elif opsiVal == 2 and engine == "START":
-            serongKiri(motor, 120)
-            sleep(delay)
-            maju(motor, 80)
-            sleep(delay)
-            berhenti(motor)
-            cv2.setTrackbarPos("State", control_window, 1)
-            cv2.setTrackbarPos("Opsi", control_window, 0)
+        # find contours
+        ballContours, _ = cv2.findContours(BALL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        ballContours = sorted(ballContours, key=lambda x:cv2.contourArea(x), reverse=True)
+        
+        ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
 
-        # cari bola
-        if state == "Cari Bola" and engine == "START" and control == "False":
-            if cenX2 >= 100 and cenX2 < 190 and cenY2 <= 50:
-                # bola di depan kanan
-                serongKanan(motor, 40)
+        if state == "FINISH"  or second > 12:
+            motor.open()
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            break
+         
+        for ballContour in ballContours:
+            ball_area = cv2.contourArea(ballContour)
+            if ball_area > 500:
+                (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
+                cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
+                cenX_ball = (x_ball+x_ball+w_ball)/2
+                cenY_ball = (y_ball+y_ball+h_ball)/2   
+                print(cenY_ball)
+                # draw actual coordinate from segmentation
+                cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+                cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
+                cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+                
+                motor.open()
+                if cenY_ball < Ybola :
+                    setMotor(motor, speed , -speed, speed, -speed)
+                    if cenX_ball > inner_right :
+                        setMotor(motor, speed + 10,-speed, speed, -speed -10)
+                    elif cenX_ball < inner_left :
+                        setMotor(motor, speed ,-speed -10,speed +10, -speed)
+                else :
+                    setMotor(motor,-50,50,-50,50)
+                    sleep(0.1)    
+                    setMotor(motor,0,0,0,0)
+                    sleep(0.1)
+                    state = "FINISH"
+                motor.close()
+                break
 
-            elif cenX2 > 193 and cenX2 <= 280 and cenY2 <= 50:
-                #bola di depan kiri
-                serongKiri(motor, 40)
+        # displays
+        ## uncomment this to show center area of the frame 1
+        cv2.rectangle(frame1, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
+        cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
+        #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
-            elif cenX2 >= 190 and cenX2 <= 193 and cenY2 <= 55:
-                maju(motor, 50)
-                db_on(db)
-
-            elif cenX2 >= 190 and cenX2 <= 193 and cenY2 > 55:
-                berhenti(motor)
-                db_off(db)
-
-        # tunggu bola
-        if state == "Tunggu Bola" and engine == "START" and control == "False":
-            if cenX2 >= 100 and cenX2 < 190 and cenY2 <= 50:
-                # bola di depan kanan
-                geser(motor, 40)
-
-            elif cenX2 > 193 and cenX2 <= 280 and cenY2 <= 50:
-                #bola di depan kiri
-                geser(motor, -40)
-
-            elif cenX2 >= 190 and cenX2 <= 193 and cenY2 <= 55:
-                berhenti(motor)
-                db_on(db)
-
-            elif cenX2 >= 190 and cenX2 <= 193 and cenY2 > 55:
-                berhenti(motor)
-                db_off(db)
-
-        if state == "Operan" and engine =="START" and control == "False":
-            if cenX2 < 180:
-                putar(motor, -25)
-            elif cenX2 > 200:
-                putar(motor, 25)
-            else:
-                berhenti(motor)
-                if cekBola == "0":
-                    tendang(db)
-                    sleep(1)
-
-        db.open()
-        cekBola = db.readline().decode('utf-8')
-        cekBola = cekBola[0:1]
-        db.close()
-
-        # keyboard control
-        k = cv2.waitKey(1)
+        cv2.imshow("Kamera Depan", frame1)
+        cv2.moveWindow("Kamera Depan" ,20,20)
+        
+        cv2.imshow("Kamra Atas", frame2)
+        cv2.moveWindow("Kamera Atas" ,0,0)
+        
+        #print(ballColor)
+        
+        k = cv2.waitKey(1) & 0xFF
         if k == 27:
-            cv2.destroyAllWindows
+            motor.open()
+            motor.write(b"#M|STP|0\n")
+            motor.close()
+            db.open()
+            db.write(b"DB OFF")
+            db.close()
+            FRONT_CAP.release()
+            OMNI_CAP.release()
+            cv2.destroyAllWindows()
             break
 
-        if controlVal == 0:
-            if k == ord('1'):
-                cv2.setTrackbarPos("State", control_window, 0)
-            elif k == ord('2'):
-                cv2.setTrackbarPos("State", control_window, 1)
-            elif k == ord('3'):
-                cv2.setTrackbarPos("State", control_window, 2)
-            elif k == ord('q') or k == ord('Q'):
-                cv2.setTrackbarPos("Engine", control_window, 0)
-            elif k == ord('w') or k == ord('W'):
-                cv2.setTrackbarPos("Engine", control_window, 1)
-            elif k == ord('e') or k == ord('E'):
-                cv2.setTrackbarPos("Engine", control_window, 2)
-            elif k == ord('a') or k == ord('A'):
-                cv2.setTrackbarPos("Mode", control_window, 0)
-            elif k == ord('s') or k == ord('S'):
-                cv2.setTrackbarPos("Mode", control_window, 1)
-            elif k == ord('d') or k == ord('D'):
-                cv2.setTrackbarPos("Mode", control_window, 2)
-            elif k == ord('x') or k == ord('X'):
-                cv2.setTrackbarPos("Control Mode", control_window, 1)
-
-        elif controlVal == 1:
-            if k == ord('z') or k == ord('Z'):
-                cv2.setTrackbarPos("Control Mode", control_window, 0)
-            elif k == ord('w') or k == ord('W'):
-                maju(motor, 80)               
-            elif k == ord('a') or k == ord('A'):
-                geser(motor, -80)
-            elif k == ord('s') or k == ord('S'):
-                mundur(motor, 80)
-            elif k == ord('d') or k == ord('D'):
-                geser(motor, 80)
-            elif k == ord('q') or k == ord('Q'):
-                serongKiri(motor, 80)
-            elif k == ord('e') or k == ord('E'):
-                serongKanan(motor, 80)
-            elif k == ord('j') or k == ord('J'):
-                putar(motor, 80)
-            elif k == ord('l') or k == ord('L'):
-                putar(motor, -80)
-            elif k == ord('i') or k == ord('I'):
-                tendang(db)
-            elif k == ord('k') or k == ord('K'):
-                passing(db)
-            elif k == ord('9'):
-                db_on(db)
-            elif k == ord('0'):
-                db_off(db)
-            elif k == 32:
-                berhenti(motor)
-                db_off(db)
-
-        #if cenX1 > 0 and cenX1 <= 220:
-        #    #pid = PID(cenX1, 240)
-        #    geser(motor, -40)
-        #elif cenX1 >= 260:
-        #    #pid = PID(cenX1, 240)
-        #    geser(motor, 40)
-        #elif cenX1 > 220 and cenX1 < 260:
-        #    maju(motor, 80)
-
-        #if cenY2 >= 57 and cenY2 < 65:
-        #    db_on(db)
-        #   berhenti(motor)
-
-        #if cenX1 == 0:
-        #    berhenti(motor)
-        #    db_off(db)
-
-        #print(cenY2)
+def main():
+    lurusArahBola()
 
 if __name__ == '__main__':
     # execute main program

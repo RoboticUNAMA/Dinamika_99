@@ -12,175 +12,67 @@ import datetime
 import serial
 from time import sleep
 
+class KalmanFilter:
+    kf = cv2.KalmanFilter(4, 2)
+    kf.measurementMatrix = np.array([[1, 0, 0, 0], [0, 1, 0, 0]], np.float32)
+    kf.transitionMatrix = np.array([[1, 0, 1, 0], [0, 1, 0, 1], [0, 0, 1, 0], [0, 0, 0, 1]], np.float32)
+    
+    def Estimate(self, coordX, coordY):
+        ''' This function estimates the position of the object'''
+        measured = np.array([[np.float32(coordX)], [np.float32(coordY)]])
+        self.kf.correct(measured)
+        predicted = self.kf.predict()
+        return predicted
 
-# initialize
-font = cv2.FONT_HERSHEY_SIMPLEX
-date = str(datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S"))
-FRONT_CAM = 1   # front camera
-OMNI_CAM = 0    # omni camera
-speed_awal = 100
+def getBallInfo():
+    infoFile = open("ballColor.txt","r")
+    info = []
+    for i in infoFile:
+        info.append(int(i))
+    return info
 
-# serial motor driver
-motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-
-# serial dribble
-db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
-
-def getObjectInfo(param):
-    if param == 1:
-        source = open('ballColor.txt','r')
-    elif param == 2:
-        source = open('ballColor1.txt', 'r')
-    elif param == 3:
-        source = open('goalColor.txt', 'r')
-
-    n = []
-    for i in source:
-        n.append(int(i))
-
-    lower = np.array([n[0],n[1],n[2]])
-    upper = np.array([n[3],n[4],n[5]])
-    threshold = n[6]
-    return lower, upper, threshold
-
-def imageProcessing(frame, lower, upper, threshold):
-    hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-
-    # blur the frame
-    blur = cv2.medianBlur(hsv, 5)
-
-    # create a mask from blurred frame
-    mask = cv2.inRange(blur, lower, upper)
-
-    # convert to black and white image
-    _, thresh = cv2.threshold(mask, threshold, 255, 0)
-
-    # refine the image using morphological transformation
-    kernal = np.ones((5,5), np.uint8)
-    morph = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernal, iterations = 2)
-
-    # find contours
-    contours, _ = cv2.findContours(morph, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-    contours = sorted(contours, key=lambda x:cv2.contourArea(x), reverse=True)
-    return contours
-
-def findObject(frame, contours, min_area):
-    area, x, y, w, h, cenX, cenY = 0,0,0,0,0,0,0
-    for contour in contours:
-        area = cv2.contourArea(contour)
-        if area > min_area:
-            (x, y, w, h) = cv2.boundingRect(contour)
-            #cv2.putText(frame, "X: "+str(x)+" Y: "+str(y), (520, 20), font, 0.5, (0,0,255),2)
-            cenX = (x+x+w)/2
-            cenY = (y+y+h)/2
-            break
-    return area, x, y, w, h, cenX, cenY
-
-def PID(centerObj, centerFrame):
-    Kp = 5.0
-    Kd = 5.0
-    Ki = 0.0
-    error = 0.0
-    error_sebelumnya = 0.0
-    selisih_error = 0.0
-    jumlah_error = 0.0
-    error = centerObj - centerFrame
-    error_sebelumnya = error
-    selisi_error = error_sebelumnya - error
-    jumlah_error += (0.001 * error)
-    P = Kp * error
-    I = Ki * selisih_error
-    D = Kd * jumlah_error
-    PID = P + I + D
-    PID = PID / 6
-    return PID
-
-def maju(motor, pid):
-    dki = -pid
-    dka = pid
-    bki = -pid
-    bka = pid
-    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-
-def mundur(motor, pid):
-    dki = pid
-    dka = -pid
-    bki = pid
-    bka = -pid
-    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-
-def geser(motor, pid):
-    dki = -pid
-    dka = -pid
-    bki = pid
-    bka = pid
-    motor.open()
-    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-    motor.close()
-
-def putarKiri(motor, pid):
-    dki = pid
-    dka = pid
-    bki = pid
-    bka = pid
-    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-
-def putarKanan(motor, pid):
-    dki = -pid
-    dka = -pid
-    bki = -pid
-    bka = -pid
-    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-
-def serongKiri(motor, pid):
-    dki = 0
-    dka = pid*2
-    bki = -pid*2
-    bka = 0
-    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-
-def serongKanan(motor, pid):
-    dki = -pid*2
-    dka = 0
-    bki = 0
-    bka = pid*2
-    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-
-def berhenti(motor):
-    dki = 0
-    dka = 0
-    bki = 0
-    bka = 0
-    motor.open()
-    motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|" + str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-    motor.close()
-
+def getGoalInfo():
+    infoFile = open("goalColor.txt","r")
+    info = []
+    for i in infoFile:
+        info.append(int(i))
+    return info
 
 def main():
     # serial motor driver
-    motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
-    motor.close()
+    motor = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 
     # serial dribble
-    #db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
+    db = serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=1)
+
+    # initialize
+    font = cv2.FONT_HERSHEY_SIMPLEX
+    date = str(datetime.datetime.now().strftime("%d-%m-%Y %H:%M:%S"))
+    FRONT_CAM = 0   # front camera
+    #OMNI_CAM = 1    # omni camera
 
     # create opencv video capture object
-    cap1 = cv2.VideoCapture(FRONT_CAM) 
-    cap2= cv2.VideoCapture(OMNI_CAM) 
+    FRONT_CAP = cv2.VideoCapture(FRONT_CAM) 
+    #OMNI_CAP = cv2.VideoCapture(OMNI_CAM)
+
     # set frame size
-    cap1.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
-    cap1.set(cv2.CAP_PROP_FRAME_HEIGHT, 270)
-    cap2.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
-    cap2.set(cv2.CAP_PROP_FRAME_HEIGHT, 270)
+    FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
+    FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 360)
+
+    #OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
+    #OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 400)
+
     # get center of the frame
-    _, frame1 = cap1.read()
-    rows1, cols1, _ = frame1.shape
-    cenX_frame1 = int(cols1/2)
-    cenY_frame1 = int(rows1/2)
-    _, frame2 = cap2.read()
-    rows2, cols2, _ = frame2.shape
-    cenX_frame2 = int(cols2/2)
-    cenY_frame2 = int(rows2/2)
+    _, frame1 = FRONT_CAP.read()
+    rows, cols, _ = frame1.shape
+    cenX_frame1 = int(cols/2)
+    cenY_frame1 = int(rows/2)
+
+    #_, frame2 = OMNI_CAP.read()
+    #rows, cols, _ = frame2.shape
+    #cenX_frame2 = int(cols/2)
+    #cenY_frame2 = int(rows/2)
+
     # define center area of the frame 1
     inner_left = cenX_frame1 - 100
     outer_left = cenX_frame1 - 225 
@@ -191,128 +83,137 @@ def main():
     inner_bottom = cenY_frame1 + 100
     outer_bottom = cenY_frame1 + 150
 
-    # read object 
-    lBall1, uBall1, thBall1 = getObjectInfo(1) # param 1 = ball, param 2 = goal
-    lBall2, uBall2, thBall2 = getObjectInfo(2) # param 1 = ball, param 2 = goal
+    ballColor = getBallInfo()
+    goalColor = getGoalInfo()
+    kfObj = KalmanFilter()
+    predictedCoords = np.zeros((2,1), np.float32)
 
     wait = 0
-    state = "TUNGGU BOLA"
-
-    #serongKiri()
-    #sleep(1)
-    #serongKiri()
-    #sleep(3.5)
-    #db.write(b"DB ON\n")
-    #berhenti()
 
     while(True):
-        # read frame
-        _, frame1 = cap1.read()
-        _, frame2 = cap2.read()
+        ## read frame
+        _, frame1 = FRONT_CAP.read()
+        #_, frame2 = OMNI_CAP.read()
 
-        
-        ballContours1 = imageProcessing(frame1, lBall1, uBall1, thBall1)
-        ballContours2 = imageProcessing(frame2, lBall2, uBall2, thBall2)
+        # read ball color
+        lowerBall = np.array([ballColor[0],ballColor[1],ballColor[2]])
+        upperBall = np.array([ballColor[3],ballColor[4],ballColor[5]])
+        lowerGoal = np.array([goalColor[0],goalColor[1],goalColor[2]])
+        upperGoal = np.array([goalColor[3],goalColor[4],goalColor[5]])    
 
-        ball_area1, x_ball1, y_ball1, w_ball1, h_ball1, cenX_ball1, cenY_ball1 = findObject(frame1, ballContours1, 500)
-        ball_area2, x_ball2, y_ball2, w_ball2, h_ball2, cenX_ball2, cenY_ball2 = findObject(frame2, ballContours2, 10)
-       
-        # draw actual coordinate from segmentation
-        if cenX_ball1 > 0 and cenY_ball1 > 0:
-            cv2.circle(frame1, (int(cenX_ball1), int(cenY_ball1)), 20, [0,255,0], 2, 8)
-            cv2.line(frame1, (int(cenX_ball1), int(cenY_ball1 + 20)), (int(cenX_ball1 + 50), int(cenY_ball1 + 20)), [0,255,0], 2, 8)
-            cv2.putText(frame1, "Actual", (int(cenX_ball1 + 50), int(cenY_ball1 + 20)), font, 0.5, [0,255,0], 2)
-        if cenX_ball2 > 0 and cenY_ball2 > 0:
-            cv2.circle(frame2, (int(cenX_ball2), int(cenY_ball2)), 20, [0,255,0], 2, 8)
-            cv2.line(frame2, (int(cenX_ball2), int(cenY_ball2 + 20)), (int(cenX_ball2 + 50), int(cenY_ball2 + 20)), [0,255,0], 2, 8)
-            cv2.putText(frame2, "Actual", (int(cenX_ball2 + 50), int(cenY_ball2 + 20)), font, 0.5, [0,255,0], 2)
+        # convert frame from BGR to HSV
+        hsv = cv2.cvtColor(frame1, cv2.COLOR_BGR2HSV)
 
-        # navigasi
-        if state == "CARI BOLA" and cenX_ball2 > 0 and cenY_ball2 > 0:
-            #print(cenY_ball2)
-            if cenY_ball2 < 120:
+        # blur the frame
+        blur = cv2.medianBlur(hsv, 5)
+
+        # create a mask from blurred frame
+        BALL_MASK = cv2.inRange(blur, lowerBall, upperBall)
+        GOAL_MASK = cv2.inRange(blur, lowerGoal, upperGoal)
+
+        # convert to black and white image
+        _, BALL_THRESH = cv2.threshold(BALL_MASK, ballColor[6], 255, 0)
+        _, GOAL_THRESH = cv2.threshold(GOAL_MASK, goalColor[6], 255, 0)
+
+        # refine the image using morphological transformation
+        kernal = np.ones((5,5), np.uint8)
+        BALL_MORPH = cv2.morphologyEx(BALL_THRESH, cv2.MORPH_CLOSE, kernal, iterations = 2)
+        GOAL_MORPH = cv2.morphologyEx(GOAL_THRESH, cv2.MORPH_CLOSE, kernal, iterations = 2)
+
+        # find contours
+        ballContours, _ = cv2.findContours(BALL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        ballContours = sorted(ballContours, key=lambda x:cv2.contourArea(x), reverse=True)
+
+        goalContours, _ = cv2.findContours(GOAL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        goalContours = sorted(goalContours, key=lambda x:cv2.contourArea(x), reverse=True)
+
+        for ballContour in ballContours:
+            ball_area = cv2.contourArea(ballContour)
+            if ball_area > 500:
+                (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
+                cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
+                cenX_ball = (x_ball+x_ball+w_ball)/2
+                cenY_ball = (y_ball+y_ball+h_ball)/2
+                predicted = kfObj.Estimate(cenX_ball, cenY_ball)
+
+                # draw actual coordinate from segmentation
+                cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+                cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
+                cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+
+                # Draw Kalman Filter Predicted output
+                #cv2.circle(frame1, (predictedCoords[0], predictedCoords[1]), 20, [255,0,0], 2, 8)
+                #cv2.line(frame1, 
+                        #(predictedCoords[0] + 16, predictedCoords[1] - 15), 
+                        #(predictedCoords[0] + 50, predictedCoords[1] - 30),
+                        #[255, 0, 0], 2, 8)
+                #cv2.putText(frame1,
+                        #"Predicted", 
+                        #(int(predictedCoords[0] + 50),
+                        #int(predictedCoords[1] - 30)), 
+                        #font, 0.5, [255, 0, 0], 2)
+
+                # ada bola, mulai hitung
                 wait = 10
-                if cenX_ball2 <= 180:
-                    # bola di kanan robot
-                    pid = PID(cenX_ball2, 190)
-                    #print("Kanan: "+str(pid))
-                    if pid > 0 and pid < 32 or pid > -32 and pid < 0:
-                        pid = 0
-                        state = "ADA BOLA"
-                    #putarKanan(pid) 
-                elif cenX_ball2 >= 200:
+
+                # kirim serial aktifkan dribble
+                db.write(b"DB ON\n")
+
+                if cenX_ball > inner_left and cenX_ball < inner_right:
+                    # bola di depan robot
+                    # kirim serial maju
+                    motor.write(b"MAJU\n")
+                    print("DEPAN")
+                    
+                elif cenX_ball < inner_left and cenX_ball < inner_right:
                     # bola di kiri robot
-                    pid = PID(cenX_ball2, 190)
-                    #print("Kiri: "+str(pid))
-                    if pid > 0 and pid < 32 or pid > -32 and pid < 0:
-                        pid = 0
-                        state = "ADA BOLA"
-                    #putarKiri(pid)
-                elif cenX_ball2 > 180 and cenX_ball2 < 200:
-                    # motor maju
-                    #db.write(b"DB ON\n")
-                    #maju(100)
-                    pass
+                    # kirim serial putar kiri
+                    motor.write(b"BELOK KIRI\n")
+                    print("KIRI")
+                    
+                elif cenX_ball > inner_left and cenX_ball > inner_right:
+                    # bola di kanan robot
+                    # kirim serial putar kanan
+                    motor.write(b"BELOK KANAN\n")
+                    print("KANAN")
+                break
 
-        elif state == "ADA BOLA" and cenX_ball1 > 0 and cenY_ball1 > 0:
-            if cenY_ball1 > 0 and cenY_ball1 < 210:
-                # motor maju
-                #maju(100)
-                wait = 10
-            else:
-                berhenti()
-                state = "CARI BOLA"
+        for goalContour in goalContours:
+            goal_area = cv2.contourArea(goalContour)
+            if goal_area > 500:
+                (x_goal, y_goal, w_goal, h_goal) = cv2.boundingRect(goalContour)
+                cenX_goal = (x_goal+x_goal+w_goal)/2
+                cenY_goal = (y_goal+y_goal+h_goal)/2
+                #predicted = kfObj.Estimate(cenX, cenY)
 
-        elif state == "TUNGGU BOLA" and cenX_ball1 > 0 and cenX_ball2 > 0 and wait <= 0:
-            wait = 10
-            if cenX_ball1 < 200:
-                # bola di kiri robot
-                pid = PID(cenX_ball1, 230)
-                print("Kiri: "+str(pid))
-                #geser(motor,pid-(pid*0.5))
-                geser(motor, -60)
-
-            elif cenX_ball1 > 260:
-                # bola di kanan robot
-                pid = PID(cenX_ball1, 230)
-                print("Kanan: "+str(pid))
-                #geser(motor,pid-(pid*0.5))
-                geser(motor, 60)
-            elif cenX_ball1 > 200 and cenX_ball1 < 260:
-                print("Bola Tepat di Depan Robot")
-                #db.write(b"DB ON\n")
-                berhenti(motor)
-
-        print(state)
-
-        if state != "CARI BOLA" and wait <= 0:
-            print("TIDAK ADA BOLA")
-            #state = "CARI BOLA"
+                # draw actual coordinate from segmentation
+                cv2.rectangle(frame1, (x_goal, y_goal), ((x_goal+w_goal),(y_goal+h_goal)), [255,0,0], 2)
+                cv2.putText(frame1, "Gawang", (x_goal, y_goal), font, 0.5, [0,255,0], 2)
+                break
+ 
+        wait -= 1
+        if wait <= 0:
+            wait = 0
             # bola hilang
             # kirim serial matikan dribble dan motor
-            #db.write(b"DB OFF\n")
-            berhenti(motor)
-
-        wait -= 1
+            motor.write(b"BERHENTI\n")
+            db.write(b"DB OFF\n")
 
         # displays
 
         ## uncomment this to show center area of the frame 1
-        #cv2.rectangle(frame1, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
-        #cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
+        cv2.rectangle(frame1, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
+        cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
 
-        cv2.imshow("Cam2", frame2)
-        cv2.imshow("Cam1", frame1)
-        cv2.moveWindow("Cam1", 0,0)
-        cv2.moveWindow("Cam2", 500,0)
-
+        #cv2.imshow("Morph", BALL_MORPH)
+        cv2.imshow("Frame", frame1)
+        #print(ballColor)
 
         k = cv2.waitKey(1) & 0xFF
         if k == 27:
-            berhenti(motor) 
-            #db.write(b"DB OFF")
-            cap1.release()
-            cap2.release()
+            motor.write(b"BERHENTI")
+            db.write(b"DB OFF")
+            FRONT_CAP.release()
             cv2.destroyAllWindows()
             break
 

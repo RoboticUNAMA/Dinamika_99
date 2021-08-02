@@ -10,7 +10,7 @@ import cv2
 import numpy as np
 
 obj_name = "gawang"
-file_color = "goalColor.txt"
+file_color = "cyanColor.txt"
 img = 'gawang.jpg'
 
 def nothing(x):
@@ -40,7 +40,7 @@ def setInfo(LOW_H, LOW_S, LOW_V, UPP_H, UPP_S, UPP_V, TH):
     else:
         print("Data warna", obj_name, "tidak di simpan")
 
-FRONT_CAM = 1
+FRONT_CAM = 0
 OMNI_CAM = 0
 
 window_name = obj_name
