@@ -436,17 +436,7 @@ def arahRobotDepan():
             setMotor(motor,0,0,0,0)
             motor.close()
             cv2.destroyAllWindows()
-            break
-
-        if db.isOpen() == False:
-            db.open()
-        reading = db.readline().decode('utf-8','ignore')
-        if len(reading) > 0 :
-            head = reading[0:5]
-            if  head == "Tidak" :
-                print("TIDAK DAPAT BOLA")
-                arahBolaDepan()
-                break    
+            break  
          
         pas = 0
 
@@ -483,7 +473,6 @@ def arahRobotDepan():
                         sleep(0.1)
                         setMotor(motor,0,0,0,0)
                         dari = "tengah"
-
 
                 if dari == "tengah":
                     state = "FINISH"
@@ -667,7 +656,7 @@ def mulaiSerongKiri():
             cv2.destroyAllWindows()
             break
 
-def lurusArahBola(Ybola):
+def lurusArahBola():
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
     rows, cols, _ = frame1.shape
@@ -776,13 +765,12 @@ def lurusArahBola(Ybola):
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenY_ball < Ybola:
-                    if cenX_ball > 0 and cenX_ball < 150  :
-                        setMotor(motor,28,28,28,28)
-                    elif cenX_ball > 250:
-                        setMotor(motor,-28,-28,-28,-28)
-                    else:
-                        setMotor(motor,-50,50,-50,50)
+                if cenX_ball > 0 and cenX_ball < 150:
+                    setMotor(motor,28,28,28,28)
+                elif cenX_ball > 250:
+                    setMotor(motor,-28,-28,-28,-28)
+                else:
+                    setMotor(motor,-50,50,-50,50)
                 break
         
         if state == "FINISH" and pas == 1: 
