@@ -300,35 +300,40 @@ def arahRobotDepan():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > 0 and cenX_ball < 50  :
+                if cenX_ball > 0 and cenX_ball < 190  :
                     # kiri robot
                     #print("KIRI JAUH")
                     setMotor(motor,-30,-30,-30,-30)
-                    
-                elif cenX_ball > 300  :
-                    # kanan robot
-                    #print("KANAN JAUH")
+                elif cenX_ball > 210:
+                #     #print("KANAN JAUH")
                     setMotor(motor,30,30,30,30)
+                else:
+                    setMotor(motor,0,0,0,0)
                     
-                elif cenX_ball > 50 and cenX_ball < 150  :
-                    #print("KIRI DEKAT")
-                    setMotor(motor,35,35,35,35)
-                    sleep(0.1)
-                    setMotor(motor,0,0,0,0)
-                    dari = "kanan"
-                    #print("PUTAR KANAN")
+                # elif cenX_ball > 300  :
+                #     # kanan robot
+                #     #print("KANAN JAUH")
+                #     setMotor(motor,30,30,30,30)
+                    
+                # elif cenX_ball > 50 and cenX_ball < 150  :
+                #     #print("KIRI DEKAT")
+                #     setMotor(motor,-35,-35,-35,-35)
+                #     sleep(0.1)
+                #     setMotor(motor,0,0,0,0)
+                #     dari = "kanan"
+                #     #print("PUTAR KANAN")
                 
-                elif cenX_ball > 250 :
-                    #print("KANAN DEKAT")
-                    setMotor(motor,-35,-35,-35,-35)
-                    sleep(0.1)
-                    setMotor(motor,0,0,0,0)
-                    dari = "kiri"
-                    #print("PUTAR KIRI")
-                elif cenX_ball > 150 and cenX_ball < 250:
-                    pas = 1
-                elif cenX_ball <= 0:
-                    setMotor(motor, 0,0,0,0)
+                # elif cenX_ball > 250 :
+                #     #print("KANAN DEKAT")
+                #     setMotor(motor,35,35,35,35)
+                #     sleep(0.1)
+                #     setMotor(motor,0,0,0,0)
+                #     dari = "kiri"
+                #     #print("PUTAR KIRI")
+                # elif cenX_ball > 150 and cenX_ball < 250:
+                #     pas = 1
+                # elif cenX_ball <= 0:
+                #     setMotor(motor, 0,0,0,0)
                 break
         
         if state == "FINISH" and pas == 1: 
@@ -336,15 +341,15 @@ def arahRobotDepan():
             motor.close()
             break        
             
-        if ada == 0 :
-            if dari == "kanan" :
-                setMotor(motor,35,35,35,35)
-                sleep(0.1)
-                setMotor(motor,20,20,20,20)
-            else :
-                setMotor(motor,-35,-35,-35,-35)
-                sleep(0.1)
-                setMotor(motor,-20,-20,-20,-20)
+        # if ada == 0 :
+        #     if dari == "kanan" :
+        #         setMotor(motor,35,35,35,35)
+        #         sleep(0.1)
+        #         setMotor(motor,20,20,20,20)
+        #     else :
+        #         setMotor(motor,-35,-35,-35,-35)
+        #         sleep(0.1)
+        #         setMotor(motor,-20,-20,-20,-20)
 
         # displays
         ## uncomment this to show center area of the frame 1
