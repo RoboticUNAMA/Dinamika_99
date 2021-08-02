@@ -723,7 +723,7 @@ def lurusArahBola(Ybola):
     second = 0
     startCount = 10
     count = startCount
-    speed = 100
+    speed = 80
     state = "START"
 
     dribbling(db,1)
@@ -811,10 +811,10 @@ def lurusArahBola(Ybola):
                     setMotor(motor,-speed ,speed,-speed,speed)
                 
                     if cenX_ball > inner_right :
-                        setMotor(motor,speed + 10,-speed,speed,-speed -10)
+                        setMotor(motor,-speed - 10,speed,-speed,speed + 10)
                         
                     elif cenX_ball < inner_left :
-                        setMotor(motor,speed ,-speed -10,speed +10,-speed)
+                        setMotor(motor,-speed ,speed +10,-speed -10,speed)
                 else :
                     setMotor(motor,50,-50,50,-50)
                     sleep(0.1)    
