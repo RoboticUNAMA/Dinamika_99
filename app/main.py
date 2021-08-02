@@ -729,8 +729,6 @@ def lurusArahBola(Ybola):
     dribbling(db,1)
     db.flush()
 
-    setMotor(motor, 0,speed,-speed,0) # serong kiri
-
     while(True):
         if count <= 0:
             motor.close()
