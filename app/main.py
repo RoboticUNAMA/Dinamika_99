@@ -320,32 +320,6 @@ def arahBolaDepan():
                         sleep(0.1)
                         setMotor(motor,0,0,0,0)
                         dari = "tengah"
-                    
-                    
-                # elif cenX_ball > 300  :
-                #     # kanan robot
-                #     #print("KANAN JAUH")
-                #     setMotor(motor,30,30,30,30)
-                    
-                # elif cenX_ball > 50 and cenX_ball < 150  :
-                #     #print("KIRI DEKAT")
-                #     setMotor(motor,-35,-35,-35,-35)
-                #     sleep(0.1)
-                #     setMotor(motor,0,0,0,0)
-                #     dari = "kanan"
-                #     #print("PUTAR KANAN")
-                
-                # elif cenX_ball > 250 :
-                #     #print("KANAN DEKAT")
-                #     setMotor(motor,35,35,35,35)
-                #     sleep(0.1)
-                #     setMotor(motor,0,0,0,0)
-                #     dari = "kiri"
-                #     #print("PUTAR KIRI")
-                # elif cenX_ball > 150 and cenX_ball < 250:
-                #     pas = 1
-                # elif cenX_ball <= 0:
-                #     setMotor(motor, 0,0,0,0)
                 break
         
         if state == "FINISH" and pas == 1: 
@@ -723,7 +697,7 @@ def lurusArahBola(Ybola):
     second = 0
     startCount = 10
     count = startCount
-    speed = 50
+    speed = 60
     state = "START"
 
     dribbling(db,1)
@@ -785,14 +759,9 @@ def lurusArahBola(Ybola):
             head = reading[0:5]
             if  head == "Dapat" :
                 print("DAPAT BOLA")
-                setMotor(motor,0,0,0,0)
-                break    
+                state = "FINISH"    
          
         pas = 0
-
-        if state == "FINISH"  or second > 25: 
-            setMotor(motor,0,0,0,0)
-            break
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
@@ -807,20 +776,36 @@ def lurusArahBola(Ybola):
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenY_ball < Ybola :
-                    setMotor(motor,-speed ,speed,-speed,speed)
-                
-                    if cenX_ball > inner_right :
-                        setMotor(motor, 28,28,28,28) # motor geser kanan
-                        
-                    elif cenX_ball < inner_left :
-                        setMotor(motor, -28,-28,-28,-28) # motor geser kiri
-                else :
-                    setMotor(motor,50,-50,50,-50)
-                    sleep(0.1)    
-                    setMotor(motor,0,0,0,0)
-                    sleep(0.1)
-                    state = "FINISH"
+                if cenX_ball > 0 and cenX_ball < 150  :
+                    # kiri robot
+                    #print("KIRI JAUH")
+                    dari = "kiri"
+                    setMotor(motor,28,28,28,28)
+                elif cenX_ball > 250:
+                #     #print("KANAN JAUH")
+                    dari = "kanan"
+                    setMotor(motor,-28,-28,-28,-28)
+                else:
+                    if dari == "kanan" :
+                        setMotor(motor,30,30,30,30)
+                        sleep(0.1)
+                        setMotor(motor,0,0,0,0)
+                        dari = "tengah"
+                    else :
+                        setMotor(motor,-30,-30,-30,-30)
+                        sleep(0.1)
+                        setMotor(motor,0,0,0,0)
+                        dari = "tengah"
+
+                if dari == "tengah":
+                    setMotor(motor,-60,60,-60,60)
+                break
+        
+        if state == "FINISH" and pas == 1: 
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break        
 
         # displays
         ## uncomment this to show center area of the frame 1
