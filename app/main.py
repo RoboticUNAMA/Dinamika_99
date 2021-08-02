@@ -158,7 +158,7 @@ def putarDerajat(derajat_tujuan, dribble) :
             
                     setMotor(motor,speed,speed,speed,speed)
                     sleep(0.1)
-                    setMotor(motor,20,20,20,20)
+                    setMotor(motor,0,0,0,0)
                  
                     if clb > 1 : 
                         state = "FINISH"
@@ -172,7 +172,7 @@ def putarDerajat(derajat_tujuan, dribble) :
                         
                     setMotor(motor,speed,speed,speed,speed)
                     sleep(0.1)
-                    setMotor(motor,20,20,20,20)
+                    setMotor(motor,0,0,0,0)
                    
                 elif selisihabs < 70 :
                     if speed > 0 :
@@ -478,11 +478,13 @@ def main():
     putarDerajat(87,0)
     putarDerajat(97,0)
     setMotor(motor, -80,80,-80,80) # motor maju
-    sleep(1.5)
+    sleep(1.7)
     setMotor(motor, 50,-50,50,-50) # REM maju
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
-        
+
+    terimaBola()
+
 if __name__ == '__main__':
     # execute main program
     main()
