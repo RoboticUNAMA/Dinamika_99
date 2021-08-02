@@ -532,7 +532,13 @@ def main():
     # arahRobotDepan()
     # putarDerajat(97,0)
     tendang(db)
-    # sleep(1)
+    sleep(1)
+    tendang(db)
+    sleep(1)
+    tendang(db)
+    sleep(1)
+    tendang(db)
+    sleep(1)
 
 if __name__ == '__main__':
     # execute main program
