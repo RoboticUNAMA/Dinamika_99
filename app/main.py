@@ -310,13 +310,13 @@ def arahBolaDepan():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball < 100  :
-                    setMotor(motor,30,30,30,30)
+                    setMotor(motor,28,28,28,28)
                     
                 elif cenX_ball > 300  :
-                    setMotor(motor,-30,-30,-30,-30)
+                    setMotor(motor,-28,-28,-28,-28)
                     
                 elif cenX_ball < 180  :
-                    setMotor(motor,35,35,35,35)
+                    setMotor(motor,28,28,28,28)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
@@ -324,7 +324,7 @@ def arahBolaDepan():
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 220 :
-                    setMotor(motor,-35,-35,-35,-35)
+                    setMotor(motor,-28,-28,-28,-28)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
@@ -480,13 +480,13 @@ def arahRobotDepan():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball < 100  :
-                    setMotor(motor,30,30,30,30)
+                    setMotor(motor,28,28,28,28)
                     
                 elif cenX_ball > 300  :
-                    setMotor(motor,-30,-30,-30,-30)
+                    setMotor(motor,-28,-28,-28,-28)
                     
                 elif cenX_ball < 180  :
-                    setMotor(motor,35,35,35,35)
+                    setMotor(motor,28,28,28,28)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
@@ -494,7 +494,7 @@ def arahRobotDepan():
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 220 :
-                    setMotor(motor,-35,-35,-35,-35)
+                    setMotor(motor,-28,-28,-28,-28)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
