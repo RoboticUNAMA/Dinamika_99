@@ -676,13 +676,13 @@ def lurusBolaAtas():
     cenY_frame2 = int(rows1/2)
     
     inner_left = cenX_frame2 - 120
-    outer_left = cenX_frame2 - 200 
+    outer_left = cenX_frame2 - 170 
     inner_right = cenX_frame2 + 55
-    outer_right = cenX_frame2 + 150
-    inner_top = cenY_frame2 - 90
+    outer_right = cenX_frame2 + 105
+    inner_top = cenY_frame2 - 100
     outer_top = cenY_frame2 - 120
-    inner_bottom = cenY_frame2 + 50
-    outer_bottom = cenY_frame2 + 100
+    inner_bottom = cenY_frame2 + 40
+    outer_bottom = cenY_frame2 + 80
 
     # read magenta color
     objColor = getBallInfo2()
