@@ -761,7 +761,7 @@ def lurusBolaAtas():
 
         for ballContour in ballContours1:
             ball_area = cv2.contourArea(ballContour)
-            if ball_area > 500:
+            if ball_area > 10:
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame2, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
                 cenX_ball = (x_ball+x_ball+w_ball)/2
@@ -795,7 +795,7 @@ def lurusBolaAtas():
         #cv2.imshow("Kamera Depan", frame1)
         #cv2.moveWindow("Kamera Depan" ,20,20)
         
-        cv2.imshow("Kamra Atas", frame2)
+        cv2.imshow("Kamera Atas", frame2)
         cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
