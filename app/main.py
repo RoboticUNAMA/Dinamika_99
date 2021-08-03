@@ -892,7 +892,6 @@ def main():
         arahBolaDepan()
 
         putarDerajat(86.5, 1)
-        putarDerajat(86.5, 0)
 
         sleep(10)
         arahRobotDepan()
