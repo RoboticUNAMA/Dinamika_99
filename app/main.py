@@ -675,14 +675,14 @@ def lurusBolaAtas():
     cenX_frame2 = int(cols1/2)
     cenY_frame2 = int(rows1/2)
     
-    inner_left = cenX_frame2 - 100
-    outer_left = cenX_frame2 - 250 
-    inner_right = cenX_frame2 + 100
-    outer_right = cenX_frame2 + 250
-    inner_top = cenY_frame2 - 100
-    outer_top = cenY_frame2 - 150
-    inner_bottom = cenY_frame2 + 100
-    outer_bottom = cenY_frame2 + 150
+    inner_left = cenX_frame2 - 150
+    outer_left = cenX_frame2 - 200 
+    inner_right = cenX_frame2 + 50
+    outer_right = cenX_frame2 + 150
+    inner_top = cenY_frame2 - 50
+    outer_top = cenY_frame2 - 100
+    inner_bottom = cenY_frame2 + 50
+    outer_bottom = cenY_frame2 + 100
 
     # read magenta color
     objColor = getBallInfo2()
@@ -772,12 +772,19 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                # if cenX_ball > 0 and cenX_ball < 150:
-                #     setMotor(motor,28,28,28,28)
-                # elif cenX_ball > 250:
-                #     setMotor(motor,-28,-28,-28,-28)
-                # else:
-                #     setMotor(motor,-50,50,-50,50)
+                if cenX_ball > 0 and cenX_ball < 189:
+                    setMotor(motor,-28,-28,-28,-28)
+                    print("Kanan")
+                elif cenX_ball > 289:
+                    setMotor(motor,28,28,28,28)
+                    print("Kiri")
+                else:
+                    if cenY_ball < 69:
+                        setMotor(motor,-50,50,-50,50)
+                        print("Maju")
+                    else:
+                        setMotor(motor,0,0,0,0)
+                        print("Stop")
                 break
         
         # if state == "FINISH" and pas == 1: 
