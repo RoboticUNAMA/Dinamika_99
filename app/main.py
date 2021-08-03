@@ -893,7 +893,8 @@ def main():
 
         putarDerajat(86.5, 1)
 
-        sleep(10)
+        sleep(15) # delay oper
+
         arahRobotDepan()
 
         # === init tendang
@@ -937,7 +938,7 @@ def main():
         sleep(0.2)
 
         setMotor(motor, 80,-80,80,-80) # motor mundur
-        sleep(1.5)
+        sleep(1.4)
         setMotor(motor, -50,50,-50,50) # rem mundur
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
