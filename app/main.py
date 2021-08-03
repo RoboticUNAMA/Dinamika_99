@@ -681,7 +681,7 @@ def lurusBolaAtas():
     outer_right = cenX_frame2 + 105
     inner_top = cenY_frame2 - 100
     outer_top = cenY_frame2 - 120
-    inner_bottom = cenY_frame2 + 40
+    inner_bottom = cenY_frame2 + 55
     outer_bottom = cenY_frame2 + 80
 
     # read magenta color
