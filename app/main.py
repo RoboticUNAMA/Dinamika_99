@@ -675,7 +675,7 @@ def lurusBolaAtas():
     cenX_frame2 = int(cols1/2)
     cenY_frame2 = int(rows1/2)
     
-    inner_left = cenX_frame2 - 100
+    inner_left = cenX_frame2 - 120
     outer_left = cenX_frame2 - 200 
     inner_right = cenX_frame2 + 50
     outer_right = cenX_frame2 + 150
