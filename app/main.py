@@ -318,14 +318,14 @@ def arahBolaDepan():
                 elif cenX_ball < 190  :
                     setMotor(motor,35,35,35,35)
                     sleep(0.1)
-                    setMotor(motor,0,0,0,0)
+                    setMotor(motor,-20,-20,-20,-20)
                     dari = "kanan"
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 210 :
                     setMotor(motor,-35,-35,-35,-35)
                     sleep(0.1)
-                    setMotor(motor,0,0,0,0)
+                    setMotor(motor,20,20,20,20)
                     dari = "kiri"
                     print("PUTAR KIRI")
                 else :
@@ -342,11 +342,11 @@ def arahBolaDepan():
             if dari == "kanan" :
                 setMotor(motor,-35,-35,-35,-35)
                 sleep(0.1)
-                setMotor(motor,-20,-20,-20,-20)
+                setMotor(motor,20,20,20,20)
             else :
                 setMotor(motor,35,35,35,35)
                 sleep(0.1)
-                setMotor(motor,20,20,20,20)  
+                setMotor(motor,-20,-20,-20,-20)  
 
         # displays
         ## uncomment this to show center area of the frame 1
