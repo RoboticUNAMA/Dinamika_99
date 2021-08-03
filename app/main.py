@@ -893,7 +893,7 @@ def main():
 
         putarDerajat(86.5, 1)
 
-        sleep(8)
+        sleep(10)
         arahRobotDepan()
 
         # === init tendang
