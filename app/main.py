@@ -884,7 +884,7 @@ def main():
         putarDerajat(99,1)
 
         setMotor(motor, -80,80,-80,80) # motor maju
-        sleep(2)
+        sleep(2.5)
         setMotor(motor, 50,-50,50,-50) # rem maju
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
@@ -917,7 +917,7 @@ def main():
         arahBolaDepan()
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-        sleep(0.5) 
+        sleep(0.55) 
         setMotor(motor, 50,50,50,50) # rem putar kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
