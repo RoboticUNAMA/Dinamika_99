@@ -343,14 +343,14 @@ def arahBolaDepan():
         if ada == 0 :
             if dari == "kanan" :
                 setMotor(motor,-35,-35,-35,-35)
-                # sleep(0.1)
-                # setMotor(motor,0,0,0,0)
-                #dari = ""
+                sleep(0.1)
+                setMotor(motor,0,0,0,0)
+                dari = ""
             else :
                 setMotor(motor,35,35,35,35)
-                # sleep(0.1)
-                # setMotor(motor,0,0,0,0) 
-                # dari = "" 
+                sleep(0.1)
+                setMotor(motor,0,0,0,0) 
+                dari = "" 
 
         # displays
         ## uncomment this to show center area of the frame 1
