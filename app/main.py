@@ -893,7 +893,7 @@ def main():
 
         putarDerajat(86.5, 1)
 
-        sleep(6)
+        #sleep(6)
         arahRobotDepan()
 
         # === init tendang
@@ -917,7 +917,7 @@ def main():
         arahBolaDepan()
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-        sleep(0.55) 
+        sleep(0.6) 
         setMotor(motor, 50,50,50,50) # rem putar kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
