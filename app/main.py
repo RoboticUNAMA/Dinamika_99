@@ -995,7 +995,7 @@ def main():
         setMotor(motor, 0,0,0,0)
 
     elif mode == 0:
-        lurusBolaAtas()
+        arahRobotDepan()
 
 
 if __name__ == '__main__':
