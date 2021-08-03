@@ -892,9 +892,10 @@ def main():
         arahBolaDepan()
 
         putarDerajat(86.5, 1)
-
+        db.write(b"DB OFF")
         sleep(10)
         arahRobotDepan()
+        db.write(b"DB OFF")
         sleep(10)
         arahRobotDepan()
 
