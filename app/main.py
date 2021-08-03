@@ -789,7 +789,7 @@ def lurusBolaAtas():
         # displays
         ## uncomment this to show center area of the frame 1
         cv2.rectangle(frame2, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
-        cv2.rectangle(frame2 (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
+        cv2.rectangle(frame2, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
         #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
         #cv2.imshow("Kamera Depan", frame1)
