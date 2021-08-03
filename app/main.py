@@ -293,10 +293,12 @@ def arahBolaDepan():
                 state = "FINISH"    
          
         pas = 0
+        ada = 0
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
             if ball_area > 500:
+                ada = 1
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
                 cenX_ball = (x_ball+x_ball+w_ball)/2
@@ -307,33 +309,44 @@ def arahBolaDepan():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > 0 and cenX_ball < 150  :
-                    # kiri robot
-                    #print("KIRI JAUH")
-                    dari = "kiri"
-                    setMotor(motor,28,28,28,28)
-                elif cenX_ball > 250:
-                #     #print("KANAN JAUH")
+                if cenX_ball < 150  :
+                    setMotor(motor,30,30,30,30)
+                    
+                elif cenX_ball > 250  :
+                    setMotor(motor,-30,-30,-30,-30)
+                    
+                elif cenX_ball < 190  :
+                    setMotor(motor,35,35,35,35)
+                    sleep(0.1)
+                    setMotor(motor,0,0,0,0)
                     dari = "kanan"
-                    setMotor(motor,-28,-28,-28,-28)
-                else:
-                    if dari == "kanan" :
-                        setMotor(motor,30,30,30,30)
-                        sleep(0.1)
-                        setMotor(motor,0,0,0,0)
-                        dari = "tengah"
-                    else :
-                        setMotor(motor,-30,-30,-30,-30)
-                        sleep(0.1)
-                        setMotor(motor,0,0,0,0)
-                        dari = "tengah"
+                    print("PUTAR KANAN")
+                
+                elif cenX_ball > 210 :
+                    setMotor(motor,-35,-35,-35,-35)
+                    sleep(0.1)
+                    setMotor(motor,0,0,0,0)
+                    dari = "kiri"
+                    print("PUTAR KIRI")
+                else :
+                    pas = 1
                 break
         
         if state == "FINISH" and pas == 1: 
             setMotor(motor,0,0,0,0)
             motor.close()
             cv2.destroyAllWindows()
-            break        
+            break   
+
+        if ada == 0 :
+            if dari == "kanan" :
+                setMotor(motor,-35,-35,-35,-35)
+                sleep(0.1)
+                setMotor(motor,-20,-20,-20,-20)
+            else :
+                setMotor(motor,35,35,35,35)
+                sleep(0.1)
+                setMotor(motor,20,20,20,20)  
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -446,10 +459,12 @@ def arahRobotDepan():
             break  
          
         pas = 0
+        ada = 0
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
             if ball_area > 500:
+                ada = 1
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
                 cenX_ball = (x_ball+x_ball+w_ball)/2
@@ -460,36 +475,44 @@ def arahRobotDepan():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > 0 and cenX_ball < 170  :
-                    # kiri robot
-                    #print("KIRI JAUH")
-                    dari = "kiri"
-                    setMotor(motor,28,28,28,28)
-                elif cenX_ball > 240:
-                #     #print("KANAN JAUH")
+                if cenX_ball < 150  :
+                    setMotor(motor,30,30,30,30)
+                    
+                elif cenX_ball > 250  :
+                    setMotor(motor,-30,-30,-30,-30)
+                    
+                elif cenX_ball < 190  :
+                    setMotor(motor,35,35,35,35)
+                    sleep(0.1)
+                    setMotor(motor,0,0,0,0)
                     dari = "kanan"
-                    setMotor(motor,-28,-28,-28,-28)
-                else:
-                    if dari == "kanan" :
-                        setMotor(motor,30,30,30,30)
-                        sleep(0.1)
-                        setMotor(motor,0,0,0,0)
-                        dari = "tengah"
-                    else :
-                        setMotor(motor,-30,-30,-30,-30)
-                        sleep(0.1)
-                        setMotor(motor,0,0,0,0)
-                        dari = "tengah"
-
-                if dari == "tengah":
-                    state = "FINISH"
+                    print("PUTAR KANAN")
+                
+                elif cenX_ball > 210 :
+                    setMotor(motor,-35,-35,-35,-35)
+                    sleep(0.1)
+                    setMotor(motor,0,0,0,0)
+                    dari = "kiri"
+                    print("PUTAR KIRI")
+                else :
+                    pas = 1
                 break
         
         if state == "FINISH" and pas == 1: 
             setMotor(motor,0,0,0,0)
             motor.close()
             cv2.destroyAllWindows()
-            break        
+            break   
+
+        if ada == 0 :
+            if dari == "kanan" :
+                setMotor(motor,-35,-35,-35,-35)
+                sleep(0.1)
+                setMotor(motor,-20,-20,-20,-20)
+            else :
+                setMotor(motor,35,35,35,35)
+                sleep(0.1)
+                setMotor(motor,20,20,20,20)     
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -785,7 +808,7 @@ def lurusBolaAtas():
                         setMotor(motor,-28,-28,-28,-28)
                     else:
                         setMotor(motor,28,28,28,28)
-                        
+
                     if cenY_ball < 69:
                         setMotor(motor,-50,50,-50,50)
                         #print("Maju")
@@ -910,7 +933,7 @@ def main():
         putarDerajat(87,0)
         sleep(0.5)
         mulaiSerongKiri()
-        lurusArahBola()
+        lurusBolaAtas()
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
         sleep(0.2) 
