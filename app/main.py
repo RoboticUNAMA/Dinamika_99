@@ -496,6 +496,7 @@ def arahRobotDepan():
                     print("PUTAR KIRI")
                 else :
                     pas = 1
+                    state = "FINISH"
                 break
         
         if state == "FINISH" and pas == 1: 
