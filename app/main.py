@@ -707,9 +707,9 @@ def lurusBolaAtas():
         #print(state)
         second += 1
         #print(second)
-        for i in range(3):
-            #FRONT_CAP.grab()
-            OMNI_CAP.grab()
+        # for i in range(3):
+        #     #FRONT_CAP.grab()
+        #     OMNI_CAP.grab()
         ## read frame
         #_, frame1 = FRONT_CAP.read()
         _, frame2 = OMNI_CAP.read()
@@ -774,11 +774,18 @@ def lurusBolaAtas():
                 
                 if cenX_ball > 0 and cenX_ball < 189:
                     setMotor(motor,-28,-28,-28,-28)
+                    dari = "Kiri"
                     #print("Kanan")
                 elif cenX_ball > 289:
                     setMotor(motor,28,28,28,28)
+                    dari = "Kanan"
                     #print("Kiri")
                 else:
+                    if dari == "Kanan":
+                        setMotor(motor,-28,-28,-28,-28)
+                    else:
+                        setMotor(motor,28,28,28,28)
+                        
                     if cenY_ball < 69:
                         setMotor(motor,-50,50,-50,50)
                         #print("Maju")
