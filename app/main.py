@@ -884,7 +884,7 @@ def main():
         putarDerajat(99,1)
 
         setMotor(motor, -80,80,-80,80) # motor maju
-        sleep(2.5)
+        sleep(2)
         setMotor(motor, 50,-50,50,-50) # rem maju
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
