@@ -293,12 +293,12 @@ def arahBolaDepan():
                 state = "FINISH"    
          
         pas = 0
-        ada = 0
+        #ada = 0
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
             if ball_area > 500:
-                ada = 1
+                #ada = 1
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
                 cenX_ball = (x_ball+x_ball+w_ball)/2
@@ -338,15 +338,15 @@ def arahBolaDepan():
             cv2.destroyAllWindows()
             break   
 
-        if ada == 0 :
-            if dari == "kanan" :
-                setMotor(motor,-35,-35,-35,-35)
-                sleep(0.1)
-                setMotor(motor,20,20,20,20)
-            else :
-                setMotor(motor,35,35,35,35)
-                sleep(0.1)
-                setMotor(motor,-20,-20,-20,-20)  
+        # if ada == 0 :
+        #     if dari == "kanan" :
+        #         setMotor(motor,-35,-35,-35,-35)
+        #         sleep(0.1)
+        #         setMotor(motor,20,20,20,20)
+        #     else :
+        #         setMotor(motor,35,35,35,35)
+        #         sleep(0.1)
+        #         setMotor(motor,-20,-20,-20,-20)  
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -459,12 +459,12 @@ def arahRobotDepan():
             break  
          
         pas = 0
-        ada = 0
+        #ada = 0
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
             if ball_area > 500:
-                ada = 1
+                #ada = 1
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
                 cenX_ball = (x_ball+x_ball+w_ball)/2
@@ -504,15 +504,15 @@ def arahRobotDepan():
             cv2.destroyAllWindows()
             break   
 
-        if ada == 0 :
-            if dari == "kanan" :
-                setMotor(motor,-35,-35,-35,-35)
-                sleep(0.1)
-                setMotor(motor,-20,-20,-20,-20)
-            else :
-                setMotor(motor,35,35,35,35)
-                sleep(0.1)
-                setMotor(motor,20,20,20,20)     
+        # if ada == 0 :
+        #     if dari == "kanan" :
+        #         setMotor(motor,-35,-35,-35,-35)
+        #         sleep(0.1)
+        #         setMotor(motor,-20,-20,-20,-20)
+        #     else :
+        #         setMotor(motor,35,35,35,35)
+        #         sleep(0.1)
+        #         setMotor(motor,20,20,20,20)     
 
         # displays
         ## uncomment this to show center area of the frame 1
