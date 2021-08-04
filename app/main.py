@@ -9,7 +9,16 @@
 import cv2
 import numpy as np
 import serial
+import requests
 from time import sleep
+
+# webserver
+ip_server = "192.168.10.244"
+def setStatus(id, status):
+    requests.post("http://"+ip_server+"/robot/setstatus.php?"+"id="+str(id)+"&status="+str(status))
+def getStatus(id):
+    get = requests.post("http://"+ip_server+"/robot/getstatus.php?"+"id="+str(id))
+    return get.text.strip()
 
 # serial motor driver
 motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
@@ -332,6 +341,7 @@ def arahBolaDepan():
                     print("PUTAR KIRI")
                 else :
                     pas = 1
+                    setStatus(2, "READY")
                 break
         
         if state == "FINISH" and pas == 1: 
@@ -503,6 +513,7 @@ def arahRobotDepan():
                 else :
                     pas = 1
                     state = "FINISH"
+                    setStatus(2, "READY")
                 break
         
         if state == "FINISH" and pas == 1: 
@@ -860,6 +871,8 @@ def lurusBolaAtas():
 def main():
     mode = int(input("Mode = "))
 
+    setStatus(2, "RUNNING")
+
     # serial motor driver
     motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
 
@@ -892,19 +905,11 @@ def main():
         arahBolaDepan()
 
         putarDerajat(86.5, 1)
-        sleep(0.1)
-        dribbling(db, 0)
-        sleep(0.1)
-        dribbling(db, 0)
-        sleep(10)
-        arahRobotDepan()
-        sleep(0.1)
-        dribbling(db, 0)
-        sleep(0.1)
-        dribbling(db, 0)
-        sleep(0.1)
-        sleep(10)
-        arahRobotDepan()
+
+        while True:
+            arahRobotDepan()
+            if getStatus(1) == "READY":
+                break
 
         # === init tendang
         dribbling(db, 0)
@@ -1021,7 +1026,7 @@ def main():
     elif mode == 0:
         arahRobotDepan()
 
-
+    setStatus(2, "IDLE")
 if __name__ == '__main__':
     # execute main program
     main()
