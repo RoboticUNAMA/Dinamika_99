@@ -804,7 +804,7 @@ def lurusBolaAtas():
                     
                 elif cenX_ball < 220  :
                     setMotor(motor,-28,-28,-28,-28)
-                    sleep(0.1)
+                    sleep(0.5)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kanan"
@@ -812,7 +812,7 @@ def lurusBolaAtas():
                 
                 elif cenX_ball > 230 :
                     setMotor(motor,28,28,28,28)
-                    sleep(0.1)
+                    sleep(0.5)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kiri"
