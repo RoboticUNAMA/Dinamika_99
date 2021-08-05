@@ -731,7 +731,7 @@ def lurusBolaAtas():
         #print(state)
         second += 1
         #print(second)
-        for i in range(20):
+        for i in range(3):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
@@ -796,10 +796,10 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball < 200  :
+                if cenX_ball < 150  :
                     setMotor(motor,-28,-28,-28,-28)
                     
-                elif cenX_ball > 250  :
+                elif cenX_ball > 300  :
                     setMotor(motor,28,28,28,28)
                     
                 elif cenX_ball < 220  :
