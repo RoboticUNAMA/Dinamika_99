@@ -1000,9 +1000,9 @@ def main():
         setMotor(motor, 50,50,50,50) # rem putar kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
+        sleep(0.5)
         
         arahRobotDepan()
-            
 
         # === init tendang
         dribbling(db, 0)
