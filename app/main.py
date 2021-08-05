@@ -902,10 +902,8 @@ def main():
                 break
 
         # === init tendang
+        db.reset_input_buffer()
         dribbling(db, 0)
-        sleep(1)
-        dribbling(db, 0)
-        sleep(0.5)
         oper(db)
         # ================
         sleep(2)
@@ -930,10 +928,8 @@ def main():
         setMotor(motor, 0,0,0,0) # motor stop
 
         # === init tendang
+        db.reset_input_buffer()
         dribbling(db, 0)
-        sleep(1)
-        dribbling(db, 0)
-        sleep(0.5)
         tendang(db)
         # ================
         sleep(2)
