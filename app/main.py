@@ -388,6 +388,7 @@ def arahBolaDepan():
             break
 
 def arahRobotDepan():
+    setStatus(2, "RUNNING")
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
     rows, cols, _ = frame1.shape
