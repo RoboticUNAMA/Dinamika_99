@@ -774,15 +774,15 @@ def lurusBolaAtas():
             cv2.destroyAllWindows()
             break
 
-        # if db.isOpen() == False:
-        #     db.open()
-        # reading = db.readline().decode('utf-8','ignore')
-        # if len(reading) > 0 :
-        #     head = reading[0:5]
-        #     print(head)
-        #     if  head == "Dapat" :
-        #         print("DAPAT BOLA")
-        #         state = "FINISH"    
+        if db.isOpen() == False:
+            db.open()
+        reading = db.readline().decode('utf-8','ignore')
+        if len(reading) > 0 :
+            head = reading[0:5]
+            print(head)
+            if  head == "Dapat" :
+                print("DAPAT BOLA")
+                state = "FINISH"    
          
         pas = 0
 
@@ -954,6 +954,7 @@ def main():
         # lurusin
         putarDerajat(87,0)
         sleep(0.5)
+
         mulaiSerongKiri()
         lurusBolaAtas()
 
@@ -979,7 +980,7 @@ def main():
 
         putarDerajat(80,1)
         setMotor(motor, -80,-80,80,80) # motor geser kanan
-        sleep(1.5)
+        sleep(1.6)
         setMotor(motor, 50,50,-50,-50) # motor geser kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
