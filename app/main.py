@@ -905,6 +905,8 @@ def main():
         db.reset_input_buffer()
         dribbling(db, 0)
         sleep(0.5)
+        dribbling(db, 0)
+        sleep(0.1)
         oper(db)
         # ================
         sleep(2)
@@ -932,6 +934,8 @@ def main():
         db.reset_input_buffer()
         dribbling(db, 0)
         sleep(0.5)
+        dribbling(db, 0)
+        sleep(0.1)
         tendang(db)
         # ================
         sleep(2)
