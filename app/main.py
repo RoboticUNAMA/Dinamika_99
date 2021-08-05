@@ -803,7 +803,7 @@ def lurusBolaAtas():
                     setMotor(motor,28,28,28,28)
                     
                 elif cenX_ball < 220  :
-                    setMotor(motor,-80,-80,-80,-80)
+                    setMotor(motor,-50,-50,-50,-50)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
@@ -811,16 +811,19 @@ def lurusBolaAtas():
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 230 :
-                    setMotor(motor,80,80,80,80)
+                    setMotor(motor,50,50,50,50)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kiri"
                     print("PUTAR KIRI")
                 else :
-                    pas = 1
-                    state = "FINISH"
-                    setStatus(2, "READY")
+                    if cenY_ball < 55:
+                        setMotor(motor,-50,50,-50,50)
+                    else:
+                        pas = 1
+                        state = "FINISH"
+                        setStatus(2, "READY")
                 break
         
         if state == "FINISH" and pas == 1: 
