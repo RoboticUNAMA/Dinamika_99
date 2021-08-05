@@ -468,12 +468,22 @@ def arahRobotDepan():
         # ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
         #
 
-        if state == "FINISH":
-            setMotor(motor,0,0,0,0)
-            motor.close()
-            cv2.destroyAllWindows()
-            break  
+        # if state == "FINISH":
+        #     setMotor(motor,0,0,0,0)
+        #     motor.close()
+        #     cv2.destroyAllWindows()
+        #     break  
          
+        if db.isOpen() == False:
+            db.open()
+        reading = db.readline().decode('utf-8','ignore')
+        if len(reading) > 0 :
+            head = reading[0:5]
+            print(head)
+            if  head == "Dapat" :
+                print("DAPAT BOLA")
+                state = "FINISH"    
+
         pas = 0
         ada = 0
 
