@@ -662,7 +662,7 @@ def mulaiSerongKiri():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > inner_left-10:
+                if cenX_ball > inner_left-20:
                     setMotor(motor,0,-50,50,0)
                     sleep(0.1)    
                     setMotor(motor,0,0,0,0)
