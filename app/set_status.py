@@ -8,6 +8,9 @@ def getStatus(id):
     get = requests.post("http://"+ip_server+"/robot/getstatus.php?"+"id="+str(id))
     return get.text.strip()
 
-setStat = input("Set Status: ")
-setStatus(2, setStat)
-print (getStatus(2))
+id = input("Input ID: ")
+
+while True:
+    setStat = input("Set Status: ")
+    setStatus(id, setStat)
+    print (getStatus(id))

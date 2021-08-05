@@ -951,7 +951,10 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
-        arahRobotDepan()
+        # while True:
+        #     arahRobotDepan()
+        #     if getStatus(1) == "READY":
+        #         break
 
         # === init tendang
         dribbling(db, 0)
@@ -970,7 +973,10 @@ def main():
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
 
-        arahBolaDepan()
+        # while True:
+        #     arahRobotDepan()
+        #     if getStatus(1) == "READY":
+        #         break
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
         sleep(0.2) 
@@ -978,7 +984,10 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
-        arahRobotDepan()
+        # while True:
+        #     arahRobotDepan()
+        #     if getStatus(1) == "READY":
+        #         break
 
         # === init tendang
         dribbling(db, 0)
