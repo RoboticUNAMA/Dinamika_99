@@ -774,15 +774,15 @@ def lurusBolaAtas():
             cv2.destroyAllWindows()
             break
 
-        if db.isOpen() == False:
-            db.open()
-        reading = db.readline().decode('utf-8','ignore')
-        if len(reading) > 0 :
-            head = reading[0:5]
-            print(head)
-            if  head == "Dapat" :
-                print("DAPAT BOLA")
-                state = "FINISH"    
+        # if db.isOpen() == False:
+        #     db.open()
+        # reading = db.readline().decode('utf-8','ignore')
+        # if len(reading) > 0 :
+        #     head = reading[0:5]
+        #     print(head)
+        #     if  head == "Dapat" :
+        #         print("DAPAT BOLA")
+        #         state = "FINISH"    
          
         pas = 0
 
