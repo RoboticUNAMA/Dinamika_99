@@ -796,30 +796,31 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > 0 and cenX_ball < 219:
-                    setMotor(motor,28,28,28,28)
-                    dari = "Kiri"
-                    #print("Kanan")
-                elif cenX_ball > 259:
+                if cenX_ball < 200  :
                     setMotor(motor,-28,-28,-28,-28)
-                    dari = "Kanan"
-                    #print("Kiri")
-                else:
-                    if dari == "Kanan":
-                        setMotor(motor,28,28,28,28)
-                        sleep(0.1)
-                        setMotor(motor,0,0,0,0)
-                    else:
-                        setMotor(motor,-28,-28,-28,-28)
-                        sleep(0.1)
-                        setMotor(motor,0,0,0,0)
-
-                    if cenY_ball < 69:
-                        setMotor(motor,-50,50,-50,50)
-                        #print("Maju")
-                    else:
-                        setMotor(motor,0,0,0,0)
-                        #print("Stop")
+                    
+                elif cenX_ball > 250  :
+                    setMotor(motor,28,28,28,28)
+                    
+                elif cenX_ball < 220  :
+                    setMotor(motor,-28,-28,-28,-28)
+                    sleep(0.1)
+                    setMotor(motor,0,0,0,0)
+                    sleep(0.1)
+                    dari = "kanan"
+                    print("PUTAR KANAN")
+                
+                elif cenX_ball > 230 :
+                    setMotor(motor,28,28,28,28)
+                    sleep(0.1)
+                    setMotor(motor,0,0,0,0)
+                    sleep(0.1)
+                    dari = "kiri"
+                    print("PUTAR KIRI")
+                else :
+                    pas = 1
+                    state = "FINISH"
+                    setStatus(2, "READY")
                 break
         
         if state == "FINISH" and pas == 1: 
