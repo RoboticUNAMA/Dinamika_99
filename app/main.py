@@ -733,7 +733,7 @@ def lurusBolaAtas():
         #print(state)
         second += 1
         #print(second)
-        for i in range(8):
+        for i in range(3):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
@@ -779,6 +779,7 @@ def lurusBolaAtas():
         reading = db.readline().decode('utf-8','ignore')
         if len(reading) > 0 :
             head = reading[0:5]
+            print(head)
             if  head == "Dapat" :
                 print("DAPAT BOLA")
                 state = "FINISH"    
