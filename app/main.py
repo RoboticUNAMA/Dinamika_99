@@ -993,7 +993,7 @@ def main():
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
 
-        arahRobotDepan()
+        arahBolaDepan()
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
         sleep(0.2) 
