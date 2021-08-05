@@ -920,6 +920,7 @@ def main():
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
         putarDerajat(98,1)
+        setStatus(2, "RUNNING")
         arahBolaDepan()
         putarDerajat(86.3, 1)
 
