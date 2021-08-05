@@ -904,6 +904,7 @@ def main():
         # === init tendang
         db.reset_input_buffer()
         dribbling(db, 0)
+        sleep(0.5)
         oper(db)
         # ================
         sleep(2)
@@ -930,6 +931,7 @@ def main():
         # === init tendang
         db.reset_input_buffer()
         dribbling(db, 0)
+        sleep(0.5)
         tendang(db)
         # ================
         sleep(2)
