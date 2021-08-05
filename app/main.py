@@ -517,8 +517,8 @@ def arahRobotDepan():
                     state = "FINISH"
                     setStatus(2, "READY")
                 break
-        
-        if state == "FINISH" and pas == 1: 
+
+        if state == "FINISH" and pas == 1 and getStatus(1) == "READY": 
             setMotor(motor,0,0,0,0)
             motor.close()
             cv2.destroyAllWindows()
@@ -964,10 +964,7 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
-        while True:
-            arahRobotDepan()
-            if getStatus(1) == "READY":
-                break
+        arahRobotDepan()
 
         # === init tendang
         dribbling(db, 0)
@@ -986,21 +983,16 @@ def main():
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
 
-        while True:
-            arahRobotDepan()
-            if getStatus(1) == "READY":
-                break
+        arahRobotDepan()
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
         sleep(0.2) 
         setMotor(motor, 50,50,50,50) # rem putar kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
-
-        while True:
-            arahRobotDepan()
-            if getStatus(1) == "READY":
-                break
+        
+        arahRobotDepan()
+            
 
         # === init tendang
         dribbling(db, 0)
