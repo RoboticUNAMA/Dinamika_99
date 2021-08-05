@@ -195,7 +195,7 @@ void tendang_keras()
 void tendang_operan()
 {
   int lm = cekLimitTendang();
-  analogWrite(tendang_pwm, 225);
+  analogWrite(tendang_pwm, 200);
   digitalWrite(tendang_cw, LOW);
   digitalWrite(tendang_ccw, HIGH);
 
