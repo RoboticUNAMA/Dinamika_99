@@ -660,7 +660,7 @@ def mulaiSerongKiri():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > inner_left:
+                if cenX_ball > inner_left-30:
                     setMotor(motor,0,-50,50,0)
                     sleep(0.1)    
                     setMotor(motor,0,0,0,0)
@@ -955,10 +955,10 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
-        # while True:
-        #     arahRobotDepan()
-        #     if getStatus(1) == "READY":
-        #         break
+        while True:
+            arahRobotDepan()
+            if getStatus(1) == "READY":
+                break
 
         # === init tendang
         dribbling(db, 0)
@@ -977,10 +977,10 @@ def main():
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
 
-        # while True:
-        #     arahRobotDepan()
-        #     if getStatus(1) == "READY":
-        #         break
+        while True:
+            arahRobotDepan()
+            if getStatus(1) == "READY":
+                break
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
         sleep(0.2) 
@@ -988,10 +988,10 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
-        # while True:
-        #     arahRobotDepan()
-        #     if getStatus(1) == "READY":
-        #         break
+        while True:
+            arahRobotDepan()
+            if getStatus(1) == "READY":
+                break
 
         # === init tendang
         dribbling(db, 0)
@@ -1018,7 +1018,7 @@ def main():
         setMotor(motor, 0,0,0,0)
 
     elif mode == 0:
-        arahRobotDepan()
+        lurusBolaAtas()
 
     setStatus(2, "IDLE")
 if __name__ == '__main__':
