@@ -805,14 +805,14 @@ def lurusBolaAtas():
                     setMotor(motor,28,28,28,28)
                     
                 elif cenX_ball < 220 and cenY_ball < 70 :
-                    setMotor(motor,-35,-35,-35,-35)
+                    setMotor(motor,-50,-50,-50,-50)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     dari = "kanan"
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 230 and cenY_ball < 70 :
-                    setMotor(motor,35,35,35,35)
+                    setMotor(motor,50,50,50,50)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     dari = "kiri"
