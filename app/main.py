@@ -1029,19 +1029,17 @@ def main():
         setMotor(motor, 0,0,0,0)
 
         setMotor(motor, -80,-80,80,80) # motor geser kanan
-        sleep(1.5)
+        sleep(1.3)
         setMotor(motor, 50,50,-50,-50) # motor geser kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
-        sleep(0.5)
+        sleep(0.1)
 
         setMotor(motor, 80,-80,80,-80) # motor mundur
         sleep(1)
         setMotor(motor, -50,50,-50,50) # rem mundur
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
-
-
 
     elif mode == 0:
         lurusBolaAtas()
