@@ -689,7 +689,7 @@ def arahKiper():
                     
                 elif cenX_ball > 150  :
                     setMotor(motor,35,35,35,35)
-                    sleep(0.5)
+                    sleep(0.8)
                     setMotor(motor,-35,-35,-35,-35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
@@ -1115,6 +1115,12 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
+
+        setMotor(motor, 100,-100,-100,-100) # motor putar kanan
+        sleep(0.2)
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
 
         putarDerajat(98,1)
         setStatus(2, "RUNNING")
