@@ -687,7 +687,7 @@ def arahKiper():
                     state = "FINISH"
                     print("KIPER KIRI")
                     
-                elif cenX_ball > 170  :
+                elif cenX_ball > 150  :
                     setMotor(motor,35,35,35,35)
                     sleep(0.5)
                     setMotor(motor,-35,-35,-35,-35)
@@ -696,7 +696,7 @@ def arahKiper():
                     state = "FINISH"
                     print("KIPER KANAN")
                     
-                elif cenX_ball > 130 and cenX_ball < 170  :
+                elif cenX_ball > 130 and cenX_ball < 150  :
                     setMotor(motor,-35,-35,-35,-35)
                     sleep(0.5)
                     setMotor(motor,35,35,35,35)
