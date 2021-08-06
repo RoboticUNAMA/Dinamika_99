@@ -522,7 +522,7 @@ def arahRobotDepan():
                     dari = "kanan"
                     print("PUTAR KANAN")
                 
-                elif cenX_ball > 215 :
+                elif cenX_ball > 210 :
                     setMotor(motor,-28,-28,-28,-28)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
