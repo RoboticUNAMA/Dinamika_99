@@ -659,11 +659,11 @@ def arahKiper():
         # ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
         #
 
-        # if state == "FINISH":
-        #     setMotor(motor,0,0,0,0)
-        #     motor.close()
-        #     cv2.destroyAllWindows()
-        #     break    
+        if state == "FINISH":
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break    
 
         pas = 0
         ada = 0
