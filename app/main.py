@@ -701,9 +701,9 @@ def arahKiper():
                     print("KIPER KANAN")
                     
                 elif cenX_ball > 150 and cenX_ball < 300  :
-                    setMotor(motor,35,35,35,35)
-                    sleep(0.5)
                     setMotor(motor,-35,-35,-35,-35)
+                    sleep(0.5)
+                    setMotor(motor,35,35,35,35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     state = "FINISH"
