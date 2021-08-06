@@ -1097,11 +1097,11 @@ def main():
 
         putarDerajat(86.5, 1)
 
-        while getStatus(1) != "ON POS":
-            setMotor(motor, 0,0,0,0)
-            print("TUNGGU ON POS")
-            if getStatus(1) == "ON POS":
-                break
+        # while getStatus(1) != "ON POS":
+        #     setMotor(motor, 0,0,0,0)
+        #     print("TUNGGU ON POS")
+        #     if getStatus(1) == "ON POS":
+        #         break
 
         arahRobotDepan()
 
