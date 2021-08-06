@@ -1054,7 +1054,7 @@ def main():
 
     if mode == "1":
         # lurusin
-        putarDerajat(87,0)
+        putarDerajat(87,1)
         setMotor(motor, 80,80,80,80) # motor putar kanan
         sleep(0.36) 
         setMotor(motor, -50,-50,-50,-50) # rem putar kanan
