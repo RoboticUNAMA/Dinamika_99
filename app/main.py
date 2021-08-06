@@ -1064,17 +1064,24 @@ def main():
     if mode == "1":
         # lurusin
         putarDerajat(87,1)
-        setMotor(motor, 80,80,80,80) # motor putar kanan
-        sleep(0.36) 
-        setMotor(motor, -50,-50,-50,-50) # rem putar kanan
+
+        setMotor(motor, 0,80,80,0) # serong kiri
+        sleep(0.4)
+        setMotor(motor, 0,50,50,0) # rem 
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+
+        setMotor(motor, -80,-80,-80,-80) # motor putar kiri
+        sleep(0.15) 
+        setMotor(motor, 50,50,50,50) # rem putar kiri
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
-        setMotor(motor, -80,80,-80,80) # motor maju
-        sleep(2)
-        setMotor(motor, 50,-50,50,-50) # rem maju
-        sleep(0.1)
-        setMotor(motor, 0,0,0,0)
+        # setMotor(motor, -80,80,-80,80) # motor maju
+        # sleep(2)
+        # setMotor(motor, 50,-50,50,-50) # rem maju
+        # sleep(0.1)
+        # setMotor(motor, 0,0,0,0)
 
         arahBolaDepan()
 
