@@ -1064,10 +1064,11 @@ def main():
     if mode == "1":
         # lurusin
         putarDerajat(87,1)
+        sleep(0.1)
 
-        setMotor(motor, 0,80,80,0) # serong kiri
-        sleep(0.4)
-        setMotor(motor, 0,50,50,0) # rem 
+        setMotor(motor, 0,80,-80,0) # serong kiri
+        sleep(2)
+        setMotor(motor, 0,-50,50,0) # rem 
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
