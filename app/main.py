@@ -1243,7 +1243,7 @@ def main():
         putarDerajat(57,0)
 
     elif mode == "tes":
-        putarDerajat(137, 0)
+        putarDerajat(96, 0)
 
     setStatus(2, "IDLE")
 if __name__ == '__main__':
