@@ -1097,8 +1097,17 @@ def main():
 
         putarDerajat(86.5, 1)
 
+        while getStatus(1) != "ON POS":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "ON POS":
+                break
+
         arahRobotDepan()
 
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
         # === init tendang
         db.reset_input_buffer()
         dribbling(db, 0)
@@ -1129,6 +1138,10 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
         # === init tendang
         db.reset_input_buffer()
         dribbling(db, 0)
