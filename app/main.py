@@ -1118,7 +1118,7 @@ def main():
 
         # arah gawang
         setMotor(motor, 80,80,80,80) # motor putar kanan
-        sleep(0.5)
+        sleep(0.3)
         setMotor(motor, -50,-50,-50,-50) # rem putar kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
@@ -1127,6 +1127,8 @@ def main():
         setStatus(2, "RUNNING")
 
         arahBolaDepan()
+
+        putarDerajat(87,1)
 
         setMotor(motor, -100,-100,-100,-100) # motor putar kanan
         sleep(0.43)
