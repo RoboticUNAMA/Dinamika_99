@@ -687,18 +687,21 @@ def arahKiper():
                     sleep(0.2)
                     setMotor(motor,0,0,0,0)
                     state == "FINISH"
+                    print("KIPER KIRI")
                     
                 elif cenX_ball > 300  :
                     setMotor(motor,-35,-35,-35,-35)
                     sleep(0.2)
                     setMotor(motor,0,0,0,0)
                     state == "FINISH"
+                    print("KIPER KANAN")
                     
                 elif cenX_ball > 150 and cenX_ball < 300  :
                     setMotor(motor,35,35,35,35)
                     sleep(0.2)
                     setMotor(motor,0,0,0,0)
                     state == "FINISH"
+                    print("KIPER TENGAH")
                 break
 
         if state == "FINISH": 
@@ -1225,6 +1228,15 @@ def main():
 
     elif mode == "tes":
         arahKiper()
+        # === init tendang
+        db.reset_input_buffer()
+        dribbling(db, 0)
+        sleep(0.5)
+        dribbling(db, 0)
+        sleep(0.1)
+        tendang(db)
+        # ================
+        sleep(2)
 
     setStatus(2, "IDLE")
 if __name__ == '__main__':
