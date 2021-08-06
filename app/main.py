@@ -1243,26 +1243,7 @@ def main():
         putarDerajat(57,0)
 
     elif mode == "tes":
-        putarDerajat(86.3, 1)
-
-        # arah gawang
-        setMotor(motor, -100,-100,-100,-100) # motor putar kanan
-        sleep(0.4) 
-        setMotor(motor, 50,50,50,50) # rem putar kanan
-        sleep(0.1)
-        setMotor(motor, 0,0,0,0) # motor stop
-
-        sleep(0.5)
-        arahKiper()
-        # === init tendang
-        db.reset_input_buffer()
-        dribbling(db, 0)
-        sleep(0.5)
-        dribbling(db, 0)
-        sleep(0.1)
-        tendang(db)
-        # ================
-        sleep(2)
+        putarDerajat(137, 0)
 
     setStatus(2, "IDLE")
 if __name__ == '__main__':
