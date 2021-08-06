@@ -326,13 +326,13 @@ def arahBolaDepan():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball < 100  :
-                    setMotor(motor,30,30,30,30)
+                    setMotor(motor,35,35,35,35)
                     
                 elif cenX_ball > 300  :
-                    setMotor(motor,-30,-30,-30,-30)
+                    setMotor(motor,-35,-35,-35,-35)
                     
                 elif cenX_ball < 180  :
-                    setMotor(motor,30,30,30,30)
+                    setMotor(motor,35,35,35,35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
@@ -340,7 +340,7 @@ def arahBolaDepan():
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 220 :
-                    setMotor(motor,-30,-30,-30,-30)
+                    setMotor(motor,-35,-35,-35,-35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
@@ -509,13 +509,13 @@ def arahRobotDepan():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball < 100  :
-                    setMotor(motor,28,28,28,28)
+                    setMotor(motor,35,35,35,35)
                     
                 elif cenX_ball > 300  :
-                    setMotor(motor,-28,-28,-28,-28)
+                    setMotor(motor,-35,-35,-35,-35)
                     
                 elif cenX_ball < 185  :
-                    setMotor(motor,28,28,28,28)
+                    setMotor(motor,35,35,35,35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
@@ -523,7 +523,7 @@ def arahRobotDepan():
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 210 :
-                    setMotor(motor,-28,-28,-28,-28)
+                    setMotor(motor,-35,-35,-35,-35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
@@ -976,20 +976,20 @@ def lurusBolaAtas():
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball < 180 and cenY_ball > 70 :
-                    setMotor(motor,-28,-28,-28,-28)
+                    setMotor(motor,-35,-35,-35,-35)
                     
                 elif cenX_ball > 270 and cenY_ball > 70 :
-                    setMotor(motor,28,28,28,28)
+                    setMotor(motor,35,35,35,35)
                     
                 elif cenX_ball < 210 and cenY_ball < 70 :
-                    setMotor(motor,-30,-30,-30,-30)
+                    setMotor(motor,-35,-35,-35,-35)
                     sleep(0.3)
                     setMotor(motor,0,0,0,0)
                     dari = "kanan"
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 240 and cenY_ball < 70 :
-                    setMotor(motor,30,30,30,30)
+                    setMotor(motor,35,35,35,35)
                     sleep(0.3)
                     setMotor(motor,0,0,0,0)
                     dari = "kiri"
@@ -1037,7 +1037,7 @@ def lurusBolaAtas():
 def main():
     mode = input("Mode = ")
 
-    setStatus(2, "RUNNING")
+    setStatus(2, "RUNNING")@
 
     # serial motor driver
     motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
