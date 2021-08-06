@@ -663,17 +663,7 @@ def arahKiper():
         #     setMotor(motor,0,0,0,0)
         #     motor.close()
         #     cv2.destroyAllWindows()
-        #     break  
-         
-        if db.isOpen() == False:
-            db.open()
-        reading = db.readline().decode('utf-8','ignore')
-        if len(reading) > 0 :
-            head = reading[0:5]
-            print(head)
-            if  head == "Dapat" :
-                print("DAPAT BOLA")
-                state = "FINISH"    
+        #     break    
 
         pas = 0
         ada = 0
@@ -692,50 +682,30 @@ def arahKiper():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball < 100  :
-                    setMotor(motor,28,28,28,28)
+                if cenX_ball < 150  :
+                    setMotor(motor,35,35,35,35)
+                    sleep(0.2)
+                    setMotor(motor,0,0,0,0)
+                    state == "FINISH"
                     
                 elif cenX_ball > 300  :
-                    setMotor(motor,-28,-28,-28,-28)
+                    setMotor(motor,-35,-35,-35,-35)
+                    sleep(0.2)
+                    setMotor(motor,0,0,0,0)
+                    state == "FINISH"
                     
-                elif cenX_ball < 180  :
-                    setMotor(motor,28,28,28,28)
-                    sleep(0.1)
+                elif cenX_ball > 150 and cenX_ball < 300  :
+                    setMotor(motor,35,35,35,35)
+                    sleep(0.2)
                     setMotor(motor,0,0,0,0)
-                    sleep(0.1)
-                    dari = "kanan"
-                    print("PUTAR KANAN")
-                
-                elif cenX_ball > 215 :
-                    setMotor(motor,-28,-28,-28,-28)
-                    sleep(0.1)
-                    setMotor(motor,0,0,0,0)
-                    sleep(0.1)
-                    dari = "kiri"
-                    print("PUTAR KIRI")
-                else :
-                    pas = 1
-                    state = "FINISH"
-                    setStatus(2, "READY")
+                    state == "FINISH"
                 break
 
-        if state == "FINISH" and pas == 1 and getStatus(1) == "READY": 
+        if state == "FINISH": 
             setMotor(motor,0,0,0,0)
             motor.close()
             cv2.destroyAllWindows()
             break   
-
-        if ada == 0 :
-            if dari == "kanan" :
-                setMotor(motor,-35,-35,-35,-35)
-                # sleep(0.1)
-                # setMotor(motor,0,0,0,0)
-                # dari = ""
-            else :
-                setMotor(motor,35,35,35,35)
-                # sleep(0.1)
-                # setMotor(motor,0,0,0,0)     
-                # dari = ""
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -1085,7 +1055,11 @@ def main():
     if mode == "1":
         # lurusin
         putarDerajat(87,0)
-        putarDerajat(99,1)
+        setMotor(motor, 80,80,80,80) # motor putar kanan
+        sleep(0.36) 
+        setMotor(motor, -50,-50,-50,-50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
 
         setMotor(motor, -80,80,-80,80) # motor maju
         sleep(2)
@@ -1128,10 +1102,13 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
+
         putarDerajat(98,1)
         setStatus(2, "RUNNING")
+
         arahBolaDepan()
-        putarDerajat(86.3, 1)
+
+        #putarDerajat(86.3, 1)
 
         # arah gawang
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
@@ -1139,6 +1116,8 @@ def main():
         setMotor(motor, 50,50,50,50) # rem putar kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
+
+        arahKiper()
 
         # === init tendang
         db.reset_input_buffer()
