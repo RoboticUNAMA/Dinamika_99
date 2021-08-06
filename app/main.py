@@ -1116,25 +1116,23 @@ def main():
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
 
+        # arah gawang
+        setMotor(motor, 80,80,80,80) # motor putar kanan
+        sleep(0.5)
+        setMotor(motor, -50,-50,-50,-50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
         putarDerajat(98,1)
         setStatus(2, "RUNNING")
 
         arahBolaDepan()
 
-        putarDerajat(137.5, 1)
-
-        # arah gawang
-        setMotor(motor, 80,80,80,80) # motor putar kanan
-        sleep(0.3)
-        setMotor(motor, -50,-50,-50,-50) # rem putar kanan
+        setMotor(motor, -100,-100,-100,-100) # motor putar kanan
+        sleep(0.43)
+        setMotor(motor, 50,50,50,50) # rem putar kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
-
-        # setMotor(motor, -100,-100,-100,-100) # motor putar kanan
-        # sleep(0.43)
-        # setMotor(motor, 50,50,50,50) # rem putar kanan
-        # sleep(0.1)
-        # setMotor(motor, 0,0,0,0) # motor stop
 
         arahKiper()
 
@@ -1243,7 +1241,7 @@ def main():
         putarDerajat(57,0)
 
     elif mode == "tes":
-        putarDerajat(96, 0)
+        arahKiper()
 
     setStatus(2, "IDLE")
 if __name__ == '__main__':
