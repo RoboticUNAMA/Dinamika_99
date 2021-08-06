@@ -109,6 +109,13 @@ def getMagentaInfo():
         info.append(int(i))
     return info
 
+def getDummyInfo():
+    infoFile = open("dummyColor.txt","r")
+    info = []
+    for i in infoFile:
+        info.append(int(i))
+    return info
+
 def read_from_port(ser,que_output):
     while True:
         try : 
@@ -423,6 +430,190 @@ def arahRobotDepan():
 
     dribbling(db,1)
     db.flush()
+
+    while(True):
+        if count <= 0:
+            motor.close()
+            count = startCount
+        count -= 1
+        #print(state)
+        second += 1
+        #print(second)
+        for i in range(3):
+            FRONT_CAP.grab()
+            #OMNI_CAP.grab()
+        ## read frame
+        _, frame1 = FRONT_CAP.read()
+        #_, frame2 = OMNI_CAP.read()
+        
+        # convert frame from BGR to HSV
+        hsv = cv2.cvtColor(frame1, cv2.COLOR_BGR2HSV)
+        #hsv1 = cv2.cvtColor(frame2, cv2.COLOR_BGR2HSV)
+
+        # blur the frame
+        blur = cv2.medianBlur(hsv, 5)
+        #blur1 = cv2.medianBlur(hsv1, 5)
+
+        # create a mask from blurred frame
+        BALL_MASK = cv2.inRange(blur, lowerBall, upperBall)
+        #BALL_MASK1 = cv2.inRange(blur1, lowerBall, upperBall)
+
+        # convert to black and white image
+        _, BALL_THRESH = cv2.threshold(BALL_MASK, objColor[6], 255, 0)
+        #_, BALL_THRESH1 = cv2.threshold(BALL_MASK1, objColor[6], 255, 0)
+
+        # refine the image using morphological transformation
+        kernal = np.ones((5,5), np.uint8)
+        BALL_MORPH = cv2.morphologyEx(BALL_THRESH, cv2.MORPH_CLOSE, kernal, iterations = 2)
+        #BALL_MORPH1 = cv2.morphologyEx(BALL_THRESH1, cv2.MORPH_CLOSE, kernal, iterations = 2)
+
+        # find contours
+        ballContours, _ = cv2.findContours(BALL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        ballContours = sorted(ballContours, key=lambda x:cv2.contourArea(x), reverse=True)
+        
+        # ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        # ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
+        #
+
+        # if state == "FINISH":
+        #     setMotor(motor,0,0,0,0)
+        #     motor.close()
+        #     cv2.destroyAllWindows()
+        #     break  
+         
+        # if db.isOpen() == False:
+        #     db.open()
+        # reading = db.readline().decode('utf-8','ignore')
+        # if len(reading) > 0 :
+        #     head = reading[0:5]
+        #     print(head)
+        #     if  head == "Dapat" :
+        #         print("DAPAT BOLA")
+        #         state = "FINISH"    
+
+        pas = 0
+        ada = 0
+
+        for ballContour in ballContours:
+            ball_area = cv2.contourArea(ballContour)
+            if ball_area > 500:
+                ada = 1
+                (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
+                cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
+                cenX_ball = (x_ball+x_ball+w_ball)/2
+                cenY_ball = (y_ball+y_ball+h_ball)/2   
+                print(cenX_ball)
+                # draw actual coordinate from segmentation
+                cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+                cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
+                cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+                
+                if cenX_ball < 100  :
+                    setMotor(motor,28,28,28,28)
+                    
+                elif cenX_ball > 300  :
+                    setMotor(motor,-28,-28,-28,-28)
+                    
+                elif cenX_ball < 180  :
+                    setMotor(motor,28,28,28,28)
+                    sleep(0.1)
+                    setMotor(motor,0,0,0,0)
+                    sleep(0.1)
+                    dari = "kanan"
+                    print("PUTAR KANAN")
+                
+                elif cenX_ball > 215 :
+                    setMotor(motor,-28,-28,-28,-28)
+                    sleep(0.1)
+                    setMotor(motor,0,0,0,0)
+                    sleep(0.1)
+                    dari = "kiri"
+                    print("PUTAR KIRI")
+                else :
+                    pas = 1
+                    state = "FINISH"
+                    setStatus(2, "READY")
+                break
+
+        if state == "FINISH" and getStatus(1) == "READY": 
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break   
+
+        if ada == 0 :
+            if dari == "kanan" :
+                setMotor(motor,-35,-35,-35,-35)
+                # sleep(0.1)
+                # setMotor(motor,0,0,0,0)
+                # dari = ""
+            else :
+                setMotor(motor,35,35,35,35)
+                # sleep(0.1)
+                # setMotor(motor,0,0,0,0)     
+                # dari = ""
+
+        # displays
+        ## uncomment this to show center area of the frame 1
+        cv2.rectangle(frame1, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
+        cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
+        #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
+
+        cv2.imshow("Kamera Depan", frame1)
+        cv2.moveWindow("Kamera Depan" ,20,20)
+        
+        # cv2.imshow("Kamra Atas", frame2)
+        # cv2.moveWindow("Kamera Atas" ,0,0)
+        
+        #print(ballColor)
+        
+        k = cv2.waitKey(1) & 0xFF
+        if k == 27:
+            if motor.isOpen == False:
+                motor.open()
+            motor.write(b"#M|STP|0\n")
+            db.write(b"DB OFF")
+            FRONT_CAP.release()
+            #OMNI_CAP.release()
+            cv2.destroyAllWindows()
+            break
+
+def arahKiper():
+    setStatus(2, "RUNNING")
+    # get center of the frame
+    _, frame1 = FRONT_CAP.read()
+    rows, cols, _ = frame1.shape
+    cenX_frame1 = int(cols/2)
+    cenY_frame1 = int(rows/2)
+
+    # _, frame2 = OMNI_CAP.read()
+    # rows1, cols1, _ = frame2.shape
+    # cenX_frame2 = int(cols1/2)
+    # cenY_frame2 = int(rows1/2)
+    
+    inner_left = cenX_frame1 - 100
+    outer_left = cenX_frame1 - 250 
+    inner_right = cenX_frame1 + 100
+    outer_right = cenX_frame1 + 250
+    inner_top = cenY_frame1 - 100
+    outer_top = cenY_frame1 - 150
+    inner_bottom = cenY_frame1 + 100
+    outer_bottom = cenY_frame1 + 150
+
+    # read magenta color
+    objColor = getDummyInfo()
+    lowerBall = np.array([objColor[0],objColor[1],objColor[2]])
+    upperBall = np.array([objColor[3],objColor[4],objColor[5]])
+
+    dari = ""
+    second = 0
+    startCount = 10
+    count = startCount
+    speed = 60
+    state = "START"
+
+    db.reset_input_buffer()
+    dribbling(db,1)
 
     while(True):
         if count <= 0:
@@ -869,7 +1060,7 @@ def lurusBolaAtas():
             break
 
 def main():
-    mode = int(input("Mode = "))
+    mode = input("Mode = ")
 
     setStatus(2, "RUNNING")
 
@@ -891,7 +1082,7 @@ def main():
 
     #cm.write(b"#450512")
 
-    if mode == 1:
+    if mode == "1":
         # lurusin
         putarDerajat(87,0)
         putarDerajat(99,1)
@@ -906,10 +1097,7 @@ def main():
 
         putarDerajat(86.5, 1)
 
-        while True:
-            arahRobotDepan()
-            if getStatus(1) == "READY":
-                break
+        arahRobotDepan()
 
         # === init tendang
         db.reset_input_buffer()
@@ -960,7 +1148,7 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
-    elif mode == 2:
+    elif mode == "2":
         # lurusin
         putarDerajat(87,0)
         sleep(0.5)
@@ -1041,8 +1229,12 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
-    elif mode == 0:
-        lurusBolaAtas()
+    elif mode == "3":
+        putarDerajat(87,0)
+        putarDerajat(57,0)
+
+    elif mode == "tes":
+        arahKiper()
 
     setStatus(2, "IDLE")
 if __name__ == '__main__':
