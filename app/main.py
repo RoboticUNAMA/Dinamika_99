@@ -1107,7 +1107,7 @@ def main():
         # ================
         sleep(2)
 
-        putarDerajat(86.3, 1)
+        putarDerajat(87, 1)
 
         setMotor(motor, -80,-80,80,80) # motor geser kanan
         sleep(1.5)
