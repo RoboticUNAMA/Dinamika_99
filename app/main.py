@@ -1066,15 +1066,15 @@ def main():
         putarDerajat(87,1)
         sleep(0.1)
 
-        setMotor(motor, 0,80,-80,0) # serong kiri
-        sleep(2.1)
+        setMotor(motor, 0,120,-120,0) # serong kiri
+        sleep(1.5)
         setMotor(motor, 0,-50,50,0) # rem 
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
-        setMotor(motor, -80,-80,-80,-80) # motor putar kiri
+        setMotor(motor, 80,80,80,80) # motor putar kiri
         sleep(0.3) 
-        setMotor(motor, 50,50,50,50) # rem putar kiri
+        setMotor(motor, -50,-50,-50,-50) # rem putar kiri
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
