@@ -689,7 +689,7 @@ def arahKiper():
                     
                 elif cenX_ball > 150  :
                     setMotor(motor,35,35,35,35)
-                    sleep(0.8)
+                    sleep(0.6)
                     setMotor(motor,-35,-35,-35,-35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
