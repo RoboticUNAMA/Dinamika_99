@@ -1200,7 +1200,7 @@ def main():
         setMotor(motor, 0,0,0,0) # motor stop
         sleep(0.5)
 
-        putarDerajat(80,1)
+        # putarDerajat(80,1) # error
 
         arahBolaDepan()
 
