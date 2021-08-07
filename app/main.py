@@ -514,7 +514,7 @@ def arahRobotDepan():
                 elif cenX_ball > 300  :
                     setMotor(motor,-35,-35,-35,-35)
                     
-                elif cenX_ball < 185  :
+                elif cenX_ball < 188  :
                     setMotor(motor,35,35,35,35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
@@ -1233,7 +1233,7 @@ def main():
         sleep(0.1)
 
         setMotor(motor, 80,-80,80,-80) # motor mundur
-        sleep(1)
+        sleep(0.7)
         setMotor(motor, -50,50,-50,50) # rem mundur
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
