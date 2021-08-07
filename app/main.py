@@ -1186,9 +1186,9 @@ def main():
         # ================
         sleep(2)
 
-        setMotor(motor, 100,0,0,-80) # serong kanan
+        setMotor(motor, -100,0,0,100) # serong kanan
         sleep(1.6)
-        setMotor(motor, -50,0,0,50) # motor geser kanan
+        setMotor(motor, 50,0,0,-50) # motor geser kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
