@@ -999,7 +999,7 @@ def lurusBolaAtas():
                         setMotor(motor,-50,50,-50,50)
                     else:
                         pas = 1
-                        state = "FINISH"
+                        # state = "FINISH"
                         setStatus(2, "READY")
                 break
         
