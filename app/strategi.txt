@@ -1,0 +1,7 @@
+mode 1:
+- dummy 3,8
+- dummy 1,7
+
+mode 2:
+- dummy 3,8
+- dummy 1,7

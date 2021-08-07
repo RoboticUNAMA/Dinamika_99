@@ -1137,7 +1137,6 @@ def main():
         setMotor(motor, 0,0,0,0) # motor stop
 
         arahKiper()
-
         # === init tendang
         db.reset_input_buffer()
         dribbling(db, 0)
@@ -1187,13 +1186,14 @@ def main():
         # ================
         sleep(2)
 
-        putarDerajat(80,1)
-        setMotor(motor, -80,-80,80,80) # motor geser kanan
+        setMotor(motor, 100,0,0,-80) # serong kanan
         sleep(1.6)
-        setMotor(motor, 50,50,-50,-50) # motor geser kanan
+        setMotor(motor, -50,0,0,50) # motor geser kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
+
+        putarDerajat(80,1)
 
         arahBolaDepan()
 
