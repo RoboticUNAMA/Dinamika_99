@@ -514,7 +514,7 @@ def arahRobotDepan():
                 elif cenX_ball > 300  :
                     setMotor(motor,-35,-35,-35,-35)
                     
-                elif cenX_ball < 188  :
+                elif cenX_ball < 190  :
                     setMotor(motor,35,35,35,35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
@@ -1173,6 +1173,11 @@ def main():
 
         arahRobotDepan()
 
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
+
         # === init tendang
         dribbling(db, 0)
         sleep(1)
@@ -1200,6 +1205,11 @@ def main():
         sleep(0.5)
         
         arahRobotDepan()
+
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
 
         # === init tendang
         dribbling(db, 0)
