@@ -1193,6 +1193,13 @@ def main():
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
 
+        setMotor(motor, 80,80,80,80) # motor putar kiri
+        sleep(0.2) 
+        setMotor(motor, -50,-50,-50,-50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+        sleep(0.5)
+
         putarDerajat(80,1)
 
         arahBolaDepan()
