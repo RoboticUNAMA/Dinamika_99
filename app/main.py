@@ -1158,8 +1158,8 @@ def main():
 
     elif mode == "2":
         # lurusin
-        putarDerajat(87,0)
-        sleep(0.5)
+        putarDerajat(87,1)
+        sleep(0.1)
 
         mulaiSerongKiri()
         lurusBolaAtas()
@@ -1256,8 +1256,59 @@ def main():
         setMotor(motor, 0,0,0,0)
 
     elif mode == "3":
-        putarDerajat(87,0)
-        putarDerajat(57,0)
+        putarDerajat(87,1)
+        sleep(0.1)
+
+        setMotor(motor, 100,100,-100,-100) # motor geser kiri
+        sleep(2)
+        setMotor(motor, -50,-50,50,50) # motor geser kiri
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.1)
+
+        setMotor(motor, -100,100,-100,100) # motor maju
+        sleep(2)
+        setMotor(motor, 50,-50,50,-50) # rem maju
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+
+        lurusBolaAtas()
+
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.2) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        arahRobotDepan()
+
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
+
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
+        # ================
+        sleep(2)
+
+        setMotor(motor, -100,0,0,100) # serong kanan
+        sleep(1.6)
+        setMotor(motor, 50,0,0,-50) # motor geser kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.5)
+
+        setMotor(motor, 80,80,80,80) # motor putar kiri
+        sleep(0.2) 
+        setMotor(motor, -50,-50,-50,-50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+        sleep(0.5)
 
     elif mode == "tes":
         arahKiper()
