@@ -938,12 +938,6 @@ def lurusBolaAtas():
         ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
 
-        if state == "FINISH":
-            setMotor(motor,0,0,0,0)
-            motor.close()
-            cv2.destroyAllWindows()
-            break
-
         if db.isOpen() == False:
             db.open()
         reading = db.readline().decode('utf-8','ignore')
@@ -1001,11 +995,11 @@ def lurusBolaAtas():
                         setStatus(2, "READY")
                 break
         
-        if state == "FINISH" and pas == 1: 
-            setMotor(motor,0,0,0,0)
-            motor.close()
-            cv2.destroyAllWindows()
-            break        
+        # if state == "FINISH" and pas == 1: 
+        #     setMotor(motor,0,0,0,0)
+        #     motor.close()
+        #     cv2.destroyAllWindows()
+        #     break        
         
         if db.isOpen() == False:
             db.open()
