@@ -1360,19 +1360,17 @@ def main():
         while True:
             pos = float(getCompass(2))
             if pos < 140.0:
-                setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-                sleep(0.2) 
-                setMotor(motor, 50,50,50,50) # rem putar kanan
+                setMotor(motor, -30,-30,-30,-30) # motor putar kanan
+                sleep(0.1) 
+                setMotor(motor, 30,30,30,30) # rem putar kanan
                 sleep(0.1)
                 setMotor(motor, 0,0,0,0) # motor stop
-                sleep(0.5)
             elif pos > 140.0:
-                setMotor(motor, 80,80,80,80) # motor putar kiri
-                sleep(0.2) 
-                setMotor(motor, -50,-50,-50,-50) # rem putar kiri
+                setMotor(motor, 30,30,30,30) # motor putar kiri
+                sleep(0.1) 
+                setMotor(motor, -30,-30,-30,-30) # rem putar kiri
                 sleep(0.1)
                 setMotor(motor, 0,0,0,0) # motor stop
-                sleep(0.5)
             else:
                 setMotor(motor, 0,0,0,0) # motor stop
                 break
