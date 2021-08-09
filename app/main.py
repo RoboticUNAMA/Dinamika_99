@@ -1259,7 +1259,7 @@ def main():
         putarDerajat(87,1)
         sleep(0.1)
 
-        setMotor(motor, 100,100,-100,-100) # motor geser kiri
+        setMotor(motor, 100,100,-110,-110) # motor geser kiri
         sleep(2)
         setMotor(motor, -50,-50,50,50) # motor geser kiri
         sleep(0.1)
