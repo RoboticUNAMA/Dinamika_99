@@ -1266,8 +1266,6 @@ def main():
         setMotor(motor, 0,0,0,0)
         sleep(0.1)
 
-        putarDerajat(87,1)
-
         setMotor(motor, -100,100,-100,100) # motor maju
         sleep(2)
         setMotor(motor, 50,-50,50,-50) # rem maju
