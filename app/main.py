@@ -1362,13 +1362,9 @@ def main():
             if pos < 140.0:
                 setMotor(motor, -30,-30,-30,-30) # motor putar kanan
                 sleep(0.1) 
-                setMotor(motor, 30,30,30,30) # rem putar kanan
-                sleep(0.1)
                 setMotor(motor, 0,0,0,0) # motor stop
             elif pos > 140.0:
                 setMotor(motor, 30,30,30,30) # motor putar kiri
-                sleep(0.1) 
-                setMotor(motor, -30,-30,-30,-30) # rem putar kiri
                 sleep(0.1)
                 setMotor(motor, 0,0,0,0) # motor stop
             else:
