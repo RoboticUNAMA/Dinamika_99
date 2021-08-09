@@ -1254,7 +1254,7 @@ def main():
         setMotor(motor, 0,0,0,0)
 
     elif mode == "3":
-        putarDerajat(87,1)
+        putarDerajat(86)
         sleep(0.1)
 
         setMotor(motor, -60,60,-60,60) # motor maju
