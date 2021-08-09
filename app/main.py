@@ -1283,6 +1283,11 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
+        if db.isOpen == False:
+            db.open()
+        db.reset_input_buffer()
+        sleep(0.1)
+        
         arahRobotDepan()
 
         while getStatus(1) != "READY":
@@ -1313,6 +1318,11 @@ def main():
         setMotor(motor, 0,0,0,0) # motor stop
         sleep(0.5)
 
+        if db.isOpen == False:
+            db.open()
+        db.reset_input_buffer()
+        sleep(0.1)
+
         arahBolaDepan()
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
@@ -1321,7 +1331,12 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
         sleep(0.5)
-        
+
+        if db.isOpen == False:
+            db.open()
+        db.reset_input_buffer()
+        sleep(0.1)
+
         arahRobotDepan()
 
         while getStatus(1) != "READY":
