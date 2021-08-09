@@ -131,8 +131,8 @@ def read_from_port(ser,que_output):
             que_output.put(500)
 
 def putarDerajat(derajat_tujuan, dribble) :
-    if db.isOpen() == False:
-        db.open()
+    # if db.isOpen() == False:
+    #     db.open()
 
     speed = 70
     state = "START"
@@ -141,13 +141,13 @@ def putarDerajat(derajat_tujuan, dribble) :
     while(True) :
         #compass(db,1)
     
-        if dribble == 1 :
-            dribbling(db,1)
-        else :
-            dribbling(db,0)
+        # if dribble == 1 :
+        #     dribbling(db,1)
+        # else :
+        #     dribbling(db,0)
             
         if state == "FINISH" :
-            compass(db, 0)
+            # compass(db, 0)
             motor.close()
             break
  
