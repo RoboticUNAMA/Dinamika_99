@@ -999,7 +999,7 @@ def lurusBolaAtas():
                     setStatus(2, "READY")
                 break
         
-        if state == "FINISH" and pas == 1: 
+        if state == "FINISH": 
             setMotor(motor,0,0,0,0)
             motor.close()
             cv2.destroyAllWindows()
