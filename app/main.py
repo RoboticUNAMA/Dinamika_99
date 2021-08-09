@@ -1356,6 +1356,9 @@ def main():
         # ================
         sleep(2)
 
+    elif mode == "tes":
+        arahRobotDepan()
+
 
     setStatus(2, "IDLE")
 if __name__ == '__main__':
