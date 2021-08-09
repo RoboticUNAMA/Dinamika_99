@@ -293,12 +293,6 @@ def arahBolaDepan():
         #ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         #ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
 
-        if state == "FINISH":
-            setMotor(motor,0,0,0,0)
-            motor.close()
-            cv2.destroyAllWindows()
-            break
-
         if db.isOpen() == False:
             db.open()
         reading = db.readline().decode('utf-8','ignore')
@@ -1265,7 +1259,7 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
-        setMotor(motor, 100,100,-110,-110) # motor geser kiri
+        setMotor(motor, 110,110,-120,-120) # motor geser kiri
         sleep(2)
         setMotor(motor, -50,-50,50,50) # motor geser kiri
         sleep(0.1)
