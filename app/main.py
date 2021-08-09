@@ -1358,15 +1358,15 @@ def main():
 
     elif mode == "tes":
         while True:
-            pos = int(getCompass(2))
-            if pos < 140:
+            pos = float(getCompass(2))
+            if pos < 140.0:
                 setMotor(motor, -80,-80,-80,-80) # motor putar kanan
                 sleep(0.2) 
                 setMotor(motor, 50,50,50,50) # rem putar kanan
                 sleep(0.1)
                 setMotor(motor, 0,0,0,0) # motor stop
                 sleep(0.5)
-            elif pos > 140:
+            elif pos > 140.0:
                 setMotor(motor, 80,80,80,80) # motor putar kiri
                 sleep(0.2) 
                 setMotor(motor, -50,-50,-50,-50) # rem putar kiri
