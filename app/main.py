@@ -1006,6 +1006,11 @@ def lurusBolaAtas():
             motor.close()
             cv2.destroyAllWindows()
             break        
+        
+        if db.isOpen() == False:
+            db.open()
+        
+        db.reset_input_buffer()
 
         # displays
         ## uncomment this to show center area of the frame 1
