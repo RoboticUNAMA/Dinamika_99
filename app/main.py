@@ -493,7 +493,7 @@ def arahRobotDepan():
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
-            if ball_area > 50:
+            if ball_area > 10:
                 ada = 1
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
@@ -979,7 +979,7 @@ def lurusBolaAtas():
                     dari = "kanan"
                     print("PUTAR KANAN")
                 
-                elif cenX_ball > 240 and cenY_ball < 70 :
+                elif cenX_ball > 230 and cenY_ball < 70 :
                     setMotor(motor,speed,speed,speed,speed)
                     sleep(0.1)
                     setMotor(motor,-(speed*0.2),-(speed*0.2),-(speed*0.2),-(speed*0.2))
