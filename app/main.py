@@ -154,7 +154,7 @@ def putarDerajat(derajat_tujuan, dribble) :
         reading = getCompass(2)
         
         if len(reading) > 0 :
-            print(reading)
+            #print(reading)
 
             degree = float(reading)
             print(degree)
@@ -1356,7 +1356,7 @@ def main():
         sleep(2)
 
     elif mode == "tes":
-        putarDerajat(180, 1)
+        putarDerajat(70, 0)
 
 
     setStatus(2, "IDLE")
