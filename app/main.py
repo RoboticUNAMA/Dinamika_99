@@ -993,13 +993,18 @@ def lurusBolaAtas():
                         pas = 1
                         # state = "FINISH"
                         setStatus(2, "READY")
+
+                if cenX_ball > 230 and cenX_ball < 235 and cenY_ball >= 67:
+                    pas = 1
+                    state = "FINISH"
+                    setStatus(2, "READY")
                 break
         
-        # if state == "FINISH" and pas == 1: 
-        #     setMotor(motor,0,0,0,0)
-        #     motor.close()
-        #     cv2.destroyAllWindows()
-        #     break        
+        if state == "FINISH" and pas == 1: 
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break        
         
         if db.isOpen() == False:
             db.open()
