@@ -977,7 +977,7 @@ def lurusBolaAtas():
                     
                 elif cenX_ball < 210 and cenY_ball < 70 :
                     setMotor(motor,-35,-35,-35,-35)
-                    sleep(0.2)
+                    sleep(0.1)
                     setMotor(motor,30,30,30,30)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
@@ -986,7 +986,7 @@ def lurusBolaAtas():
                 
                 elif cenX_ball > 240 and cenY_ball < 70 :
                     setMotor(motor,35,35,35,35)
-                    sleep(0.2)
+                    sleep(0.1)
                     setMotor(motor,-30,-30,-30,-30)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
@@ -1340,7 +1340,7 @@ def main():
         sleep(2)
 
     elif mode == "tes":
-        arahKiper()
+        lurusBolaAtas()
 
     setStatus(2, "IDLE")
 if __name__ == '__main__':
