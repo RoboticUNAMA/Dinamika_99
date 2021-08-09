@@ -1358,7 +1358,7 @@ def main():
 
     elif mode == "tes":
         while True:
-            pos = getCompass(2)
+            pos = int(getCompass(2))
             if pos < 140:
                 setMotor(motor, -80,-80,-80,-80) # motor putar kanan
                 sleep(0.2) 
