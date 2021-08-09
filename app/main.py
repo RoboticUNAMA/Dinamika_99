@@ -19,6 +19,9 @@ def setStatus(id, status):
 def getStatus(id):
     get = requests.post("http://"+ip_server+"/robot/getstatus.php?"+"id="+str(id))
     return get.text.strip()
+def getCompass(id):
+    get = requests.post("http://"+ip_server+"/robot/getkompas.php?"+"id="+str(id))
+    return get.text.strip()
 
 # serial motor driver
 motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
@@ -1354,7 +1357,26 @@ def main():
         sleep(2)
 
     elif mode == "tes":
-        lurusBolaAtas()
+        while True:
+            pos = getCompass(2)
+            if pos < 140:
+                setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+                sleep(0.2) 
+                setMotor(motor, 50,50,50,50) # rem putar kanan
+                sleep(0.1)
+                setMotor(motor, 0,0,0,0) # motor stop
+                sleep(0.5)
+            elif pos > 140:
+                setMotor(motor, 80,80,80,80) # motor putar kiri
+                sleep(0.2) 
+                setMotor(motor, -50,-50,-50,-50) # rem putar kiri
+                sleep(0.1)
+                setMotor(motor, 0,0,0,0) # motor stop
+                sleep(0.5)
+            else:
+                setMotor(motor, 0,0,0,0) # motor stop
+                break
+
 
     setStatus(2, "IDLE")
 if __name__ == '__main__':
