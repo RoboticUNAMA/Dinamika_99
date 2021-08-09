@@ -139,7 +139,7 @@ def putarDerajat(derajat_tujuan, dribble) :
     clb = 0
         
     while(True) :
-        compass(db,1)
+        #compass(db,1)
     
         if dribble == 1 :
             dribbling(db,1)
@@ -151,71 +151,70 @@ def putarDerajat(derajat_tujuan, dribble) :
             motor.close()
             break
  
-        reading = bacaCompass(db)
+        reading = getCompass(2)
         
         if len(reading) > 0 :
             print(reading)
-            head = reading[0:7]
-            if  head == "Heading" :
-                degree = float(reading[10:-9])
-                print(degree)
 
-                if degree - derajat_tujuan < -180 :
-                    selisih = -360 + derajat_tujuan - degree
-                elif degree - derajat_tujuan >= -180 and  degree - derajat_tujuan <= 180 :
-                    selisih =  derajat_tujuan - degree
-                elif degree - derajat_tujuan >  180 :
-                    selisih = 360 + derajat_tujuan - degree   
+            degree = float(reading)
+            print(degree)
 
-                selisihabs = abs(selisih)
-                speed = selisih
-                
-                if speed > 0 :
-                    if speed > 50 :
-                        speed = 50
-                    if speed < 30 :
-                        speed = 30
-                else :
-                    if speed < -50 :
-                        speed = -50
-                    if speed > -30 :
-                        speed = -30
+            if degree - derajat_tujuan < -180 :
+                selisih = -360 + derajat_tujuan - degree
+            elif degree - derajat_tujuan >= -180 and  degree - derajat_tujuan <= 180 :
+                selisih =  derajat_tujuan - degree
+            elif degree - derajat_tujuan >  180 :
+                selisih = 360 + derajat_tujuan - degree   
 
-                print(speed)
-                rentang = 1
-                
-                if selisihabs < rentang :
-                    if speed > 0 :
-                        speed = -35
-                    else :
-                        speed = 35
+            selisihabs = abs(selisih)
+            speed = selisih
             
-                    setMotor(motor,speed,speed,speed,speed)
-                    sleep(0.1)
-                    setMotor(motor,0,0,0,0)
-                 
-                    if clb > 1 : 
-                        state = "FINISH"
-                    clb += 1
-                
-                elif selisihabs < 15 :
-                    if speed > 0 :
-                        speed = 40
-                    else :
-                        speed = -40
-                        
-                    setMotor(motor,speed,speed,speed,speed)
-                    sleep(0.1)
-                    setMotor(motor,0,0,0,0)
-                   
-                elif selisihabs < 70 :
-                    if speed > 0 :
-                        speed = 40
-                    else :
-                        speed = -40
-                    setMotor(motor,speed,speed,speed,speed)
+            if speed > 0 :
+                if speed > 50 :
+                    speed = 50
+                if speed < 30 :
+                    speed = 30
+            else :
+                if speed < -50 :
+                    speed = -50
+                if speed > -30 :
+                    speed = -30
+
+            print(speed)
+            rentang = 1
+            
+            if selisihabs < rentang :
+                if speed > 0 :
+                    speed = -35
                 else :
-                    setMotor(motor,speed,speed,speed,speed)
+                    speed = 35
+        
+                setMotor(motor,speed,speed,speed,speed)
+                sleep(0.1)
+                setMotor(motor,0,0,0,0)
+                
+                if clb > 1 : 
+                    state = "FINISH"
+                clb += 1
+            
+            elif selisihabs < 15 :
+                if speed > 0 :
+                    speed = 40
+                else :
+                    speed = -40
+                    
+                setMotor(motor,speed,speed,speed,speed)
+                sleep(0.1)
+                setMotor(motor,0,0,0,0)
+                
+            elif selisihabs < 70 :
+                if speed > 0 :
+                    speed = 40
+                else :
+                    speed = -40
+                setMotor(motor,speed,speed,speed,speed)
+            else :
+                setMotor(motor,speed,speed,speed,speed)
 
 def arahBolaDepan():
     # get center of the frame
@@ -1357,19 +1356,7 @@ def main():
         sleep(2)
 
     elif mode == "tes":
-        while True:
-            pos = float(getCompass(2))
-            if pos < 140.0:
-                setMotor(motor, -30,-30,-30,-30) # motor putar kanan
-                sleep(0.1) 
-                setMotor(motor, 0,0,0,0) # motor stop
-            elif pos > 140.0:
-                setMotor(motor, 30,30,30,30) # motor putar kiri
-                sleep(0.1)
-                setMotor(motor, 0,0,0,0) # motor stop
-            else:
-                setMotor(motor, 0,0,0,0) # motor stop
-                break
+        putarDerajat(180, 1)
 
 
     setStatus(2, "IDLE")
