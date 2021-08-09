@@ -1254,6 +1254,9 @@ def main():
 
     elif mode == "3":
         putarDerajat(86,1)
+        if db.isOpen == False:
+            db.open()
+        db.reset_input_buffer()
         sleep(0.1)
 
         setMotor(motor, -60,60,-60,60) # motor maju
