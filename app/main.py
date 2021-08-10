@@ -1372,6 +1372,24 @@ def main():
         setMotor(motor, 0,0,0,0)
         sleep(0.1)
 
+        lurusBolaAtas()
+
+        arahRobotDepan()
+
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
+
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
+        # ================
+        sleep(2)
+
     elif mode == "tes":
         arahRobotDepan()
 
