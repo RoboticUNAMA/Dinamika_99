@@ -428,8 +428,10 @@ def arahRobotDepan():
     dribbling(db,1)
     db.flush()
 
+    setMotor(motor,0,0,0,0)
+
     while(True):
-        print(dari)
+        print(count)
         if count <= 0:
             motor.close()
             count = startCount
