@@ -433,7 +433,6 @@ def arahRobotDepan(derajat_tujuan):
     selisihabs = 0
 
     while(True):
-        print(count)
         if count <= 0:
             motor.close()
             count = startCount
@@ -523,7 +522,6 @@ def arahRobotDepan(derajat_tujuan):
                     if speed > -30 :
                         speed = -30 
            
-
         pas = 0
         ada = 0
 
