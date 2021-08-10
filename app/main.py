@@ -420,7 +420,7 @@ def arahRobotDepan():
 
     dari = ""
     second = 0
-    startCount = 30
+    startCount = 10
     count = startCount
     speed = 60
     state = "START"
@@ -547,27 +547,21 @@ def arahRobotDepan():
             cv2.destroyAllWindows()
             break   
 
-        if ada == 0 :
+        if ada == 0 and count <= 0 :
             if dari == "kiri":
                 setMotor(motor,35,35,35,35)
                 dari = "kanan"
+                count = startCount
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)     
                 # dari = ""
             else:
                 setMotor(motor,-35,-35,-35,-35)
                 dari = "kiri"
+                count = startCount
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)
-                # dari = ""
-
-        if count <= 0:
-            if dari == "kanan":
-                setMotor(motor,-35,-35,-35,-35)
-                count = startCount
-            elif dari == "kiri":
-                setMotor(motor,35,35,35,35)
-                count = startCount           
+                # dari = ""       
 
         count -= 1
 
