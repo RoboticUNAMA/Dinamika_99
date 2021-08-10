@@ -968,27 +968,27 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball < 170 and cenY_ball > 75 :
+                if cenX_ball < 170 and cenY_ball > 77 :
                     setMotor(motor,-speed,-speed,-speed,-speed)
                     
-                elif cenX_ball > 280 and cenY_ball > 75 :
+                elif cenX_ball > 280 and cenY_ball > 77 :
                     setMotor(motor,speed,speed,speed,speed)
                     
-                elif cenX_ball < 205 and cenY_ball < 75 :
+                elif cenX_ball < 205 and cenY_ball < 77 :
                     setMotor(motor,-speed,-speed,-speed,-speed)
                     sleep(0.1)
                     setMotor(motor,(speed*0.2),(speed*0.2),(speed*0.2),(speed*0.2))
                     dari = "kanan"
                     print("PUTAR KANAN")
                 
-                elif cenX_ball > 210 and cenY_ball < 75 :
+                elif cenX_ball > 210 and cenY_ball < 77 :
                     setMotor(motor,speed,speed,speed,speed)
                     sleep(0.1)
                     setMotor(motor,-(speed*0.2),-(speed*0.2),-(speed*0.2),-(speed*0.2))
                     dari = "kiri"
                     print("PUTAR KIRI")
                 else :
-                    if cenY_ball < 75:
+                    if cenY_ball < 77:
                         setMotor(motor,-50,50,-50,50)
                     else:
                         pas = 1
@@ -1185,7 +1185,7 @@ def main():
         sleep(2)
 
         setMotor(motor, -100,0,0,100) # serong kanan
-        sleep(1.6)
+        sleep(1.7)
         setMotor(motor, 50,0,0,-50) # motor geser kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
@@ -1316,7 +1316,7 @@ def main():
         setStatus(2, "RUNNING")
 
         setMotor(motor, -100,0,0,110) # serong kanan
-        sleep(1.6)
+        sleep(1.8)
         setMotor(motor, 50,0,0,-50) # motor geser kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
@@ -1335,9 +1335,10 @@ def main():
         sleep(0.1)
 
         arahBolaDepan()
+        sleep(1)
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-        sleep(0.2) 
+        sleep(0.3) 
         setMotor(motor, 50,50,50,50) # rem putar kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
