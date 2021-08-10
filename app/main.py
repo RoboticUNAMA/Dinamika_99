@@ -429,7 +429,7 @@ def arahRobotDepan():
     db.flush()
 
     while(True):
-        print(count)
+        print(dari)
         if count <= 0:
             motor.close()
             count = startCount
