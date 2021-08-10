@@ -966,27 +966,27 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball < 170 and cenY_ball > 70 :
+                if cenX_ball < 170 and cenY_ball > 75 :
                     setMotor(motor,-speed,-speed,-speed,-speed)
                     
-                elif cenX_ball > 280 and cenY_ball > 70 :
+                elif cenX_ball > 280 and cenY_ball > 75 :
                     setMotor(motor,speed,speed,speed,speed)
                     
-                elif cenX_ball < 205 and cenY_ball < 70 :
+                elif cenX_ball < 205 and cenY_ball < 75 :
                     setMotor(motor,-speed,-speed,-speed,-speed)
                     sleep(0.1)
                     setMotor(motor,(speed*0.2),(speed*0.2),(speed*0.2),(speed*0.2))
                     dari = "kanan"
                     print("PUTAR KANAN")
                 
-                elif cenX_ball > 210 and cenY_ball < 70 :
+                elif cenX_ball > 210 and cenY_ball < 75 :
                     setMotor(motor,speed,speed,speed,speed)
                     sleep(0.1)
                     setMotor(motor,-(speed*0.2),-(speed*0.2),-(speed*0.2),-(speed*0.2))
                     dari = "kiri"
                     print("PUTAR KIRI")
                 else :
-                    if cenY_ball < 65:
+                    if cenY_ball < 75:
                         setMotor(motor,-50,50,-50,50)
                     else:
                         pas = 1
