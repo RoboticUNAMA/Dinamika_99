@@ -507,9 +507,13 @@ def arahRobotDepan():
                 
                 if cenX_ball > 300  :
                     setMotor(motor,-28,-28,-28,-28)
+                    dari = "kiri"
+                    count = startCount
 
                 elif cenX_ball < 100  :
                     setMotor(motor,28,28,28,28)
+                    dari = "kanan"
+                    count = startCount
                     
                 elif cenX_ball < 200  :
                     setMotor(motor,35,35,35,35)
@@ -517,6 +521,7 @@ def arahRobotDepan():
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kanan"
+                    count = startCount
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 210 :
@@ -525,6 +530,7 @@ def arahRobotDepan():
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kiri"
+                    count = startCount
                     print("PUTAR KIRI")
                 else :
                     pas = 1
@@ -549,6 +555,16 @@ def arahRobotDepan():
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)     
                 # dari = ""
+
+        if count <= 0:
+            if dari == "kanan":
+                setMotor(motor,-30,-30,-30,-30)
+                count = startCount
+            elif dari == "kiri":
+                setMotor(motor,30,30,30,30)
+                count = startCount           
+
+        count -= 1
 
         # displays
         ## uncomment this to show center area of the frame 1
