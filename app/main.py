@@ -420,7 +420,7 @@ def arahRobotDepan():
 
     dari = ""
     second = 0
-    startCount = 10
+    startCount = 30
     count = startCount
     speed = 60
     state = "START"
