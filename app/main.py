@@ -943,6 +943,8 @@ def lurusBolaAtas():
 
         if db.isOpen() == False:
             db.open()
+        db.reset_input_buffer()
+        sleep(0.1)
         reading = db.readline().decode('utf-8','ignore')
         if len(reading) > 0 :
             head = reading[0:5]
@@ -1416,7 +1418,7 @@ def main():
         sleep(0.1)
 
         arahBolaDepan()
-        
+
         sleep(1)
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
