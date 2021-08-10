@@ -200,9 +200,9 @@ def putarDerajat(derajat_tujuan, dribble) :
                 
                 elif selisihabs < 15 :
                     if speed > 0 :
-                        speed = 40
+                        speed = 30
                     else :
-                        speed = -40
+                        speed = -30
                         
                     setMotor(motor,speed,speed,speed,speed)
                     sleep(0.1)
