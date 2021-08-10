@@ -1336,7 +1336,7 @@ def main():
         arahBolaDepan()
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-        sleep(0.8)) 
+        sleep(0.8)
         setMotor(motor, 50,50,50,50) # rem putar kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
