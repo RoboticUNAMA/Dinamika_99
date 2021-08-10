@@ -1365,7 +1365,7 @@ def main():
         db.reset_input_buffer()
         sleep(0.1)
 
-        setMotor(motor, 100,100,-255,-255) # motor geser kiri
+        setMotor(motor, 100,100,-240,-240) # motor geser kiri
         sleep(4)
         setMotor(motor, -50,-50,50,50) # motor geser kiri
         sleep(0.1)
