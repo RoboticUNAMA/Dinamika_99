@@ -1372,11 +1372,11 @@ def main():
         setMotor(motor, 0,0,0,0)
         sleep(0.1)
 
-        setMotor(motor, -80,80,-80,80) # motor maju
-        sleep(1)
-        setMotor(motor, 50,-50,50,-50) # rem maju
-        sleep(0.1)
-        setMotor(motor, 0,0,0,0)
+        # setMotor(motor, -80,80,-80,80) # motor maju
+        # sleep(0.5)
+        # setMotor(motor, 50,-50,50,-50) # rem maju
+        # sleep(0.1)
+        # setMotor(motor, 0,0,0,0)
 
         lurusBolaAtas()
 
