@@ -1373,7 +1373,7 @@ def main():
         sleep(0.1)
 
         setMotor(motor, -120,120,-120,120) # motor maju
-        sleep(0.5)
+        sleep(1)
         setMotor(motor, 50,-50,50,-50) # rem maju
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
