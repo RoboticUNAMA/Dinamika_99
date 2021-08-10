@@ -548,17 +548,17 @@ def arahRobotDepan():
             break   
 
         if ada == 0 :
-            if dari == "kanan" :
-                setMotor(motor,-35,-35,-35,-35)
-                dari = "kiri"
-                # sleep(0.1)
-                # setMotor(motor,0,0,0,0)
-                # dari = ""
-            elif dari == "kiri":
+            if dari == "kiri":
                 setMotor(motor,35,35,35,35)
                 dari = "kanan"
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)     
+                # dari = ""
+            else:
+                setMotor(motor,-35,-35,-35,-35)
+                dari = "kiri"
+                # sleep(0.1)
+                # setMotor(motor,0,0,0,0)
                 # dari = ""
 
         if count <= 0:
