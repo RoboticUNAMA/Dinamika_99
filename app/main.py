@@ -1357,6 +1357,21 @@ def main():
         # ================
         sleep(2)
 
+    elif mode == "4":
+        putarDerajat(86,1)
+
+        if db.isOpen == False:
+            db.open()
+        db.reset_input_buffer()
+        sleep(0.1)
+
+        setMotor(motor, 110,110,-180,-180) # motor geser kiri
+        sleep(3)
+        setMotor(motor, -50,-50,50,50) # motor geser kiri
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.1)
+
     elif mode == "tes":
         arahRobotDepan()
 
