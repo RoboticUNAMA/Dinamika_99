@@ -430,6 +430,8 @@ def arahRobotDepan(derajat_tujuan):
 
     setMotor(motor,0,0,0,0)
 
+    selisihabs = 0
+
     while(True):
         print(count)
         if count <= 0:
