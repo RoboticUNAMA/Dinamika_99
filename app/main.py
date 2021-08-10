@@ -558,10 +558,10 @@ def arahRobotDepan():
 
         if count <= 0:
             if dari == "kanan":
-                setMotor(motor,-30,-30,-30,-30)
+                setMotor(motor,-35,-35,-35,-35)
                 count = startCount
             elif dari == "kiri":
-                setMotor(motor,30,30,30,30)
+                setMotor(motor,35,35,35,35)
                 count = startCount           
 
         count -= 1
