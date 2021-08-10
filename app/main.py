@@ -391,7 +391,7 @@ def arahBolaDepan():
             cv2.destroyAllWindows()
             break
 
-def arahRobotDepan():
+def arahRobotDepan(derajat_tujuan):
     setStatus(2, "RUNNING")
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
@@ -489,7 +489,38 @@ def arahRobotDepan():
         #     print(head)
         #     if  head == "Dapat" :
         #         print("DAPAT BOLA")
-        #         state = "FINISH"    
+        #         state = "FINISH" 
+
+        reading = bacaCompass(db)
+        
+        if len(reading) > 0 :
+            print(reading)
+            head = reading[0:7]
+            if  head == "Heading" :
+                degree = float(reading[10:-9])
+                print(degree)
+
+                if degree - derajat_tujuan < -180 :
+                    selisih = -360 + derajat_tujuan - degree
+                elif degree - derajat_tujuan >= -180 and  degree - derajat_tujuan <= 180 :
+                    selisih =  derajat_tujuan - degree
+                elif degree - derajat_tujuan >  180 :
+                    selisih = 360 + derajat_tujuan - degree   
+
+                selisihabs = abs(selisih)
+                speed = selisih
+                
+                if speed > 0 :
+                    if speed > 50 :
+                        speed = 50
+                    if speed < 30 :
+                        speed = 30
+                else :
+                    if speed < -50 :
+                        speed = -50
+                    if speed > -30 :
+                        speed = -30 
+           
 
         pas = 0
         ada = 0
@@ -547,21 +578,20 @@ def arahRobotDepan():
             cv2.destroyAllWindows()
             break   
 
-        if ada == 0 and count <= 0 :
-            if dari == "kiri":
-                setMotor(motor,35,35,35,35)
-                dari = "kanan"
-                count = startCount
-                # sleep(0.1)
-                # setMotor(motor,0,0,0,0)     
-                # dari = ""
+        if ada == 0:
+            if selisihabs > 40:
+                setMotor(motor, speed,speed,speed,speed)
             else:
-                setMotor(motor,-35,-35,-35,-35)
-                dari = "kiri"
-                count = startCount
-                # sleep(0.1)
-                # setMotor(motor,0,0,0,0)
-                # dari = ""       
+                if dari == "kiri":
+                    setMotor(motor,35,35,35,35)
+                    # sleep(0.1)
+                    # setMotor(motor,0,0,0,0)     
+                    # dari = ""
+                else:
+                    setMotor(motor,-35,-35,-35,-35)
+                    # sleep(0.1)
+                    # setMotor(motor,0,0,0,0)
+                    # dari = ""       
 
         count -= 1
 
@@ -1464,7 +1494,7 @@ def main():
         sleep(2)
 
     elif mode == "tes":
-        arahRobotDepan()
+        arahRobotDepan(86)
 
 
     setStatus(2, "IDLE")
