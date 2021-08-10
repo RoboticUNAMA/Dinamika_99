@@ -1344,7 +1344,7 @@ def main():
         db.reset_input_buffer()
         sleep(0.1)
         
-        arahRobotDepan()
+        arahRobotDepan(87)
 
         while getStatus(1) != "READY":
             setMotor(motor, 0,0,0,0)
@@ -1380,7 +1380,7 @@ def main():
             db.open()
         db.reset_input_buffer()
 
-        arahBolaDepan()
+        arahBolaDepan(87)
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
         sleep(0.6)
@@ -1389,7 +1389,7 @@ def main():
         setMotor(motor, 0,0,0,0) # motor stop
         sleep(0.5)
 
-        arahRobotDepan()
+        arahRobotDepan(87)
 
         while getStatus(1) != "READY":
             setMotor(motor, 0,0,0,0)
@@ -1428,7 +1428,7 @@ def main():
 
         lurusBolaAtas()
 
-        arahRobotDepan()
+        arahRobotDepan(87)
 
         while getStatus(1) != "READY":
             setMotor(motor, 0,0,0,0)
@@ -1463,7 +1463,7 @@ def main():
         db.reset_input_buffer()
         sleep(0.1)
 
-        arahBolaDepan()
+        arahBolaDepan(87)
 
         sleep(1)
 
@@ -1479,7 +1479,7 @@ def main():
         db.reset_input_buffer()
         sleep(0.1)
 
-        arahRobotDepan()
+        arahRobotDepan(87)
 
         while getStatus(1) != "READY":
             setMotor(motor, 0,0,0,0)
