@@ -1254,6 +1254,7 @@ def main():
         setMotor(motor, 0,0,0,0)
 
     elif mode == "3":
+        setStatus(2, "RUNNING")
         putarDerajat(86,1)
 
         if db.isOpen == False:
@@ -1283,6 +1284,8 @@ def main():
         lurusBolaAtas()
         sleep(0.2)
 
+        setStatus(2, "RUNNING")
+
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
         sleep(0.3) 
         setMotor(motor, 50,50,50,50) # rem putar kanan
@@ -1309,6 +1312,8 @@ def main():
         oper(db)
         # ================
         sleep(2)
+
+        setStatus(2, "RUNNING")
 
         setMotor(motor, -100,0,0,110) # serong kanan
         sleep(1.6)
