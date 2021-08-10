@@ -1366,7 +1366,7 @@ def main():
         sleep(0.1)
 
         setMotor(motor, 100,100,-240,-240) # motor geser kiri
-        sleep(4)
+        sleep(3.5)
         setMotor(motor, -50,-50,50,50) # motor geser kiri
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
