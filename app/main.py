@@ -1358,7 +1358,7 @@ def main():
         sleep(2)
 
     elif mode == "4":
-        putarDerajat(86,1)
+        putarDerajat(86,0)
 
         if db.isOpen == False:
             db.open()
