@@ -553,7 +553,7 @@ def arahRobotDepan():
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)
                 # dari = ""
-            else :
+            elif dari == "kiri":
                 setMotor(motor,35,35,35,35)
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)     
