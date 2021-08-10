@@ -1329,6 +1329,10 @@ def main():
         setMotor(motor, 0,0,0,0) # motor stop
         sleep(0.5)
 
+        if db.isOpen() == False:
+            db.open()
+        db.reset_input_buffer()
+
         arahBolaDepan()
         sleep(1)
 
