@@ -392,6 +392,7 @@ def arahBolaDepan():
             break
 
 def arahRobotDepan(derajat_tujuan):
+    compass(db,1)
     setStatus(2, "RUNNING")
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
@@ -575,6 +576,7 @@ def arahRobotDepan(derajat_tujuan):
         if state == "FINISH" and getStatus(1) == "READY": 
             setMotor(motor,0,0,0,0)
             motor.close()
+            compass(db,0)
             cv2.destroyAllWindows()
             break   
 
