@@ -261,7 +261,7 @@ def arahBolaDepan():
             motor.close()
             count = startCount
         count -= 1
-        #print(state)
+        print(state)
         second += 1
         #print(second)
         for i in range(3):
@@ -304,6 +304,7 @@ def arahBolaDepan():
 
         if db.isOpen() == False:
             db.open()
+        db.reset_input_buffer()
         reading = db.readline().decode('utf-8','ignore')
         if len(reading) > 0 :
             head = reading[0:5]
