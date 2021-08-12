@@ -918,7 +918,7 @@ def lurusBolaAtas():
     second = 0
     startCount = 10
     count = startCount
-    speed = 35
+    speed = 30
     state = "START"
 
     dribbling(db,1)
