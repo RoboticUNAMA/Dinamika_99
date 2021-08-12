@@ -1093,9 +1093,8 @@ def main():
     # cm.write(b"#512512")
 
     if mode == "1":
-        # lurusin
-        putarDerajat(87,1)
-        sleep(0.1)
+        # putarDerajat(87,1)
+        # sleep(0.1)
 
         setMotor(motor, -60,60,-60,60) # motor maju
         sleep(1)
