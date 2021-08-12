@@ -131,6 +131,7 @@ def read_from_port(ser,que_output):
             que_output.put(500)
 
 def putarDerajat(derajat_tujuan, dribble) :
+    print("==>> PUTAR DERAJAT")
     if db.isOpen() == False:
         db.open()
 
