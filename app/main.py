@@ -1101,9 +1101,8 @@ def main():
         sleep(1)
         setMotor(motor, 50,-50,50,-50) # rem maju
         sleep(0.1)
-        setMotor(motor, 0,0,0,0)
 
-        setMotor(motor, 0,200,-200,0) # serong kiri
+        setMotor(motor, 0,150,-150,0) # serong kiri
         sleep(1.3)
         setMotor(motor, 0,-50,50,0) # rem 
         sleep(0.1)
@@ -1150,14 +1149,13 @@ def main():
 
         putarDerajat(86, 1)
 
-        setMotor(motor, -200,-200,200,200) # motor geser kanan
+        setMotor(motor, -150,-150,150,150) # motor geser kanan
         sleep(1)
         setMotor(motor, 50,50,-50,-50) # motor geser kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
 
-        # arah gawang
         setMotor(motor, 80,80,80,80) # motor putar kiri
         sleep(0.3)
         setMotor(motor, -50,-50,-50,-50) # rem putar kiri
