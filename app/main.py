@@ -377,7 +377,9 @@ def arahBolaDepan():
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)
                 # dari = ""
-            print(dari)
+
+        print("ADA= "+str(ada))
+        print("DARI= "+str(dari)
 
         # displays
         ## uncomment this to show center area of the frame 1
