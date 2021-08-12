@@ -1161,12 +1161,12 @@ def main():
 
         #putarDerajat(86, 1)
 
-        setMotor(motor, -150,-150,150,150) # motor geser kanan
-        sleep(1)
+        setMotor(motor, -120,-120,120,120) # motor geser kanan
+        sleep(1.2)
         setMotor(motor, 50,50,-50,-50) # motor geser kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
-        sleep(0.5)
+        sleep(0.2)
 
         setMotor(motor, 80,80,80,80) # motor putar kiri
         sleep(0.3)
@@ -1208,16 +1208,15 @@ def main():
         sleep(0.1)
         tendang(db)
         # ================
-        sleep(2)
+        sleep(1)
 
-        setMotor(motor, 80,80,80,80) # motor putar kanan
+        setMotor(motor, 80,80,80,80) # motor putar kiri
         sleep(0.5) 
-        setMotor(motor, -50,-50,-50,-50) # rem putar kanan
+        setMotor(motor, -50,-50,-50,-50) # rem putar kiri
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
         putarDerajat(87,0)
-        sleep(0.2)
 
         setMotor(motor, 80,-80,80,-80) # motor mundur
         sleep(1.4)
