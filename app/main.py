@@ -1152,6 +1152,8 @@ def main():
         #putarDerajat(98,1)
         setStatus(2, "RUNNING")
 
+        sleep(1)
+
         arahBolaDepan()
 
         #putarDerajat(98,1)
