@@ -218,6 +218,7 @@ def putarDerajat(derajat_tujuan, dribble) :
                     setMotor(motor,speed,speed,speed,speed)
 
 def arahBolaDepan():
+    print("==>> ARAH BOLA DEPAN")
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
     rows, cols, _ = frame1.shape
@@ -392,6 +393,7 @@ def arahBolaDepan():
             break
 
 def arahRobotDepan():
+    print("==>> ARAH ROBOT DEPAN")
     setStatus(2, "RUNNING")
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
@@ -884,6 +886,7 @@ def mulaiSerongKiri():
             break
 
 def lurusBolaAtas():
+    print("==>> LURUS BOLA ATAS")
     # get center of the frame
     # _, frame1 = FRONT_CAP.read()
     # rows, cols, _ = frame1.shape
