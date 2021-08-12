@@ -245,7 +245,8 @@ def arahBolaDepan():
     lowerBall = np.array([objColor[0],objColor[1],objColor[2]])
     upperBall = np.array([objColor[3],objColor[4],objColor[5]])
 
-    dari = ""
+    counter = 0
+    dari = "kanan"
     second = 0
     startCount = 10
     count = startCount
@@ -300,8 +301,6 @@ def arahBolaDepan():
          
         pas = 0
         ada = 0
-        counter = 0
-        dari = "kanan"
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
