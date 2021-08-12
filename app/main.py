@@ -689,44 +689,46 @@ def arahKiper():
         pas = 0
         ada = 0
 
+        dummyObj = []
+
         for ballContour in ballContours:
-            ball_area = cv2.contourArea(ballContour)
-            print(ball_area)
-            if ball_area > 2500 and ball_area < 4000:
-                ada = 1
-                (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
-                cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
-                cenX_ball = (x_ball+x_ball+w_ball)/2
-                cenY_ball = (y_ball+y_ball+h_ball)/2   
-                print(cenX_ball)
-                # draw actual coordinate from segmentation
-                cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
-                cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
-                cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+            dummyObj.append(cv2.contourArea(ballContour))
+        print(dummyObj[1])
+            # if ball_area > 2500 and ball_area < 4000:
+            #     ada = 1
+            #     (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
+            #     cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
+            #     cenX_ball = (x_ball+x_ball+w_ball)/2
+            #     cenY_ball = (y_ball+y_ball+h_ball)/2   
+            #     print(cenX_ball)
+            #     # draw actual coordinate from segmentation
+            #     cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+            #     cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
+            #     cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball < 120  :
-                    setMotor(motor,0,0,0,0)
-                    state = "FINISH"
-                    print("KIPER KIRI")
+            #     if cenX_ball < 120  :
+            #         setMotor(motor,0,0,0,0)
+            #         state = "FINISH"
+            #         print("KIPER KIRI")
                     
-                elif cenX_ball > 150  :
-                    setMotor(motor,35,35,35,35)
-                    sleep(0.6)
-                    setMotor(motor,-35,-35,-35,-35)
-                    sleep(0.1)
-                    setMotor(motor,0,0,0,0)
-                    state = "FINISH"
-                    print("KIPER KANAN")
+            #     elif cenX_ball > 150  :
+            #         setMotor(motor,35,35,35,35)
+            #         sleep(0.6)
+            #         setMotor(motor,-35,-35,-35,-35)
+            #         sleep(0.1)
+            #         setMotor(motor,0,0,0,0)
+            #         state = "FINISH"
+            #         print("KIPER KANAN")
                     
-                elif cenX_ball > 130 and cenX_ball < 150  :
-                    setMotor(motor,-35,-35,-35,-35)
-                    sleep(0.5)
-                    setMotor(motor,35,35,35,35)
-                    sleep(0.1)
-                    setMotor(motor,0,0,0,0)
-                    state = "FINISH"
-                    print("KIPER TENGAH")
-                break
+            #     elif cenX_ball > 130 and cenX_ball < 150  :
+            #         setMotor(motor,-35,-35,-35,-35)
+            #         sleep(0.5)
+            #         setMotor(motor,35,35,35,35)
+            #         sleep(0.1)
+            #         setMotor(motor,0,0,0,0)
+            #         state = "FINISH"
+            #         print("KIPER TENGAH")
+            #     break
 
         # if state == "FINISH": 
         #     setMotor(motor,0,0,0,0)
