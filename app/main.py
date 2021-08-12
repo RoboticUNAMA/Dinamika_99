@@ -29,9 +29,9 @@ motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
 # serial dribble
 db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 
-# serial OpenCM
-cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
-cm.close()
+# # serial OpenCM
+# cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
+# cm.close()
 
 # initialize
 font = cv2.FONT_HERSHEY_SIMPLEX
@@ -1068,9 +1068,9 @@ def main():
     # serial dribble
     db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 
-    # serial OpenCM
-    cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
-    cm.close()
+    # # serial OpenCM
+    # cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
+    # cm.close()
 
     # initialize camera
     _, frame1 = FRONT_CAP.read()
@@ -1078,9 +1078,9 @@ def main():
 
     #dummy 3 dan 8
 
-    if cm.isOpen() == False:
-        cm.open()
-    cm.write(b"#512512")
+    # if cm.isOpen() == False:
+    #     cm.open()
+    # cm.write(b"#512512")
 
     if mode == "1":
         # lurusin
