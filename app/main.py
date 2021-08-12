@@ -339,18 +339,16 @@ def arahBolaDepan():
                     print("PUTAR KIRI")
                 else :
                     #pas = 1
+                    if db.isOpen() == False:
+                        db.open()
+                    reading = db.readline().decode('utf-8','ignore')
+                    if len(reading) > 0 :
+                        head = reading[0:5]
+                        if  head == "Dapat" :
+                            print("DAPAT BOLA")
+                            state = "FINISH"  
                     setStatus(2, "READY")
                 break
-
-        if ada == 1:
-            if db.isOpen() == False:
-                db.open()
-            reading = db.readline().decode('utf-8','ignore')
-            if len(reading) > 0 :
-                head = reading[0:5]
-                if  head == "Dapat" :
-                    print("DAPAT BOLA")
-                    state = "FINISH"  
         
         if state == "FINISH": 
             setMotor(motor,0,0,0,0)
