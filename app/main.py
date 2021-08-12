@@ -298,7 +298,7 @@ def arahBolaDepan():
         
         #ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         #ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)  
-         
+
         pas = 0
         ada = 0
 
@@ -309,13 +309,7 @@ def arahBolaDepan():
             head = reading[0:5]
             if  head == "Dapat" :
                 print("DAPAT BOLA")
-                state = "FINISH" 
-
-        if state == "FINISH": 
-            setMotor(motor,0,0,0,0)
-            motor.close()
-            cv2.destroyAllWindows()
-            break   
+                state = "FINISH"   
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
@@ -357,9 +351,14 @@ def arahBolaDepan():
                     setStatus(2, "READY")
                 break
 
+        if state == "FINISH": 
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break 
+
         if ada == 0:
             counter += 1
-            print("TESS")
             if counter > 12 and dari == "kanan":
                 counter = 0
                 dari = "kiri"
