@@ -1211,9 +1211,9 @@ def main():
 
         #mulaiSerongKiri()
 
-        setMotor(motor, 0,-200,200,0) # serong kiri
+        setMotor(motor, 0,200,-200,0) # serong kiri
         sleep(2)
-        setMotor(motor, 0,50,-50,0) # motor geser kiri
+        setMotor(motor, 0,-50,50,0) # motor geser kiri
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
         sleep(0.5)
