@@ -1232,23 +1232,32 @@ def main():
         sleep(0.5)
         oper(db)
         # ================
-        sleep(2)
+        sleep(1)
 
-        setMotor(motor, -100,0,0,100) # serong kanan
-        sleep(1.7)
-        setMotor(motor, 50,0,0,-50) # motor geser kanan
-        sleep(0.1)
-        setMotor(motor, 0,0,0,0)
-        sleep(0.5)
+        putarDerajat(87,1)
 
-        setMotor(motor, 80,80,80,80) # motor putar kiri
-        sleep(0.2) 
-        setMotor(motor, -50,-50,-50,-50) # rem putar kanan
-        sleep(0.1)
-        setMotor(motor, 0,0,0,0) # motor stop
-        sleep(0.5)
+        # setMotor(motor, -100,0,0,100) # serong kanan
+        # sleep(1.7)
+        # setMotor(motor, 50,0,0,-50) # motor geser kanan
+        # sleep(0.1)
+        # setMotor(motor, 0,0,0,0)
+        # sleep(0.5)
+
+        # setMotor(motor, 80,80,80,80) # motor putar kiri
+        # sleep(0.4) 
+        # setMotor(motor, -50,-50,-50,-50) # rem putar kanan
+        # sleep(0.1)
+        # setMotor(motor, 0,0,0,0) # motor stop
+        # sleep(0.5)
 
         # putarDerajat(80,1) # error
+
+        setMotor(motor, -120,-120,120,120) # motor geser kanan
+        sleep(1)
+        setMotor(motor, 50,50,-50,-50) # motor geser kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.1)
 
         arahBolaDepan()
 
