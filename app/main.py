@@ -1078,6 +1078,8 @@ def main():
 
     #dummy 3 dan 8
 
+    if cm.isOpen() == False:
+        cm.open()
     cm.write(b"#400400")
 
     if mode == "1":
