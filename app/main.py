@@ -1516,7 +1516,7 @@ def main():
         sleep(2)
 
     elif mode == "tes":
-        arahKiper()
+        arahBolaDepan()
 
 
     setStatus(2, "IDLE")
