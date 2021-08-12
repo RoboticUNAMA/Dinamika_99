@@ -302,6 +302,21 @@ def arahBolaDepan():
         pas = 0
         ada = 0
 
+        if db.isOpen() == False:
+            db.open()
+        reading = db.readline().decode('utf-8','ignore')
+        if len(reading) > 0 :
+            head = reading[0:5]
+            if  head == "Dapat" :
+                print("DAPAT BOLA")
+                state = "FINISH" 
+
+        if state == "FINISH": 
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break   
+
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
             if ball_area > 500:
@@ -361,22 +376,7 @@ def arahBolaDepan():
                 setMotor(motor,-30,-30,-30,-30)
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)
-                # dari = ""
-
-        if db.isOpen() == False:
-            db.open()
-        reading = db.readline().decode('utf-8','ignore')
-        if len(reading) > 0 :
-            head = reading[0:5]
-            if  head == "Dapat" :
-                print("DAPAT BOLA")
-                state = "FINISH"  
-
-        if state == "FINISH": 
-            setMotor(motor,0,0,0,0)
-            motor.close()
-            cv2.destroyAllWindows()
-            break   
+                # dari = "" 
 
         # displays
         ## uncomment this to show center area of the frame 1
