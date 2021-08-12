@@ -114,7 +114,7 @@ def main():
     db = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
     motor.close()
     db.close()
-    spd = 60
+    spd = 70
     while True:
         key = input("Input = ")
         if key == 'w':
