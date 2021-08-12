@@ -246,7 +246,7 @@ def arahBolaDepan():
     upperBall = np.array([objColor[3],objColor[4],objColor[5]])
 
     counter = 0
-    dari = "kanan"
+    dari = "kiri"
     second = 0
     startCount = 10
     count = startCount
@@ -352,6 +352,8 @@ def arahBolaDepan():
                 break
 
         if state == "FINISH": 
+            db.reset_input_buffer()
+            db.close()
             setMotor(motor,0,0,0,0)
             motor.close()
             cv2.destroyAllWindows()
