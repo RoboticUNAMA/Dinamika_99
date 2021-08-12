@@ -341,12 +341,6 @@ def arahBolaDepan():
                     #pas = 1
                     setStatus(2, "READY")
                 break
-        
-        if state == "FINISH": 
-            setMotor(motor,0,0,0,0)
-            motor.close()
-            cv2.destroyAllWindows()
-            break   
 
         if ada == 0:
             counter += 1
@@ -377,6 +371,12 @@ def arahBolaDepan():
             if  head == "Dapat" :
                 print("DAPAT BOLA")
                 state = "FINISH"  
+
+        if state == "FINISH": 
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break   
 
         # displays
         ## uncomment this to show center area of the frame 1
