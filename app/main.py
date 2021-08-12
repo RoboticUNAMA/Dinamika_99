@@ -353,7 +353,6 @@ def arahBolaDepan():
 
         if state == "FINISH": 
             db.reset_input_buffer()
-            db.close()
             setMotor(motor,0,0,0,0)
             motor.close()
             cv2.destroyAllWindows()
