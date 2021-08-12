@@ -1092,7 +1092,7 @@ def main():
         setMotor(motor, 0,0,0,0)
 
         setMotor(motor, 0,200,-200,0) # serong kiri
-        sleep(1.2)
+        sleep(1.3)
         setMotor(motor, 0,-50,50,0) # rem 
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
@@ -1104,8 +1104,6 @@ def main():
         setMotor(motor, 0,0,0,0) # motor stop
 
         arahBolaDepan()
-        
-        print("putar kanan")
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
         sleep(0.3) 
@@ -1113,7 +1111,7 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
-        putarDerajat(86.5, 1)
+        #putarDerajat(86.5, 1)
 
         # while getStatus(1) != "ON POS":
         #     setMotor(motor, 0,0,0,0)
@@ -1154,7 +1152,7 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
-        putarDerajat(98,1)
+        #putarDerajat(98,1)
         setStatus(2, "RUNNING")
 
         arahBolaDepan()
