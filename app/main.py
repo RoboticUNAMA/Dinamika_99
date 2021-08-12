@@ -694,80 +694,80 @@ def arahKiper():
         for ballContour in ballContours:
             dummyObj.append(ballContour)
 
-        # print(dummyObj[1])
-        if len(dummyObj) > 0:
-            ada = 1
-            (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(dummyObj[1])
-            cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
-            cenX_ball = (x_ball+x_ball+w_ball)/2
-            cenY_ball = (y_ball+y_ball+h_ball)/2   
-            print(cenX_ball)
-            # draw actual coordinate from segmentation
-            cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
-            cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
-            cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+        print(len(dummyObj))
+        # if len(dummyObj) > 0:
+        #     ada = 1
+        #     (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(dummyObj[1])
+        #     cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
+        #     cenX_ball = (x_ball+x_ball+w_ball)/2
+        #     cenY_ball = (y_ball+y_ball+h_ball)/2   
+        #     print(cenX_ball)
+        #     # draw actual coordinate from segmentation
+        #     cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+        #     cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
+        #     cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
             
-            if cenX_ball < 100  :
-                setMotor(motor,35,35,35,35)
+        #     if cenX_ball < 100  :
+        #         setMotor(motor,35,35,35,35)
                 
-            elif cenX_ball > 300  :
-                setMotor(motor,-35,-35,-35,-35)
+        #     elif cenX_ball > 300  :
+        #         setMotor(motor,-35,-35,-35,-35)
                 
-            elif cenX_ball < 180  :
-                setMotor(motor,35,35,35,35)
-                sleep(0.1)
-                setMotor(motor,0,0,0,0)
-                sleep(0.1)
-                dari = "kanan"
-                print("PUTAR KANAN")
+        #     elif cenX_ball < 180  :
+        #         setMotor(motor,35,35,35,35)
+        #         sleep(0.1)
+        #         setMotor(motor,0,0,0,0)
+        #         sleep(0.1)
+        #         dari = "kanan"
+        #         print("PUTAR KANAN")
             
-            elif cenX_ball > 220 :
-                setMotor(motor,-35,-35,-35,-35)
-                sleep(0.1)
-                setMotor(motor,0,0,0,0)
-                sleep(0.1)
-                dari = "kiri"
-                print("PUTAR KIRI")
-            else:
-                setMotor(motor,0,0,0,0)
-                state = "FINISH"
+        #     elif cenX_ball > 220 :
+        #         setMotor(motor,-35,-35,-35,-35)
+        #         sleep(0.1)
+        #         setMotor(motor,0,0,0,0)
+        #         sleep(0.1)
+        #         dari = "kiri"
+        #         print("PUTAR KIRI")
+        #     else:
+        #         setMotor(motor,0,0,0,0)
+        #         state = "FINISH"
 
-        else:
-            ada = 1
-            (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(dummyObj[0])
-            cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
-            cenX_ball = (x_ball+x_ball+w_ball)/2
-            cenY_ball = (y_ball+y_ball+h_ball)/2   
-            print(cenX_ball)
-            # draw actual coordinate from segmentation
-            cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
-            cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
-            cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+        # else:
+        #     ada = 1
+        #     (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(dummyObj[0])
+        #     cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
+        #     cenX_ball = (x_ball+x_ball+w_ball)/2
+        #     cenY_ball = (y_ball+y_ball+h_ball)/2   
+        #     print(cenX_ball)
+        #     # draw actual coordinate from segmentation
+        #     cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+        #     cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
+        #     cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
             
-            if cenX_ball < 100  :
-                setMotor(motor,35,35,35,35)
+        #     if cenX_ball < 100  :
+        #         setMotor(motor,35,35,35,35)
                 
-            elif cenX_ball > 300  :
-                setMotor(motor,-35,-35,-35,-35)
+        #     elif cenX_ball > 300  :
+        #         setMotor(motor,-35,-35,-35,-35)
                 
-            elif cenX_ball < 180  :
-                setMotor(motor,35,35,35,35)
-                sleep(0.1)
-                setMotor(motor,0,0,0,0)
-                sleep(0.1)
-                dari = "kanan"
-                print("PUTAR KANAN")
+        #     elif cenX_ball < 180  :
+        #         setMotor(motor,35,35,35,35)
+        #         sleep(0.1)
+        #         setMotor(motor,0,0,0,0)
+        #         sleep(0.1)
+        #         dari = "kanan"
+        #         print("PUTAR KANAN")
             
-            elif cenX_ball > 220 :
-                setMotor(motor,-35,-35,-35,-35)
-                sleep(0.1)
-                setMotor(motor,0,0,0,0)
-                sleep(0.1)
-                dari = "kiri"
-                print("PUTAR KIRI")
-            else:
-                setMotor(motor,0,0,0,0)
-                state = "FINISH"
+        #     elif cenX_ball > 220 :
+        #         setMotor(motor,-35,-35,-35,-35)
+        #         sleep(0.1)
+        #         setMotor(motor,0,0,0,0)
+        #         sleep(0.1)
+        #         dari = "kiri"
+        #         print("PUTAR KIRI")
+        #     else:
+        #         setMotor(motor,0,0,0,0)
+        #         state = "FINISH"
 
         if state == "FINISH": 
             setMotor(motor,0,0,0,0)
