@@ -379,7 +379,7 @@ def arahBolaDepan():
                 # dari = ""
 
         print("ADA= "+str(ada))
-        print("DARI= "+str(dari)
+        print("DARI= "+str(dari))
 
         # displays
         ## uncomment this to show center area of the frame 1
