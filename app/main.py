@@ -360,27 +360,26 @@ def arahBolaDepan():
             break 
 
         if ada == 0:
-            counter += 1
-            if counter > 10 and dari == "kanan":
-                counter = 0
-                dari = "kiri"
-            elif counter > 10 and dari == "kiri":
-                counter = 0
-                dari = "kanan"
+            setMotor(motor,0,0,0,0)     
+            dari = ""
+            # counter += 1
+            # if counter > 10 and dari == "kanan":
+            #     counter = 0
+            #     dari = "kiri"
+            # elif counter > 10 and dari == "kiri":
+            #     counter = 0
+            #     dari = "kanan"
 
-            if dari == "kiri":
-                setMotor(motor,28,28,28,28)
-                # sleep(0.1)
-                # setMotor(motor,0,0,0,0)     
-                # dari = ""
-            else:
-                setMotor(motor,-28,-28,-28,-28)
-                # sleep(0.1)
-                # setMotor(motor,0,0,0,0)
-                # dari = "" 
-
-        db.reset_input_buffer()
-        db.close()
+            # if dari == "kiri":
+            #     setMotor(motor,28,28,28,28)
+            #     # sleep(0.1)
+            #     # setMotor(motor,0,0,0,0)     
+            #     # dari = ""
+            # else:
+            #     setMotor(motor,-28,-28,-28,-28)
+            #     # sleep(0.1)
+            #     # setMotor(motor,0,0,0,0)
+            #     # dari = "" 
 
         # displays
         ## uncomment this to show center area of the frame 1
