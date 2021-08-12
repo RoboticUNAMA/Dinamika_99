@@ -296,16 +296,7 @@ def arahBolaDepan():
         ballContours = sorted(ballContours, key=lambda x:cv2.contourArea(x), reverse=True)
         
         #ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        #ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
-
-        if db.isOpen() == False:
-            db.open()
-        reading = db.readline().decode('utf-8','ignore')
-        if len(reading) > 0 :
-            head = reading[0:5]
-            if  head == "Dapat" :
-                print("DAPAT BOLA")
-                state = "FINISH"    
+        #ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)  
          
         pas = 0
         ada = 0
@@ -350,6 +341,16 @@ def arahBolaDepan():
                     #pas = 1
                     setStatus(2, "READY")
                 break
+
+        if ada == 1:
+            if db.isOpen() == False:
+                db.open()
+            reading = db.readline().decode('utf-8','ignore')
+            if len(reading) > 0 :
+                head = reading[0:5]
+                if  head == "Dapat" :
+                    print("DAPAT BOLA")
+                    state = "FINISH"  
         
         if state == "FINISH": 
             setMotor(motor,0,0,0,0)
