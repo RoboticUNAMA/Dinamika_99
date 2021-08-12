@@ -1015,7 +1015,7 @@ def lurusBolaAtas():
                     print("PUTAR KIRI")
                 else :
                     if cenY_ball < 77:
-                        setMotor(motor,-120,120,-120,120)
+                        setMotor(motor,-80,80,-80,80)
                     else:
                         pas = 1
                         # state = "FINISH"
@@ -1209,7 +1209,15 @@ def main():
         putarDerajat(87,1)
         sleep(0.1)
 
-        mulaiSerongKiri()
+        #mulaiSerongKiri()
+
+        setMotor(motor, 0,-200,200,0) # serong kiri
+        sleep(2)
+        setMotor(motor, 0,50,-50,0) # motor geser kiri
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.5)
+
         lurusBolaAtas()
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
