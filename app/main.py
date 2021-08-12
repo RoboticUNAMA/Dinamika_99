@@ -443,8 +443,6 @@ def arahRobotDepan():
 
     setMotor(motor,0,0,0,0)
 
-    selisihabs = 0
-
     while(True):
         if count <= 0:
             motor.close()
@@ -485,26 +483,6 @@ def arahRobotDepan():
         ballContours, _ = cv2.findContours(BALL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         ballContours = sorted(ballContours, key=lambda x:cv2.contourArea(x), reverse=True)
         
-        # ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
-        # ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
-        #
-
-        # if state == "FINISH":
-        #     setMotor(motor,0,0,0,0)
-        #     motor.close()
-        #     cv2.destroyAllWindows()
-        #     break  
-         
-        # if db.isOpen() == False:
-        #     db.open()
-        # reading = db.readline().decode('utf-8','ignore')
-        # if len(reading) > 0 :
-        #     head = reading[0:5]
-        #     print(head)
-        #     if  head == "Dapat" :
-        #         print("DAPAT BOLA")
-        #         state = "FINISH" 
-           
         pas = 0
         ada = 0
 
@@ -527,12 +505,12 @@ def arahRobotDepan():
                     dari = "kiri"
                     count = startCount
 
-                elif cenX_ball < 100  :
+                elif cenX_ball > 0 and cenX_ball < 100  :
                     setMotor(motor,28,28,28,28)
                     dari = "kanan"
                     count = startCount
                     
-                elif cenX_ball < 200  :
+                elif cenX_ball > 0 and cenX_ball < 200  :
                     setMotor(motor,35,35,35,35)
                     sleep(0.1)
                     setMotor(motor,0,0,0,0)
