@@ -993,44 +993,44 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                # if cenX_ball < 170 and cenY_ball < 100 :
-                #     setMotor(motor,-speed,-speed,-speed,-speed)
+                if cenX_ball < 170 and cenY_ball < 100 :
+                    setMotor(motor,-speed,-speed,-speed,-speed)
                     
-                # elif cenX_ball > 280 and cenY_ball < 100 :
-                #     setMotor(motor,speed,speed,speed,speed)
+                elif cenX_ball > 280 and cenY_ball < 100 :
+                    setMotor(motor,speed,speed,speed,speed)
                     
-                # elif cenX_ball < 205 and cenY_ball < 100 :
-                #     setMotor(motor,-speed,-speed,-speed,-speed)
-                #     sleep(0.1)
-                #     setMotor(motor,(speed*0.2),(speed*0.2),(speed*0.2),(speed*0.2))
-                #     dari = "kanan"
-                #     print("PUTAR KANAN")
+                elif cenX_ball < 205 and cenY_ball < 100 :
+                    setMotor(motor,-speed,-speed,-speed,-speed)
+                    sleep(0.1)
+                    setMotor(motor,(speed*0.2),(speed*0.2),(speed*0.2),(speed*0.2))
+                    dari = "kanan"
+                    print("PUTAR KANAN")
                 
-                # elif cenX_ball > 210 and cenY_ball < 100 :
-                #     setMotor(motor,speed,speed,speed,speed)
-                #     sleep(0.1)
-                #     setMotor(motor,-(speed*0.2),-(speed*0.2),-(speed*0.2),-(speed*0.2))
-                #     dari = "kiri"
-                #     print("PUTAR KIRI")
-                # else :
-                #     if cenY_ball < 100:
-                #         setMotor(motor,-80,80,-80,80)
-                #     else:
-                #         pas = 1
-                #         # state = "FINISH"
-                #         setStatus(2, "READY")
+                elif cenX_ball > 210 and cenY_ball < 100 :
+                    setMotor(motor,speed,speed,speed,speed)
+                    sleep(0.1)
+                    setMotor(motor,-(speed*0.2),-(speed*0.2),-(speed*0.2),-(speed*0.2))
+                    dari = "kiri"
+                    print("PUTAR KIRI")
+                else :
+                    if cenY_ball < 100:
+                        setMotor(motor,-50,50,-50,50)
+                    else:
+                        pas = 1
+                        # state = "FINISH"
+                        setStatus(2, "READY")
 
-                # if cenX_ball > 230 and cenX_ball < 235 and cenY_ball >= 67:
-                #     pas = 1
-                #     state = "FINISH"
-                #     setStatus(2, "READY")
+                if cenX_ball > 230 and cenX_ball < 235 and cenY_ball >= 67:
+                    pas = 1
+                    state = "FINISH"
+                    setStatus(2, "READY")
                 break
         
-        # if state == "FINISH": 
-        #     setMotor(motor,0,0,0,0)
-        #     motor.close()
-        #     cv2.destroyAllWindows()
-        #     break        
+        if state == "FINISH": 
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break        
 
         # displays
         ## uncomment this to show center area of the frame 1
