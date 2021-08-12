@@ -1181,7 +1181,7 @@ def main():
 
         sleep(0.2)
 
-        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        setMotor(motor, -50,-50,-50,-50) # motor putar kanan
         sleep(0.2) 
         setMotor(motor, 50,50,50,50) # rem putar kanan
         sleep(0.1)
