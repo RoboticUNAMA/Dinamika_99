@@ -918,7 +918,7 @@ def lurusBolaAtas():
     second = 0
     startCount = 10
     count = startCount
-    speed = 35
+    speed = 80
     state = "START"
 
     dribbling(db,1)
@@ -978,7 +978,7 @@ def lurusBolaAtas():
             if  head == "Dapat" :
                 print("DAPAT BOLA")
                 state = "FINISH"    
-         
+
         pas = 0
 
         for ballContour in ballContours1:
@@ -1262,7 +1262,7 @@ def main():
         arahBolaDepan()
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-        sleep(0.5) 
+        sleep(0.4) 
         setMotor(motor, 50,50,50,50) # rem putar kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
