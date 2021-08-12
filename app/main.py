@@ -691,7 +691,7 @@ def arahKiper():
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
-            if ball_area > 100:
+            if ball_area < 500:
                 print(ball_area)
                 ada = 1
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
