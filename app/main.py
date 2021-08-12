@@ -552,7 +552,7 @@ def arahRobotDepan():
 
         if ada == 0:
             counter += 1
-            if counter > 15 and dari == "kanan":
+            if counter > 10 and dari == "kanan":
                 counter = 0
                 dari = "kiri"
             elif counter > 15 and dari == "kiri":
