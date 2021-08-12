@@ -302,6 +302,15 @@ def arahBolaDepan():
         pas = 0
         ada = 0  
 
+        if db.isOpen() == False:
+            db.open()
+        reading = db.readline().decode('utf-8','ignore')
+        if len(reading) > 0 :
+            head = reading[0:5]
+            if  head == "Dapat" :
+                print("DAPAT BOLA")
+                state = "FINISH" 
+
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
             if ball_area > 500:
@@ -342,6 +351,12 @@ def arahBolaDepan():
                     setStatus(2, "READY")
                 break
 
+        if state == "FINISH": 
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break 
+
         if ada == 0:
             counter += 1
             if counter > 10 and dari == "kanan":
@@ -361,22 +376,6 @@ def arahBolaDepan():
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)
                 # dari = "" 
-        
-        else:
-            if db.isOpen() == False:
-                db.open()
-            reading = db.readline().decode('utf-8','ignore')
-            if len(reading) > 0 :
-                head = reading[0:5]
-                if  head == "Dapat" :
-                    print("DAPAT BOLA")
-                    state = "FINISH" 
-        
-        if state == "FINISH": 
-            setMotor(motor,0,0,0,0)
-            motor.close()
-            cv2.destroyAllWindows()
-            break 
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -1104,11 +1103,11 @@ def main():
 
         arahBolaDepan()
 
-        # setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-        # sleep(0.3) 
-        # setMotor(motor, 50,50,50,50) # rem putar kiri
-        # sleep(0.1)
-        # setMotor(motor, 0,0,0,0) # motor stop
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.3) 
+        setMotor(motor, 50,50,50,50) # rem putar kiri
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
 
         #putarDerajat(86.5, 1)
 
