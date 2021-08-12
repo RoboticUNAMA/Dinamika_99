@@ -1078,7 +1078,7 @@ def main():
 
     #dummy 3 dan 8
 
-    cm.write(b"#512512")
+    cm.write(b"#400400")
 
     if mode == "1":
         # lurusin
