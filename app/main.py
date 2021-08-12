@@ -264,7 +264,7 @@ def arahBolaDepan():
         #print(state)
         second += 1
         #print(second)
-        for i in range(3):
+        for i in range(5):
             FRONT_CAP.grab()
             #OMNI_CAP.grab()
         ## read frame
