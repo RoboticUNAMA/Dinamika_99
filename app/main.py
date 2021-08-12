@@ -339,14 +339,6 @@ def arahBolaDepan():
                     print("PUTAR KIRI")
                 else :
                     #pas = 1
-                    if db.isOpen() == False:
-                        db.open()
-                    reading = db.readline().decode('utf-8','ignore')
-                    if len(reading) > 0 :
-                        head = reading[0:5]
-                        if  head == "Dapat" :
-                            print("DAPAT BOLA")
-                            state = "FINISH"  
                     setStatus(2, "READY")
                 break
         
@@ -377,9 +369,14 @@ def arahBolaDepan():
                 # setMotor(motor,0,0,0,0)
                 # dari = ""
 
-        print("ADA= "+str(ada))
-        print("DARI= "+str(dari))
-        print("COUNTER= "+str(counter))
+        if db.isOpen() == False:
+            db.open()
+        reading = db.readline().decode('utf-8','ignore')
+        if len(reading) > 0 :
+            head = reading[0:5]
+            if  head == "Dapat" :
+                print("DAPAT BOLA")
+                state = "FINISH"  
 
         # displays
         ## uncomment this to show center area of the frame 1
