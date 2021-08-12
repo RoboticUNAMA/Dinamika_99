@@ -970,7 +970,6 @@ def lurusBolaAtas():
         if db.isOpen() == False:
             db.open()
         db.reset_input_buffer()
-        sleep(0.1)
         reading = db.readline().decode('utf-8','ignore')
         if len(reading) > 0 :
             head = reading[0:5]
@@ -994,27 +993,27 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball < 170 and cenY_ball > 77 :
+                if cenX_ball < 170 and cenY_ball < 100 :
                     setMotor(motor,-speed,-speed,-speed,-speed)
                     
-                elif cenX_ball > 280 and cenY_ball > 77 :
+                elif cenX_ball > 280 and cenY_ball < 100 :
                     setMotor(motor,speed,speed,speed,speed)
                     
-                elif cenX_ball < 205 and cenY_ball < 77 :
+                elif cenX_ball < 205 and cenY_ball < 100 :
                     setMotor(motor,-speed,-speed,-speed,-speed)
                     sleep(0.1)
                     setMotor(motor,(speed*0.2),(speed*0.2),(speed*0.2),(speed*0.2))
                     dari = "kanan"
                     print("PUTAR KANAN")
                 
-                elif cenX_ball > 210 and cenY_ball < 77 :
+                elif cenX_ball > 210 and cenY_ball < 100 :
                     setMotor(motor,speed,speed,speed,speed)
                     sleep(0.1)
                     setMotor(motor,-(speed*0.2),-(speed*0.2),-(speed*0.2),-(speed*0.2))
                     dari = "kiri"
                     print("PUTAR KIRI")
                 else :
-                    if cenY_ball < 77:
+                    if cenY_ball < 100:
                         setMotor(motor,-80,80,-80,80)
                     else:
                         pas = 1
@@ -1211,7 +1210,7 @@ def main():
 
         #mulaiSerongKiri()
 
-        setMotor(motor, 0,50,-50,0) # serong kiri
+        setMotor(motor, 0,75,-75,0) # serong kiri
         sleep(0.5)
 
         setMotor(motor, 0,255,-255,0) # serong kiri
