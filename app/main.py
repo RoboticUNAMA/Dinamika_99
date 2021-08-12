@@ -1178,6 +1178,18 @@ def main():
         setMotor(motor, 0,0,0,0) # motor stop
 
         arahKiper()
+
+        sleep(0.5)
+
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.2) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        sleep(0.5)
+
+
         # === init tendang
         db.reset_input_buffer()
         dribbling(db, 0)
@@ -1493,19 +1505,6 @@ def main():
 
     elif mode == "tes":
         arahKiper()
-
-        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
-        sleep(0.3) 
-        setMotor(motor, 50,50,50,50) # rem putar kanan
-        sleep(0.1)
-        setMotor(motor, 0,0,0,0) # motor stop
-        sleep(0.5)
-
-        dribbling(db, 0)
-        sleep(1)
-        dribbling(db, 0)
-        sleep(0.5)
-        oper(db)
 
 
     setStatus(2, "IDLE")
