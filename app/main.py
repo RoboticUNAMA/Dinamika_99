@@ -361,6 +361,7 @@ def arahBolaDepan():
 
         if ada == 0:
             counter += 1
+            print("TESS")
             if counter > 12 and dari == "kanan":
                 counter = 0
                 dari = "kiri"
