@@ -737,11 +737,11 @@ def arahKiper():
                 setMotor(motor,0,0,0,0)
                 state = "FINISH"
 
-        # if state == "FINISH": 
-        #     setMotor(motor,0,0,0,0)
-        #     motor.close()
-        #     cv2.destroyAllWindows()
-        #     break   
+        if state == "FINISH": 
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break   
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -1493,6 +1493,19 @@ def main():
 
     elif mode == "tes":
         arahKiper()
+
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.3) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+        sleep(0.5)
+
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
 
 
     setStatus(2, "IDLE")
