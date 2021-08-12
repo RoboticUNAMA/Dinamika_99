@@ -1091,8 +1091,8 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
-        setMotor(motor, 0,255,-255,0) # serong kiri
-        sleep(1)
+        setMotor(motor, 0,200,-200,0) # serong kiri
+        sleep(1.2)
         setMotor(motor, 0,-50,50,0) # rem 
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
@@ -1106,7 +1106,7 @@ def main():
         arahBolaDepan()
 
         setMotor(motor, -80,-80,-80,-80) # motor putar kiri
-        sleep(0.8) 
+        sleep(0.5) 
         setMotor(motor, 50,50,50,50) # rem putar kiri
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
