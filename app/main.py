@@ -1080,7 +1080,7 @@ def main():
 
     if cm.isOpen() == False:
         cm.open()
-    cm.write(b"#400400")
+    cm.write(b"#512512")
 
     if mode == "1":
         # lurusin
