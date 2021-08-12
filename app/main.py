@@ -700,6 +700,7 @@ def arahKiper():
         ada = 0
 
         dummyContour = []
+        dummyObj = None
 
         for ballContour in ballContours:
             dummyContour.append(ballContour)
