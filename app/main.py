@@ -418,7 +418,7 @@ def arahRobotDepan():
     lowerBall = np.array([objColor[0],objColor[1],objColor[2]])
     upperBall = np.array([objColor[3],objColor[4],objColor[5]])
 
-    dari = ""
+    dari = "kanan"
     second = 0
     startCount = 10
     count = startCount
@@ -552,7 +552,6 @@ def arahRobotDepan():
 
         if ada == 0:
             counter += 1
-            dari = "kanan"
             if counter > 10 and dari == "kanan":
                 counter = 0
                 dari = "kiri"
