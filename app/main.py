@@ -1519,7 +1519,7 @@ def main():
         sleep(2)
 
     elif mode == "tes":
-        arahBolaDepan()
+        arahRobotDepan()
 
 
     setStatus(2, "IDLE")
