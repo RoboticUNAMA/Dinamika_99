@@ -301,6 +301,7 @@ def arahBolaDepan():
         pas = 0
         ada = 0
         counter = 0
+        dari = "kanan"
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
