@@ -1518,7 +1518,7 @@ def main():
         sleep(2)
 
     elif mode == "tes":
-        arahRobotDepan()
+        lurusBolaAtas()
 
 
     setStatus(2, "IDLE")
