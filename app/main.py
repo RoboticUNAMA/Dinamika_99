@@ -707,28 +707,29 @@ def arahKiper():
             cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
             cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
             
-            if cenX_ball < 120  :
-                setMotor(motor,0,0,0,0)
-                state = "FINISH"
-                print("KIPER KIRI")
-                
-            elif cenX_ball > 150  :
+            if cenX_ball < 100  :
                 setMotor(motor,35,35,35,35)
-                sleep(0.6)
-                setMotor(motor,-35,-35,-35,-35)
-                sleep(0.1)
-                setMotor(motor,0,0,0,0)
-                state = "FINISH"
-                print("KIPER KANAN")
                 
-            elif cenX_ball > 130 and cenX_ball < 150  :
+            elif cenX_ball > 300  :
                 setMotor(motor,-35,-35,-35,-35)
-                sleep(0.5)
+                
+            elif cenX_ball < 180  :
                 setMotor(motor,35,35,35,35)
                 sleep(0.1)
                 setMotor(motor,0,0,0,0)
-                state = "FINISH"
-                print("KIPER TENGAH")
+                sleep(0.1)
+                dari = "kanan"
+                print("PUTAR KANAN")
+            
+            elif cenX_ball > 220 :
+                setMotor(motor,-35,-35,-35,-35)
+                sleep(0.1)
+                setMotor(motor,0,0,0,0)
+                sleep(0.1)
+                dari = "kiri"
+                print("PUTAR KIRI")
+            else:
+                setMotor(motor,0,0,0,0)
 
         # if state == "FINISH": 
         #     setMotor(motor,0,0,0,0)
