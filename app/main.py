@@ -264,7 +264,7 @@ def arahBolaDepan():
         #print(state)
         second += 1
         #print(second)
-        for i in range(10):
+        for i in range(3):
             FRONT_CAP.grab()
             #OMNI_CAP.grab()
         ## read frame
@@ -378,6 +378,9 @@ def arahBolaDepan():
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)
                 # dari = "" 
+
+        db.reset_input_buffer()
+        db.close()
 
         # displays
         ## uncomment this to show center area of the frame 1
