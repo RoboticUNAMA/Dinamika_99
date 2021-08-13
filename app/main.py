@@ -1083,11 +1083,11 @@ def main():
     # cm.write(b"#512512")
 
     if mode == "1":
-        putarDerajat(87,1)
+        #putarDerajat(87,1)
         # sleep(0.1)
 
         setMotor(motor, -80,80,-80,80) # motor maju
-        sleep(1)
+        sleep(0.8)
         setMotor(motor, 50,-50,50,-50) # rem maju
         sleep(0.1)
 
@@ -1134,9 +1134,8 @@ def main():
         sleep(0.1)
         oper(db)
         # ================
-        sleep(2)
 
-        #putarDerajat(86, 1)
+        putarDerajat(86, 1)
 
         setMotor(motor, -120,-120,120,120) # motor geser kanan
         sleep(1.2)
@@ -1153,8 +1152,6 @@ def main():
 
         #putarDerajat(98,1)
         setStatus(2, "RUNNING")
-
-        sleep(1)
 
         arahBolaDepan()
 
@@ -1187,7 +1184,7 @@ def main():
         sleep(0.1)
         tendang(db)
         # ================
-        sleep(1)
+        sleep(0.2)
 
         setMotor(motor, 80,80,80,80) # motor putar kiri
         sleep(0.5) 
