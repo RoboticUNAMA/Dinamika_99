@@ -1205,20 +1205,20 @@ def main():
 
     elif mode == "2":
         # lurusin
-        putarDerajat(87,1)
-        sleep(0.1)
+        #putarDerajat(87,1)
+        #sleep(0.1)
 
-        #mulaiSerongKiri()
+        mulaiSerongKiri()
 
-        setMotor(motor, 0,75,-75,0) # serong kiri
-        sleep(0.5)
+        # setMotor(motor, 0,75,-75,0) # serong kiri
+        # sleep(0.5)
 
-        setMotor(motor, 0,255,-255,0) # serong kiri
-        sleep(2.5)
-        setMotor(motor, 0,-50,50,0) # motor geser kiri
-        sleep(0.1)
-        setMotor(motor, 0,0,0,0)
-        sleep(0.5)
+        # setMotor(motor, 0,255,-255,0) # serong kiri
+        # sleep(2.5)
+        # setMotor(motor, 0,-50,50,0) # motor geser kiri
+        # sleep(0.1)
+        # setMotor(motor, 0,0,0,0)
+        # sleep(0.5)
 
         lurusBolaAtas()
 
