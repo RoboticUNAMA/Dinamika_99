@@ -1277,12 +1277,11 @@ def main():
 
         # putarDerajat(80,1) # error
 
-        setMotor(motor, -120,-120,120,120) # motor geser kanan
-        sleep(1)
-        setMotor(motor, 50,50,-50,-50) # motor geser kanan
+        setMotor(motor, -120,0,0,130) # serong kanan
+        sleep(1.5)
+        setMotor(motor, 50,0,0,-50) # motor geser kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
-        sleep(0.1)
 
         arahBolaDepan()
 
