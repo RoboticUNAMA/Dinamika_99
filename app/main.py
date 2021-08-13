@@ -929,7 +929,7 @@ def lurusBolaAtas():
     second = 0
     startCount = 10
     count = startCount
-    speed = 30
+    speed = 35
     state = "START"
 
     dribbling(db,1)
@@ -1025,7 +1025,7 @@ def lurusBolaAtas():
                     print("PUTAR KIRI")
                 else :
                     if cenY_ball < 100:
-                        setMotor(motor,-50,50,-50,50)
+                        setMotor(motor,-70,70,-70,70)
                     else:
                         pas = 1
                         # state = "FINISH"
