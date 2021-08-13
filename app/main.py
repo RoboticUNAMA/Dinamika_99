@@ -1134,6 +1134,7 @@ def main():
         sleep(0.1)
         oper(db)
         # ================
+        sleep(1)
 
         #putarDerajat(86, 1)
 
