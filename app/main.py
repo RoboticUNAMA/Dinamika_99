@@ -328,9 +328,20 @@ def arahBolaDepan():
                 
                 if cenX_ball < 100  :
                     setMotor(motor,35,35,35,35)
+                    sleep(0.3)
+                    setMotor(motor,0,0,0,0)
+                    sleep(0.1)
+                    dari = "kanan"
+                    print("PUTAR KANAN")
                     
                 elif cenX_ball > 300  :
                     setMotor(motor,-35,-35,-35,-35)
+                    sleep(0.3)
+                    setMotor(motor,0,0,0,0)
+                    sleep(0.1)
+                    dari = "kiri"
+                    print("PUTAR KIRI")
+                    
                     
                 elif cenX_ball < 180  :
                     setMotor(motor,35,35,35,35)
@@ -358,27 +369,27 @@ def arahBolaDepan():
             cv2.destroyAllWindows()
             break 
 
-        if ada == 0:
-            setMotor(motor,0,0,0,0)     
-            dari = ""
-            # counter += 1
-            # if counter > 10 and dari == "kanan":
-            #     counter = 0
-            #     dari = "kiri"
-            # elif counter > 10 and dari == "kiri":
-            #     counter = 0
-            #     dari = "kanan"
+        # if ada == 0:
+        #     setMotor(motor,0,0,0,0)     
+        #     dari = ""
+        #     counter += 1
+        #     if counter > 10 and dari == "kanan":
+        #         counter = 0
+        #         dari = "kiri"
+        #     elif counter > 10 and dari == "kiri":
+        #         counter = 0
+        #         dari = "kanan"
 
-            # if dari == "kiri":
-            #     setMotor(motor,28,28,28,28)
-            #     # sleep(0.1)
-            #     # setMotor(motor,0,0,0,0)     
-            #     # dari = ""
-            # else:
-            #     setMotor(motor,-28,-28,-28,-28)
-            #     # sleep(0.1)
-            #     # setMotor(motor,0,0,0,0)
-            #     # dari = "" 
+        #     if dari == "kiri":
+        #         setMotor(motor,28,28,28,28)
+        #         # sleep(0.1)
+        #         # setMotor(motor,0,0,0,0)     
+        #         # dari = ""
+        #     else:
+        #         setMotor(motor,-28,-28,-28,-28)
+        #         # sleep(0.1)
+        #         # setMotor(motor,0,0,0,0)
+        #         # dari = "" 
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -1141,14 +1152,14 @@ def main():
         setMotor(motor, -50,-50,50,50) # motor geser kanan
         sleep(0.2)
         setMotor(motor, -255,-255,255,255) # motor geser kanan
-        sleep(1)
+        sleep(0.8)
         setMotor(motor, 50,50,-50,-50) # motor geser kanan
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
         sleep(0.2)
 
         setMotor(motor, 80,80,80,80) # motor putar kiri
-        sleep(0.3)
+        sleep(0.4)
         setMotor(motor, -50,-50,-50,-50) # rem putar kiri
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
