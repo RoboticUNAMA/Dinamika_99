@@ -1192,7 +1192,7 @@ def main():
         sleep(0.1)
         setMotor(motor, 0,0,0,0) # motor stop
 
-        putarDerajat(87,0)
+        #putarDerajat(87,0)
 
         setMotor(motor, 80,-80,80,-80) # motor mundur
         sleep(1.4)
