@@ -1107,7 +1107,7 @@ def main():
         sleep(0.1)
 
         setMotor(motor, 0,150,-150,0) # serong kiri
-        sleep(1.3)
+        sleep(1.4)
         setMotor(motor, 0,-50,50,0) # rem 
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
