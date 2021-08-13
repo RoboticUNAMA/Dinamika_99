@@ -933,7 +933,7 @@ def lurusBolaAtas():
     state = "START"
 
     dribbling(db,1)
-    db.flush()
+    #db.flush()
 
     while(True):
         if count <= 0:
@@ -1024,14 +1024,18 @@ def lurusBolaAtas():
                     dari = "kiri"
                     print("PUTAR KIRI")
                 else :
-                    if cenY_ball < 100:
+                    if cenY_ball < 80:
                         setMotor(motor,-70,70,-70,70)
                     else:
+                        setMotor(motor,50,-50,50,-50)
+                        sleep(0.1)
+                        setMotor(motor, 0,0,0,0)
                         pas = 1
                         # state = "FINISH"
                         setStatus(2, "READY")
 
                 if cenX_ball > 230 and cenX_ball < 235 and cenY_ball >= 67:
+                    setMotor(motor, 0,0,0,0)
                     pas = 1
                     state = "FINISH"
                     setStatus(2, "READY")
