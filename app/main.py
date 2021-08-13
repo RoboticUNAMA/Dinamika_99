@@ -1184,7 +1184,7 @@ def main():
         sleep(0.1)
         tendang(db)
         # ================
-        sleep(0.2)
+        sleep(1)
 
         setMotor(motor, 80,80,80,80) # motor putar kiri
         sleep(0.5) 
