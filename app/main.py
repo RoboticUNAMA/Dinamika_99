@@ -19,9 +19,13 @@ def setStatus(id, status):
 def getStatus(id):
     get = requests.post("http://"+ip_server+"/robot/getstatus.php?"+"id="+str(id))
     return get.text.strip()
-def getCompass(id):
-    get = requests.post("http://"+ip_server+"/robot/getkompas.php?"+"id="+str(id))
-    return get.text.strip()
+def getGameInfo():
+    dummy1 = requests.post("http://"+ip_server+"/robot/getdummy1.php")
+    dummy2 = requests.post("http://"+ip_server+"/robot/getdummy2.php")
+    kiper = requests.post("http://"+ip_server+"/robot/getkiper.php")
+    mode = requests.post("http://"+ip_server+"/robot/getmode.php")
+    gameStatus = requests.post("http://"+ip_server+"/robot/getgame.php")
+    return dummy1.text.strip(), dummy2.text.strip(), kiper.text.strip(), mode.text.strip(), gameStatus.text.strip()
 
 # serial motor driver
 motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
@@ -1538,7 +1542,8 @@ def main():
         sleep(2)
 
     elif mode == "tes":
-        lurusBolaAtas()
+        d1, d2, k, m, s = getGameInfo()
+        print(d1,d2,k,m,s)
 
 
     setStatus(2, "IDLE")
