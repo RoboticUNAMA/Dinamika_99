@@ -1307,7 +1307,7 @@ def main():
         sleep(0.5)
         oper(db)
         # ================
-        sleep(2)
+        sleep(1)
 
         setMotor(motor, 80,80,80,80) # motor putar kanan
         sleep(0.2) 
