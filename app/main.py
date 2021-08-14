@@ -1227,7 +1227,7 @@ def main():
                     putarKanan(80, 0.85)
 
                     arahKiper(gameStatus)
-                    putarKanan(60, 0.12)
+                    putarKanan(60, 0.15)
 
                     # === init tendang
                     db.reset_input_buffer()
