@@ -1173,7 +1173,8 @@ def main():
                     geserKiri(75, 0.5)
                     geserKiri(150, 2)
                     maju(75, 1)
-                    gameStatus = "STOP"
+                    stop()
+                    break
         elif gameStatus == "RETRY":
             pass
         elif gameStatus == "STOP":
