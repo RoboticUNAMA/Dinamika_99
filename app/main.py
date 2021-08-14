@@ -1181,6 +1181,14 @@ def main():
 
         dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
 
+        if db.isOpen() == False:
+            db.open()
+        db.reset_input_buffer()
+
+        if motor.isOpen() == False:
+            motor.open()
+        motor.reset_input_buffer()
+
         if gameStatus == "START":
             if dummy1 == "1" and dummy2 == "7":
                 if mode == "KICKOFF KANAN":
