@@ -80,7 +80,7 @@ def mundur(speed, delay):
     setMotor(motor, 0,0,0,0)
 
 def geserKiri(speed, delay):
-    adj = speed*0.2
+    adj = speed*0.1
     setMotor(motor, speed,speed,-speed-adj,-speed-adj)
     sleep(delay)
     setMotor(motor, -50,-50,50,50)
