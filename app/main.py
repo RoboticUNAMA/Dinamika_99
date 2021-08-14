@@ -1230,7 +1230,10 @@ def main():
                     # ================
                     sleep(1)
 
-                    setGame("STOP")
+                elif mode == "KICKOFF CORNER":
+                    arahKiper(gameStatus)
+                    
+            setGame("STOP")
 
         elif gameStatus == "RETRY":
             if dummy1 == "1" and dummy2 == "7":
