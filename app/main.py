@@ -298,7 +298,7 @@ def putarDerajat(derajat_tujuan, dribble) :
                 else :
                     setMotor(motor,speed,speed,speed,speed)
 
-def arahBolaDepan():
+def arahBolaDepan(gameStatus):
     print("==>> ARAH BOLA DEPAN")
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
@@ -337,6 +337,9 @@ def arahBolaDepan():
     db.flush()
 
     while(True):
+        if gameStatus == "RETRY":
+            break
+
         if count <= 0:
             motor.close()
             count = startCount
@@ -1167,23 +1170,57 @@ def main():
     _, frame1 = FRONT_CAP.read()
     _, frame2 = OMNI_CAP.read()
 
+    phase = 0
+
     while True:
+
         dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
+
         if gameStatus == "START":
             if dummy1 == "1" and dummy2 == "7":
                 if mode == "KICKOFF KANAN":
+                    phase = 1
                     maju(50, 0.5)
                     geserKiri(90, 2.3)
                     maju(90, 2)
+
+                    arahBolaDepan(gameStatus)
+
+                    phase = 2
+                    putarKanan(80, 0.3)
+                    arahRobotDepan(gameStatus)
+
+                    while getStatus(1) != "READY":
+                        setMotor(motor, 0,0,0,0)
+                        if getStatus(1) == "READY":
+                            break
+
+                    # === init tendang
+                    db.reset_input_buffer()
+                    dribbling(db, 0)
+                    sleep(0.5)
+                    dribbling(db, 0)
+                    sleep(0.1)
+                    oper(db)
+                    # ================
+                    sleep(1)
+
                     setGame("STOP")
+
         elif gameStatus == "RETRY":
             if dummy1 == "1" and dummy2 == "7":
                 if mode == "KICKOFF KANAN":
-                    mundur(90, 2)
-                    geserKanan(90, 2.3)
-                    mundur(50, 0.5)
-                    setGame("STOP")
+                    if phase == 1:
+                        mundur(90, 2)
+                        geserKanan(90, 2.3)
+                        mundur(50, 0.5)
+                        setGame("STOP")
+                    elif phase == 2:
+                        putarKiri(80, 0.3)
+                        phase = 1
+
         elif gameStatus == "STOP":
+            phase = 0
             stop()
 
 if __name__ == '__main__':
