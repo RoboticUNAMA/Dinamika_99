@@ -686,7 +686,7 @@ def arahRobotDepan(gameStatus):
             cv2.destroyAllWindows()
             break
 
-def arahKiper():
+def arahKiper(gameStatus):
     setStatus(2, "RUNNING")
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
@@ -724,6 +724,8 @@ def arahKiper():
     dribbling(db,1)
 
     while(True):
+        if gameStatus == "RETRY":
+            break
         if count <= 0:
             motor.close()
             count = startCount
@@ -1208,6 +1210,26 @@ def main():
                     # ================
                     sleep(1)
 
+                    serongKanan(120, 2)
+                    putarKiri(80, 0.6)
+
+                    arahBolaDepan(gameStatus)
+
+                    phase = 3
+                    putarKanan(80, 1.3)
+                    arahKiper(gameStatus)
+                    putarKanan(60, 0.2)
+
+                    # === init tendang
+                    db.reset_input_buffer()
+                    dribbling(db, 0)
+                    sleep(0.5)
+                    dribbling(db, 0)
+                    sleep(0.1)
+                    tendang(db)
+                    # ================
+                    sleep(1)
+
                     setGame("STOP")
 
         elif gameStatus == "RETRY":
@@ -1216,7 +1238,6 @@ def main():
                     if phase == 1:
                         mundur(90, 2)
                         geserKanan(90, 2.3)
-                        mundur(50, 0.5)
                         setGame("STOP")
                     elif phase == 2:
                         putarKiri(80, 0.3)
