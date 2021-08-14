@@ -1210,7 +1210,7 @@ def main():
                     # ================
                     sleep(1)
 
-                    serongKanan(120, 3)
+                    serongKanan(180, 2)
                     putarKiri(80, 0.6)
 
                     arahBolaDepan(gameStatus)
@@ -1218,7 +1218,7 @@ def main():
                     phase = 3
                     putarKanan(80, 0.8)
                     arahKiper(gameStatus)
-                    putarKanan(60, 0.2)
+                    putarKanan(60, 0.12)
 
                     # === init tendang
                     db.reset_input_buffer()
@@ -1245,6 +1245,10 @@ def main():
                     elif phase == 2:
                         putarKiri(80, 0.3)
                         phase = 1
+                    elif phase == 3:
+                        putarKiri(80, 0.4)
+                        mundur(90, 3)
+                        setGame("STOP")
 
         elif gameStatus == "STOP":
             stop()
