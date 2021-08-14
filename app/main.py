@@ -80,7 +80,8 @@ def mundur(speed, delay):
     setMotor(motor, 0,0,0,0)
 
 def geserKiri(speed, delay):
-    setMotor(motor, speed,speed,-speed,-speed)
+    adj = speed*0.2
+    setMotor(motor, speed,speed,-speed-adj,-speed-adj)
     sleep(delay)
     setMotor(motor, -50,-50,50,50)
     sleep(0.1)
@@ -1170,7 +1171,7 @@ def main():
             if dummy1 == "1" and dummy2 == "7":
                 if mode == "KICKOFF KANAN":
                     maju(50, 0.5)
-                    geserKiri(100, 3)
+                    geserKiri(100, 2.5)
                     maju(100, 2)
                     stop()
                     break
