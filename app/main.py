@@ -1208,15 +1208,16 @@ def main():
                     sleep(0.1)
                     oper(db)
                     # ================
-                    sleep(1)
+                    sleep(1.5)
 
-                    serongKanan(180, 2)
+                    serongKanan(180, 2.5)
                     putarKiri(80, 0.6)
 
                     arahBolaDepan(gameStatus)
 
                     phase = 3
-                    putarKanan(80, 0.8)
+                    putarKanan(80, 0.6)
+
                     arahKiper(gameStatus)
                     putarKanan(60, 0.12)
 
@@ -1246,7 +1247,7 @@ def main():
                         putarKiri(80, 0.3)
                         phase = 1
                     elif phase == 3:
-                        geserKanan(90, 2.5)
+                        geserKanan(90, 2)
                         setGame("STOP")
 
         elif gameStatus == "STOP":
