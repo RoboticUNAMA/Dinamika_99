@@ -500,9 +500,6 @@ def arahBolaDepan(gameStatus):
             break
 
 def arahRobotDepan(gameStatus):
-    if gameStatus = "RETRY":
-        break
-    
     print("==>> ARAH ROBOT DEPAN")
     setStatus(2, "RUNNING")
     # get center of the frame
@@ -544,6 +541,9 @@ def arahRobotDepan(gameStatus):
     setMotor(motor,0,0,0,0)
 
     while(True):
+        if gameStatus == "RETRY":
+            break
+        
         if count <= 0:
             motor.close()
             count = startCount
