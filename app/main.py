@@ -543,7 +543,7 @@ def arahRobotDepan(gameStatus):
     while(True):
         if gameStatus == "RETRY":
             break
-        
+
         if count <= 0:
             motor.close()
             count = startCount
@@ -1223,7 +1223,6 @@ def main():
                         phase = 1
 
         elif gameStatus == "STOP":
-            phase = 0
             stop()
 
 if __name__ == '__main__':
