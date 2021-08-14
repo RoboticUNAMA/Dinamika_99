@@ -1210,7 +1210,7 @@ def main():
                     # ================
                     sleep(1)
 
-                    serongKanan(120, 2)
+                    serongKanan(120, 3)
                     putarKiri(80, 0.6)
 
                     arahBolaDepan(gameStatus)
@@ -1232,7 +1232,7 @@ def main():
 
                 elif mode == "KICKOFF CORNER":
                     arahKiper(gameStatus)
-                    
+
             setGame("STOP")
 
         elif gameStatus == "RETRY":
