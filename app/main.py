@@ -1224,7 +1224,7 @@ def main():
                     arahBolaDepan(gameStatus)
 
                     phase = 3
-                    putarKanan(80, 1)
+                    putarKanan(80, 0.85)
 
                     arahKiper(gameStatus)
                     putarKanan(60, 0.12)
