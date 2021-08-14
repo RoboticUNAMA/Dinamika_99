@@ -62,79 +62,6 @@ def setMotor(ser,dki,dka,bki,bka) :
     bka = bka + (bka * 0.3) 
     ser.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
 
-def stop():
-    setMotor(motor, 0,0,0,0)
-
-def maju(speed, delay):
-    setMotor(motor, -speed,speed,-speed,speed)
-    sleep(delay)
-    setMotor(motor, 50,-50,50,-50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def mundur(speed, delay):
-    setMotor(motor, speed,-speed,speed,-speed)
-    sleep(delay)
-    setMotor(motor, -50,50,-50,50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def geserKiri(speed, delay):
-    setMotor(motor, speed,speed,-speed,-speed)
-    sleep(delay)
-    setMotor(motor, -50,-50,50,50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def geserKanan(speed, delay):
-    setMotor(motor, -speed,-speed,speed,speed)
-    sleep(delay)
-    setMotor(motor, 50,50,-50,-50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def putarKiri(speed, delay):
-    setMotor(motor, speed,speed,speed,speed)
-    sleep(delay) 
-    setMotor(motor, -50,-50,-50,-50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def putarKanan(speed, delay):
-    setMotor(motor, -speed,-speed,-speed,-speed)
-    sleep(delay) 
-    setMotor(motor, 50,50,50,50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def serongKiri(speed, delay):
-    setMotor(motor, 0,speed,-speed,0)
-    sleep(delay)
-    setMotor(motor, 0,-50,50,0)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def serongKanan(speed, delay):
-    setMotor(motor, -speed,0,0,speed)
-    sleep(delay)
-    setMotor(motor, 50,0,0,-50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def mundurSerongKiri(speed, delay):
-    setMotor(motor, 0,-speed,speed,0)
-    sleep(delay)
-    setMotor(motor, 0,50,-50,0)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def mundurSerongKanan(speed, delay):
-    setMotor(motor, speed,0,0,-speed)
-    sleep(delay)
-    setMotor(motor, -50,0,0,50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
 def dribbling(ser,val) :
     if ser.isOpen() == False:
         ser.open()
@@ -1150,6 +1077,10 @@ def lurusBolaAtas():
             break
 
 def main():
+    mode = input("Mode = ")
+
+    setStatus(2, "RUNNING")
+
     # serial motor driver
     motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
 
@@ -1164,21 +1095,458 @@ def main():
     _, frame1 = FRONT_CAP.read()
     _, frame2 = OMNI_CAP.read()
 
-    while True:
-        dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
-        if gameStatus == "START":
-            if dummy1 == "1" and dummy2 == "7":
-                if mode == "KICKOFF KANAN":
-                    maju(75, 0.5)
-                    geserKiri(75, 0.5)
-                    geserKiri(150, 2)
-                    maju(75, 1)
-                    gameStatus = "STOP"
-        elif gameStatus == "RETRY":
-            pass
-        elif gameStatus == "STOP":
-            stop()
+    #dummy 3 dan 8
 
+    # if cm.isOpen() == False:
+    #     cm.open()
+    # cm.write(b"#512512")
+
+    if mode == "1":
+        #putarDerajat(87,1)
+        # sleep(0.1)
+
+        setMotor(motor, -80,80,-80,80) # motor maju
+        sleep(0.8)
+        setMotor(motor, 50,-50,50,-50) # rem maju
+        sleep(0.1)
+
+        setMotor(motor, 0,150,-150,0) # serong kiri
+        sleep(1.4)
+        setMotor(motor, 0,-50,50,0) # rem 
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+
+        setMotor(motor, 80,80,80,80) # motor putar kiri
+        sleep(0.3) 
+        setMotor(motor, -50,-50,-50,-50) # rem putar kiri
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        arahBolaDepan()
+
+        # setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        # sleep(0.3) 
+        # setMotor(motor, 50,50,50,50) # rem putar kiri
+        # sleep(0.1)
+        # setMotor(motor, 0,0,0,0) # motor stop
+
+        #putarDerajat(86.5, 1)
+
+        # while getStatus(1) != "ON POS":
+        #     setMotor(motor, 0,0,0,0)
+        #     print("TUNGGU ON POS")
+        #     if getStatus(1) == "ON POS":
+        #         break
+
+        arahRobotDepan()
+
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
+
+        # === init tendang
+        db.reset_input_buffer()
+        dribbling(db, 0)
+        sleep(0.5)
+        dribbling(db, 0)
+        sleep(0.1)
+        oper(db)
+        # ================
+        sleep(1)
+
+        #putarDerajat(86, 1)
+
+        setMotor(motor, -50,-50,50,50) # motor geser kanan
+        sleep(0.2)
+        setMotor(motor, -255,-255,255,255) # motor geser kanan
+        sleep(0.8)
+        setMotor(motor, 50,50,-50,-50) # motor geser kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.2)
+
+        setMotor(motor, 80,80,80,80) # motor putar kiri
+        sleep(0.4)
+        setMotor(motor, -50,-50,-50,-50) # rem putar kiri
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        #putarDerajat(98,1)
+        setStatus(2, "RUNNING")
+
+        arahBolaDepan()
+
+        #putarDerajat(98,1)
+
+        setMotor(motor, -120,-120,-120,-120) # motor putar kanan
+        sleep(0.4)
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        arahKiper()
+
+        sleep(0.2)
+
+        setMotor(motor, -50,-50,-50,-50) # motor putar kanan
+        sleep(0.2) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        sleep(0.2)
+
+
+        # === init tendang
+        db.reset_input_buffer()
+        dribbling(db, 0)
+        sleep(0.5)
+        dribbling(db, 0)
+        sleep(0.1)
+        tendang(db)
+        # ================
+        sleep(1)
+
+        setMotor(motor, 80,80,80,80) # motor putar kiri
+        sleep(0.5) 
+        setMotor(motor, -50,-50,-50,-50) # rem putar kiri
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        #putarDerajat(87,0)
+
+        setMotor(motor, 80,-80,80,-80) # motor mundur
+        sleep(1.4)
+        setMotor(motor, -50,50,-50,50) # rem mundur
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+
+    elif mode == "2":
+        # lurusin
+        #putarDerajat(87,1)
+        #sleep(0.1)
+
+        #mulaiSerongKiri()
+
+        setMotor(motor, 0,75,-75,0) # serong kiri
+        sleep(0.5)
+
+        setMotor(motor, 0,255,-255,0) # serong kiri
+        sleep(2.3)
+        setMotor(motor, 0,-50,50,0) # motor geser kiri
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.5)
+
+        lurusBolaAtas()
+
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.2) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        arahRobotDepan()
+
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
+
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
+        # ================
+        sleep(1)
+
+        #putarDerajat(87,1)
+
+        # setMotor(motor, -100,0,0,100) # serong kanan
+        # sleep(1.7)
+        # setMotor(motor, 50,0,0,-50) # motor geser kanan
+        # sleep(0.1)
+        # setMotor(motor, 0,0,0,0)
+        # sleep(0.5)
+
+        # setMotor(motor, 80,80,80,80) # motor putar kiri
+        # sleep(0.4) 
+        # setMotor(motor, -50,-50,-50,-50) # rem putar kanan
+        # sleep(0.1)
+        # setMotor(motor, 0,0,0,0) # motor stop
+        # sleep(0.5)
+
+        # putarDerajat(80,1) # error
+
+        setMotor(motor, -120,0,0,130) # serong kanan
+        sleep(1.5)
+        setMotor(motor, 50,0,0,-50) # motor geser kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+
+        setMotor(motor, 80,80,80,80) # motor putar kiri
+        sleep(0.3) 
+        setMotor(motor, -50,-50,-50,-50) # rem putar kiri
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        arahBolaDepan()
+
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.4) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+        sleep(0.5)
+        
+        arahRobotDepan()
+
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
+
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
+        # ================
+        sleep(1)
+
+        setMotor(motor, 80,80,80,80) # motor putar kanan
+        sleep(0.2) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        putarDerajat(90,0)
+        sleep(0.2)
+
+        setMotor(motor, 80,-80,80,-80) # motor mundur
+        sleep(2)
+        setMotor(motor, -50,50,-50,50) # rem mundur
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+
+        setMotor(motor, -80,-80,80,80) # motor geser kanan
+        sleep(1.3)
+        setMotor(motor, 50,50,-50,-50) # motor geser kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.1)
+
+        setMotor(motor, 80,-80,80,-80) # motor mundur
+        sleep(0.7)
+        setMotor(motor, -50,50,-50,50) # rem mundur
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+
+    elif mode == "3":
+        setStatus(2, "RUNNING")
+        putarDerajat(86,1)
+
+        if db.isOpen == False:
+            db.open()
+        db.reset_input_buffer()
+        sleep(0.1)
+
+        setMotor(motor, -60,60,-60,60) # motor maju
+        sleep(0.5)
+        setMotor(motor, 50,-50,50,-50) # rem maju
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+
+        setMotor(motor, 110,110,-120,-120) # motor geser kiri
+        sleep(2)
+        setMotor(motor, -50,-50,50,50) # motor geser kiri
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.1)
+
+        setMotor(motor, -100,100,-100,100) # motor maju
+        sleep(2.3)
+        setMotor(motor, 50,-50,50,-50) # rem maju
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+
+        lurusBolaAtas()
+        sleep(0.2)
+
+        setStatus(2, "RUNNING")
+
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.3) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+
+        if db.isOpen == False:
+            db.open()
+        db.reset_input_buffer()
+        sleep(0.1)
+        
+        arahRobotDepan(87)
+
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
+
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
+        # ================
+        sleep(2)
+
+        setStatus(2, "RUNNING")
+
+        setMotor(motor, -100,0,0,110) # serong kanan
+        sleep(1.8)
+        setMotor(motor, 50,0,0,-50) # motor geser kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.5)
+
+        setMotor(motor, 100,100,110,110) # motor putar kiri
+        sleep(0.2) 
+        setMotor(motor, -50,-50,-50,-50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+        sleep(0.5)
+
+        if db.isOpen() == False:
+            db.open()
+        db.reset_input_buffer()
+
+        arahBolaDepan(87)
+
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.6)
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+        sleep(0.5)
+
+        arahRobotDepan(87)
+
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
+
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
+        # ================
+        sleep(2)
+
+    elif mode == "4":
+        putarDerajat(86,0)
+
+        if db.isOpen == False:
+            db.open()
+        db.reset_input_buffer()
+        sleep(0.1)
+
+        setMotor(motor, 108,108,-255,-255) # motor geser kiri
+        sleep(3.7)
+        setMotor(motor, -50,-50,50,50) # motor geser kiri
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.1)
+
+        # setMotor(motor, -80,80,-80,80) # motor maju
+        # sleep(0.5)
+        # setMotor(motor, 50,-50,50,-50) # rem maju
+        # sleep(0.1)
+        # setMotor(motor, 0,0,0,0)
+
+        lurusBolaAtas()
+
+        arahRobotDepan(87)
+
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
+
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
+        # ================
+        sleep(2)
+
+        setMotor(motor, -100,0,0,110) # serong kanan
+        sleep(1.6)
+        setMotor(motor, 50,0,0,-50) # motor geser kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
+        sleep(0.5)
+
+        setMotor(motor, 100,100,110,110) # motor putar kiri
+        sleep(0.2) 
+        setMotor(motor, -50,-50,-50,-50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+        sleep(0.5)
+
+        if db.isOpen == False:
+            db.open()
+        db.reset_input_buffer()
+        sleep(0.1)
+
+        arahBolaDepan(87)
+
+        sleep(1)
+
+        setMotor(motor, -80,-80,-80,-80) # motor putar kanan
+        sleep(0.3) 
+        setMotor(motor, 50,50,50,50) # rem putar kanan
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0) # motor stop
+        sleep(0.5)
+
+        if db.isOpen == False:
+            db.open()
+        db.reset_input_buffer()
+        sleep(0.1)
+
+        arahRobotDepan(87)
+
+        while getStatus(1) != "READY":
+            setMotor(motor, 0,0,0,0)
+            if getStatus(1) == "READY":
+                break
+
+        # === init tendang
+        dribbling(db, 0)
+        sleep(1)
+        dribbling(db, 0)
+        sleep(0.5)
+        oper(db)
+        # ================
+        sleep(2)
+
+    elif mode == "tes":
+        d1, d2, k, m, s = getGameInfo()
+        print(d1,d2,k,m,s)
+
+
+    setStatus(2, "IDLE")
 if __name__ == '__main__':
     # execute main program
     main()
