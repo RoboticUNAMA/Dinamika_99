@@ -1218,13 +1218,13 @@ def main():
                     # ================
                     sleep(1.5)
 
-                    serongKanan(180, 2.5)
+                    serongKanan(180, 2.3)
                     putarKiri(80, 0.6)
 
                     arahBolaDepan(gameStatus)
 
                     phase = 3
-                    putarKanan(80, 0.8)
+                    putarKanan(80, 1)
 
                     arahKiper(gameStatus)
                     putarKanan(60, 0.12)
