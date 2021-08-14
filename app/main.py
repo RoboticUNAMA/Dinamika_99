@@ -1186,7 +1186,7 @@ def main():
                 if mode == "KICKOFF KANAN":
                     phase = 1
                     maju(50, 0.5)
-                    geserKiri(90, 2.3)
+                    geserKiri(90, 2.2)
                     maju(90, 2)
 
                     arahBolaDepan(gameStatus)
@@ -1246,8 +1246,7 @@ def main():
                         putarKiri(80, 0.3)
                         phase = 1
                     elif phase == 3:
-                        putarKiri(80, 0.4)
-                        mundur(90, 3)
+                        geserKanan(90, 2.5)
                         setGame("STOP")
 
         elif gameStatus == "STOP":
