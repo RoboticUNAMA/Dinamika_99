@@ -1171,7 +1171,7 @@ def main():
             if dummy1 == "1" and dummy2 == "7":
                 if mode == "KICKOFF KANAN":
                     maju(50, 0.5)
-                    geserKiri(100, 2.3)
+                    geserKiri(100, 2)
                     maju(100, 1.5)
                     stop()
                     break
