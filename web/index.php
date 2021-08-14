@@ -92,6 +92,6 @@ if (!$link) {
 		</div>
 	</body>
 	<footer>
-		Created By: Arjuna Panji Prakarsa (8030170001). Copyright &copy;2021
+		Created By: @arjunapanji21 (8030170001). Copyright &copy;2021
 	</footer>
 </html>
