@@ -1172,7 +1172,7 @@ def main():
                 if mode == "KICKOFF KANAN":
                     maju(50, 0.5)
                     geserKiri(90, 2.3)
-                    maju(120, 1.7)
+                    maju(90, 1.7)
                     stop()
                     break
         elif gameStatus == "RETRY":
