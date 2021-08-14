@@ -499,7 +499,10 @@ def arahBolaDepan(gameStatus):
             cv2.destroyAllWindows()
             break
 
-def arahRobotDepan():
+def arahRobotDepan(gameStatus):
+    if gameStatus = "RETRY":
+        break
+    
     print("==>> ARAH ROBOT DEPAN")
     setStatus(2, "RUNNING")
     # get center of the frame
