@@ -1170,10 +1170,8 @@ def main():
             if dummy1 == "1" and dummy2 == "7":
                 if mode == "KICKOFF KANAN":
                     maju(50, 0.5)
-                    geserKiri(50, 0.5)
-                    geserKiri(120, 2)
-                    maju(50, 0.5)
-                    maju(120, 1)
+                    geserKiri(100, 3)
+                    maju(100, 2)
                     stop()
                     break
         elif gameStatus == "RETRY":
