@@ -16,6 +16,8 @@ from time import sleep
 ip_server = "192.168.10.244"
 def setStatus(id, status):
     requests.post("http://"+ip_server+"/robot/setstatus.php?"+"id="+str(id)+"&status="+str(status))
+def setGame(status):
+    requests.post("http://"+ip_server+"/robot/setgame.php?"+"status="+str(status))
 def getStatus(id):
     get = requests.post("http://"+ip_server+"/robot/getstatus.php?"+"id="+str(id))
     return get.text.strip()
@@ -1173,10 +1175,14 @@ def main():
                     maju(50, 0.5)
                     geserKiri(90, 2.3)
                     maju(90, 2)
-                    stop()
-                    break
+                    setGame("STOP")
         elif gameStatus == "RETRY":
-            pass
+            if dummy1 == "1" and dummy2 == "7":
+                if mode == "KICKOFF KANAN":
+                    mundur(90, 2)
+                    geserKanan(90, 2.3)
+                    mundur(50, 0.5)
+                    setGame("STOP")
         elif gameStatus == "STOP":
             stop()
 
