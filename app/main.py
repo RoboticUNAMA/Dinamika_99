@@ -1225,13 +1225,13 @@ def main():
                     sleep(1.5)
 
                     geserKanan(80, 1.5)
-                    putarKiri(80, 0.6)
+                    putarKiri(80, 0.2)
 
                     arahBolaDepan(gameStatus)
 
                     phase = 3
                     setStatus(2, "RUNNING")
-                    putarKanan(80, 0.7)
+                    putarKanan(80, 0.6)
 
                     setGame("STOP")
 
