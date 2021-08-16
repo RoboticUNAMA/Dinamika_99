@@ -1229,6 +1229,8 @@ def main():
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.6)
 
+                    setGame("STOP")
+
                     arahKiper(gameStatus)
 
                     if kiper == "3":
