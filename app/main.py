@@ -1196,8 +1196,7 @@ def main():
                     phase = 1
                     maju(50, 0.5)
                     geserKiri(90, 2.1)
-                    maju(50,0.5)    
-                    maju(90, 1.7)
+                    maju(80, 2)
 
                     arahBolaDepan(gameStatus)
 
@@ -1228,8 +1227,7 @@ def main():
 
                     phase = 3
                     setStatus(2, "RUNNING")
-                    #putarKanan(80, 0.85)
-                    putarDerajat(138, 1)
+                    putarKanan(80, 0.6)
 
                     arahKiper(gameStatus)
 
