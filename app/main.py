@@ -1225,7 +1225,7 @@ def main():
                     sleep(1.5)
 
                     geserKanan(80, 1.5)
-                    putarKiri(80, 0.3)
+                    putarKiri(80, 0.35)
 
                     arahBolaDepan(gameStatus)
 
