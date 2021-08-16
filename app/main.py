@@ -1190,6 +1190,7 @@ def main():
         motor.reset_input_buffer()
 
         if gameStatus == "START":
+            setStatus(2, "RUNNING")
             if dummy1 == "1" and dummy2 == "7":
                 if mode == "KICKOFF KANAN":
                     phase = 1
@@ -1200,6 +1201,7 @@ def main():
                     arahBolaDepan(gameStatus)
 
                     phase = 2
+                    setStatus(2, "RUNNING")
                     putarKanan(80, 0.3)
                     arahRobotDepan(gameStatus)
 
@@ -1218,16 +1220,21 @@ def main():
                     # ================
                     sleep(1.5)
 
-                    serongKanan(180, 2.3)
+                    serongKanan(180, 1.5)
                     putarKiri(80, 0.6)
 
                     arahBolaDepan(gameStatus)
 
                     phase = 3
+                    setStatus(2, "RUNNING")
                     putarKanan(80, 0.85)
 
                     arahKiper(gameStatus)
-                    putarKanan(60, 0.15)
+
+                    if kiper == "3":
+                        putarKiri(60, 0.15)
+                    else:
+                        putarKanan(60, 0.15)
 
                     # === init tendang
                     db.reset_input_buffer()
@@ -1259,7 +1266,7 @@ def main():
                         setGame("STOP")
 
         elif gameStatus == "STOP":
-            stop()
+            setStatus(2, "IDLE")
 
 if __name__ == '__main__':
     # execute main program
