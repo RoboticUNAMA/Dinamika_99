@@ -1268,8 +1268,8 @@ def main():
                         putarKiri(80, 0.3)
                         phase = 1
                     elif phase == 3:
-                        putarKiri(80, 0.6)
-                        mundur(80, 2)
+                        putarKiri(80, 0.5)
+                        mundur(90, 2)
                         setGame("STOP")
 
         elif gameStatus == "STOP":
