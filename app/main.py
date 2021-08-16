@@ -1195,7 +1195,7 @@ def main():
                 if mode == "KICKOFF KANAN":
                     phase = 1
                     maju(50, 0.5)
-                    geserKiri(90, 2.2)
+                    geserKiri(90, 2.1)
                     maju(90, 2)
 
                     arahBolaDepan(gameStatus)
@@ -1232,9 +1232,9 @@ def main():
                     arahKiper(gameStatus)
 
                     if kiper == "3":
-                        putarKiri(60, 0.15)
+                        putarKiri(60, 0.2)
                     else:
-                        putarKanan(60, 0.15)
+                        putarKanan(60, 0.2)
 
                     # === init tendang
                     db.reset_input_buffer()
