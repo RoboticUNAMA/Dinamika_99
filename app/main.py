@@ -1197,8 +1197,9 @@ def main():
                 if mode == "KICKOFF KANAN":
                     phase = 1
                     maju(50, 0.5)
-                    geserKiri(90, 2.1)
+                    geserKiri(80, 2.2)
                     maju(80, 2)
+                    geserKanan(90, 1.5)
 
                     arahBolaDepan(gameStatus)
 
