@@ -1196,7 +1196,8 @@ def main():
                     phase = 1
                     maju(50, 0.5)
                     geserKiri(90, 2.1)
-                    maju(90, 2)
+                    maju(50,0.5)    
+                    maju(90, 1.7)
 
                     arahBolaDepan(gameStatus)
 
