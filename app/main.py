@@ -1199,7 +1199,8 @@ def main():
                     maju(50, 0.5)
                     geserKiri(80, 2.2)
                     maju(80, 2)
-                    geserKanan(90, 1.5)
+                    geserKanan(90, 1.2)
+                    putarKiri(80,0.4)
 
                     arahBolaDepan(gameStatus)
 
