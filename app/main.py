@@ -1231,7 +1231,7 @@ def main():
 
                     phase = 3
                     setStatus(2, "RUNNING")
-                    putarKanan(80, 0.7)
+                    putarKanan(80, 0.8)
 
                     setGame("STOP")
 
