@@ -1224,7 +1224,7 @@ def main():
                     # ================
                     sleep(1.5)
 
-                    serongKanan(180, 2)
+                    geserKanan(80, 1.5)
                     putarKiri(80, 0.6)
 
                     arahBolaDepan(gameStatus)
