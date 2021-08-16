@@ -82,7 +82,7 @@ def mundur(speed, delay):
     setMotor(motor, 0,0,0,0)
 
 def geserKiri(speed, delay):
-    adj = speed*0.15
+    adj = speed*0.2
     setMotor(motor, speed,speed,-speed-adj,-speed)
     sleep(delay)
     setMotor(motor, -50,-50,50,50)
@@ -1220,14 +1220,15 @@ def main():
                     # ================
                     sleep(1.5)
 
-                    serongKanan(180, 1.5)
+                    serongKanan(180, 2)
                     putarKiri(80, 0.6)
 
                     arahBolaDepan(gameStatus)
 
                     phase = 3
                     setStatus(2, "RUNNING")
-                    putarKanan(80, 0.85)
+                    #putarKanan(80, 0.85)
+                    putarDerajat(138, 1)
 
                     arahKiper(gameStatus)
 
