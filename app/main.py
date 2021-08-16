@@ -340,6 +340,8 @@ def arahBolaDepan(gameStatus):
         if gameStatus == "RETRY":
             break
 
+        print(gameStatus)
+
         if count <= 0:
             motor.close()
             count = startCount
