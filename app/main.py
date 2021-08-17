@@ -1262,7 +1262,6 @@ def main():
                         dribbling(db,0)
                         setGame("STOP")
                         break
-                    setGame("STOP")
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.8)
                     arahKiper()
