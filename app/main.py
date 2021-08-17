@@ -354,6 +354,7 @@ def arahBolaDepan():
     while(True):
         dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
         if gameStatus == "RETRY":
+            cv2.destroyAllWindows()
             break
 
         print(gameStatus)
