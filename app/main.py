@@ -125,14 +125,14 @@ def serongKanan(speed, delay):
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
-def mundurSerongKiri(speed, delay):
+def mundurSerongKanan(speed, delay):
     setMotor(motor, 0,-speed,speed,0)
     sleep(delay)
     setMotor(motor, 0,50,-50,0)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
-def mundurSerongKanan(speed, delay):
+def mundurSerongKiri(speed, delay):
     setMotor(motor, speed,0,0,-speed)
     sleep(delay)
     setMotor(motor, -50,0,0,50)
