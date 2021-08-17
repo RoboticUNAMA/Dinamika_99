@@ -1278,7 +1278,7 @@ def main():
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
                     serongKiri(180, 3)
-                    lurusBolaAtas()
+                    gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
                         print(gameStatus)
                         putarDerajat(87,1)
