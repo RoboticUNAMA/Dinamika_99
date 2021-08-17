@@ -1276,6 +1276,12 @@ def main():
                     break
 
             elif mode == "KICKOFF KIRI":
+                while gameStatus == "START":
+                    serongKiri(180, 3)
+                    setGame("STOP")
+                    break
+
+
                 pass
             elif mode == "KICKOFF CORNER":
                 pass
