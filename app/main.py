@@ -1137,7 +1137,7 @@ def lurusBolaAtas():
                 elif cenX_ball > 220 and cenY_ball < 100 :
                     putarKiri(speed, 0.3)
                 else :
-                    if cenY_ball < 100:
+                    if cenY_ball < 80:
                         setMotor(motor,-70,70,-70,70)
                     else:
                         setMotor(motor,50,-50,50,-50)
@@ -1272,7 +1272,7 @@ def main():
                     serongKiri(180, 3)
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
+                        putarDerajat(87,0)
                         mundurSerongKanan(180, 3)
                         dribbling(db,0)
                         setGame("STOP")
@@ -1280,7 +1280,7 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
+                        putarDerajat(87,0)
                         mundurSerongKanan(180, 3)
                         dribbling(db,0)
                         setGame("STOP")
@@ -1294,7 +1294,7 @@ def main():
                     putarKiri(90, 0.5)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
+                        putarDerajat(87,0)
                         mundurSerongKanan(180, 1)
                         mundur(90, 2)
                         dribbling(db,0)
