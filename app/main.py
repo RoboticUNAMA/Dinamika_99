@@ -1223,13 +1223,17 @@ def main():
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
                     maju(255/2, 0.5)
-                    serongKiri(255, 1.5)
+                    for i in range(0,255):
+                        serongKiri(i, 0.0005)
+                    serongKiri(255, 1)
                     putarKiri(255/2, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
                         putarKanan(255/2, 0.2)
-                        mundurSerongKanan(255, 1.5)
+                        for i in range(0,255):
+                            mundurSerongKanan(i, 0.0005)
+                        mundurSerongKanan(255, 1)
                         mundur(255/2, 0.5)
                         setGame("STOP")
                         break
