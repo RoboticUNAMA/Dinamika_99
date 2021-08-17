@@ -1286,7 +1286,30 @@ def main():
                         print(gameStatus)
                         putarDerajat(87,1)
                         mundurSerongKanan(180, 3)
-                        mundur(90, 0.5)
+                        dribbling(db,0)
+                        setGame("STOP")
+                        break
+                    putarKanan(90, 0.3)
+                    gameStatus = arahRobotDepan()
+                    if gameStatus == "RETRY":
+                        print(gameStatus)
+                        putarDerajat(87,1)
+                        mundurSerongKanan(180, 3)
+                        dribbling(db,0)
+                        setGame("STOP")
+                        break
+                    while getStatus(1) != "READY":
+                        setMotor(motor, 0,0,0,0)
+                        if getStatus(1) == "READY":
+                            break
+                    oper(db)
+                    serongKanan(180, 2)
+                    putarKiri(90, 0.3)
+                    gameStatus = arahBolaDepan()
+                    if gameStatus == "RETRY":
+                        print(gameStatus)
+                        mundurSerongKanan(180, 1)
+                        mundur(90, 2)
                         dribbling(db,0)
                         setGame("STOP")
                         break
