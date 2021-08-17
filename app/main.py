@@ -1271,7 +1271,8 @@ def main():
                         putarKanan(60, 0.2)
                     tendang(db)
                     putarKiri(90, 0.3)
-                    mundur(180, 2)
+                    mundur(180, 1)
+                    setGame("STOP")
 
             elif mode == "KICKOFF KIRI":
                 pass
