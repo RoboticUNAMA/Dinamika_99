@@ -1045,7 +1045,7 @@ def lurusBolaAtas():
     second = 0
     startCount = 10
     count = startCount
-    speed = 35
+    speed = 40
     state = "START"
 
     dribbling(db,1)
@@ -1303,7 +1303,7 @@ def main():
                         if getStatus(1) == "READY":
                             break
                     oper(db)
-                    serongKanan(180, 2)
+                    serongKanan(180, 1.5)
                     putarKiri(90, 0.3)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
