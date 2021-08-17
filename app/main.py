@@ -1138,7 +1138,7 @@ def lurusBolaAtas():
                     putarKiri(speed, 0.3)
                 else :
                     if cenY_ball < 90:
-                        setMotor(motor,-70,70,-70,70)
+                        setMotor(motor,-50,50,-50,50)
                     else:
                         setMotor(motor,50,-50,50,-50)
                         sleep(0.1)
@@ -1291,7 +1291,7 @@ def main():
                             break
                     oper(db)
                     serongKanan(180, 1.5)
-                    putarKiri(90, 0.45)
+                    putarKiri(90, 0.4)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
