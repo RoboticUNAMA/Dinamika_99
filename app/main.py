@@ -516,6 +516,7 @@ def arahBolaDepan():
             #OMNI_CAP.release()
             cv2.destroyAllWindows()
             break
+    return gameStatus
 
 def arahRobotDepan():
     print("==>> ARAH ROBOT DEPAN")
@@ -1206,7 +1207,6 @@ def main():
     phase = 0
 
     while True:
-
         dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
 
         if db.isOpen() == False:
@@ -1217,85 +1217,70 @@ def main():
             motor.open()
         motor.reset_input_buffer()
 
-        if gameStatus == "START":
-            setStatus(2, "RUNNING")
-            if dummy1 == "1" and dummy2 == "7":
-                if mode == "KICKOFF KANAN":
-                    phase = 1
+        if dummy1 == "1" and dummy2 == "7":
+            if mode == "KICKOFF KANAN":
+                while gameStatus == "START":
+                    setStatus(2, "RUNNING")
                     maju(50, 0.5)
-                    geserKiri(80, 2.2)
-                    maju(80, 2)
-                    geserKanan(90, 1.2)
-                    putarKiri(80,0.4)
-
-                    arahBolaDepan()
-
-                    phase = 2
+                    serongKiri(120, 2)
+                    putarKiri(80, 0.3)
+                    gameStatus = arahBolaDepan()
+                    if gameStatus == "RETRY":
+                        putarKanan(80, 0.3)
+                        mundurSerongKanan(120, 2)
+                        mundur(50, 0.5)
+                        setGame("STOP")
+                        break
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.3)
                     arahRobotDepan()
-
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-
                     oper(db)
-
                     geserKanan(80, 1.5)
                     putarKiri(80, 0.35)
-
                     arahBolaDepan()
-
                     phase = 3
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.8)
-
                     setGame("STOP")
-
                     arahKiper()
-
                     if kiper == "3":
                         putarKiri(60, 0.2)
                     else:
                         putarKanan(60, 0.2)
-
                     tendang(db)
 
-                elif mode == "KICKOFF KIRI":
-                    mulaiSerongKiri()
-                    lurusBolaAtas()
-                    putarKanan(80,0.3)
-                    arahRobotDepan()
-                    oper(db)
-                    serongKanan(120,1.2)
-                    putarKiri(80,0.3)
-                    arahBolaDepan()
-                    
-                    
+            elif mode == "KICKOFF KIRI":
+                pass
+            elif mode == "KICKOFF CORNER":
+                pass
+            pass
+        elif dummy1 == "2" and dummy2 == "7":
+            pass
+        elif dummy1 == "3" and dummy2 == "7":
+            pass
+        elif dummy1 == "4" and dummy2 == "7":
+            pass
+        elif dummy1 == "5" and dummy2 == "7":
+            pass
+        elif dummy1 == "6" and dummy2 == "7":
+            pass
+        elif dummy1 == "1" and dummy2 == "8":
+            pass
+        elif dummy1 == "2" and dummy2 == "8":
+            pass
+        elif dummy1 == "3" and dummy2 == "8":
+            pass
+        elif dummy1 == "4" and dummy2 == "8":
+            pass
+        elif dummy1 == "5" and dummy2 == "8":
+            pass
+        elif dummy1 == "6" and dummy2 == "8":
+            pass
 
-                elif mode == "KICKOFF CORNER":
-                    arahKiper()
-
-            setGame("STOP")
-
-        elif gameStatus == "RETRY":
-            if dummy1 == "1" and dummy2 == "7":
-                if mode == "KICKOFF KANAN":
-                    if phase == 1:
-                        mundur(90, 2)
-                        geserKanan(90, 2.3)
-                        setGame("STOP")
-                    elif phase == 2:
-                        putarKiri(80, 0.3)
-                        phase = 1
-                    elif phase == 3:
-                        putarKiri(80, 0.5)
-                        mundur(90, 2)
-                        setGame("STOP")
-
-        elif gameStatus == "STOP":
-            setStatus(2, "IDLE")
 
 if __name__ == '__main__':
     # execute main program
