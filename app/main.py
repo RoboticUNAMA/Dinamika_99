@@ -1291,10 +1291,9 @@ def main():
                             break
                     oper(db)
                     serongKanan(180, 1.5)
-                    putarKiri(90, 0.5)
+                    putarKiri(90, 0.45)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,0)
                         mundurSerongKanan(180, 1.5)
                         mundur(90, 1.5)
                         dribbling(db,0)
