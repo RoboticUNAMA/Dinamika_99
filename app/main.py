@@ -1145,7 +1145,7 @@ def lurusBolaAtas():
                     dari = "kiri"
                     print("PUTAR KIRI")
                 else :
-                    if cenY_ball < 80:
+                    if cenY_ball < 75:
                         setMotor(motor,-70,70,-70,70)
                     else:
                         setMotor(motor,50,-50,50,-50)
