@@ -1265,15 +1265,15 @@ def main():
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.8)
                     arahKiper()
+                    setGame("STOP")
                     if kiper == "3":
                         putarKiri(60, 0.2)
                     else:
                         putarKanan(60, 0.2)
                     tendang(db)
-                    setGame("STOP")
                     putarKiri(90, 0.3)
                     mundur(180, 1)
-                    sleep(1)
+                    break
 
             elif mode == "KICKOFF KIRI":
                 pass
