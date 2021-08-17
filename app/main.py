@@ -1316,7 +1316,7 @@ def main():
                     dribbling(db,0)
                     putarKiri(90, 0.3)
                     mundurSerongKanan(180, 1)
-                    mundur(90, 3)
+                    mundur(90, 2)
                     setGame("STOP")
                     break
                 pass
