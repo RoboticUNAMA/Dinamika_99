@@ -562,8 +562,8 @@ def arahRobotDepan():
 
     while(True):
         dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
-
         if gameStatus == "RETRY":
+            cv2.destroyAllWindows()
             break
 
         if count <= 0:
@@ -707,6 +707,7 @@ def arahRobotDepan():
             #OMNI_CAP.release()
             cv2.destroyAllWindows()
             break
+    return gameStatus
 
 def arahKiper():
     # get center of the frame
@@ -1227,6 +1228,7 @@ def main():
                     putarKiri(90, 0.3)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
+                        print(gameStatus)
                         dribbling(db,0)
                         putarKanan(90, 0.3)
                         mundurSerongKanan(180, 1.5)
@@ -1234,8 +1236,15 @@ def main():
                         setGame("STOP")
                         break
                     setStatus(2, "RUNNING")
-                    putarKanan(80, 0.3)
-                    arahRobotDepan()
+                    putarKanan(90, 0.3)
+                    gameStatus = arahRobotDepan()
+                    if gameStatus == "RETRY":
+                        print(gameStatus)
+                        dribbling(db,0)
+                        mundurSerongKanan(180, 1.5)
+                        mundur(90, 0.5)
+                        setGame("STOP")
+                        break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
