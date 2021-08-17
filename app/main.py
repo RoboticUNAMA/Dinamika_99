@@ -1147,7 +1147,7 @@ def lurusBolaAtas():
                         state = "FINISH"
                         setStatus(2, "READY")
 
-                if cenX_ball > 230 and cenX_ball < 235 and cenY_ball >= 70:
+                if cenX_ball > 230 and cenX_ball < 235 and cenY_ball >= 80:
                     setMotor(motor, 0,0,0,0)
                     pas = 1
                     state = "FINISH"
