@@ -1240,6 +1240,7 @@ def main():
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
                         print(gameStatus)
+                        putarDerajat(87,1)
                         dribbling(db,0)
                         mundurSerongKanan(180, 1.5)
                         mundur(90, 0.5)
