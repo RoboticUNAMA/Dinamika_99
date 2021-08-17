@@ -1295,8 +1295,8 @@ def main():
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         putarDerajat(87,0)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 2)
+                        mundurSerongKanan(180, 1.5)
+                        mundur(90, 1.5)
                         dribbling(db,0)
                         setGame("STOP")
                         break
