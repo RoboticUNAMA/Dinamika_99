@@ -56,6 +56,11 @@ def getGameInfo():
     gameStatus = requests.post("http://"+ip_server+"/robot/getgame.php")
     return dummy1.text.strip(), dummy2.text.strip(), kiper.text.strip(), mode.text.strip(), gameStatus.text.strip()
 
+def reset(ser):
+    if ser.isOpen() == False:
+            ser.open()
+    ser.reset_input_buffer()
+
 def setMotor(ser,dki,dka,bki,bka) :
     if ser.isOpen() == False:
         ser.open()
@@ -1052,6 +1057,8 @@ def lurusBolaAtas():
     #db.flush()
 
     while(True):
+        reset(db)
+        reset(motor)
         dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
         if gameStatus == "RETRY":
             cv2.destroyAllWindows()
@@ -1206,13 +1213,8 @@ def main():
     while True:
         dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
 
-        if db.isOpen() == False:
-            db.open()
-        db.reset_input_buffer()
-
-        if motor.isOpen() == False:
-            motor.open()
-        motor.reset_input_buffer()
+        reset(db)
+        reset(motor)
 
         if dummy1 == "1" and dummy2 == "7":
             if mode == "KICKOFF KANAN":
