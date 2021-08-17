@@ -1057,8 +1057,6 @@ def lurusBolaAtas():
     #db.flush()
 
     while(True):
-        reset(db)
-        reset(motor)
         dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
         if gameStatus == "RETRY":
             cv2.destroyAllWindows()
