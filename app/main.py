@@ -1054,7 +1054,9 @@ def lurusBolaAtas():
     while(True):
         dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
         if gameStatus == "RETRY":
+            cv2.destroyAllWindows()
             break
+
         if count <= 0:
             motor.close()
             count = startCount
@@ -1190,6 +1192,7 @@ def lurusBolaAtas():
             OMNI_CAP.release()
             cv2.destroyAllWindows()
             break
+    return gameStatus
 
 def main():
     # serial motor driver
