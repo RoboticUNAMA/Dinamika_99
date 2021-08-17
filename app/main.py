@@ -14,20 +14,6 @@ from time import sleep
 
 # webserver
 ip_server = "192.168.10.244"
-def setStatus(id, status):
-    requests.post("http://"+ip_server+"/robot/setstatus.php?"+"id="+str(id)+"&status="+str(status))
-def setGame(status):
-    requests.post("http://"+ip_server+"/robot/setgame.php?"+"status="+str(status))
-def getStatus(id):
-    get = requests.post("http://"+ip_server+"/robot/getstatus.php?"+"id="+str(id))
-    return get.text.strip()
-def getGameInfo():
-    dummy1 = requests.post("http://"+ip_server+"/robot/getdummy1.php")
-    dummy2 = requests.post("http://"+ip_server+"/robot/getdummy2.php")
-    kiper = requests.post("http://"+ip_server+"/robot/getkiper.php")
-    mode = requests.post("http://"+ip_server+"/robot/getmode.php")
-    gameStatus = requests.post("http://"+ip_server+"/robot/getgame.php")
-    return dummy1.text.strip(), dummy2.text.strip(), kiper.text.strip(), mode.text.strip(), gameStatus.text.strip()
 
 # serial motor driver
 motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
@@ -54,6 +40,21 @@ FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 270)
 
 OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
 OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 320)
+
+def setStatus(id, status):
+    requests.post("http://"+ip_server+"/robot/setstatus.php?"+"id="+str(id)+"&status="+str(status))
+def setGame(status):
+    requests.post("http://"+ip_server+"/robot/setgame.php?"+"status="+str(status))
+def getStatus(id):
+    get = requests.post("http://"+ip_server+"/robot/getstatus.php?"+"id="+str(id))
+    return get.text.strip()
+def getGameInfo():
+    dummy1 = requests.post("http://"+ip_server+"/robot/getdummy1.php")
+    dummy2 = requests.post("http://"+ip_server+"/robot/getdummy2.php")
+    kiper = requests.post("http://"+ip_server+"/robot/getkiper.php")
+    mode = requests.post("http://"+ip_server+"/robot/getmode.php")
+    gameStatus = requests.post("http://"+ip_server+"/robot/getgame.php")
+    return dummy1.text.strip(), dummy2.text.strip(), kiper.text.strip(), mode.text.strip(), gameStatus.text.strip()
 
 def setMotor(ser,dki,dka,bki,bka) :
     if ser.isOpen() == False:
@@ -164,12 +165,26 @@ def bacaCompass(ser):
 def tendang(ser):
     if ser.isOpen() == False:
         ser.open()
+    # === init tendang
+    ser.reset_input_buffer()
+    dribbling(ser, 0)
+    sleep(0.5)
+    dribbling(ser, 0)
+    sleep(0.1)
     ser.write(b"TEND1\n")
+    sleep(1)
 
 def oper(ser):
     if ser.isOpen() == False:
         ser.open()
+    # === init tendang
+    ser.reset_input_buffer()
+    dribbling(ser, 0)
+    sleep(0.5)
+    dribbling(ser, 0)
+    sleep(0.1)
     ser.write(b"TEND2\n")
+    sleep(1)
 
 def getBallInfo():
     infoFile = open("ballColor.txt","r")
@@ -298,7 +313,7 @@ def putarDerajat(derajat_tujuan, dribble) :
                 else :
                     setMotor(motor,speed,speed,speed,speed)
 
-def arahBolaDepan(gameStatus):
+def arahBolaDepan():
     print("==>> ARAH BOLA DEPAN")
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
@@ -337,6 +352,7 @@ def arahBolaDepan(gameStatus):
     db.flush()
 
     while(True):
+        dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
         if gameStatus == "RETRY":
             break
 
@@ -501,7 +517,7 @@ def arahBolaDepan(gameStatus):
             cv2.destroyAllWindows()
             break
 
-def arahRobotDepan(gameStatus):
+def arahRobotDepan():
     print("==>> ARAH ROBOT DEPAN")
     setStatus(2, "RUNNING")
     # get center of the frame
@@ -543,6 +559,8 @@ def arahRobotDepan(gameStatus):
     setMotor(motor,0,0,0,0)
 
     while(True):
+        dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
+
         if gameStatus == "RETRY":
             break
 
@@ -688,8 +706,7 @@ def arahRobotDepan(gameStatus):
             cv2.destroyAllWindows()
             break
 
-def arahKiper(gameStatus):
-    setStatus(2, "RUNNING")
+def arahKiper():
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
     rows, cols, _ = frame1.shape
@@ -726,8 +743,11 @@ def arahKiper(gameStatus):
     dribbling(db,1)
 
     while(True):
+        dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
+        
         if gameStatus == "RETRY":
             break
+
         if count <= 0:
             motor.close()
             count = startCount
@@ -894,6 +914,9 @@ def mulaiSerongKiri():
     setMotor(motor, 0,speed,-speed,0) # serong kiri
 
     while(True):
+        dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
+        if gameStatus == "RETRY":
+            break
         if count <= 0:
             motor.close()
             count = startCount
@@ -1026,6 +1049,9 @@ def lurusBolaAtas():
     #db.flush()
 
     while(True):
+        dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
+        if gameStatus == "RETRY":
+            break
         if count <= 0:
             motor.close()
             count = startCount
@@ -1202,32 +1228,24 @@ def main():
                     geserKanan(90, 1.2)
                     putarKiri(80,0.4)
 
-                    arahBolaDepan(gameStatus)
+                    arahBolaDepan()
 
                     phase = 2
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.3)
-                    arahRobotDepan(gameStatus)
+                    arahRobotDepan()
 
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
 
-                    # === init tendang
-                    db.reset_input_buffer()
-                    dribbling(db, 0)
-                    sleep(0.5)
-                    dribbling(db, 0)
-                    sleep(0.1)
                     oper(db)
-                    # ================
-                    sleep(1.5)
 
                     geserKanan(80, 1.5)
                     putarKiri(80, 0.35)
 
-                    arahBolaDepan(gameStatus)
+                    arahBolaDepan()
 
                     phase = 3
                     setStatus(2, "RUNNING")
@@ -1235,25 +1253,29 @@ def main():
 
                     setGame("STOP")
 
-                    arahKiper(gameStatus)
+                    arahKiper()
 
                     if kiper == "3":
                         putarKiri(60, 0.2)
                     else:
                         putarKanan(60, 0.2)
 
-                    # === init tendang
-                    db.reset_input_buffer()
-                    dribbling(db, 0)
-                    sleep(0.5)
-                    dribbling(db, 0)
-                    sleep(0.1)
                     tendang(db)
-                    # ================
-                    sleep(1)
+
+                elif mode == "KICKOFF KIRI":
+                    mulaiSerongKiri()
+                    lurusBolaAtas()
+                    putarKanan(80,0.3)
+                    arahRobotDepan()
+                    oper(db)
+                    serongKanan(120,1.2)
+                    putarKiri(80,0.3)
+                    arahBolaDepan()
+                    
+                    
 
                 elif mode == "KICKOFF CORNER":
-                    arahKiper(gameStatus)
+                    arahKiper()
 
             setGame("STOP")
 
