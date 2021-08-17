@@ -1272,7 +1272,7 @@ def main():
                     serongKiri(180, 3)
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,0)
+                        mundur(90, 1)
                         mundurSerongKanan(180, 3)
                         dribbling(db,0)
                         setGame("STOP")
@@ -1280,7 +1280,7 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,0)
+                        putarKiri(90, 0.3)
                         mundurSerongKanan(180, 3)
                         dribbling(db,0)
                         setGame("STOP")
