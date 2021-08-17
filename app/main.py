@@ -1226,6 +1226,7 @@ def main():
                     putarKiri(80, 0.3)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
+                        dribbling(db,0)
                         putarKanan(80, 0.3)
                         mundurSerongKanan(120, 2)
                         mundur(50, 0.5)
