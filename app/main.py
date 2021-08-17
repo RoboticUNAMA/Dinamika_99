@@ -1045,7 +1045,7 @@ def lurusBolaAtas():
     second = 0
     startCount = 10
     count = startCount
-    speed = 40
+    speed = 35
     state = "START"
 
     dribbling(db,1)
@@ -1132,16 +1132,12 @@ def lurusBolaAtas():
                     setMotor(motor,speed,speed,speed,speed)
                     
                 elif cenX_ball < 195 and cenY_ball < 100 :
-                    setMotor(motor,-speed,-speed,-speed,-speed)
-                    sleep(0.1)
-                    setMotor(motor,(speed*0.2),(speed*0.2),(speed*0.2),(speed*0.2))
+                    putarKanan(speed, 0.1)
                     dari = "kanan"
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 220 and cenY_ball < 100 :
-                    setMotor(motor,speed,speed,speed,speed)
-                    sleep(0.1)
-                    setMotor(motor,-(speed*0.2),-(speed*0.2),-(speed*0.2),-(speed*0.2))
+                    putarKiri(speed, 0.1)
                     dari = "kiri"
                     print("PUTAR KIRI")
                 else :
