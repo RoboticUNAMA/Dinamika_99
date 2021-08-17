@@ -1277,13 +1277,13 @@ def main():
                         mundurSerongKanan(180, 3)
                         setGame("STOP")
                         break
-                    mundur(90, 0.5)
+                    mundur(90, 1)
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
                         putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 3)
+                        mundurSerongKanan(180, 3.5)
                         setGame("STOP")
                         break
                     while getStatus(1) != "READY":
