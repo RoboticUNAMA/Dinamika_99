@@ -1241,9 +1241,9 @@ def main():
                     if gameStatus == "RETRY":
                         print(gameStatus)
                         putarDerajat(87,1)
-                        dribbling(db,0)
                         mundurSerongKanan(180, 1.5)
                         mundur(90, 0.5)
+                        dribbling(db,0)
                         setGame("STOP")
                         break
                     while getStatus(1) != "READY":
@@ -1251,19 +1251,28 @@ def main():
                         if getStatus(1) == "READY":
                             break
                     oper(db)
-                    geserKanan(80, 1.5)
-                    putarKiri(80, 0.35)
+                    geserKanan(90, 1.5)
+                    putarKiri(90, 0.3)
                     arahBolaDepan()
-                    phase = 3
+                    if gameStatus == "RETRY":
+                        print(gameStatus)
+                        putarDerajat(87,1)
+                        mundurSerongKanan(180, 1.5)
+                        mundur(90, 0.5)
+                        dribbling(db,0)
+                        setGame("STOP")
+                        break
+                    setGame("STOP")
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.8)
-                    setGame("STOP")
                     arahKiper()
                     if kiper == "3":
                         putarKiri(60, 0.2)
                     else:
                         putarKanan(60, 0.2)
                     tendang(db)
+                    putarKiri(90, 0.3)
+                    mundur(180, 2)
 
             elif mode == "KICKOFF KIRI":
                 pass
