@@ -1318,7 +1318,7 @@ def main():
                     putarKiri(90, 0.3)
                     mundur(90, 2)
                     mundurSerongKanan(180, 1.5)
-                    #setGame("STOP")
+                    setGame("STOP")
                     break
                 
             elif mode == "KICKOFF CORNER":
