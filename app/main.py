@@ -1227,7 +1227,7 @@ def main():
                         putarKanan(90, 0.3)
                         mundurSerongKanan(180, 1.5)
                         mundur(90, 0.8)
-                        setGame("STOP")
+                        #setGame("STOP")
                         break
                     setStatus(2, "RUNNING")
                     putarKanan(90, 0.3)
@@ -1237,7 +1237,7 @@ def main():
                         mundurSerongKanan(180, 1.5)
                         mundur(90, 0.5)
                         dribbling(db,0)
-                        setGame("STOP")
+                        #setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -1252,7 +1252,7 @@ def main():
                         mundurSerongKanan(180, 1.5)
                         mundur(90, 0.5)
                         dribbling(db,0)
-                        setGame("STOP")
+                        #setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -1275,7 +1275,7 @@ def main():
                         dribbling(db,0)
                         mundur(90, 1)
                         mundurSerongKanan(180, 3)
-                        setGame("STOP")
+                        #setGame("STOP")
                         break
                     mundur(90, 1)
                     putarKanan(90, 0.3)
@@ -1284,7 +1284,7 @@ def main():
                         dribbling(db,0)
                         putarKiri(90, 0.3)
                         mundurSerongKanan(180, 3.5)
-                        setGame("STOP")
+                        #setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -1298,7 +1298,7 @@ def main():
                         dribbling(db,0)
                         mundurSerongKanan(180, 1.5)
                         mundur(90, 1.5)
-                        setGame("STOP")
+                        #setGame("STOP")
                         break
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
@@ -1307,7 +1307,7 @@ def main():
                         putarKiri(90, 0.3)
                         mundurSerongKanan(180, 1)
                         mundur(90, 3)
-                        setGame("STOP")
+                        #setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -1318,7 +1318,7 @@ def main():
                     putarKiri(90, 0.3)
                     mundur(90, 2)
                     mundurSerongKanan(180, 1.5)
-                    setGame("STOP")
+                    #setGame("STOP")
                     break
                 
             elif mode == "KICKOFF CORNER":
