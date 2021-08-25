@@ -1254,10 +1254,10 @@ def main():
                         dribbling(db,0)
                         setGame("STOP")
                         break
+                    setGame("STOP")
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.8)
                     arahKiper()
-                    setGame("STOP")
                     if kiper == "3":
                         putarKiri(60, 0.2)
                     else:
@@ -1320,11 +1320,11 @@ def main():
                     mundurSerongKanan(180, 1.5)
                     setGame("STOP")
                     break
-                pass
+                
             elif mode == "KICKOFF CORNER":
                 lurusBolaAtas()
                 pass
-            pass
+            
         elif dummy1 == "2" and dummy2 == "7":
             pass
         elif dummy1 == "3" and dummy2 == "7":
@@ -1347,7 +1347,6 @@ def main():
             pass
         elif dummy1 == "6" and dummy2 == "8":
             pass
-
 
 if __name__ == '__main__':
     # execute main program
