@@ -1291,7 +1291,7 @@ def main():
                         if getStatus(1) == "READY":
                             break
                     oper(db)
-                    serongKanan(180, 1.5)
+                    serongKanan(180, 1.2)
                     putarKiri(90, 0.4)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
