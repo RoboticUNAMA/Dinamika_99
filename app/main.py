@@ -1275,7 +1275,7 @@ def main():
                         dribbling(db,0)
                         putarDerajat(86,0)
                         mundur(90, 1)
-                        mundurSerongKanan(180, 3)
+                        mundurSerongKanan(180, 2)
                         #setGame("STOP")
                         break
                     mundur(50, 1.6)
