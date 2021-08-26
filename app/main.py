@@ -1269,8 +1269,7 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    #serongKiri(180, 3)
-                    mulaiSerongKiri()
+                    serongKiri(120, 3.5)
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
