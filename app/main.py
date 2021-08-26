@@ -1273,6 +1273,7 @@ def main():
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
+                        putarDerajat(86,0)
                         mundur(90, 1)
                         mundurSerongKanan(180, 3)
                         #setGame("STOP")
