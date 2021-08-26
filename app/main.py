@@ -1277,7 +1277,7 @@ def main():
                         mundurSerongKanan(180, 3)
                         #setGame("STOP")
                         break
-                    mundur(90, 1)
+                    mundur(90, 1.6)
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
