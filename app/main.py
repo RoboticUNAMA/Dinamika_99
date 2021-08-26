@@ -1149,13 +1149,13 @@ def lurusBolaAtas():
                         sleep(0.1)
                         setMotor(motor, 0,0,0,0)
                         #pas = 1
-                        #state = "FINISH"
+                        state = "FINISH"
                         setStatus(2, "READY")
 
                 if cenX_ball > 230 and cenX_ball < 235 and cenY_ball > 80:
                     setMotor(motor, 0,0,0,0)
                     #pas = 1
-                    #state = "FINISH"
+                    state = "FINISH"
                     setStatus(2, "READY")
                 break
         
@@ -1277,7 +1277,7 @@ def main():
                         mundurSerongKanan(180, 3)
                         #setGame("STOP")
                         break
-                    mundur(90, 1.2)
+                    mundur(50, 1.5)
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
