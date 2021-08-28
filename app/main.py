@@ -1505,10 +1505,11 @@ def main():
                 print(head)
                 if  head == "Dapat" :
                     print("DAPAT BOLA")
-                    state = "FINISH"    
-            dribbling(db,0)
-            setGame("STOP")
-            break
+                    state = "FINISH" 
+                    dribbling(db,0)
+                    setGame("STOP")
+                    break   
+            
 
         elif dummy1 == "3" and dummy2 == "7":
             pass
