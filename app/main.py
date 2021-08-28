@@ -1445,7 +1445,7 @@ def main():
                         #setGame("STOP")
                         break
                     mundur(50, 0.5)
-                    putarKanan(90, 0.3)
+                    putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
@@ -1461,7 +1461,7 @@ def main():
                     oper(db)
                     setStatus(2, "RUNNING")
                     serongKanan(180, 1.2)
-                    putarKiri(90, 0.4)
+                    putarKiri(90, 0.3)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
@@ -1470,7 +1470,7 @@ def main():
                         mundur(90, 1.5)
                         #setGame("STOP")
                         break
-                    putarKanan(90, 0.3)
+                    putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
