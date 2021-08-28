@@ -1308,10 +1308,10 @@ def lurusBolaAtas():
                     setMotor(motor,speed,speed,speed,speed)
                     
                 elif cenX_ball < 195 and cenY_ball < 100 :
-                    putarKanan(speed, 0.3)
+                    putarKanan(speed, 0.1)
                 
                 elif cenX_ball > 220 and cenY_ball < 100 :
-                    putarKiri(speed, 0.3)
+                    putarKiri(speed, 0.1)
                 else :
                     if cenY_ball < 90:
                         setMotor(motor,-50,50,-50,50)
