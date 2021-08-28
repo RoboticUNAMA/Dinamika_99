@@ -1506,7 +1506,7 @@ def main():
                 if  head == "Dapat" :
                     print("DAPAT BOLA")
                     state = "FINISH"    
-                    dribbling(db,0)
+            dribbling(db,0)
             setGame("STOP")
             break
 
