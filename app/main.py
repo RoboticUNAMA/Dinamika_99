@@ -1495,12 +1495,14 @@ def main():
                 
             elif mode == "KICKOFF CORNER":
                 lurusBolaAtas()
-                setGame("STOP")
                 break
             
         elif dummy1 == "2" and dummy2 == "7":
             tesLimit()
-            pass
+            dribbling(db,0)
+            setGame("STOP")
+            break
+
         elif dummy1 == "3" and dummy2 == "7":
             pass
         elif dummy1 == "4" and dummy2 == "7":
