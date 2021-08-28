@@ -106,14 +106,14 @@ def putarKiri(speed, delay):
     setMotor(motor, speed,speed,speed,speed)
     sleep(delay) 
     setMotor(motor, -50,-50,-50,-50)
-    sleep(0.1)
+    sleep(0.025)
     setMotor(motor, 0,0,0,0)
 
 def putarKanan(speed, delay):
     setMotor(motor, -speed,-speed,-speed,-speed)
     sleep(delay) 
     setMotor(motor, 50,50,50,50)
-    sleep(0.1)
+    sleep(0.025)
     setMotor(motor, 0,0,0,0)
 
 def serongKiri(speed, delay):
@@ -1438,7 +1438,7 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    serongKiri(180, 3)
+                    serongKiri(170, 3)
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
@@ -1447,7 +1447,7 @@ def main():
                         mundurSerongKanan(180, 2)
                         #setGame("STOP")
                         break
-                    mundur(50, 1.6)
+                    mundur(50, 0.5)
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
