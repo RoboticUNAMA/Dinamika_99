@@ -1327,6 +1327,19 @@ def main():
                 pass
             
         elif dummy1 == "2" and dummy2 == "7":
+            if mode == "KICKOFF KANAN":
+                if db.isOpen() == False:
+                    db.open()
+                dribbling(db, 1)
+                reading = db.readline().decode('utf-8','ignore')
+                if len(reading) > 0 :
+                    head = reading[0:5]
+                    print(head)
+                    if  head == "Dapat" :
+                        print("DAPAT BOLA")
+                        dribbling(db, 0)
+                        break
+
             pass
         elif dummy1 == "3" and dummy2 == "7":
             pass
