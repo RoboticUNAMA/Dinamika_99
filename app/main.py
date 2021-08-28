@@ -1106,7 +1106,7 @@ def tesLimit():
 
         if db.isOpen() == False:
             db.open()
-        db.reset_input_buffer()
+        # db.reset_input_buffer()
         reading = db.readline().decode('utf-8','ignore')
         if len(reading) > 0 :
             head = reading[0:5]
@@ -1495,7 +1495,7 @@ def main():
                 
             elif mode == "KICKOFF CORNER":
                 lurusBolaAtas()
-                pass
+                break
             
         elif dummy1 == "2" and dummy2 == "7":
             tesLimit()
