@@ -1317,9 +1317,6 @@ def lurusBolaAtas():
                         setMotor(motor,-50,50,-50,50)
                     elif cenY_ball < 90 and cenX_ball < 230 or cenX_ball > 235:
                         setMotor(motor,50,-50,50,-50)
-                        #pas = 1
-                        #state = "FINISH"
-                        setStatus(2, "READY")
 
                 if cenX_ball > 230 and cenX_ball < 235 and cenY_ball > 80:
                     setMotor(motor, 0,0,0,0)
