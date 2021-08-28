@@ -1495,6 +1495,7 @@ def main():
                 
             elif mode == "KICKOFF CORNER":
                 lurusBolaAtas()
+                setGame("STOP")
                 break
             
         elif dummy1 == "2" and dummy2 == "7":
