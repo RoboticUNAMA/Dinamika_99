@@ -105,15 +105,15 @@ def geserKanan(speed, delay):
 def putarKiri(speed, delay):
     setMotor(motor, speed,speed,speed,speed)
     sleep(delay) 
-    # setMotor(motor, -50,-50,-50,-50)
-    # sleep(0.01)
+    setMotor(motor, -50,-50,-50,-50)
+    sleep(0.01)
     setMotor(motor, 0,0,0,0)
 
 def putarKanan(speed, delay):
     setMotor(motor, -speed,-speed,-speed,-speed)
     sleep(delay) 
-    # setMotor(motor, 50,50,50,50)
-    # sleep(0.01)
+    setMotor(motor, 50,50,50,50)
+    sleep(0.01)
     setMotor(motor, 0,0,0,0)
 
 def serongKiri(speed, delay):
@@ -1308,10 +1308,10 @@ def lurusBolaAtas():
                     setMotor(motor,speed,speed,speed,speed)
                     
                 elif cenX_ball < 195 and cenY_ball < 100 :
-                    putarKanan(speed, 0.1)
+                    putarKanan(speed, 0.3)
                 
                 elif cenX_ball > 220 and cenY_ball < 100 :
-                    putarKiri(speed, 0.1)
+                    putarKiri(speed, 0.3)
                 else :
                     if cenY_ball < 90:
                         setMotor(motor,-50,50,-50,50)
@@ -1453,8 +1453,8 @@ def main():
                     if gameStatus == "RETRY":
                         dribbling(db,0)
                         putarDerajat(86,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 3.5)
+                        mundur(90, 1)
+                        mundurSerongKanan(180, 2)
                         #setGame("STOP")
                         break
                     while getStatus(1) != "READY":
