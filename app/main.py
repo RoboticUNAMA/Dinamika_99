@@ -1277,7 +1277,7 @@ def lurusBolaAtas():
 
         if db.isOpen() == False:
             db.open()
-        db.reset_input_buffer()
+        # db.reset_input_buffer()
         reading = db.readline().decode('utf-8','ignore')
         if len(reading) > 0 :
             head = reading[0:5]
@@ -1316,9 +1316,7 @@ def lurusBolaAtas():
                     if cenY_ball < 90:
                         setMotor(motor,-70,70,-70,70)
                     else:
-                        setMotor(motor,50,-50,50,-50)
-                        sleep(0.1)
-                        setMotor(motor, 0,0,0,0)
+                        setMotor(motor,35,-35,35,-35)
                         #pas = 1
                         #state = "FINISH"
                         setStatus(2, "READY")
