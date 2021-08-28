@@ -105,15 +105,15 @@ def geserKanan(speed, delay):
 def putarKiri(speed, delay):
     setMotor(motor, speed,speed,speed,speed)
     sleep(delay) 
-    setMotor(motor, -50,-50,-50,-50)
-    sleep(0.025)
+    # setMotor(motor, -50,-50,-50,-50)
+    # sleep(0.01)
     setMotor(motor, 0,0,0,0)
 
 def putarKanan(speed, delay):
     setMotor(motor, -speed,-speed,-speed,-speed)
     sleep(delay) 
-    setMotor(motor, 50,50,50,50)
-    sleep(0.025)
+    # setMotor(motor, 50,50,50,50)
+    # sleep(0.01)
     setMotor(motor, 0,0,0,0)
 
 def serongKiri(speed, delay):
