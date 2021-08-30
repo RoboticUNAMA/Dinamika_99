@@ -437,25 +437,19 @@ def arahBolaDepan():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball < 100  :
-                    setMotor(motor,35,35,35,35)
-                    sleep(0.3)
-                    setMotor(motor,0,0,0,0)
-                    sleep(0.1)
+                    setMotor(motor,28,28,28,28)
                     dari = "kanan"
                     print("PUTAR KANAN")
                     
                 elif cenX_ball > 300  :
-                    setMotor(motor,-35,-35,-35,-35)
-                    sleep(0.3)
-                    setMotor(motor,0,0,0,0)
-                    sleep(0.1)
+                    setMotor(motor,-28,-28,-28,-28)
                     dari = "kiri"
                     print("PUTAR KIRI")
                     
                     
                 elif cenX_ball < 180  :
                     setMotor(motor,35,35,35,35)
-                    sleep(0.1)
+                    sleep(0.15)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kanan"
@@ -463,7 +457,7 @@ def arahBolaDepan():
                 
                 elif cenX_ball > 220 :
                     setMotor(motor,-35,-35,-35,-35)
-                    sleep(0.1)
+                    sleep(0.15)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kiri"
@@ -642,7 +636,7 @@ def arahRobotDepan():
                     
                 elif cenX_ball > 0 and cenX_ball < 200  :
                     setMotor(motor,35,35,35,35)
-                    sleep(0.1)
+                    sleep(0.15)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kanan"
@@ -651,7 +645,7 @@ def arahRobotDepan():
                 
                 elif cenX_ball > 210 :
                     setMotor(motor,-35,-35,-35,-35)
-                    sleep(0.1)
+                    sleep(0.15)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kiri"
@@ -1425,6 +1419,7 @@ def main():
                         if getStatus(1) == "READY":
                             break
                     oper(db)
+                    setStatus(2, "RUNNING")
                     geserKanan(90, 1.5)
                     putarKiri(90, 0.3)
                     arahBolaDepan()
