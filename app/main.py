@@ -21,6 +21,9 @@ motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
 # serial dribble
 db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 
+# STM
+stm = serial.Serial(port='/dev/ttyACM2', baudrate=9600, timeout=1)
+
 # # serial OpenCM
 # cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
 # cm.close()
@@ -1275,9 +1278,20 @@ def lurusBolaAtas():
         ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
 
-        if db.isOpen() == False:
-            db.open()
-        reading = db.readline().decode('utf-8','ignore')
+        # if db.isOpen() == False:
+        #     db.open()
+        # reading = db.readline().decode('utf-8','ignore')
+        # # db.reset_input_buffer()
+        # if len(reading) > 0 :
+        #     head = reading[0:5]
+        #     print(head)
+        #     if  head == "Dapat" :
+        #         print("DAPAT BOLA")
+        #         state = "FINISH"    
+
+        if stm.isOpen() == False:
+            stm.open()
+        reading = stm.readline().decode('utf-8','ignore')
         # db.reset_input_buffer()
         if len(reading) > 0 :
             head = reading[0:5]
@@ -1364,6 +1378,7 @@ def main():
     # serial dribble
     db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 
+    stm = serial.Serial(port='/dev/ttyACM2', baudrate=9600, timeout=1)
     # # serial OpenCM
     # cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
     # cm.close()
@@ -1493,7 +1508,9 @@ def main():
                     break
                 
             elif mode == "KICKOFF CORNER":
+                dribbling(db,1)
                 lurusBolaAtas()
+                dribbling(db,0)
                 break
             
         elif dummy1 == "2" and dummy2 == "7":
