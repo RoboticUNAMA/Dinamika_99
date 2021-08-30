@@ -22,7 +22,7 @@ motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
 db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 
 # STM
-stm = serial.Serial(port='/dev/ttyACM2', baudrate=9600, timeout=1)
+# stm = serial.Serial(port='/dev/ttyACM2', baudrate=9600, timeout=1)
 
 # # serial OpenCM
 # cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
@@ -1378,7 +1378,7 @@ def main():
     # serial dribble
     db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
 
-    stm = serial.Serial(port='/dev/ttyACM2', baudrate=9600, timeout=1)
+    # stm = serial.Serial(port='/dev/ttyACM2', baudrate=9600, timeout=1)
     # # serial OpenCM
     # cm = serial.Serial(port='/dev/ttyACM1', baudrate=9600, timeout=1)
     # cm.close()
