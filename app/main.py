@@ -437,29 +437,23 @@ def arahBolaDepan():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball < 100  :
-                    setMotor(motor,28,28,28,28)
+                    putarKiri(50, 0.3)
                     dari = "kanan"
                     print("PUTAR KANAN")
                     
                 elif cenX_ball > 300  :
-                    setMotor(motor,-28,-28,-28,-28)
+                    putarKanan(50, 0.3)
                     dari = "kiri"
                     print("PUTAR KIRI")
                     
                     
                 elif cenX_ball < 180  :
-                    setMotor(motor,35,35,35,35)
-                    sleep(0.15)
-                    setMotor(motor,0,0,0,0)
-                    sleep(0.1)
+                    putarKiri(50, 0.2)
                     dari = "kanan"
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 220 :
-                    setMotor(motor,-35,-35,-35,-35)
-                    sleep(0.15)
-                    setMotor(motor,0,0,0,0)
-                    sleep(0.1)
+                    putarKiri(50, 0.2)
                     dari = "kiri"
                     print("PUTAR KIRI")
                 else :
@@ -1400,6 +1394,7 @@ def main():
                     if gameStatus == "RETRY":
                         dribbling(db,0)
                         putarKanan(90, 0.3)
+                        sleep(0.5)
                         mundurSerongKanan(180, 1.5)
                         mundur(90, 0.8)
                         #setGame("STOP")
