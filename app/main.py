@@ -1428,12 +1428,13 @@ def main():
                     putarKanan(80, 0.8)
                     arahKiper()
                     if kiper == "3":
-                        putarKiri(60, 0.2)
+                        putarKiri(50, 0.2)
                     else:
-                        putarKanan(60, 0.2)
+                        putarKanan(50, 0.2)
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(180, 1)
+                    setStatus(2, "IDLE")
                     break
 
             elif mode == "KICKOFF KIRI":
@@ -1554,6 +1555,7 @@ def main():
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(180, 1)
+                    setStatus(2, "IDLE")
                     break
 
         elif dummy1 == "3" and dummy2 == "7":
