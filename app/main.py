@@ -1502,20 +1502,58 @@ def main():
                 break
             
         elif dummy1 == "2" and dummy2 == "7":
-            # tesLimit()
-            dribbling(db,1)
-            if db.isOpen() == False:
-                db.open()
-            reading = db.readline().decode('utf-8','ignore')
-            db.reset_input_buffer()
-            if len(reading) > 0 :
-                head = reading[0:5]
-                print(head)
-                if  head == "Dapat" :
-                    print("DAPAT BOLA")
-                    state = "FINISH"    
-                    dribbling(db,0)
+            if mode == "KICKOFF KANAN":
+                while gameStatus == "START":
+                    setStatus(2, "RUNNING")
+                    maju(90, 0.8)
+                    serongKiri(180, 1.5)
+                    putarKiri(90, 0.2)
+                    gameStatus = arahBolaDepan()
+                    if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        putarKanan(90, 0.3)
+                        sleep(0.5)
+                        mundurSerongKanan(180, 1.5)
+                        mundur(90, 0.8)
+                        #setGame("STOP")
+                        break
+                    setStatus(2, "RUNNING")
+                    putarKanan(90, 0.3)
+                    gameStatus = arahRobotDepan()
+                    if gameStatus == "RETRY":
+                        putarDerajat(87,1)
+                        mundurSerongKanan(180, 1.5)
+                        mundur(90, 0.5)
+                        dribbling(db,0)
+                        #setGame("STOP")
+                        break
+                    while getStatus(1) != "READY":
+                        setMotor(motor, 0,0,0,0)
+                        if getStatus(1) == "READY":
+                            break
+                    oper(db)
+                    setStatus(2, "RUNNING")
+                    geserKanan(90, 1.5)
+                    putarKiri(90, 0.2)
+                    arahBolaDepan()
+                    if gameStatus == "RETRY":
+                        putarDerajat(87,1)
+                        mundurSerongKanan(180, 1.5)
+                        mundur(90, 0.5)
+                        dribbling(db,0)
+                        #setGame("STOP")
+                        break
                     setGame("STOP")
+                    setStatus(2, "RUNNING")
+                    putarKanan(80, 0.8)
+                    arahKiper()
+                    if kiper == "3":
+                        putarKiri(60, 0.2)
+                    else:
+                        putarKanan(60, 0.2)
+                    tendang(db)
+                    putarKiri(90, 0.3)
+                    mundur(180, 1)
                     break
 
         elif dummy1 == "3" and dummy2 == "7":
