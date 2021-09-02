@@ -437,23 +437,23 @@ def arahBolaDepan():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball < 100  :
-                    putarKiri(35, 0.2)
+                    putarKiri(40, 0.2)
                     dari = "kanan"
                     print("PUTAR KANAN")
                     
                 elif cenX_ball > 300  :
-                    putarKanan(35, 0.2)
+                    putarKanan(40, 0.2)
                     dari = "kiri"
                     print("PUTAR KIRI")
                     
                     
                 elif cenX_ball < 180  :
-                    putarKiri(35, 0.1)
+                    putarKiri(40, 0.1)
                     dari = "kanan"
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 220 :
-                    putarKiri(35, 0.1)
+                    putarKiri(40, 0.1)
                     dari = "kiri"
                     print("PUTAR KIRI")
                 else :
@@ -1428,9 +1428,9 @@ def main():
                     putarKanan(80, 0.8)
                     arahKiper()
                     if kiper == "3":
-                        putarKiri(50, 0.2)
+                        putarKiri(60, 0.2)
                     else:
-                        putarKanan(50, 0.2)
+                        putarKanan(60, 0.2)
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(180, 1)
