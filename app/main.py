@@ -1512,6 +1512,8 @@ def main():
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
+                        sleep(0.1)
+                        dribbling(db,0)
                         putarKanan(90, 0.3)
                         sleep(0.5)
                         mundurSerongKanan(180, 1.5)
