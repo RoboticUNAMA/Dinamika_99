@@ -1553,7 +1553,7 @@ def main():
                         putarKanan(60, 0.2)
                     tendang(db)
                     putarKiri(90, 0.3)
-                    mundur(180, 1)
+                    mundur(120, 2)
                     setStatus(2, "IDLE")
                     break
 
