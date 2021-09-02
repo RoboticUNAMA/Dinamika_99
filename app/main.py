@@ -109,14 +109,14 @@ def putarKiri(speed, delay):
     setMotor(motor, speed,speed,speed,speed)
     sleep(delay) 
     setMotor(motor, -50,-50,-50,-50)
-    sleep(0.01)
+    sleep(0.05)
     setMotor(motor, 0,0,0,0)
 
 def putarKanan(speed, delay):
     setMotor(motor, -speed,-speed,-speed,-speed)
     sleep(delay) 
     setMotor(motor, 50,50,50,50)
-    sleep(0.01)
+    sleep(0.05)
     setMotor(motor, 0,0,0,0)
 
 def serongKiri(speed, delay):
