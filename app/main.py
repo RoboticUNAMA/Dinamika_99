@@ -437,12 +437,12 @@ def arahBolaDepan():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball < 100  :
-                    putarKiri(50, 0.2)
+                    putarKiri(30, 0.2)
                     dari = "kanan"
                     print("PUTAR KANAN")
                     
                 elif cenX_ball > 300  :
-                    putarKanan(50, 0.2)
+                    putarKanan(30, 0.2)
                     dari = "kiri"
                     print("PUTAR KIRI")
                     
@@ -658,26 +658,26 @@ def arahRobotDepan():
             cv2.destroyAllWindows()
             break   
 
-        # if ada == 0:
-        #     counter += 1
-        #     if counter > 15 and dari == "kanan":
-        #         counter = 0
-        #         dari = "kiri"
-        #     elif counter > 15 and dari == "kiri":
-        #         counter = 0
-        #         dari = "kanan"
+        if ada == 0:
+            counter += 1
+            if counter > 15 and dari == "kanan":
+                counter = 0
+                dari = "kiri"
+            elif counter > 15 and dari == "kiri":
+                counter = 0
+                dari = "kanan"
 
-        if dari == "kiri":
-            setMotor(motor,28,28,28,28)
-            # sleep(0.1)
-            # setMotor(motor,0,0,0,0)     
-            # dari = ""
-        else:
-            setMotor(motor,-28,-28,-28,-28)
-            # sleep(0.1)
-            # setMotor(motor,0,0,0,0)
-            # dari = ""
-        #print(dari)
+            if dari == "kiri":
+                setMotor(motor,28,28,28,28)
+                # sleep(0.1)
+                # setMotor(motor,0,0,0,0)     
+                # dari = ""
+            else:
+                setMotor(motor,-28,-28,-28,-28)
+                # sleep(0.1)
+                # setMotor(motor,0,0,0,0)
+                # dari = ""
+            #print(dari)
 
         # displays
         ## uncomment this to show center area of the frame 1
