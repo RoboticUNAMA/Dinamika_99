@@ -1209,7 +1209,7 @@ def lurusBolaAtas():
     upperBall = np.array([objColor[3],objColor[4],objColor[5]])
 
     dari = ""
-    second = 0
+
     startCount = 10
     count = startCount
     speed = 35
@@ -1219,18 +1219,16 @@ def lurusBolaAtas():
     #db.flush()
 
     while(True):
-        dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
         if gameStatus == "RETRY":
             cv2.destroyAllWindows()
             break
 
         if count <= 0:
             motor.close()
+            dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
             count = startCount
         count -= 1
         #print(state)
-        second += 1
-        #print(second)
         for i in range(3):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
