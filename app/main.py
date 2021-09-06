@@ -365,7 +365,7 @@ def arahBolaDepan():
             cv2.destroyAllWindows()
             break
 
-        print(gameStatus)
+        # print(gameStatus)
 
         if count <= 0:
             motor.close()
