@@ -1515,6 +1515,8 @@ def main():
                         putarDerajat(87,1)
                         mundurSerongKanan(150, 1.5)
                         mundur(90, 0.8)
+                        dribbling(db,0)
+                        setStatus(2, "RETRY")
                         #setGame("STOP")
                         break
                     setStatus(2, "RUNNING")
@@ -1525,6 +1527,7 @@ def main():
                         mundurSerongKanan(150, 1.5)
                         mundur(90, 0.5)
                         dribbling(db,0)
+                        setStatus(2, "RETRY")
                         #setGame("STOP")
                         break
                     while getStatus(1) != "READY":
@@ -1541,6 +1544,7 @@ def main():
                         mundurSerongKanan(180, 1.5)
                         mundur(90, 0.5)
                         dribbling(db,0)
+                        setStatus(2, "RETRY")
                         #setGame("STOP")
                         break
                     setGame("STOP")
