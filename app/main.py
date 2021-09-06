@@ -1512,10 +1512,11 @@ def main():
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
+                        sleep(0.1)
+                        dribbling(db,0)
                         putarDerajat(87,1)
                         mundurSerongKanan(150, 1.5)
                         mundur(90, 0.8)
-                        dribbling(db,0)
                         setStatus(2, "RETRY")
                         #setGame("STOP")
                         break
@@ -1523,10 +1524,12 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        sleep(0.1)
+                        dribbling(db,0)
                         putarDerajat(87,1)
                         mundurSerongKanan(150, 1.5)
                         mundur(90, 0.5)
-                        dribbling(db,0)
                         setStatus(2, "RETRY")
                         #setGame("STOP")
                         break
@@ -1540,10 +1543,12 @@ def main():
                     putarKiri(90, 0.2)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        sleep(0.1)
+                        dribbling(db,0)
                         putarDerajat(87,1)
                         mundurSerongKanan(180, 1.5)
                         mundur(90, 0.5)
-                        dribbling(db,0)
                         setStatus(2, "RETRY")
                         #setGame("STOP")
                         break
