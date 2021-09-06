@@ -1518,6 +1518,9 @@ def main():
                         mundurSerongKanan(150, 1.5)
                         mundur(90, 0.8)
                         setStatus(2, "RETRY")
+                        dribbling(db,0)
+                        sleep(0.1)
+                        dribbling(db,0)
                         #setGame("STOP")
                         break
                     setStatus(2, "RUNNING")
