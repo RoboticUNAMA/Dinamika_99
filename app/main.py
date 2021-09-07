@@ -914,12 +914,18 @@ def mulaiSerongKiri():
     speed = 60
     state = "START"
 
-    dribbling(db,1)
     db.flush()
     dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
     setMotor(motor,0,150,-150,0)
 
     while(True):
+        for i in range(3):
+            FRONT_CAP.grab()
+            #OMNI_CAP.grab()
+        ## read frame
+        _, frame1 = FRONT_CAP.read()
+        #_, frame2 = OMNI_CAP.read()
+        
         dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
         if gameStatus == "RETRY":
             cv2.destroyAllWindows()
@@ -934,12 +940,6 @@ def mulaiSerongKiri():
         #print(state)
         second += 1
         #print(second)
-        for i in range(3):
-            FRONT_CAP.grab()
-            #OMNI_CAP.grab()
-        ## read frame
-        _, frame1 = FRONT_CAP.read()
-        #_, frame2 = OMNI_CAP.read()
         
         # convert frame from BGR to HSV
         hsv = cv2.cvtColor(frame1, cv2.COLOR_BGR2HSV)
@@ -986,7 +986,7 @@ def mulaiSerongKiri():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > 50:
+                if cenX_ball > 10:
                     setMotor(motor,0,0,0,0)
                     state = "FINISH"
                 break
