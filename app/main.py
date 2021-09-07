@@ -916,6 +916,7 @@ def mulaiSerongKiri():
     dribbling(db,1)
     #db.flush()
     dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
+    setMotor(motor, 0,150,-150,0)
 
     while(True):
         if gameStatus == "RETRY":
