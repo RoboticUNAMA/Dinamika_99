@@ -881,7 +881,6 @@ def arahKiper():
 
 def mulaiSerongKiri():
     print("==>> MULAI SERONG KIRI")
-    print("==>> ARAH BOLA DEPAN")
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
     rows, cols, _ = frame1.shape
@@ -987,7 +986,7 @@ def mulaiSerongKiri():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball > 200:
+                if cenX_ball > 50:
                     setMotor(motor,0,0,0,0)
                     state = "FINISH"
                 break
