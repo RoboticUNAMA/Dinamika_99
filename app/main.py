@@ -1596,14 +1596,14 @@ def main():
                             break
                     oper(db)
                     setStatus(2, "RUNNING")
-                    geserKanan(180, 1.2)
+                    serongKanan(180, 1.2)
                     putarKiri(90, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
                         putarDerajat(86,0)
                         mundurSerongKanan(180, 1.5)
-                        mundur(90, 1.5)
+                        mundur(90, 1.2)
                         #setGame("STOP")
                         break
                     sleep(2)
