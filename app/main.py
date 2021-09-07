@@ -1217,16 +1217,17 @@ def lurusBolaAtas():
 
     dribbling(db,1)
     #db.flush()
+    dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
 
     while(True):
+        if gameStatus == "RETRY":
+            cv2.destroyAllWindows()
+            break
         if count <= 0:
             motor.close()
             dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
             count = startCount
         count -= 1
-        if gameStatus == "RETRY":
-            cv2.destroyAllWindows()
-            break
         #print(state)
         for i in range(3):
             #FRONT_CAP.grab()
