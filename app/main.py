@@ -630,7 +630,7 @@ def arahRobotDepan():
                     
                 elif cenX_ball > 0 and cenX_ball < 200  :
                     setMotor(motor,35,35,35,35)
-                    sleep(0.15)
+                    sleep(0.125)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kanan"
@@ -639,7 +639,7 @@ def arahRobotDepan():
                 
                 elif cenX_ball > 210 :
                     setMotor(motor,-35,-35,-35,-35)
-                    sleep(0.15)
+                    sleep(0.125)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kiri"
