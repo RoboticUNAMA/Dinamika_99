@@ -1705,6 +1705,7 @@ def main():
                     setGame("STOP")
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.65)
+                    maju(80,1)
                     arahKiper()
                     if kiper == "3":
                         putarKiri(60, 0.2)
@@ -1782,7 +1783,7 @@ def main():
                     mundurSerongKanan(180, 1.5)
                     setGame("STOP")
                     break
-                
+
         elif dummy1 == "4" and dummy2 == "7":
             pass
         elif dummy1 == "5" and dummy2 == "7":
