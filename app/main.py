@@ -453,7 +453,7 @@ def arahBolaDepan():
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 220 :
-                    putarKiri(35, 0.1)
+                    putarKanan(35, 0.1)
                     dari = "kiri"
                     print("PUTAR KIRI")
                 else :
