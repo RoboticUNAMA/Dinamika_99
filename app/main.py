@@ -1704,7 +1704,7 @@ def main():
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
-                    putarKanan(80, 0.65)
+                    putarKanan(90, 0.7)
                     maju(80,1)
                     arahKiper()
                     if kiper == "3":
