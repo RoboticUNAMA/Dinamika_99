@@ -2150,8 +2150,8 @@ def main():
                     if gameStatus == "RETRY":
                         dribbling(db,0)
                         putarDerajat(86,0)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 1.5)
+                        mundur(90, 2)
+                        mundurSerongKanan(180, 1)
                         #setGame("STOP")
                         break
                     sleep(2)
