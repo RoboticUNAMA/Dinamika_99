@@ -1762,7 +1762,7 @@ def main():
                         mundur(90, 1.2)
                         #setGame("STOP")
                         break
-                    sleep(4)
+                    sleep(3)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
