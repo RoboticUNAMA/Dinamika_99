@@ -1789,9 +1789,9 @@ def main():
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
-                    maju(90, 3)
-                    geserKiri(90, 1.5)
-                    putarKiri(90, 0.2)
+                    maju(90, 2.7)
+                    geserKiri(90, 1.2)
+                    putarKiri(90, 0.3)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
