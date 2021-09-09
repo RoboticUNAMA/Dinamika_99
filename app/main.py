@@ -1988,12 +1988,14 @@ def main():
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
                     maju(90,0.3)
-                    gameStatus = mulaiGeserKiri()
-                    if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        stop()
-                        #setGame("STOP")
-                        break
+                    # gameStatus = mulaiGeserKiri()
+                    # if gameStatus == "RETRY":
+                    #     dribbling(db,0)
+                    #     stop()
+                    #     #setGame("STOP")
+                    #     break
+                    geserKiri(90,2.7)
+                    maju(90,1.5)
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
