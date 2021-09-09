@@ -2112,9 +2112,14 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    maju(90,0.3)
-                    geserKiri(90,2)
-                    maju(90,2.2)
+                    gameStatus = mulaiSerongKiri()
+                    if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        putarDerajat(86,0)
+                        mundur(90, 1)
+                        mundurSerongKanan(180, 2)
+                        #setGame("STOP")
+                        break
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
