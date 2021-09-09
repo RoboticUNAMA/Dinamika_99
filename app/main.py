@@ -1754,6 +1754,7 @@ def main():
                     setStatus(2, "RUNNING")
                     serongKanan(180, 1.2)
                     putarKiri(90, 0.2)
+                    mundur(50,1)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
