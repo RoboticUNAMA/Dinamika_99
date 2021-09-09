@@ -1994,8 +1994,8 @@ def main():
                     #     stop()
                     #     #setGame("STOP")
                     #     break
-                    geserKiri(90,2.7)
-                    maju(90,1.5)
+                    geserKiri(90,2)
+                    maju(90,2)
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
