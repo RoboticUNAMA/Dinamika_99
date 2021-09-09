@@ -1940,6 +1940,7 @@ def main():
                         serongKiri(150,2)
                         #setGame("STOP")
                         break
+                    serongKiri(150,1.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
