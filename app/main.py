@@ -2087,7 +2087,7 @@ def main():
                             break
                     oper(db)
                     setStatus(2, "RUNNING")
-                    putarDerajat(86,1)
+                    # putarDerajat(87,1)
                     geserKanan(90, 1.5)
                     putarKiri(90, 0.2)
                     arahBolaDepan()
