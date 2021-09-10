@@ -2174,6 +2174,7 @@ def main():
                     oper(db)
                     dribbling(db,0)
                     putarKiri(90, 0.3)
+                    geserKiri(90,0.3)
                     mundur(90, 3)
                     mundurSerongKanan(180, 1)
                     setGame("STOP")
