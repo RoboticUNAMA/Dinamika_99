@@ -75,7 +75,7 @@ cenY_frame = int(rows/2)
 
 while True:
     # Read frame
-    cap.set(cv2.CAP_PROP_EXPOSURE, -50)
+    # cap.set(cv2.CAP_PROP_EXPOSURE, -50)
     _, frame = cap.read()
 
     LOW_H = cv2.getTrackbarPos('L_H', window_name)
@@ -109,8 +109,8 @@ while True:
     contours, _ = cv2.findContours(morph, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     contours = sorted(contours, key=lambda x:cv2.contourArea(x), reverse=True)
 
-    # cv2.imshow(window_name, morph)
-    cv2.imshow(window_name, frame)
+    cv2.imshow(window_name, morph)
+    # cv2.imshow(window_name, frame)
 
     k = cv2.waitKey(1) & 0xFF
     if k == 27:
