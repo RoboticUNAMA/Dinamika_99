@@ -37,8 +37,8 @@ OMNI_CAM = 0   # omni camera
 FRONT_CAP = cv2.VideoCapture(FRONT_CAM) 
 OMNI_CAP = cv2.VideoCapture(OMNI_CAM)
 
-FRONT_CAP.set(cv2.CAP_PROP_EXPOSURE, -4)
-OMNI_CAP.set(cv2.CAP_PROP_EXPOSURE, -4)
+FRONT_CAP.set(cv2.CAP_PROP_EXPOSURE, -10)
+OMNI_CAP.set(cv2.CAP_PROP_EXPOSURE, -10)
 
 # set frame size
 FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
@@ -2174,7 +2174,7 @@ def main():
                     oper(db)
                     dribbling(db,0)
                     putarKiri(90, 0.3)
-                    mundur(90, 2)
+                    mundur(90, 3)
                     mundurSerongKanan(180, 1)
                     setGame("STOP")
                     break

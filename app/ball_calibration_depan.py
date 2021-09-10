@@ -63,6 +63,8 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 # Create opencv video capture object
 cap = cv2.VideoCapture(FRONT_CAM)
 
+cap.set(cv2.CAP_PROP_EXPOSURE, -10)
+
 # Set frame size
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 400)
