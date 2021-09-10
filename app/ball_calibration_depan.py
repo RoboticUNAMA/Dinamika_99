@@ -75,7 +75,7 @@ cenY_frame = int(rows/2)
 
 while True:
     # Read frame
-    cap.set(cv2.CAP_PROP_EXPOSURE, -5)
+    cap.set(cv2.CAP_PROP_EXPOSURE, -50)
     _, frame = cap.read()
 
     LOW_H = cv2.getTrackbarPos('L_H', window_name)
