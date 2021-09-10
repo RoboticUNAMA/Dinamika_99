@@ -2173,10 +2173,8 @@ def main():
                             break
                     oper(db)
                     dribbling(db,0)
-                    putarKiri(90, 0.3)
-                    serongKiri(120,0.5)
+                    putarKiri(90, 0.2)
                     mundur(90, 3)
-                    mundurSerongKanan(180, 1)
                     setGame("STOP")
                     break
                 
