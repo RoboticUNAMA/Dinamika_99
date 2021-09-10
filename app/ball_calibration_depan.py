@@ -63,8 +63,6 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 # Create opencv video capture object
 cap = cv2.VideoCapture(FRONT_CAM)
 
-cap.set(cv2.CAP_PROP_EXPOSURE, -50)
-
 # Set frame size
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 600)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 400)
@@ -77,6 +75,7 @@ cenY_frame = int(rows/2)
 
 while True:
     # Read frame
+    cap.set(cv2.CAP_PROP_EXPOSURE, -5)
     _, frame = cap.read()
 
     LOW_H = cv2.getTrackbarPos('L_H', window_name)
