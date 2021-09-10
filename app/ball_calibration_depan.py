@@ -110,7 +110,8 @@ while True:
     contours, _ = cv2.findContours(morph, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
     contours = sorted(contours, key=lambda x:cv2.contourArea(x), reverse=True)
 
-    cv2.imshow(window_name, morph)
+    # cv2.imshow(window_name, morph)
+    cv2.imshow(window_name, frame)
 
     k = cv2.waitKey(1) & 0xFF
     if k == 27:
