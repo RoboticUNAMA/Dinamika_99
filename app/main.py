@@ -37,8 +37,8 @@ OMNI_CAM = 0   # omni camera
 FRONT_CAP = cv2.VideoCapture(FRONT_CAM) 
 OMNI_CAP = cv2.VideoCapture(OMNI_CAM)
 
-FRONT_CAM.set(cv2.CAP_PROP_EXPOSURE, -4)
-OMNI_CAM.set(cv2.CAP_PROP_EXPOSURE, -4)
+FRONT_CAP.set(cv2.CAP_PROP_EXPOSURE, -4)
+OMNI_CAP.set(cv2.CAP_PROP_EXPOSURE, -4)
 
 # set frame size
 FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
