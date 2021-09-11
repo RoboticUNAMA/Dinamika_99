@@ -2102,15 +2102,14 @@ def main():
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.8)
                     maju(90,0.5)
-                    serongKiri(120,1)
+                    serongKiri(120,0.5)
                     arahKiper()
                     if kiper == "3":
                         putarKiri(60, 0.3)
                     else:
                         putarKanan(60, 0.3)
                     tendang(db)
-                    geserKanan(90, 1.5)
-                    mundur(90, 1.5)
+                    geserKanan(90, 2)
                     setStatus(2, "IDLE")
                     break
 
