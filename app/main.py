@@ -1625,9 +1625,9 @@ def main():
                             break
                     oper(db)
                     setStatus(2, "RUNNING")
+                    mundur(90,0.5)
                     serongKanan(180, 1.2)
                     putarKiri(90, 0.2)
-                    mundur(90,0.5)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
