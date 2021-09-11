@@ -2067,7 +2067,7 @@ def main():
                         dribbling(db,0)
                         putarKanan(90, 0.3)
                         sleep(0.5)
-                        mundur(90, 1.5)
+                        mundur(90, 2)
                         geserKanan(90,1)
                         #setGame("STOP")
                         break
