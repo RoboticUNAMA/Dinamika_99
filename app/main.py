@@ -2087,7 +2087,7 @@ def main():
                             break
                     oper(db)
                     setStatus(2, "RUNNING")
-                    # putarDerajat(87,1)
+                    putarDerajat(86,1)
                     geserKanan(90, 1.5)
                     putarKiri(90, 0.3)
                     arahBolaDepan()
@@ -2101,7 +2101,7 @@ def main():
                     setGame("STOP")
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.8)
-                    maju(90,1.2)
+                    serongKiri(120,1)
                     arahKiper()
                     if kiper == "3":
                         putarKiri(60, 0.2)
