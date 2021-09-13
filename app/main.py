@@ -1659,9 +1659,11 @@ def main():
                     break
                 
             elif mode == "KICKOFF CORNER":
-                dribbling(db,1)
-                lurusBolaAtas()
-                dribbling(db,0)
+                geserKiri(60,1.5)
+                putarDerajat(128,1)
+                geserKiri(60,1)
+                maju(60,1)
+                oper(db)
                 break
             
         elif dummy1 == "2" and dummy2 == "7":
