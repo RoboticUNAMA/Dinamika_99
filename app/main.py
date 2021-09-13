@@ -1681,6 +1681,8 @@ def main():
                     else:
                         putarKanan(60, 0.2)
                     tendang(db)
+                    maju(90,1)
+                    serongKiri(120,2)
                     setGame("STOP")
                     break
             
