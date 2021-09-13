@@ -633,7 +633,7 @@ def arahRobotDepan():
                     
                 elif cenX_ball > 0 and cenX_ball < 200  :
                     setMotor(motor,50,50,50,50)
-                    sleep(0.15)
+                    sleep(0.115)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kanan"
@@ -642,7 +642,7 @@ def arahRobotDepan():
                 
                 elif cenX_ball > 210 :
                     setMotor(motor,-50,-50,-50,-50)
-                    sleep(0.15)
+                    sleep(0.115)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
                     dari = "kiri"
@@ -3007,8 +3007,8 @@ def main():
                         putarKanan(60, 0.3)
                     else:
                         putarKiri(60, 0.3)
+                    mundur(90,1.5)
                     geserKanan(90, 2)
-                    mundur(90,1)
                     setStatus(2, "IDLE")
                     break
 
