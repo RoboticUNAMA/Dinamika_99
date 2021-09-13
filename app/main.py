@@ -2613,7 +2613,8 @@ def main():
                     setGame("STOP")
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.8)
-                    maju(90, 1.3)
+                    serongKanan(120,0.5)
+                    maju(90, 1)
                     arahKiper()
                     if kiper == "3":
                         putarKiri(60, 0.2)
@@ -2690,7 +2691,7 @@ def main():
                 lurusBolaAtas()
                 dribbling(db,0)
                 break
-            
+
         elif dummy1 == "4" and dummy2 == "8":
             pass
         elif dummy1 == "5" and dummy2 == "8":
