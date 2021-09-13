@@ -1677,9 +1677,9 @@ def main():
                     putarKanan(90,0.5)
                     arahKiper()
                     if kiper == "3":
-                        putarKiri(60, 0.3)
+                        putarKiri(60, 0.2)
                     else:
-                        putarKanan(60, 0.3)
+                        putarKanan(60, 0.2)
                     tendang(db)
                     setGame("STOP")
                     break
