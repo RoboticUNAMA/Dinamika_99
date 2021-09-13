@@ -2860,7 +2860,8 @@ def main():
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
-                    putarKanan(80, 0.8)
+                    putarDerajat(87,1)
+                    putarKanan(80, 0.5)
                     maju(90,1.2)
                     arahKiper()
                     if kiper == "3":
@@ -2945,6 +2946,7 @@ def main():
                 
             elif mode == "KICKOFF CORNER":
                 putarDerajat(87,1)
+                putarKanan(90,0.6)
                 break
 
         elif dummy1 == "6" and dummy2 == "8":
