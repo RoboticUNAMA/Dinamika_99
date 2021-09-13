@@ -2946,7 +2946,7 @@ def main():
                 
             elif mode == "KICKOFF CORNER":
                 putarDerajat(87,1)
-                putarKanan(90,0.6)
+                putarKanan(90,0.4)
                 break
 
         elif dummy1 == "6" and dummy2 == "8":
