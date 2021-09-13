@@ -2323,7 +2323,128 @@ def main():
                 break
             
         elif dummy1 == "1" and dummy2 == "8":
-            pass
+            if mode == "KICKOFF KANAN":
+                while gameStatus == "START":
+                    setStatus(2, "RUNNING")
+                    maju(90, 0.8)
+                    serongKiri(180, 1.5)
+                    putarKiri(90, 0.2)
+                    gameStatus = arahBolaDepan()
+                    if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        putarKanan(90, 0.3)
+                        sleep(0.5)
+                        mundurSerongKanan(180, 1.5)
+                        mundur(90, 0.8)
+                        #setGame("STOP")
+                        break
+                    setStatus(2, "RUNNING")
+                    putarKanan(90, 0.3)
+                    gameStatus = arahRobotDepan()
+                    if gameStatus == "RETRY":
+                        putarDerajat(87,1)
+                        mundurSerongKanan(180, 1.5)
+                        mundur(90, 0.5)
+                        dribbling(db,0)
+                        #setGame("STOP")
+                        break
+                    while getStatus(1) != "READY":
+                        setMotor(motor, 0,0,0,0)
+                        if getStatus(1) == "READY":
+                            break
+                    oper(db)
+                    setStatus(2, "RUNNING")
+                    geserKanan(90, 1.5)
+                    putarKiri(90, 0.2)
+                    arahBolaDepan()
+                    if gameStatus == "RETRY":
+                        putarDerajat(87,1)
+                        mundurSerongKanan(180, 1.5)
+                        mundur(90, 0.5)
+                        dribbling(db,0)
+                        #setGame("STOP")
+                        break
+                    setGame("STOP")
+                    setStatus(2, "RUNNING")
+                    putarKanan(80, 0.8)
+                    maju(90, 1.3)
+                    arahKiper()
+                    if kiper == "3":
+                        putarKiri(60, 0.2)
+                    else:
+                        putarKanan(60, 0.2)
+                    tendang(db)
+                    putarKiri(90, 0.3)
+                    mundur(180, 1)
+                    setStatus(2, "IDLE")
+                    break
+
+            elif mode == "KICKOFF KIRI":
+                while gameStatus == "START":
+                    serongKiri(170, 3)
+                    gameStatus = lurusBolaAtas()
+                    if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        putarDerajat(86,0)
+                        mundur(90, 1)
+                        mundurSerongKanan(180, 2)
+                        #setGame("STOP")
+                        break
+                    mundur(50, 0.5)
+                    putarKanan(90, 0.2)
+                    gameStatus = arahRobotDepan()
+                    if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        putarDerajat(86,0)
+                        mundur(90, 1)
+                        mundurSerongKanan(180, 2)
+                        #setGame("STOP")
+                        break
+                    while getStatus(1) != "READY":
+                        setMotor(motor, 0,0,0,0)
+                        if getStatus(1) == "READY":
+                            break
+                    oper(db)
+                    setStatus(2, "RUNNING")
+                    mundur(90,0.5)
+                    serongKanan(180, 1.2)
+                    putarKiri(90, 0.2)
+                    gameStatus = arahBolaDepan()
+                    if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        putarDerajat(86,0)
+                        mundurSerongKanan(180, 1.5)
+                        mundur(90, 1.5)
+                        #setGame("STOP")
+                        break
+                    sleep(2)
+                    putarKanan(90, 0.2)
+                    gameStatus = arahRobotDepan()
+                    if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        putarKiri(90, 0.3)
+                        mundurSerongKanan(180, 1)
+                        mundur(90, 3)
+                        #setGame("STOP")
+                        break
+                    while getStatus(1) != "READY":
+                        setMotor(motor, 0,0,0,0)
+                        if getStatus(1) == "READY":
+                            break
+                    oper(db)
+                    dribbling(db,0)
+                    putarKiri(90, 0.3)
+                    mundur(90, 1.5)
+                    mundurSerongKanan(180, 1.5)
+                    setGame("STOP")
+                    break
+                
+            elif mode == "KICKOFF CORNER":
+                dribbling(db,1)
+                lurusBolaAtas()
+                dribbling(db,0)
+                break
+
         elif dummy1 == "2" and dummy2 == "8":
             pass
         elif dummy1 == "3" and dummy2 == "8":
