@@ -1665,6 +1665,20 @@ def main():
                 oper(db)
                 serongKiri(120,1.5)
                 maju(90,3)
+                putarDerajat(87,1)
+                gameStatus = arahBolaDepan()
+                if gameStatus == "RETRY":
+                    dribbling(db,0)
+                    stop()
+                    #setGame("STOP")
+                    break
+                putarDerajat(142,1)
+                arahKiper()
+                if kiper == "3":
+                    putarKiri(60, 0.2)
+                else:
+                    putarKanan(60, 0.2)
+                tendang(db)
                 break
             
         elif dummy1 == "2" and dummy2 == "7":
