@@ -1668,6 +1668,7 @@ def main():
                     serongKiri(120,1.5)
                     maju(90,2)
                     putarDerajat(87,1)
+                    mundur(90,0.5)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
@@ -1681,6 +1682,7 @@ def main():
                     else:
                         putarKiri(60, 0.2)
                     tendang(db)
+                    # geserKiri(90,2)
                     setGame("STOP")
                     break
             
