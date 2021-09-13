@@ -1659,11 +1659,12 @@ def main():
                     break
                 
             elif mode == "KICKOFF CORNER":
-                # geserKiri(60,1.2)
-                # putarDerajat(128,1)
-                # maju(60,1.2)
-                # oper(db)
-                serongKiri(120,3)
+                geserKiri(60,1.2)
+                putarDerajat(128,1)
+                maju(60,1.2)
+                oper(db)
+                serongKiri(120,1.5)
+                maju(90,3)
                 break
             
         elif dummy1 == "2" and dummy2 == "7":
