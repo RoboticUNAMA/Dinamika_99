@@ -2744,7 +2744,7 @@ def main():
                         putarKanan(60, 0.3)
                     tendang(db)
                     putarKiri(90, 0.3)
-                    mundur(180, 1)
+                    mundur(180, 1.5)
                     setStatus(2, "IDLE")
                     break
 
@@ -2804,8 +2804,8 @@ def main():
                     oper(db)
                     dribbling(db,0)
                     putarKiri(90, 0.3)
-                    mundur(90, 1.5)
-                    mundurSerongKanan(180, 1.5)
+                    geserKanan(90,1.5)
+                    mundur(90, 2)
                     setGame("STOP")
                     break
                 
