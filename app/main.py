@@ -2739,9 +2739,9 @@ def main():
                     maju(90,1.2)
                     arahKiper()
                     if kiper == "3":
-                        putarKiri(60, 0.25)
+                        putarKiri(60, 0.3)
                     else:
-                        putarKanan(60, 0.25)
+                        putarKanan(60, 0.3)
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(180, 1)
