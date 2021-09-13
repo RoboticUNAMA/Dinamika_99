@@ -1674,7 +1674,7 @@ def main():
                         stop()
                         #setGame("STOP")
                         break
-                    putarKanan(90,0.5)
+                    putarKanan(90,0.7)
                     arahKiper()
                     if kiper == "3":
                         putarKiri(60, 0.2)
