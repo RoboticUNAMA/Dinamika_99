@@ -1659,28 +1659,29 @@ def main():
                     break
                 
             elif mode == "KICKOFF CORNER":
-                setStatus(2,"RUNNING")
-                geserKiri(60,1.2)
-                putarDerajat(128,1)
-                maju(60,1.2)
-                oper(db)
-                serongKiri(120,1.5)
-                maju(90,2)
-                putarDerajat(87,1)
-                gameStatus = arahBolaDepan()
-                if gameStatus == "RETRY":
-                    dribbling(db,0)
-                    stop()
-                    #setGame("STOP")
+                while gameStatus == "START":
+                    setStatus(2,"RUNNING")
+                    geserKiri(60,1.2)
+                    putarDerajat(128,1)
+                    maju(60,1.2)
+                    oper(db)
+                    serongKiri(120,1.5)
+                    maju(90,2)
+                    putarDerajat(87,1)
+                    gameStatus = arahBolaDepan()
+                    if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        stop()
+                        #setGame("STOP")
+                        break
+                    setMotor(motor, -30,-30,-30,-30)
+                    arahKiper()
+                    if kiper == "3":
+                        putarKiri(60, 0.3)
+                    else:
+                        putarKanan(60, 0.3)
+                    tendang(db)
                     break
-                setMotor(motor, -30,-30,-30,-30)
-                arahKiper()
-                if kiper == "3":
-                    putarKiri(60, 0.3)
-                else:
-                    putarKanan(60, 0.3)
-                tendang(db)
-                break
             
         elif dummy1 == "2" and dummy2 == "7":
             if mode == "KICKOFF KANAN":
