@@ -1674,13 +1674,14 @@ def main():
                         stop()
                         #setGame("STOP")
                         break
-                    setMotor(motor, -30,-30,-30,-30)
+                    putarKanan(90,0.5)
                     arahKiper()
                     if kiper == "3":
                         putarKiri(60, 0.3)
                     else:
                         putarKanan(60, 0.3)
                     tendang(db)
+                    setGame("STOP")
                     break
             
         elif dummy1 == "2" and dummy2 == "7":
