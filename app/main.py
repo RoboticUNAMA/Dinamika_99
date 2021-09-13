@@ -622,17 +622,17 @@ def arahRobotDepan():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball > 300  :
-                    setMotor(motor,-28,-28,-28,-28)
+                    setMotor(motor,-30,-30,-30,-30)
                     dari = "kiri"
                     count = startCount
 
                 elif cenX_ball > 0 and cenX_ball < 100  :
-                    setMotor(motor,28,28,28,28)
+                    setMotor(motor,30,30,30,30)
                     dari = "kanan"
                     count = startCount
                     
                 elif cenX_ball > 0 and cenX_ball < 200  :
-                    setMotor(motor,35,35,35,35)
+                    setMotor(motor,50,50,50,50)
                     sleep(0.125)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
@@ -641,7 +641,7 @@ def arahRobotDepan():
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 210 :
-                    setMotor(motor,-35,-35,-35,-35)
+                    setMotor(motor,-50,-50,-50,-50)
                     sleep(0.125)
                     setMotor(motor,0,0,0,0)
                     sleep(0.1)
