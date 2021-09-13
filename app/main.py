@@ -1659,6 +1659,7 @@ def main():
                     break
                 
             elif mode == "KICKOFF CORNER":
+                setStatus(2,"RUNNING")
                 geserKiri(60,1.2)
                 putarDerajat(128,1)
                 maju(60,1.2)
