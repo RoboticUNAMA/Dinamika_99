@@ -1659,9 +1659,9 @@ def main():
                     break
                 
             elif mode == "KICKOFF CORNER":
-                geserKiri(60,1.5)
+                geserKiri(60,1.2)
                 putarDerajat(128,1)
-                maju(60,1)
+                maju(60,1.2)
                 oper(db)
                 break
             
