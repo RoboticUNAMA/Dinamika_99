@@ -1665,7 +1665,7 @@ def main():
                 maju(60,1.2)
                 oper(db)
                 serongKiri(120,1.5)
-                maju(90,3)
+                maju(90,2)
                 putarDerajat(87,1)
                 gameStatus = arahBolaDepan()
                 if gameStatus == "RETRY":
@@ -1673,12 +1673,12 @@ def main():
                     stop()
                     #setGame("STOP")
                     break
-                putarDerajat(142,1)
+                setMotor(motor, -30,-30,-30,-30)
                 arahKiper()
                 if kiper == "3":
-                    putarKiri(60, 0.2)
+                    putarKiri(60, 0.3)
                 else:
-                    putarKanan(60, 0.2)
+                    putarKanan(60, 0.3)
                 tendang(db)
                 break
             
