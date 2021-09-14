@@ -2715,16 +2715,16 @@ def main():
                     maju(60,1.2)
                     oper(db)
                     serongKiri(120,1.5)
+                    putarKanan(90,0.3)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
                         stop()
                         #setGame("STOP")
                         break
-                    # putarKiri(90,0.6)
-                    setMotor(motor,50,50,50,50)
-                    sleep(0.5)
-                    # arahKiper()
+                    putarKiri(90,0.7)
+                    mundur(90,0.5)
+                    arahKiper()
                     # if kiper == "1":
                     #     putarKanan(60, 0.2)
                     # else:
