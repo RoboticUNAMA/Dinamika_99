@@ -2725,7 +2725,8 @@ def main():
                     putarDerajat(160,1)
                     geserKanan(90,0.6)
                     if kiper == "1":
-                        mundurSerongKanan(120,1.3)
+                        mundurSerongKanan(120,1.5)
+                        putarKiri(90,0.1)
                     tendang(db)
                     # geserKiri(90,2)
                     setGame("STOP")
