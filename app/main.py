@@ -2722,9 +2722,11 @@ def main():
                         stop()
                         #setGame("STOP")
                         break
-                    putarKiri(90,0.7)
-                    mundur(90,0.5)
-                    arahKiper()
+                    putarDerajat(160,1)
+                    geserKanan(90,0.5)
+                    # putarKiri(90,0.7)
+                    # mundur(90,0.5)
+                    # arahKiper()
                     # if kiper == "1":
                     #     putarKanan(60, 0.2)
                     # else:
