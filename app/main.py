@@ -2722,7 +2722,7 @@ def main():
                         #setGame("STOP")
                         break
                     putarKiri(90,0.7)
-                    arahKiper()
+                    # arahKiper()
                     # if kiper == "1":
                     #     putarKanan(60, 0.2)
                     # else:
