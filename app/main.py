@@ -2722,10 +2722,10 @@ def main():
                         stop()
                         #setGame("STOP")
                         break
-                    putarDerajat(158,1)
+                    putarDerajat(160,1)
                     geserKanan(90,0.6)
                     if kiper == "1":
-                        mundurSerongKanan(120,1.5)
+                        mundurSerongKanan(120,1.3)
                     tendang(db)
                     # geserKiri(90,2)
                     setGame("STOP")
