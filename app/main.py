@@ -2721,7 +2721,9 @@ def main():
                         stop()
                         #setGame("STOP")
                         break
-                    putarKiri(90,0.7)
+                    # putarKiri(90,0.6)
+                    setMotor(motor,50,50,50,50)
+                    sleep(0.5)
                     # arahKiper()
                     # if kiper == "1":
                     #     putarKanan(60, 0.2)
