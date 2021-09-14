@@ -2708,10 +2708,30 @@ def main():
                     break
                 
             elif mode == "KICKOFF CORNER":
-                dribbling(db,1)
-                lurusBolaAtas()
-                dribbling(db,0)
-                break
+                while gameStatus == "START":
+                    setStatus(2,"RUNNING")
+                    geserKiri(60,1.2)
+                    putarDerajat(128,1)
+                    maju(60,1.2)
+                    oper(db)
+                    serongKiri(120,1)
+                    maju(90,1)
+                    gameStatus = arahBolaDepan()
+                    if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        stop()
+                        #setGame("STOP")
+                        break
+                    putarKiri(90,0.7)
+                    arahKiper()
+                    # if kiper == "1":
+                    #     putarKanan(60, 0.2)
+                    # else:
+                    #     putarKiri(60, 0.2)
+                    tendang(db)
+                    # geserKiri(90,2)
+                    setGame("STOP")
+                    break
 
         elif dummy1 == "4" and dummy2 == "8":
             if mode == "KICKOFF KANAN":
