@@ -442,22 +442,26 @@ def arahBolaDepan():
                 if cenX_ball < 100  :
                     putarKiri(50, 0.15)
                     dari = "kanan"
+                    setStatus(2, "LURUS BOLA")
                     print("PUTAR KANAN")
                     
                 elif cenX_ball > 300  :
                     putarKanan(50, 0.15)
                     dari = "kiri"
+                    setStatus(2, "LURUS BOLA")
                     print("PUTAR KIRI")
                     
                     
                 elif cenX_ball < 180  :
                     putarKiri(50, 0.1)
                     dari = "kanan"
+                    setStatus(2, "LURUS BOLA")
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 220 :
                     putarKanan(50, 0.1)
                     dari = "kiri"
+                    setStatus(2, "LURUS BOLA")
                     print("PUTAR KIRI")
                 else :
                     #pas = 1
