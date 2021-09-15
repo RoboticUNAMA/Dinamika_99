@@ -1670,12 +1670,12 @@ def main():
                         stop()
                         #setGame("STOP")
                         break
-                    putarKanan(90,0.7)
+                    putarKanan(90,0.6)
                     arahKiper()
                     if kiper == "1":
-                        putarKanan(60, 0.2)
+                        putarKanan(60, 0.3)
                     else:
-                        putarKiri(60, 0.2)
+                        putarKiri(60, 0.3)
                     tendang(db)
                     # geserKiri(90,2)
                     setGame("STOP")
