@@ -635,12 +635,14 @@ def arahRobotDepan():
                     putarKiri(40,0.1)
                     dari = "kanan"
                     count = startCount
+                    setStatus(2, "LURUS BOLA")
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 210 :
                     putarKanan(40,0.1)
                     dari = "kiri"
                     count = startCount
+                    setStatus(2, "LURUS BOLA")
                     print("PUTAR KIRI")
                 else :
                     pas = 1
