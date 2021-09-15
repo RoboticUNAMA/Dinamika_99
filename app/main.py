@@ -1671,6 +1671,7 @@ def main():
                         #setGame("STOP")
                         break
                     putarKanan(90,0.6)
+                    sleep(0.5)
                     arahKiper()
                     if kiper == "1":
                         putarKanan(60, 0.3)
