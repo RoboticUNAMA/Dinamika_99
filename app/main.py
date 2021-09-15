@@ -1548,6 +1548,7 @@ def main():
                     maju(90, 0.8)
                     serongKiri(180, 1.5)
                     putarKiri(90, 0.2)
+                    sleep(3)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
