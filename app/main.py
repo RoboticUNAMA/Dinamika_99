@@ -2117,7 +2117,7 @@ def main():
                     oper(db)
                     setStatus(2, "RUNNING")
                     # putarDerajat(86,1)
-                    geserKanan(90, 1.5)
+                    geserKanan(90, 1)
                     putarKiri(90, 0.3)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
