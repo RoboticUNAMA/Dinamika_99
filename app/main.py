@@ -185,6 +185,18 @@ def tendang(ser):
     ser.write(b"TEND1\n")
     sleep(1)
 
+def oper_pelan(ser):
+    if ser.isOpen() == False:
+        ser.open()
+    # === init tendang
+    ser.reset_input_buffer()
+    dribbling(ser, 0)
+    sleep(0.5)
+    dribbling(ser, 0)
+    sleep(0.1)
+    ser.write(b"TEND1\n")
+    sleep(1)
+
 def oper(ser):
     if ser.isOpen() == False:
         ser.open()
@@ -1545,7 +1557,7 @@ def main():
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
-                    maju(80, 1)
+                    maju(90, 0.8)
                     serongKiri(180, 1.5)
                     putarKiri(90, 0.2)
                     sleep(3)
@@ -1572,7 +1584,7 @@ def main():
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-                    oper(db)
+                    oper_pelan(db)
                     setStatus(2, "RUNNING")
                     geserKanan(90, 1.5)
                     putarKiri(90, 0.2)
@@ -1588,7 +1600,8 @@ def main():
                     setStatus(2, "RUNNING")
                     putarKanan(90, 0.6)
                     sleep(0.5)
-                    putarKiri(90,0.3)
+                    maju(90,1)
+                    putarKiri(90,0.1)
                     arahKiper()
                     if kiper == "3":
                         putarKiri(50, 0.2)
