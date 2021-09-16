@@ -822,9 +822,15 @@ def arahKiper():
 
         #print(len(dummyCountour))
         if len(dummyContour) > 1:
+            ada = 1
             dummyObj = dummyContour[1]
         elif len(dummyContour) > 0 and len(dummyContour) <= 1:
             dummyObj = dummyContour[0]
+        else:
+            ada = 0
+        
+        if ada == 1:
+            setMotor(motor,-35,-35,-35,-35)
 
         if dummyObj is not None:  
             ada = 1
