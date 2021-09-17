@@ -997,6 +997,12 @@ def arahKiperKiri():
         dummyContour = []
         dummyObj = None
 
+        count -= 1
+        if count <= 0:
+            putarKiri(90,0.3)
+            count = startCount
+        
+
         for ballContour in ballContours:
             dummyContour.append(ballContour)
 
@@ -1014,6 +1020,7 @@ def arahKiperKiri():
 
         if dummyObj is not None:  
             ada = 1
+            count = startCount
             (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(dummyObj)
             cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
             cenX_ball = (x_ball+x_ball+w_ball)/2
