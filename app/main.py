@@ -999,7 +999,7 @@ def arahKiperKiri():
 
         count -= 1
         if count <= 0:
-            putarKiri(90,0.3)
+            putarKiri(90,0.2)
             count = startCount
         
 
@@ -1765,6 +1765,7 @@ def main():
                         break
                     setStatus(2, "RUNNING")
                     putarKanan(90, 0.3)
+                    sleep(2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
                         putarDerajat(87,1)
