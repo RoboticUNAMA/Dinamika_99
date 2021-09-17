@@ -900,6 +900,186 @@ def arahKiper():
             cv2.destroyAllWindows()
             break
 
+def arahKiperKiri():
+    # get center of the frame
+    _, frame1 = FRONT_CAP.read()
+    rows, cols, _ = frame1.shape
+    cenX_frame1 = int(cols/2)
+    cenY_frame1 = int(rows/2)
+
+    # _, frame2 = OMNI_CAP.read()
+    # rows1, cols1, _ = frame2.shape
+    # cenX_frame2 = int(cols1/2)
+    # cenY_frame2 = int(rows1/2)
+    
+    inner_left = cenX_frame1 - 100
+    outer_left = cenX_frame1 - 250 
+    inner_right = cenX_frame1 + 100
+    outer_right = cenX_frame1 + 250
+    inner_top = cenY_frame1 - 100
+    outer_top = cenY_frame1 - 150
+    inner_bottom = cenY_frame1 + 100
+    outer_bottom = cenY_frame1 + 150
+
+    # read magenta color
+    objColor = getDummyInfo()
+    lowerBall = np.array([objColor[0],objColor[1],objColor[2]])
+    upperBall = np.array([objColor[3],objColor[4],objColor[5]])
+
+    dari = ""
+    second = 0
+    startCount = 10
+    count = startCount
+    speed = 60
+    state = "START"
+
+    db.reset_input_buffer()
+    dribbling(db,1)
+
+    while(True):
+        dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
+        
+        if gameStatus == "RETRY":
+            break
+
+        if count <= 0:
+            motor.close()
+            count = startCount
+        count -= 1
+        #print(state)
+        second += 1
+        #print(second)
+        for i in range(3):
+            FRONT_CAP.grab()
+            #OMNI_CAP.grab()
+        ## read frame
+        _, frame1 = FRONT_CAP.read()
+        #_, frame2 = OMNI_CAP.read()
+        
+        # convert frame from BGR to HSV
+        hsv = cv2.cvtColor(frame1, cv2.COLOR_BGR2HSV)
+        #hsv1 = cv2.cvtColor(frame2, cv2.COLOR_BGR2HSV)
+
+        # blur the frame
+        blur = cv2.medianBlur(hsv, 5)
+        #blur1 = cv2.medianBlur(hsv1, 5)
+
+        # create a mask from blurred frame
+        BALL_MASK = cv2.inRange(blur, lowerBall, upperBall)
+        #BALL_MASK1 = cv2.inRange(blur1, lowerBall, upperBall)
+
+        # convert to black and white image
+        _, BALL_THRESH = cv2.threshold(BALL_MASK, objColor[6], 255, 0)
+        #_, BALL_THRESH1 = cv2.threshold(BALL_MASK1, objColor[6], 255, 0)
+
+        # refine the image using morphological transformation
+        kernal = np.ones((5,5), np.uint8)
+        BALL_MORPH = cv2.morphologyEx(BALL_THRESH, cv2.MORPH_CLOSE, kernal, iterations = 2)
+        #BALL_MORPH1 = cv2.morphologyEx(BALL_THRESH1, cv2.MORPH_CLOSE, kernal, iterations = 2)
+
+        # find contours
+        ballContours, _ = cv2.findContours(BALL_MORPH, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        ballContours = sorted(ballContours, key=lambda x:cv2.contourArea(x), reverse=True)
+        
+        # ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        # ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
+        #
+
+        # if state == "FINISH":
+        #     setMotor(motor,0,0,0,0)
+        #     motor.close()
+        #     cv2.destroyAllWindows()
+        #     break    
+
+        pas = 0
+        ada = 0
+
+        dummyContour = []
+        dummyObj = None
+
+        for ballContour in ballContours:
+            dummyContour.append(ballContour)
+
+        #print(len(dummyCountour))
+        if len(dummyContour) > 1:
+            ada = 1
+            dummyObj = dummyContour[1]
+        elif len(dummyContour) > 0 and len(dummyContour) <= 1:
+            dummyObj = dummyContour[0]
+        else:
+            ada = 0
+        
+        if ada == 1:
+            setMotor(motor,-35,-35,-35,-35)
+
+        if dummyObj is not None:  
+            ada = 1
+            (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(dummyObj)
+            cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
+            cenX_ball = (x_ball+x_ball+w_ball)/2
+            cenY_ball = (y_ball+y_ball+h_ball)/2   
+            print(cenX_ball)
+            # draw actual coordinate from segmentation
+            cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+            cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
+            cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+            
+            if cenX_ball < 100  :
+                setMotor(motor,35,35,35,35)
+                
+            elif cenX_ball > 250  :
+                setMotor(motor,-35,-35,-35,-35)
+                
+            elif cenX_ball < 130  :
+                setMotor(motor,40,40,40,40)
+                sleep(0.1)
+                setMotor(motor,0,0,0,0)
+                sleep(0.1)
+                dari = "kanan"
+                print("PUTAR KANAN")
+            
+            elif cenX_ball > 180 :
+                setMotor(motor,-40,-40,-40,-40)
+                sleep(0.1)
+                setMotor(motor,0,0,0,0)
+                sleep(0.1)
+                dari = "kiri"
+                print("PUTAR KIRI")
+            else:
+                setMotor(motor,0,0,0,0)
+                state = "FINISH"
+
+        if state == "FINISH": 
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break   
+
+        # displays
+        ## uncomment this to show center area of the frame 1
+        cv2.rectangle(frame1, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
+        cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
+        #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
+
+        cv2.imshow("Kamera Depan", frame1)
+        cv2.moveWindow("Kamera Depan" ,20,20)
+        
+        # cv2.imshow("Kamra Atas", frame2)
+        # cv2.moveWindow("Kamera Atas" ,0,0)
+        
+        #print(ballColor)
+        
+        k = cv2.waitKey(1) & 0xFF
+        if k == 27:
+            if motor.isOpen == False:
+                motor.open()
+            motor.write(b"#M|STP|0\n")
+            db.write(b"DB OFF")
+            FRONT_CAP.release()
+            #OMNI_CAP.release()
+            cv2.destroyAllWindows()
+            break
+
 def mulaiSerongKiri():
     print("==>> MULAI SERONG KIRI")
     # get center of the frame
@@ -1765,10 +1945,11 @@ def main():
                     setStatus(2, "RUNNING")
                     putarKanan(90, 0.7)
                     maju(90,1.3)
-                    arahKiper()
+                    # arahKiper()
                     if kiper == "3":
                         putarKiri(60, 0.2)
                     else:
+                        arahKiperKiri()
                         putarKanan(60, 0.2)
                     tendang(db)
                     putarKiri(90, 0.3)
