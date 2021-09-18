@@ -2004,9 +2004,9 @@ def main():
                     putarKiri(90,0.1)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(180, 1)
@@ -2162,9 +2162,9 @@ def main():
                     maju(90,1.3)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(140, 1.5)
@@ -2298,9 +2298,9 @@ def main():
                     serongKiri(120,1)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     tendang(db)
                     putarKiri(80, 0.2)
                     mundur(140, 1.5)
@@ -2422,9 +2422,9 @@ def main():
                     putarKanan(80, 0.8)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(180, 1)
@@ -2547,9 +2547,9 @@ def main():
                     maju(90,1)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     geserKanan(90, 2)
                     mundur(90,1)
                     setStatus(2, "IDLE")
@@ -2676,9 +2676,9 @@ def main():
                     maju(90,1.2)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(180, 2)
@@ -2805,9 +2805,9 @@ def main():
                     maju(90, 1.3)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(180, 1)
@@ -2928,9 +2928,9 @@ def main():
                     maju(90, 1.3)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(180, 1)
@@ -3051,9 +3051,9 @@ def main():
                     maju(90, 1.3)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(180, 1)
@@ -3193,9 +3193,9 @@ def main():
                     maju(90,1.1)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     tendang(db)
                     putarKiri(90, 0.3)
                     mundur(180, 1.5)
@@ -3319,9 +3319,9 @@ def main():
                     maju(90,1.2)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     geserKanan(90, 2)
                     mundur(90,1)
                     setStatus(2, "IDLE")
@@ -3448,9 +3448,9 @@ def main():
                     maju(90,1.2)
                     # arahKiper()
                     if kiper == "3":
-                        arahKiperKiri()
-                    else:
                         arahKiperKanan()
+                    else:
+                        arahKiperKiri()
                     mundur(90,1.5)
                     geserKanan(90, 2)
                     setStatus(2, "IDLE")
