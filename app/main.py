@@ -2054,6 +2054,8 @@ def main():
                         #setGame("STOP")
                         break
                     sleep(2)
+                    geserKanan(90,1)
+                    sleep(2)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
