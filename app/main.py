@@ -1030,36 +1030,34 @@ def arahKiperKanan():
             cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
             cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
             
-            if cenX_ball < 150  :
-                setMotor(motor,35,35,35,35)
+            if cenX_ball < 250  :
+                setMotor(motor,30,30,30,30)
                 
-            elif cenX_ball > 350  :
-                setMotor(motor,-35,-35,-35,-35)
+            elif cenX_ball > 320  :
+                setMotor(motor,-30,-30,-30,-30)
                 
-            elif cenX_ball < 230  :
-                setMotor(motor,40,40,40,40)
-                sleep(0.1)
-                setMotor(motor,0,0,0,0)
-                sleep(0.1)
-                dari = "kanan"
-                print("PUTAR KANAN")
+            # elif cenX_ball < 250  :
+            #     setMotor(motor,40,40,40,40)
+            #     sleep(0.1)
+            #     setMotor(motor,0,0,0,0)
+            #     sleep(0.1)
+            #     print("PUTAR KIRI")
             
-            elif cenX_ball > 270 :
-                setMotor(motor,-40,-40,-40,-40)
-                sleep(0.1)
-                setMotor(motor,0,0,0,0)
-                sleep(0.1)
-                dari = "kiri"
-                print("PUTAR KIRI")
+            # elif cenX_ball > 300 :
+            #     setMotor(motor,-40,-40,-40,-40)
+            #     sleep(0.1)
+            #     setMotor(motor,0,0,0,0)
+            #     sleep(0.1)
+            #     print("PUTAR KANAN")
             else:
                 setMotor(motor,0,0,0,0)
                 state = "FINISH"
 
-        # if state == "FINISH": 
-        #     setMotor(motor,0,0,0,0)
-        #     motor.close()
-        #     cv2.destroyAllWindows()
-        #     break   
+        if state == "FINISH": 
+            setMotor(motor,0,0,0,0)
+            motor.close()
+            cv2.destroyAllWindows()
+            break   
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -1217,27 +1215,27 @@ def arahKiperKiri():
             cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
             cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
             
-            if cenX_ball < 80  :
+            if cenX_ball < 100  :
                 setMotor(motor,35,35,35,35)
                 
-            elif cenX_ball > 230  :
+            elif cenX_ball > 130  :
                 setMotor(motor,-35,-35,-35,-35)
                 
-            elif cenX_ball < 110  :
-                setMotor(motor,40,40,40,40)
-                sleep(0.1)
-                setMotor(motor,0,0,0,0)
-                sleep(0.1)
-                dari = "kanan"
-                print("PUTAR KANAN")
+            # elif cenX_ball < 110  :
+            #     setMotor(motor,40,40,40,40)
+            #     sleep(0.1)
+            #     setMotor(motor,0,0,0,0)
+            #     sleep(0.1)
+            #     dari = "kanan"
+            #     print("PUTAR KANAN")
             
-            elif cenX_ball > 160 :
-                setMotor(motor,-40,-40,-40,-40)
-                sleep(0.1)
-                setMotor(motor,0,0,0,0)
-                sleep(0.1)
-                dari = "kiri"
-                print("PUTAR KIRI")
+            # elif cenX_ball > 160 :
+            #     setMotor(motor,-40,-40,-40,-40)
+            #     sleep(0.1)
+            #     setMotor(motor,0,0,0,0)
+            #     sleep(0.1)
+            #     dari = "kiri"
+            #     print("PUTAR KIRI")
             else:
                 setMotor(motor,0,0,0,0)
                 state = "FINISH"
