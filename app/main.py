@@ -2243,6 +2243,7 @@ def main():
                         break
                     setStatus(2, "RUNNING")
                     putarKanan(90, 0.3)
+                    sleep(2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
@@ -3510,7 +3511,10 @@ def main():
 
         elif dummy1 == "0" and dummy2 == "0":
             while gameStatus == "START":
-                arahKiperKanan()
+                if kiper == "3":
+                    arahKiperKanan()
+                else:
+                    arahKiperKiri()
                 tendang(db)
                 setGame("STOP")
                 break
