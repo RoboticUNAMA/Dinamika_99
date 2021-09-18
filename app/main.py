@@ -935,7 +935,7 @@ def arahKiperKanan():
     count = startCount
     speed = 60
     state = "START"
-    adj_kiper = 90
+    adj_kiper = 100
 
     db.reset_input_buffer()
     dribbling(db,1)
