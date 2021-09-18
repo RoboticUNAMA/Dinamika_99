@@ -929,6 +929,7 @@ def arahKiperKanan():
     dari = ""
     second = 0
     startCount = 10
+    count2 = 0
     count = startCount
     speed = 60
     state = "START"
@@ -1020,6 +1021,7 @@ def arahKiperKanan():
         if dummyObj is not None:  
             count = startCount
             ada = 1
+            count2 += 1
             (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(dummyObj)
             cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
             cenX_ball = (x_ball+x_ball+w_ball)/2
@@ -1030,28 +1032,29 @@ def arahKiperKanan():
             cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
             cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
             
-            if cenX_ball < 250  :
+            if cenX_ball < 200  :
                 setMotor(motor,30,30,30,30)
                 
-            elif cenX_ball > 320  :
+            elif cenX_ball > 350  :
                 setMotor(motor,-30,-30,-30,-30)
                 
-            # elif cenX_ball < 250  :
-            #     setMotor(motor,40,40,40,40)
-            #     sleep(0.1)
-            #     setMotor(motor,0,0,0,0)
-            #     sleep(0.1)
-            #     print("PUTAR KIRI")
-            
-            # elif cenX_ball > 300 :
-            #     setMotor(motor,-40,-40,-40,-40)
-            #     sleep(0.1)
-            #     setMotor(motor,0,0,0,0)
-            #     sleep(0.1)
-            #     print("PUTAR KANAN")
-            else:
+            elif cenX_ball < 250  :
+                setMotor(motor,40,40,40,40)
+                sleep(0.1)
                 setMotor(motor,0,0,0,0)
-                state = "FINISH"
+                sleep(0.1)
+                print("PUTAR KIRI")
+            
+            elif cenX_ball > 300 :
+                setMotor(motor,-40,-40,-40,-40)
+                sleep(0.1)
+                setMotor(motor,0,0,0,0)
+                sleep(0.1)
+                print("PUTAR KANAN")
+            else:
+                if count2 > 3:
+                    setMotor(motor,0,0,0,0)
+                    state = "FINISH"
 
         if state == "FINISH": 
             setMotor(motor,0,0,0,0)
@@ -1113,6 +1116,7 @@ def arahKiperKiri():
     dari = ""
     second = 0
     startCount = 10
+    count2 = 0
     count = startCount
     speed = 60
     state = "START"
@@ -1204,6 +1208,7 @@ def arahKiperKiri():
 
         if dummyObj is not None:  
             ada = 1
+            count2 += 1
             count = startCount
             (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(dummyObj)
             cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
@@ -1215,30 +1220,31 @@ def arahKiperKiri():
             cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
             cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
             
-            if cenX_ball < 100  :
+            if cenX_ball < 60  :
                 setMotor(motor,35,35,35,35)
                 
-            elif cenX_ball > 130  :
+            elif cenX_ball > 150  :
                 setMotor(motor,-35,-35,-35,-35)
                 
-            # elif cenX_ball < 110  :
-            #     setMotor(motor,40,40,40,40)
-            #     sleep(0.1)
-            #     setMotor(motor,0,0,0,0)
-            #     sleep(0.1)
-            #     dari = "kanan"
-            #     print("PUTAR KANAN")
-            
-            # elif cenX_ball > 160 :
-            #     setMotor(motor,-40,-40,-40,-40)
-            #     sleep(0.1)
-            #     setMotor(motor,0,0,0,0)
-            #     sleep(0.1)
-            #     dari = "kiri"
-            #     print("PUTAR KIRI")
-            else:
+            elif cenX_ball < 110  :
+                setMotor(motor,40,40,40,40)
+                sleep(0.1)
                 setMotor(motor,0,0,0,0)
-                state = "FINISH"
+                sleep(0.1)
+                dari = "kanan"
+                print("PUTAR KANAN")
+            
+            elif cenX_ball > 130 :
+                setMotor(motor,-40,-40,-40,-40)
+                sleep(0.1)
+                setMotor(motor,0,0,0,0)
+                sleep(0.1)
+                dari = "kiri"
+                print("PUTAR KIRI")
+            else:
+                if count2 > 3:
+                    setMotor(motor,0,0,0,0)
+                    state = "FINISH"
 
         if state == "FINISH": 
             setMotor(motor,0,0,0,0)
