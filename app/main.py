@@ -1055,11 +1055,11 @@ def arahKiperKanan():
                 setMotor(motor,0,0,0,0)
                 state = "FINISH"
 
-        if state == "FINISH": 
-            setMotor(motor,0,0,0,0)
-            motor.close()
-            cv2.destroyAllWindows()
-            break   
+        # if state == "FINISH": 
+        #     setMotor(motor,0,0,0,0)
+        #     motor.close()
+        #     cv2.destroyAllWindows()
+        #     break   
 
         # displays
         ## uncomment this to show center area of the frame 1
