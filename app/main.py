@@ -15,11 +15,13 @@ from time import sleep
 # webserver
 ip_server = "192.168.10.244"
 
+br = 9600   
+
 # serial motor driver
-motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
+motor = serial.Serial(port='/dev/ttyACM0', baudrate=br, timeout=1)
 
 # serial dribble
-db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
+db = serial.Serial(port='/dev/ttyUSB0', baudrate=br, timeout=1)
 
 # STM
 # stm = serial.Serial(port='/dev/ttyACM2', baudrate=9600, timeout=1)
@@ -1930,10 +1932,10 @@ def lurusBolaAtas():
 
 def main():
     # serial motor driver
-    motor = serial.Serial(port='/dev/ttyACM0', baudrate=9600, timeout=1)
+    motor = serial.Serial(port='/dev/ttyACM0', baudrate=br, timeout=1)
 
     # serial dribble
-    db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
+    db = serial.Serial(port='/dev/ttyUSB0', baudrate=br, timeout=1)
 
     # stm = serial.Serial(port='/dev/ttyACM2', baudrate=9600, timeout=1)
     # # serial OpenCM
