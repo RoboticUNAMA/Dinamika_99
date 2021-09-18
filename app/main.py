@@ -1054,7 +1054,7 @@ def arahKiperKanan():
                 dari = "kiri"
                 print("PUTAR KIRI")
             else:
-                if count2 > 20:
+                if count2 > 7:
                     setMotor(motor,0,0,0,0)
                     state = "FINISH"
 
@@ -1222,13 +1222,13 @@ def arahKiperKiri():
             cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
             cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
             
-            if cenX_ball < 60  :
+            if cenX_ball < 100-30  :
                 setMotor(motor,35,35,35,35)
                 
-            elif cenX_ball > 150  :
+            elif cenX_ball > 300-30  :
                 setMotor(motor,-35,-35,-35,-35)
                 
-            elif cenX_ball < 110  :
+            elif cenX_ball < 180-30  :
                 setMotor(motor,40,40,40,40)
                 sleep(0.1)
                 setMotor(motor,0,0,0,0)
@@ -1236,7 +1236,7 @@ def arahKiperKiri():
                 dari = "kanan"
                 print("PUTAR KANAN")
             
-            elif cenX_ball > 130 :
+            elif cenX_ball > 220-30 :
                 setMotor(motor,-40,-40,-40,-40)
                 sleep(0.1)
                 setMotor(motor,0,0,0,0)
@@ -1244,7 +1244,7 @@ def arahKiperKiri():
                 dari = "kiri"
                 print("PUTAR KIRI")
             else:
-                if count2 > 5:
+                if count2 > 7:
                     setMotor(motor,0,0,0,0)
                     state = "FINISH"
 
