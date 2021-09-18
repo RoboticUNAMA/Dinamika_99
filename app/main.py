@@ -935,7 +935,7 @@ def arahKiperKanan():
     count = startCount
     speed = 60
     state = "START"
-    adj_kiper = 85
+    adj_kiper = 90
 
     db.reset_input_buffer()
     dribbling(db,1)
@@ -2411,7 +2411,7 @@ def main():
                     oper(db)
                     setStatus(2, "RUNNING")
                     geserKanan(90, 1.5)
-                    putarKiri(90, 0.2)
+                    putarKiri(90, 0.3)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
                         putarDerajat(87,1)
