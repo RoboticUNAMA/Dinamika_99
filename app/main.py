@@ -1052,7 +1052,7 @@ def arahKiperKanan():
                 sleep(0.1)
                 print("PUTAR KANAN")
             else:
-                if count2 > 3:
+                if count2 > 10:
                     setMotor(motor,0,0,0,0)
                     state = "FINISH"
 
@@ -1242,7 +1242,7 @@ def arahKiperKiri():
                 dari = "kiri"
                 print("PUTAR KIRI")
             else:
-                if count2 > 3:
+                if count2 > 10:
                     setMotor(motor,0,0,0,0)
                     state = "FINISH"
 
