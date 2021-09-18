@@ -2042,7 +2042,7 @@ def main():
                             break
                     oper(db)
                     setStatus(2, "RUNNING")
-                    serongKanan(150, 1.7)
+                    serongKanan(150, 1.4)
                     putarKiri(90, 0.2)
                     mundur(90,0.5)
                     gameStatus = arahBolaDepan()
