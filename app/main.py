@@ -17,6 +17,8 @@ ip_server = "192.168.10.244"
 
 br = 9600   
 
+kamera = 0
+
 # serial motor driver
 motor = serial.Serial(port='/dev/ttyACM0', baudrate=br, timeout=1)
 
@@ -516,11 +518,12 @@ def arahBolaDepan():
         cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
         #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
-        cv2.imshow("Kamera Depan", frame1)
-        cv2.moveWindow("Kamera Depan" ,20,20)
-        
-        #cv2.imshow("Kamra Atas", frame2)
-        #cv2.moveWindow("Kamera Atas" ,0,0)
+        if kamera == 1:
+            cv2.imshow("Kamera Depan", frame1)
+            cv2.moveWindow("Kamera Depan" ,20,20)
+            
+            #cv2.imshow("Kamra Atas", frame2)
+            #cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
         
@@ -702,11 +705,12 @@ def arahRobotDepan():
         cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
         #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
-        cv2.imshow("Kamera Depan", frame1)
-        cv2.moveWindow("Kamera Depan" ,20,20)
-        
-        # cv2.imshow("Kamra Atas", frame2)
-        # cv2.moveWindow("Kamera Atas" ,0,0)
+        if kamera == 1:
+            cv2.imshow("Kamera Depan", frame1)
+            cv2.moveWindow("Kamera Depan" ,20,20)
+            
+            # cv2.imshow("Kamra Atas", frame2)
+            # cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
         
@@ -883,11 +887,12 @@ def arahKiper():
         cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
         #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
-        cv2.imshow("Kamera Depan", frame1)
-        cv2.moveWindow("Kamera Depan" ,20,20)
-        
-        # cv2.imshow("Kamra Atas", frame2)
-        # cv2.moveWindow("Kamera Atas" ,0,0)
+        if kamera == 1:
+            cv2.imshow("Kamera Depan", frame1)
+            cv2.moveWindow("Kamera Depan" ,20,20)
+            
+            # cv2.imshow("Kamra Atas", frame2)
+            # cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
         
@@ -1079,11 +1084,12 @@ def arahKiperKanan():
         cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
         #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
-        cv2.imshow("Kamera Depan", frame1)
-        cv2.moveWindow("Kamera Depan" ,20,20)
-        
-        # cv2.imshow("Kamra Atas", frame2)
-        # cv2.moveWindow("Kamera Atas" ,0,0)
+        if kamera == 1:
+            cv2.imshow("Kamera Depan", frame1)
+            cv2.moveWindow("Kamera Depan" ,20,20)
+            
+            # cv2.imshow("Kamra Atas", frame2)
+            # cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
         
@@ -1275,11 +1281,12 @@ def arahKiperKiri():
         cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
         #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
-        cv2.imshow("Kamera Depan", frame1)
-        cv2.moveWindow("Kamera Depan" ,20,20)
-        
-        # cv2.imshow("Kamra Atas", frame2)
-        # cv2.moveWindow("Kamera Atas" ,0,0)
+        if kamera == 1:
+            cv2.imshow("Kamera Depan", frame1)
+            cv2.moveWindow("Kamera Depan" ,20,20)
+            
+            # cv2.imshow("Kamra Atas", frame2)
+            # cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
         
@@ -1420,11 +1427,12 @@ def mulaiSerongKiri():
         cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
         #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
-        cv2.imshow("Kamera Depan", frame1)
-        cv2.moveWindow("Kamera Depan" ,20,20)
-        
-        #cv2.imshow("Kamra Atas", frame2)
-        #cv2.moveWindow("Kamera Atas" ,0,0)
+        if kamera == 1:
+            cv2.imshow("Kamera Depan", frame1)
+            cv2.moveWindow("Kamera Depan" ,20,20)
+            
+            #cv2.imshow("Kamra Atas", frame2)
+            #cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
         
@@ -1564,11 +1572,12 @@ def mulaiGeserKiri():
         cv2.rectangle(frame1, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
         #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
-        cv2.imshow("Kamera Depan", frame1)
-        cv2.moveWindow("Kamera Depan" ,20,20)
-        
-        #cv2.imshow("Kamra Atas", frame2)
-        #cv2.moveWindow("Kamera Atas" ,0,0)
+        if kamera == 1:
+            cv2.imshow("Kamera Depan", frame1)
+            cv2.moveWindow("Kamera Depan" ,20,20)
+            
+            #cv2.imshow("Kamra Atas", frame2)
+            #cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
         
@@ -1736,11 +1745,12 @@ def tesLimit():
         #cv2.rectangle(frame2, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
         #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
-        #cv2.imshow("Kamera Depan", frame1)
-        #cv2.moveWindow("Kamera Depan" ,20,20)
-        
-        cv2.imshow("Kamera Atas", frame2)
-        cv2.moveWindow("Kamera Atas" ,0,0)
+        if kamera == 1:
+            #cv2.imshow("Kamera Depan", frame1)
+            #cv2.moveWindow("Kamera Depan" ,20,20)
+            
+            cv2.imshow("Kamera Atas", frame2)
+            cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
         
@@ -1911,11 +1921,12 @@ def lurusBolaAtas():
         #cv2.rectangle(frame2, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
         #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
-        #cv2.imshow("Kamera Depan", frame1)
-        #cv2.moveWindow("Kamera Depan" ,20,20)
-        
-        cv2.imshow("Kamera Atas", frame2)
-        cv2.moveWindow("Kamera Atas" ,0,0)
+        if kamera == 1:
+            #cv2.imshow("Kamera Depan", frame1)
+            #cv2.moveWindow("Kamera Depan" ,20,20)
+            
+            cv2.imshow("Kamera Atas", frame2)
+            cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
         
