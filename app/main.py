@@ -1042,13 +1042,13 @@ def arahKiperKanan():
             
             if cenX_ball < 100+adj_kiper:
                 setMotor(motor,40,40,40,40)
-                sleep(0.2)
+                sleep(0.3)
                 setMotor(motor,0,0,0,0)
                 sleep(0.1)
                 
             elif cenX_ball > 300+adj_kiper:
                 setMotor(motor,-40,-40,-40,-40)
-                sleep(0.2)
+                sleep(0.3)
                 setMotor(motor,0,0,0,0)
                 sleep(0.1)
                 
@@ -1239,13 +1239,13 @@ def arahKiperKiri():
             
             if cenX_ball < 100-30  :
                 setMotor(motor,40,40,40,40)
-                sleep(0.2)
+                sleep(0.3)
                 setMotor(motor,0,0,0,0)
                 sleep(0.1)
                 
             elif cenX_ball > 300-30  :
                 setMotor(motor,-40,-40,-40,-40)
-                sleep(0.2)
+                sleep(0.3)
                 setMotor(motor,0,0,0,0)
                 sleep(0.1)
                 
