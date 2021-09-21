@@ -2095,9 +2095,8 @@ def main():
                     oper(db)
                     sleep(1)
                     serongKiri(120,1.5)
-                    maju(90,2)
-                    putarDerajat(87,1)
-                    mundur(90,0.5)
+                    maju(90,2.5)
+                    putarKanan(90,0.4)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
