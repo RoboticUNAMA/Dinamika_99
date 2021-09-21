@@ -2093,6 +2093,7 @@ def main():
                     putarDerajat(128,1)
                     maju(60,1.2)
                     oper(db)
+                    sleep(1)
                     serongKiri(120,1.5)
                     maju(90,2)
                     putarDerajat(87,1)
