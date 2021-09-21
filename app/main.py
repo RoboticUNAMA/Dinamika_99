@@ -2448,7 +2448,7 @@ def main():
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
                     maju(90,0.3)
-                    geserKiri(90,2)
+                    geserKiri(90,2.4)
                     maju(90,2.2)
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
