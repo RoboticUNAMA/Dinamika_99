@@ -3719,6 +3719,7 @@ def main():
                     if kiper == "1":
                         serongKanan(120,2.5)
                         putarDerajat(177,1)
+                        mundur(90,0.7)
                         arahKiperKiriCorner()
                     tendang(db)
                     # geserKiri(90,2)
