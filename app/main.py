@@ -2998,7 +2998,7 @@ def main():
                     oper(db)
                     sleep(2)
                     serongKiri(120,2)
-                    maju(90,2)
+                    maju(90,1.8)
                     putarKanan(90,0.7)
                     sleep(0.5)
                     gameStatus = arahBolaDepan()
