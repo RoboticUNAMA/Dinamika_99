@@ -2083,7 +2083,6 @@ def main():
                     dribbling(db,0)
                     putarKiri(90, 0.3)
                     mundur(90, 1.5)
-                    mundurSerongKanan(180, 1.5)
                     setGame("STOP")
                     break
                 
