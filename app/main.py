@@ -3466,6 +3466,7 @@ def main():
                         arahKiperKanan()
                     else:
                         arahKiperKiri()
+                    tendang(db)
                     mundur(90,1.5)
                     geserKanan(90, 2)
                     setStatus(2, "IDLE")
