@@ -2517,7 +2517,7 @@ def main():
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
                     serongKiri(150,1.5)
-                    maju(90,1.4)
+                    maju(90,1.5)
                     putarKiri(90,0.3)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
