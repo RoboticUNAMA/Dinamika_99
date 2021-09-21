@@ -2496,13 +2496,11 @@ def main():
                         stop()
                         #setGame("STOP")
                         break
-                    putarKanan(90,0.4)
-                    sleep(0.5)
-                    arahKiper()
+                    putarDerajat(177,1)
                     if kiper == "1":
-                        putarKanan(60, 0.25)
+                        arahKiperKiriCorner()
                     else:
-                        putarKiri(60, 0.25)
+                        arahKiperKananCorner()
                     tendang(db)
                     # geserKiri(90,2)
                     setGame("STOP")
@@ -2640,6 +2638,34 @@ def main():
                     dribbling(db,0)
                     putarKiri(90, 0.3)
                     mundur(90, 1.5)
+                    setGame("STOP")
+                    break
+
+            elif mode == "KICKOFF CORNER":
+                while gameStatus == "START":
+                    setStatus(2,"RUNNING")
+                    geserKiri(60,1.2)
+                    putarDerajat(128,1)
+                    maju(60,1.2)
+                    oper(db)
+                    sleep(2)
+                    serongKiri(120,2)
+                    maju(90,2)
+                    putarKanan(90,0.7)
+                    sleep(0.5)
+                    gameStatus = arahBolaDepan()
+                    if gameStatus == "RETRY":
+                        dribbling(db,0)
+                        stop()
+                        #setGame("STOP")
+                        break
+                    putarDerajat(177,1)
+                    if kiper == "1":
+                        arahKiperKiriCorner()
+                    else:
+                        arahKiperKananCorner()
+                    tendang(db)
+                    # geserKiri(90,2)
                     setGame("STOP")
                     break
 
@@ -3533,24 +3559,22 @@ def main():
                     putarDerajat(128,1)
                     maju(60,1.2)
                     oper(db)
-                    sleep(1)
-                    serongKiri(120,1.5)
+                    sleep(2)
+                    serongKiri(120,2)
                     maju(90,2)
-                    putarDerajat(87,1)
-                    mundur(90,0.5)
+                    putarKanan(90,0.7)
+                    sleep(0.5)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
                         stop()
                         #setGame("STOP")
                         break
-                    putarKanan(90,0.6)
-                    sleep(0.5)
-                    arahKiper()
+                    putarDerajat(177,1)
                     if kiper == "1":
-                        putarKanan(60, 0.25)
+                        arahKiperKiriCorner()
                     else:
-                        putarKiri(60, 0.25)
+                        arahKiperKananCorner()
                     tendang(db)
                     # geserKiri(90,2)
                     setGame("STOP")
