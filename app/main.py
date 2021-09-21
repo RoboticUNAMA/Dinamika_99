@@ -2558,14 +2558,13 @@ def main():
                     setGame("STOP")
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.8)
-                    maju(90,1)
+                    maju(120,1.5)
                     # arahKiper()
                     if kiper == "3":
                         arahKiperKanan()
                     else:
                         arahKiperKiri()
                     tendang(db)
-                    maju(90,1.2)
                     geserKanan(90, 2)
                     mundur(90,1)
                     setStatus(2, "IDLE")
