@@ -2631,8 +2631,8 @@ def main():
                     oper(db)
                     dribbling(db,0)
                     putarKiri(90, 0.2)
-                    mundur(90, 3)
-                    geserKanan(90,1.5)
+                    mundur(120, 2)
+                    # geserKanan(90,1.5)
                     setGame("STOP")
                     break
                 
@@ -2688,15 +2688,15 @@ def main():
                     setGame("STOP")
                     setStatus(2, "RUNNING")
                     putarKanan(80, 0.8)
-                    maju(90,1.2)
+                    serongKiri(90,1.2)
                     # arahKiper()
                     if kiper == "3":
                         arahKiperKanan()
                     else:
                         arahKiperKiri()
                     tendang(db)
-                    putarKiri(90, 0.3)
-                    mundur(180, 2)
+                    mundurSerongKanan(120,1.5)
+                    geserKiri(90,1)
                     setStatus(2, "IDLE")
                     break
 
