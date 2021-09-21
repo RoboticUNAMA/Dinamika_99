@@ -2094,8 +2094,8 @@ def main():
                     maju(60,1.2)
                     oper(db)
                     sleep(1)
-                    serongKiri(120,1.5)
-                    maju(90,2.5)
+                    serongKiri(120,2)
+                    maju(90,2)
                     putarKanan(90,0.7)
                     sleep(0.5)
                     gameStatus = arahBolaDepan()
@@ -2104,7 +2104,7 @@ def main():
                         stop()
                         #setGame("STOP")
                         break
-                    putarKanan(90,0.5)
+                    putarKanan(90,0.4)
                     sleep(0.5)
                     arahKiper()
                     if kiper == "1":
