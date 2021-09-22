@@ -2624,7 +2624,8 @@ def main():
                         #setGame("STOP")
                         break
                     sleep(2)
-                    putarKanan(90, 0.2)
+                    maju(90,1)
+                    putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
