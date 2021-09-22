@@ -2795,7 +2795,7 @@ def main():
                         mundur(90, 1.2)
                         #setGame("STOP")
                         break
-                    sleep(4)
+                    sleep(5)
                     maju(90,1)
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
