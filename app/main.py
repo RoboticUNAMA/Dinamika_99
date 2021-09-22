@@ -2284,10 +2284,10 @@ def lurusBolaAtas():
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 if cenX_ball < 170 and cenY_ball < 135 :
-                    setMotor(motor,-speed,-speed,-speed,-speed)
+                    putarKanan(speed, 0.4)
                     
                 elif cenX_ball > 245 and cenY_ball < 135 :
-                    setMotor(motor,speed,speed,speed,speed)
+                    putarKiri(speed, 0.4)
                     
                 elif cenX_ball < 195 and cenY_ball < 155 :
                     putarKanan(speed, 0.2)
