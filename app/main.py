@@ -2421,7 +2421,7 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    serongKiri(170, 3)
+                    mulaiSerongKiri()
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
@@ -2446,7 +2446,7 @@ def main():
                             break
                     oper(db)
                     setStatus(2, "RUNNING")
-                    serongKanan(150, 1.4)
+                    serongKanan(140, 1.5)
                     putarKiri(90, 0.2)
                     mundur(90,0.5)
                     gameStatus = arahBolaDepan()
