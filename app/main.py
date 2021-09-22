@@ -181,23 +181,27 @@ def tendang(ser):
     if ser.isOpen() == False:
         ser.open()
     # === init tendang
-    ser.reset_input_buffer()
+    # ser.reset_input_buffer()
     dribbling(ser, 0)
-    sleep(0.5)
+    sleep(0.2)
     dribbling(ser, 0)
-    sleep(0.1)
+    sleep(0.2)
+    dribbling(ser, 0)
+    sleep(0.2)
     ser.write(b"TEND0\n")
-    sleep(1)
+    sleep(2)
 
 def oper_pelan(ser):
     if ser.isOpen() == False:
         ser.open()
     # === init tendang
-    ser.reset_input_buffer()
+    # ser.reset_input_buffer()
     dribbling(ser, 0)
-    sleep(0.5)
+    sleep(0.2)
     dribbling(ser, 0)
-    sleep(0.1)
+    sleep(0.2)
+    dribbling(ser, 0)
+    sleep(0.2)
     ser.write(b"TEND1\n")
     sleep(1)
 
@@ -205,11 +209,13 @@ def oper(ser):
     if ser.isOpen() == False:
         ser.open()
     # === init tendang
-    ser.reset_input_buffer()
+    # ser.reset_input_buffer()
     dribbling(ser, 0)
-    sleep(0.5)
+    sleep(0.2)
     dribbling(ser, 0)
-    sleep(0.1)
+    sleep(0.2)
+    dribbling(ser, 0)
+    sleep(0.2)
     ser.write(b"TEND2\n")
     sleep(1)
 
@@ -2737,10 +2743,6 @@ def main():
                         arahKiperKanan()
                     else:
                         arahKiperKiri()
-                    dribbling(db, 0)
-                    sleep(0.1)
-                    dribbling(db, 0)
-                    sleep(0.1)
                     tendang(db)
                     putarKiri(80, 0.2)
                     mundur(140, 1.5)
