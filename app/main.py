@@ -17,7 +17,7 @@ ip_server = "192.168.10.244"
 
 br = 9600   
 
-kamera = 1
+kamera = 0
 
 # serial motor driver
 motor = serial.Serial(port='/dev/ttyACM0', baudrate=br, timeout=1)
@@ -2437,7 +2437,7 @@ def main():
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
-                        putarDerajat(86,0)
+                        putarDerajat(87,0)
                         mundur(90, 1)
                         mundurSerongKanan(180, 2)
                         #setGame("STOP")
@@ -2472,6 +2472,7 @@ def main():
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
+                    dribbling(db,0)
                     oper(db)
                     dribbling(db,0)
                     putarKiri(90, 0.3)
