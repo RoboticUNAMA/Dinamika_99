@@ -2448,7 +2448,6 @@ def main():
                     setStatus(2, "RUNNING")
                     putarDerajat(86,0)
                     mundurSerongKanan(120,1.5)
-                    setStatus(2, "RUNNING")
                     sleep(1)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
