@@ -2472,9 +2472,11 @@ def main():
                         if getStatus(1) == "READY":
                             break
                     dribbling(db,0)
+                    sleep(0.2)
+                    dribbling(db,0)
+                    sleep(0.2)
                     oper(db)
                     sleep(2)
-                    dribbling(db,0)
                     putarKiri(90, 0.3)
                     mundur(90, 1.5)
                     setGame("STOP")
