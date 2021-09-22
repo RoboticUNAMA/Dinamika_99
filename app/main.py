@@ -2450,6 +2450,8 @@ def main():
                     setStatus(2, "RUNNING")
                     putarDerajat(86,0)
                     mundurSerongKanan(120,1.5)
+                    setStatus(2, "RUNNING")
+                    sleep(1)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
                         dribbling(db,0)
@@ -2474,6 +2476,7 @@ def main():
                             break
                     dribbling(db,0)
                     oper(db)
+                    sleep(2)
                     dribbling(db,0)
                     putarKiri(90, 0.3)
                     mundur(90, 1.5)
