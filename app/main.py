@@ -2546,9 +2546,10 @@ def main():
                     setStatus(2, "RUNNING")
                     serongKanan(180, 1.2)
                     putarKiri(90, 0.2)
+                    mundur(90,0.5)
                     arahBolaDepan()
                     sleep(4)
-                    maju(90,1)
+                    maju(90,0.5)
                     putarKanan(90, 0.3)
                     arahRobotDepan()
                     while getStatus(1) != "READY":
