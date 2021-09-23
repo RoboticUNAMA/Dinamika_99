@@ -2691,7 +2691,7 @@ def main():
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-                    putarKiri(40,0.1)
+                    putarKiri(40,0.2)
                     oper(db)
                     setStatus(2, "RUNNING")
                     mundurSerongKanan(120, 1.5)
