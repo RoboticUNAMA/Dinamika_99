@@ -2372,16 +2372,16 @@ def main():
                 # putarKanan(90,0.4)
                 putarDerajat(128,1)
                 maju(90,1)
-                arahRobotDepan()
+                # arahRobotDepan()
                 oper(db)
-                sleep(3)
+                sleep(5)
                 maju(90,1.6)
                 arahBolaDepan()
                 putarDerajat(177,1)
-                if kiper == "1":
-                    arahKiper()
-                else:
+                if kiper == "3":
                     arahKiperKananCorner()
+                else:
+                    arahKiper()
                 tendang(db)
                 # geserKiri(90,2)
                 setGame("STOP")
