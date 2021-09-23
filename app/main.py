@@ -210,6 +210,7 @@ def oper(ser):
         ser.open()
     # === init tendang
     # ser.reset_input_buffer()
+    putarKiri(40,0.2)
     dribbling(ser, 0)
     sleep(0.2)
     dribbling(ser, 0)
@@ -262,7 +263,7 @@ def mulaiKickoff():
     maju(90,0.3)
     geserKiri(90,2.8)
     maju(90,2)
-    putarKanan(90,0.3)
+    putarKanan(90,0.2)
     lurusBolaAtas()
 
 def putarDerajat(derajat_tujuan, dribble) :
