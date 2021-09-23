@@ -2382,6 +2382,7 @@ def main():
                     arahKiperKananCorner()
                 else:
                     arahKiper()
+                    putarKiri(50,0.1)
                 tendang(db)
                 # geserKiri(90,2)
                 setGame("STOP")
