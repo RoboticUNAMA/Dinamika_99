@@ -2866,7 +2866,8 @@ def main():
                         stop()
                         setGame("STOP")
                         break
-                    sleep(2)
+                    sleep(4)
+                    maju(90,0.7)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
