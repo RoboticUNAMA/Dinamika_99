@@ -2386,6 +2386,7 @@ def main():
                 setGame("STOP")
                 break
 
+        # @1
         elif dummy1 == "1":
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
@@ -2420,8 +2421,6 @@ def main():
                     else:
                         arahKiperKiri()
                     tendang(db)
-                    putarKiri(90, 0.3)
-                    mundur(180, 1)
                     setStatus(2, "IDLE")
                     break
 
@@ -2438,11 +2437,11 @@ def main():
                     oper(db)
                     setStatus(2, "RUNNING")
                     putarKiri(90,0.3)
-                    mundurSerongKanan(90,1.5)
+                    mundurSerongKanan(120,1.8)
                     sleep(1)
                     arahBolaDepan()
-                    sleep(3)
-                    maju(90,1)
+                    sleep(4)
+                    maju(90,1.5)
                     putarKanan(90, 0.2)
                     arahRobotDepan()
                     while getStatus(1) != "READY":
