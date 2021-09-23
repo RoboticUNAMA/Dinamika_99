@@ -2367,8 +2367,8 @@ def main():
         if mode == "KICKOFF CORNER":
             while gameStatus == "START":
                 setStatus(2,"RUNNING")
-                maju(60,0.5)
-                geserKiri(90,1)
+                serongKiri(120,1.3)
+                putarKanan(90,0.2)
                 # putarDerajat(128,1)
                 lurusBolaAtas()
                 arahRobotDepan()
