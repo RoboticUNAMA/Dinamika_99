@@ -2861,6 +2861,7 @@ def main():
                     putarKiri(90,0.3)
                     arahBolaDepan()
                     setStatus(2, "RUNNING")
+                    sleep(2)
                     putarKanan(90, 0.3)
                     arahRobotDepan()
                     oper(db)
@@ -2872,7 +2873,7 @@ def main():
                     setGame("STOP")
                     setStatus(2, "RUNNING")
                     putarKanan(90, 0.8)
-                    maju(90,1.5)
+                    maju(90,1.2)
                     # arahKiper()
                     if kiper == "3":
                         arahKiperKanan()
