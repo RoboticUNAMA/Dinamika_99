@@ -475,13 +475,13 @@ def arahBolaDepan():
                     
                     
                 elif cenX_ball < 180  :
-                    putarKiri(50, 0.1)
+                    putarKiri(35, 0.2)
                     dari = "kanan"
                     setStatus(2, "LURUS BOLA")
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 220 :
-                    putarKanan(50, 0.1)
+                    putarKanan(35, 0.2)
                     dari = "kiri"
                     setStatus(2, "LURUS BOLA")
                     print("PUTAR KIRI")
@@ -659,14 +659,14 @@ def arahRobotDepan():
                     count = startCount
                     
                 elif cenX_ball > 0 and cenX_ball < 200  :
-                    putarKiri(50,0.1)
+                    putarKiri(35,0.2)
                     dari = "kanan"
                     count = startCount
                     setStatus(2, "LURUS BOLA")
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > 210 :
-                    putarKanan(50,0.1)
+                    putarKanan(35,0.2)
                     dari = "kiri"
                     count = startCount
                     setStatus(2, "LURUS BOLA")
@@ -2296,7 +2296,7 @@ def lurusBolaAtas():
                     putarKiri(speed, 0.2)
                 else :
                     if cenY_ball < 180:
-                        setMotor(motor,-70,70,-70,70)
+                        setMotor(motor,-50,50,-50,50)
                     # elif cenY_ball < 90 and cenX_ball < 230 or cenX_ball > 235:
                     #     setMotor(motor,50,-50,50,-50)
 
