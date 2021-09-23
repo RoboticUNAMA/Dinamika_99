@@ -2373,11 +2373,13 @@ def main():
         if mode == "KICKOFF CORNER":
             while gameStatus == "START":
                 setStatus(2,"RUNNING")
-                serongKiri(120,1.3)
-                putarKanan(90,0.3)
-                putarDerajat(128,1)
+                # serongKiri(120,1.3)
+                # putarKanan(90,0.3)
+                # putarDerajat(128,1)
                 maju(90,1)
-                # arahRobotDepan()
+                lurusBolaAtas()
+                putarKanan(90,0.4)
+                arahRobotDepan()
                 oper_pelan(db)
                 sleep(5)
                 maju(90,1.6)
