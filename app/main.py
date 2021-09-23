@@ -2634,10 +2634,10 @@ def main():
                     setStatus(2, "RUNNING")
                     serongKanan(180, 1.2)
                     putarKiri(90, 0.2)
-                    # mundur(50,1)
+                    mundur(90,0.5)
                     arahBolaDepan()
                     sleep(5)
-                    maju(90,1)
+                    maju(90,0.5)
                     putarKanan(90, 0.3)
                     arahRobotDepan()
                     while getStatus(1) != "READY":
@@ -2646,8 +2646,6 @@ def main():
                             break
                     oper(db)
                     dribbling(db,0)
-                    putarKiri(90, 0.3)
-                    mundur(90, 1.5)
                     setGame("STOP")
                     break
                 
