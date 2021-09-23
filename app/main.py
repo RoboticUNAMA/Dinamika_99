@@ -2396,7 +2396,7 @@ def main():
                 putarKiri(90,0.7)
                 maju(90,0.8)
                 arahKiperKanan()
-                putarKanan(60,0.2)
+                putarKanan(40,0.25)
                 # putarDerajat(177,1)
                 # if kiper == "1":
                 #     arahKiperKananCorner()
