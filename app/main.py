@@ -2491,7 +2491,7 @@ def main():
                     # geserKiri(90,2)
                     setGame("STOP")
                     break
-            
+        # @2    
         elif dummy1 == "2":
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
@@ -2581,7 +2581,7 @@ def main():
                     # geserKiri(90,2)
                     setGame("STOP")
                     break
-
+        # @3
         elif dummy1 == "3":
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
@@ -2675,7 +2675,7 @@ def main():
                     # geserKiri(90,2)
                     setGame("STOP")
                     break
-
+        # @4
         elif dummy1 == "4":
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
@@ -2765,7 +2765,7 @@ def main():
                     # geserKiri(90,2)
                     setGame("STOP")
                     break
-
+        # @5
         elif dummy1 == "5":
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
@@ -2805,7 +2805,9 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    mulaiSerongKiri()
+                    maju(90,0.3)
+                    geserKiri(90,2.4)
+                    maju(90,2)
                     lurusBolaAtas()
                     putarKanan(90, 0.2)
                     arahRobotDepan()
@@ -2857,7 +2859,7 @@ def main():
                     # geserKiri(90,2)
                     setGame("STOP")
                     break
-
+        # @6
         elif dummy1 == "6":
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
@@ -2892,7 +2894,9 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    mulaiSerongKiri()
+                    maju(90,0.3)
+                    geserKiri(90,2.4)
+                    maju(90,2)
                     lurusBolaAtas()
                     putarKanan(90, 0.2)
                     arahRobotDepan()
