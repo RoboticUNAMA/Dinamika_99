@@ -2386,11 +2386,9 @@ def main():
                     sleep(2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
                         dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2402,11 +2400,8 @@ def main():
                     putarKiri(90, 0.2)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -2436,15 +2431,11 @@ def main():
                         mundurSerongKanan(180, 2)
                         #setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(87,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2457,22 +2448,16 @@ def main():
                     sleep(1)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 1.5)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(3)
                     maju(90,1)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2501,9 +2486,8 @@ def main():
                     sleep(0.5)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
                         stop()
-                        #setGame("STOP")
+                        setGame("STOP")
                         break
                     putarDerajat(177,1)
                     if kiper == "1":
@@ -2541,14 +2525,8 @@ def main():
                     sleep(2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        sleep(0.1)
-                        dribbling(db,0)
-                        putarDerajat(87,1)
-                        mundurSerongKanan(150, 1.5)
-                        mundur(90, 0.5)
-                        setStatus(2, "RETRY")
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2560,14 +2538,8 @@ def main():
                     putarKiri(90, 0.2)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        sleep(0.1)
-                        dribbling(db,0)
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        setStatus(2, "RETRY")
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -2603,15 +2575,11 @@ def main():
                         mundurSerongKanan(180, 2)
                         #setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2623,22 +2591,16 @@ def main():
                     putarKiri(90, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 1.2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(4)
                     maju(90,1)
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2665,9 +2627,8 @@ def main():
                     sleep(0.5)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
                         stop()
-                        #setGame("STOP")
+                        setGame("STOP")
                         break
                     putarDerajat(177,1)
                     if kiper == "1":
@@ -2705,14 +2666,8 @@ def main():
                     sleep(2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        sleep(0.1)
-                        dribbling(db,0)
-                        putarDerajat(87,1)
-                        mundurSerongKanan(150, 1.5)
-                        mundur(90, 0.5)
-                        setStatus(2, "RETRY")
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2725,14 +2680,8 @@ def main():
                     putarKiri(90, 0.2)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        sleep(0.1)
-                        dribbling(db,0)
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        setStatus(2, "RETRY")
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -2762,21 +2711,14 @@ def main():
                         break
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2789,22 +2731,16 @@ def main():
                     # mundur(50,1)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 1.2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(5)
                     maju(90,1)
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2867,11 +2803,8 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2883,11 +2816,8 @@ def main():
                     putarKiri(90, 0.3)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -2916,15 +2846,11 @@ def main():
                         mundurSerongKanan(180, 2)
                         #setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2936,21 +2862,15 @@ def main():
                     putarKiri(90, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 1.5)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(2)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3014,11 +2934,8 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundur(90, 2.5)
-                        geserKanan(90,1.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3031,11 +2948,8 @@ def main():
                     putarKiri(90, 0.3)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -3064,21 +2978,14 @@ def main():
                         break
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3090,21 +2997,15 @@ def main():
                     putarKiri(90, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 2)
-                        mundurSerongKanan(180, 1)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(2)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3168,11 +3069,8 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundur(90, 2.5)
-                        geserKanan(90,1.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3185,11 +3083,8 @@ def main():
                     putarKiri(90, 0.3)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -3218,21 +3113,14 @@ def main():
                         break
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3244,21 +3132,15 @@ def main():
                     putarKiri(90, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 2)
-                        mundurSerongKanan(180, 1)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(2)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3322,11 +3204,8 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3338,11 +3217,8 @@ def main():
                     putarKiri(90, 0.2)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -3370,15 +3246,11 @@ def main():
                         mundurSerongKanan(180, 2)
                         #setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3391,21 +3263,15 @@ def main():
                     putarKiri(90, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 1.5)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(2)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3467,11 +3333,8 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3483,11 +3346,8 @@ def main():
                     putarKiri(90, 0.2)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -3515,15 +3375,11 @@ def main():
                         mundurSerongKanan(180, 2)
                         #setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3536,21 +3392,15 @@ def main():
                     putarKiri(90, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 1.5)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(2)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3612,11 +3462,8 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3628,11 +3475,8 @@ def main():
                     putarKiri(90, 0.2)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -3660,15 +3504,11 @@ def main():
                         mundurSerongKanan(180, 2)
                         #setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3681,21 +3521,15 @@ def main():
                     putarKiri(90, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 1.5)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(2)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3758,11 +3592,8 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3774,11 +3605,8 @@ def main():
                     putarKiri(90, 0.2)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -3808,15 +3636,11 @@ def main():
                         mundurSerongKanan(180, 2)
                         #setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3828,21 +3652,15 @@ def main():
                     putarKiri(90, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 1.5)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(2)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3906,11 +3724,8 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundur(90, 2.5)
-                        geserKanan(90,1.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3923,11 +3738,8 @@ def main():
                     putarKiri(90, 0.3)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -3956,21 +3768,14 @@ def main():
                         break
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -3982,21 +3787,15 @@ def main():
                     putarKiri(90, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 2)
-                        mundurSerongKanan(180, 1)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(2)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -4060,11 +3859,8 @@ def main():
                     putarKanan(90, 0.3)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundur(90, 2.5)
-                        geserKanan(90,1.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -4077,11 +3873,8 @@ def main():
                     putarKiri(90, 0.3)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
-                        putarDerajat(87,1)
-                        mundurSerongKanan(180, 1.5)
-                        mundur(90, 0.5)
-                        dribbling(db,0)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     setGame("STOP")
                     setStatus(2, "RUNNING")
@@ -4111,21 +3904,14 @@ def main():
                         break
                     gameStatus = lurusBolaAtas()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
-                    mundur(50, 0.5)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 1)
-                        mundurSerongKanan(180, 2)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -4137,21 +3923,15 @@ def main():
                     putarKiri(90, 0.2)
                     gameStatus = arahBolaDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarDerajat(86,0)
-                        mundur(90, 2)
-                        mundurSerongKanan(180, 1)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     sleep(2)
                     putarKanan(90, 0.2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
-                        dribbling(db,0)
-                        putarKiri(90, 0.3)
-                        mundurSerongKanan(180, 1)
-                        mundur(90, 3)
-                        #setGame("STOP")
+                        stop()
+                        setGame("STOP")
                         break
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -4204,6 +3984,10 @@ def main():
                 tendang(db)
                 setGame("STOP")
                 break
+        dribbling(db,0)
+        sleep(0.1)
+        dribbling(db,0)
+        sleep(0.1)
 
 if __name__ == '__main__':
     # execute main program
