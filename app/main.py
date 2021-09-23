@@ -2391,11 +2391,12 @@ def main():
                 sleep(2)
                 setStatus(2, "RUNNING")
                 maju(90,1.6)
+                putarKanan(90,0.2)
                 arahBolaDepan()
                 putarKiri(90,0.6)
                 maju(90,0.6)
                 arahKiperKanan()
-                # putarKiri(40,0.2)
+                putarKanan(40,0.2)
                 # putarDerajat(177,1)
                 # if kiper == "1":
                 #     arahKiperKananCorner()
