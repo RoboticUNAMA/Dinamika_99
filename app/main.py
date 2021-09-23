@@ -210,7 +210,7 @@ def oper(ser):
         ser.open()
     # === init tendang
     # ser.reset_input_buffer()
-    putarKiri(40,0.2)
+    putarKiri(40,0.12)
     dribbling(ser, 0)
     sleep(0.2)
     dribbling(ser, 0)
