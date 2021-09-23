@@ -2801,6 +2801,7 @@ def main():
                         break
                     setStatus(2, "RUNNING")
                     putarKanan(90, 0.3)
+                    sleep(2)
                     gameStatus = arahRobotDepan()
                     if gameStatus == "RETRY":
                         stop()
@@ -2813,7 +2814,7 @@ def main():
                     oper(db)
                     setStatus(2, "RUNNING")
                     mundurSerongKanan(120, 1.5)
-                    putarKiri(90, 0.3)
+                    putarKiri(90, 0.2)
                     arahBolaDepan()
                     if gameStatus == "RETRY":
                         stop()
