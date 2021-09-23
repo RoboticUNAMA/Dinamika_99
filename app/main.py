@@ -829,6 +829,11 @@ def arahKiper():
         dummyContour = []
         dummyObj = None
 
+        count -= 1
+        if count <= 0:
+            putarKiri(90,0.2)
+            count = startCount
+
         for ballContour in ballContours:
             dummyContour.append(ballContour)
 
@@ -2368,21 +2373,26 @@ def main():
         if mode == "KICKOFF CORNER":
             while gameStatus == "START":
                 setStatus(2,"RUNNING")
-                serongKiri(120,1.3)
-                # putarKanan(90,0.4)
-                putarDerajat(128,1)
-                maju(90,1)
-                # arahRobotDepan()
+                lurusBolaAtas()
+                # serongKiri(120,1.3)
+                putarKanan(90,0.4)
+                # putarDerajat(128,1)
+                # maju(90,1)
+                arahRobotDepan()
                 oper(db)
                 sleep(5)
                 maju(90,1.6)
                 arahBolaDepan()
-                putarDerajat(177,1)
-                if kiper == "3":
-                    arahKiperKananCorner()
-                else:
-                    arahKiper()
-                    putarKiri(50,0.1)
+                putarKiri(90,0.6)
+                maju(90,1)
+                arahKiper()
+                putarKiri(90,0.15)
+                # putarDerajat(177,1)
+                # if kiper == "1":
+                #     arahKiperKananCorner()
+                # else:
+                #     arahKiper()
+                #     putarKiri(50,0.1)
                 tendang(db)
                 # geserKiri(90,2)
                 setGame("STOP")
