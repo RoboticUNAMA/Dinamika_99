@@ -264,7 +264,7 @@ def mulaiKickoff():
     maju(90,2)
     putarKanan(90,0.1)
     lurusBolaAtas()
-    putarKanan(90, 0.3)
+    putarKanan(90, 0.5)
 
 def putarDerajat(derajat_tujuan, dribble) :
     print("==>> PUTAR DERAJAT")
