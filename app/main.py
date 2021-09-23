@@ -2394,7 +2394,7 @@ def main():
                 arahBolaDepan()
                 putarKiri(90,0.6)
                 maju(90,0.6)
-                arahKiper()
+                arahKiperKanan()
                 # putarKiri(40,0.2)
                 # putarDerajat(177,1)
                 # if kiper == "1":
