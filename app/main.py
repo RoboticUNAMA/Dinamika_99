@@ -260,11 +260,11 @@ def read_from_port(ser,que_output):
 
 def mulaiKickoff():
     maju(90,0.3)
-    geserKiri(90,2.7)
+    geserKiri(90,2.8)
     maju(90,2)
     putarKanan(90,0.1)
     lurusBolaAtas()
-    putarKanan(90, 0.2)
+    putarKanan(90, 0.3)
 
 def putarDerajat(derajat_tujuan, dribble) :
     print("==>> PUTAR DERAJAT")
