@@ -210,11 +210,11 @@ def oper(ser):
         ser.open()
     # === init tendang
     # ser.reset_input_buffer()
-    putarKiri(40,0.12)
+    putarKiri(30,0.1)
     dribbling(ser, 0)
     sleep(0.2)
     dribbling(ser, 0)
-    sleep(0.2)
+    sleep(0.2)  
     dribbling(ser, 0)
     sleep(0.2)
     ser.write(b"TEND2\n")
@@ -2726,8 +2726,7 @@ def main():
                     serongKanan(180, 1.2)
                     putarKiri(90, 0.2)
                     arahBolaDepan()
-                    sleep(4)
-                    maju(90,0.7)
+                    sleep(3)
                     putarKanan(90, 0.2)
                     arahRobotDepan()
                     while getStatus(1) != "READY":
