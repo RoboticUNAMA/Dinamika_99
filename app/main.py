@@ -2873,7 +2873,7 @@ def main():
                     setGame("STOP")
                     setStatus(2, "RUNNING")
                     putarKanan(90, 0.8)
-                    maju(90,1.2)
+                    maju(90,0.8)
                     # arahKiper()
                     if kiper == "3":
                         arahKiperKanan()
