@@ -2388,7 +2388,7 @@ def main():
                 lurusBolaAtas()
                 arahRobotDepan()
                 oper(db)
-                sleep(5)
+                sleep(3)
                 maju(90,1.6)
                 arahBolaDepan()
                 putarKiri(90,0.6)
