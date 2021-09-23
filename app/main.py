@@ -258,6 +258,14 @@ def read_from_port(ser,que_output):
         except : 
             que_output.put(500)
 
+def mulaiKickoff():
+    maju(90,0.3)
+    geserKiri(90,2.7)
+    maju(90,2)
+    putarKanan(90,0.1)
+    lurusBolaAtas()
+    putarKanan(90, 0.2)
+
 def putarDerajat(derajat_tujuan, dribble) :
     print("==>> PUTAR DERAJAT")
     if db.isOpen() == False:
@@ -2438,9 +2446,7 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    mulaiSerongKiri()
-                    lurusBolaAtas()
-                    putarKanan(90, 0.2)
+                    mulaiKickoff()
                     arahRobotDepan()
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2530,10 +2536,7 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    # serongKiri(170, 3)
-                    mulaiSerongKiri()
-                    lurusBolaAtas()
-                    putarKanan(90, 0.2)
+                    mulaiKickoff()
                     arahRobotDepan()
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2621,10 +2624,7 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    # serongKiri(170, 3)
-                    mulaiSerongKiri()
-                    lurusBolaAtas()
-                    putarKanan(90, 0.2)
+                    mulaiKickoff()
                     arahRobotDepan()
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2713,11 +2713,7 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    maju(90,0.3)
-                    geserKiri(90,2.4)
-                    maju(90,2)
-                    lurusBolaAtas()
-                    putarKanan(90, 0.2)
+                    mulaiKickoff()
                     arahRobotDepan()
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2805,11 +2801,7 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    maju(90,0.3)
-                    geserKiri(90,2.4)
-                    maju(90,2)
-                    lurusBolaAtas()
-                    putarKanan(90, 0.2)
+                    mulaiKickoff()
                     arahRobotDepan()
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
@@ -2894,11 +2886,7 @@ def main():
 
             elif mode == "KICKOFF KIRI":
                 while gameStatus == "START":
-                    maju(90,0.3)
-                    geserKiri(90,2.4)
-                    maju(90,2)
-                    lurusBolaAtas()
-                    putarKanan(90, 0.2)
+                    mulaiKickoff()
                     arahRobotDepan()
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
