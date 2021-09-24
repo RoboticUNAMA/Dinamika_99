@@ -962,6 +962,7 @@ def arahKiperKanan():
     dribbling(db,1)
 
     while(True):
+        print("Limit Tendang "+str(timer_tendang))
         if timer_tendang >= 20:
             break
 
@@ -1361,7 +1362,7 @@ def arahKiperKiri():
     dribbling(db,1)
 
     while(True):
-        print(timer_tendang)
+        print("Limit Tendang "+str(timer_tendang))
         if timer_tendang >= 20:
             break
         #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
