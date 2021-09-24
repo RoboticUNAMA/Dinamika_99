@@ -963,7 +963,7 @@ def arahKiperKanan():
 
     while(True):
         print("Limit Tendang "+str(timer_tendang))
-        if timer_tendang >= 20:
+        if timer_tendang >= 10:
             break
 
         #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
@@ -1094,11 +1094,11 @@ def arahKiperKanan():
                     setMotor(motor,0,0,0,0)
                     state = "FINISH"
 
-        if state == "FINISH": 
-            setMotor(motor,0,0,0,0)
-            motor.close()
-            cv2.destroyAllWindows()
-            break   
+        # if state == "FINISH": 
+        #     setMotor(motor,0,0,0,0)
+        #     motor.close()
+        #     cv2.destroyAllWindows()
+        #     break   
 
         # displays
         ## uncomment this to show center area of the frame 1
@@ -1363,7 +1363,7 @@ def arahKiperKiri():
 
     while(True):
         print("Limit Tendang "+str(timer_tendang))
-        if timer_tendang >= 20:
+        if timer_tendang >= 10:
             break
         #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
         
