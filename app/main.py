@@ -963,7 +963,7 @@ def arahKiperKanan():
 
     while(True):
         print("Limit Tendang "+str(timer_tendang))
-        if timer_tendang >= 10:
+        if timer_tendang > 5:
             break
 
         #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
