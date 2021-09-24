@@ -361,12 +361,10 @@ def arahBolaDepan():
     rows, cols, _ = frame1.shape
     cenX_frame1 = int(cols/2)
     cenY_frame1 = int(rows/2)
-
     # _, frame2 = OMNI_CAP.read()
     # rows1, cols1, _ = frame2.shape
     # cenX_frame2 = int(cols1/2)
     # cenY_frame2 = int(rows1/2)
-    
     inner_left = cenX_frame1 - 100
     outer_left = cenX_frame1 - 250 
     inner_right = cenX_frame1 + 100
@@ -375,12 +373,10 @@ def arahBolaDepan():
     outer_top = cenY_frame1 - 150
     inner_bottom = cenY_frame1 + 100
     outer_bottom = cenY_frame1 + 150
-
     # read magenta color
     objColor = getBallInfo()
     lowerBall = np.array([objColor[0],objColor[1],objColor[2]])
     upperBall = np.array([objColor[3],objColor[4],objColor[5]])
-
     counter = 0
     dari = "kiri"
     second = 0
@@ -960,11 +956,15 @@ def arahKiperKanan():
     speed = 60
     state = "START"
     adj_kiper = 110
+    timer_tendang = 0
 
     db.reset_input_buffer()
     dribbling(db,1)
 
     while(True):
+        if timer_tendang >= 20:
+            break
+
         #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
         
         # if gameStatus == "RETRY":
@@ -1072,6 +1072,7 @@ def arahKiperKanan():
                 sleep(0.1)
                 
             elif cenX_ball < 180+adj_kiper:
+                timer_tendang += 1
                 setMotor(motor,40,40,40,40)
                 sleep(0.1)
                 setMotor(motor,0,0,0,0)
@@ -1080,6 +1081,7 @@ def arahKiperKanan():
                 print("PUTAR KANAN")
             
             elif cenX_ball > 220+adj_kiper:
+                timer_tendang += 1
                 setMotor(motor,-40,-40,-40,-40)
                 sleep(0.1)
                 setMotor(motor,0,0,0,0)
@@ -1353,11 +1355,15 @@ def arahKiperKiri():
     count = startCount
     speed = 60
     state = "START"
+    timer_tendang = 0
 
     db.reset_input_buffer()
     dribbling(db,1)
 
     while(True):
+        print(timer_tendang)
+        if timer_tendang >= 20:
+            break
         #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
         
         # if gameStatus == "RETRY":
@@ -1466,6 +1472,7 @@ def arahKiperKiri():
                 sleep(0.1)
                 
             elif cenX_ball < 180-30  :
+                timer_tendang += 1
                 setMotor(motor,40,40,40,40)
                 sleep(0.1)
                 setMotor(motor,0,0,0,0)
@@ -1474,6 +1481,7 @@ def arahKiperKiri():
                 print("PUTAR KANAN")
             
             elif cenX_ball > 220-30 :
+                timer_tendang += 1
                 setMotor(motor,-40,-40,-40,-40)
                 sleep(0.1)
                 setMotor(motor,0,0,0,0)
