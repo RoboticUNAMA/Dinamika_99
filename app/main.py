@@ -1066,7 +1066,7 @@ def arahKiperKanan():
                 setMotor(motor,0,0,0,0)
                 sleep(0.1)
                 
-            elif cenX_ball > 300+adj_kiper:
+            elif cenX_ball > 300+adj_kiper and cenX_ball < 420:
                 setMotor(motor,-40,-40,-40,-40)
                 sleep(0.3)
                 setMotor(motor,0,0,0,0)
@@ -1460,7 +1460,7 @@ def arahKiperKiri():
             cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
             cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
             
-            if cenX_ball < 100-30  :
+            if cenX_ball > 30 and cenX_ball < 100-30  :
                 setMotor(motor,40,40,40,40)
                 sleep(0.3)
                 setMotor(motor,0,0,0,0)
