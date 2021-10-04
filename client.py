@@ -4,7 +4,8 @@ from time import sleep
 HEADER = 64
 FORMAT = 'utf-8'
 PORT = 9090
-SERVER = socket.gethostbyname(socket.gethostname())
+# SERVER = '127.0.1.1'
+SERVER = '192.168.10.244'
 ADDR = (SERVER, PORT)
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -93,27 +94,31 @@ def dribbling(ser,val) :
         ser.write(b"DB OFF\n")
 
 while True:
-    vid = cv2.VideoCapture(0)
+    vid = cv2.VideoCapture(2)
     while(vid.isOpened()):
         img, frame = vid.read()
         a = pickle.dumps(frame)
         msg = struct.pack("Q",len(a))+a
         client.sendall(msg)
-        cv2.imshow('TRANSMITTING VIDEO', frame)
-
-        # get message from server
-        getMsg = client.recv(2048).decode(FORMAT)
-        if getMsg == "kanan":
-            setMotor(motor, 50,50,50,50)
-        elif getMsg == "kiri":
-            setMotor(motor, -50,-50,-50,-50)
-        elif getMsg == "maju":
-            setMotor(motor, 50,-50,50,-50)
-        else:
-            setMotor(motor, 0,0,0,0)
-
-        print(getMsg)
-
+        cv2.imshow('Client', frame)
+        getMsg = b""
+        try:
+            # get message from server
+            getMsg = client.recv(2048).decode(FORMAT).strip()
+            if getMsg == "kanan":
+                setMotor(motor, 50,50,50,50)
+                print("motor kanan")
+            elif getMsg == "kiri":
+                setMotor(motor, -50,-50,-50,-50)
+                print("motor kiri")
+            elif getMsg == "maju":
+                setMotor(motor, 50,-50,50,-50)
+                print("motor maju")
+            # print(getMsg)
+        except socket.error:
+            print("Socket Error")
+            continue
+            
         key = cv2.waitKey(1) & 0xFF
         if key == ord('q'):
             vid.release()
