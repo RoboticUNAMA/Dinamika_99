@@ -33,7 +33,7 @@ String data;
 
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600);
+  Serial.begin(57600);
 
   pinMode(kanan_depan_maju, OUTPUT);
   pinMode(kanan_depan_mundur, OUTPUT);

@@ -15,7 +15,7 @@ from time import sleep
 # webserver
 ip_server = "192.168.10.244"
 
-br = 9600   
+br = 57600
 
 kamera = 0
 
