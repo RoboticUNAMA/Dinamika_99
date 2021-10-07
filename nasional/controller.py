@@ -31,7 +31,6 @@ def maju(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, -speed,speed,-speed,speed)
-    motor.close()
 
 def maju2(motor, speed, delay):
     if motor.isOpen() == False:
