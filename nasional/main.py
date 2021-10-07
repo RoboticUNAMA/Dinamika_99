@@ -7,9 +7,9 @@ def main():
         print(game)
         if game == "START":
             db_on(db)
+            sleep(3)
+            db_off(db)
             break
-        sleep(1)
-        db_off(db)
 
 if __name__ == '__main__':
     main()
