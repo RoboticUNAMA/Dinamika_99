@@ -156,7 +156,7 @@ def arahBolaKameraDepan():
         if ada == False:
             count += 1
             print("Pindah kamera atas dalam:",count)
-            if count >= 30:
+            if count >= 1:
                 count = 0
                 cv2.destroyAllWindows()
                 arahBolaKameraAtas()
@@ -206,14 +206,14 @@ def arahBolaKameraDepan():
                 # if db.isOpen() == False:
                 #     db.open()
                 # db.reset_input_buffer()
-                reading = db.readline().decode('utf-8','ignore')
-                if len(reading) > 0 :
-                    head = reading[0:5]
-                    print(head)
-                    if head == "Dapat" :
-                        print("DAPAT BOLA")
-                        state = "FINISH" 
-                        stop(motor)
+                # reading = db.readline().decode('utf-8','ignore')
+                # if len(reading) > 0 :
+                #     head = reading[0:5]
+                #     print(head)
+                #     if head == "Dapat" :
+                #         print("DAPAT BOLA")
+                #         state = "FINISH" 
+                #         stop(motor)
 
                 if cenX < cenX_frame-100:
                     print("KIRI BANYAK")
