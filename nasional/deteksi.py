@@ -67,7 +67,7 @@ def arahBolaKameraAtas():
     state = ""
     serialCounter = 0
 
-    dribbling(db,1)
+    db_on()
 
     while(True):
         if serialCounter > 100:
@@ -146,6 +146,7 @@ def arahBolaKameraAtas():
             cv2.imshow("Arah Bola Kamera Atas", frame)
 
         if state == "FINISH":
+            stop(motor)
             break
         
         k = cv2.waitKey(1) & 0xFF

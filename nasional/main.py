@@ -7,7 +7,11 @@ def main():
         print(game)
         if game == "START":
             arahBolaKameraAtas()
-            break
+            putarKiri2(motor, 90, 1)
+            db_off(db)
+            tendang(db)
+        elif game == "STOP":
+            break  
 
 if __name__ == '__main__':
     main()
