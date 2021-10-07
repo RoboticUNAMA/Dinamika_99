@@ -67,7 +67,7 @@ def arahBolaKameraAtas():
     serialCounter = 0
 
     while(True):
-        if serialCounter > 10:
+        if serialCounter > 100:
             serialCounter = 0
             motor.close()
             db.close()
@@ -161,7 +161,7 @@ def arahBolaKameraDepan():
     serialCounter = 0
 
     while(True):
-        if serialCounter > 10:
+        if serialCounter > 100:
             serialCounter = 0
             motor.close()
             db.close()
