@@ -7,9 +7,9 @@ def main():
         print(game)
         if game == "START":
             dribbling(db,1)
-            sleep(0.5)
+            sleep(0.25)
             dribbling(db,1)
-            sleep(0.5)
+            sleep(0.25)
             dribbling(db,1)
             break
 
