@@ -56,7 +56,7 @@ def arahBolaKameraAtas():
     _, frame = OMNI_CAP.read()
     rows, cols, _ = frame.shape
     cenX_frame = 114
-    cenY_frame = 94
+    cenY_frame = 90
 
     info = getBallInfo()
     lower = np.array([info[0],info[1],info[2]])
