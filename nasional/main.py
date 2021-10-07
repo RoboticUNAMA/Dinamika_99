@@ -6,7 +6,11 @@ def main():
         game = getGame()
         print(game)
         if game == "START":
-            arahBolaKameraAtas()
+            dribbling(db,1)
+            sleep(0.1)
+            dribbling(db,1)
+            sleep(0.1)
+            dribbling(db,1)
             break
 
 if __name__ == '__main__':
