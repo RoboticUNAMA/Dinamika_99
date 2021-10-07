@@ -6,7 +6,7 @@ def main():
         game = getGame()
         print(game)
         if game == "START":
-            arahBolaKameraDepan()
+            arahBolaKameraAtas()
             break
 
 if __name__ == '__main__':

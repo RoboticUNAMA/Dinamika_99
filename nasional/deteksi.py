@@ -129,9 +129,10 @@ def arahBolaKameraAtas():
                     putarKiri(motor, 40)
                 elif cenX >= cenX_frame-5 and cenX <= cenX_frame+5 and cenY <= cenY_frame:
                     print("MAJU")
-                    stop(motor)
-                    cv2.destroyAllWindows()
-                    arahBolaKameraDepan()
+                    maju(motor, 120)
+                    # stop(motor)
+                    # cv2.destroyAllWindows()
+                    # arahBolaKameraDepan()
                 break
 
         ada = False
@@ -238,17 +239,17 @@ def arahBolaKameraDepan():
                     print("STOP")
                     stop(motor)
 
-                if db.isOpen() == False:
-                    db.open()
-                db.reset_input_buffer()
-                reading = db.readline().decode('utf-8','ignore')
-                if len(reading) > 0 :
-                    head = reading[0:5]
-                    print(head)
-                    if head == "Dapat" :
-                        print("DAPAT BOLA")
-                        state = "FINISH" 
-                        stop(motor)
+                # if db.isOpen() == False:
+                #     db.open()
+                # db.reset_input_buffer()
+                # reading = db.readline().decode('utf-8','ignore')
+                # if len(reading) > 0 :
+                #     head = reading[0:5]
+                #     print(head)
+                #     if head == "Dapat" :
+                #         print("DAPAT BOLA")
+                #         state = "FINISH" 
+                #         stop(motor)
                 break
 
         if ada == True:
