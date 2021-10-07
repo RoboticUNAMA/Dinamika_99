@@ -130,7 +130,7 @@ def arahBolaKameraAtas():
                 elif cenX > cenX_frame+10 and cenY < cenY_frame:
                     print("KIRI DIKIT")
                     putarKiri(motor, 40)
-                elif cenX >= cenX_frame-5 and cenX <= cenX_frame+5 and cenY <= cenY_frame:
+                elif cenX >= 110 and cenX <= 118 and cenY < cenY_frame:
                     print("MAJU")
                     maju(motor, 120)
                     if cenY >= cenY_frame-5:
