@@ -1,8 +1,8 @@
 from deteksi import *
 
 def main():
-    game = getGame()
     while True:
+        game = getGame()
         if game == "START":
             arahBolaKameraDepan()
             break
