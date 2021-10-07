@@ -64,7 +64,10 @@ def arahBolaKameraAtas():
 
     ada = False
     count = 0
+    state = ""
     serialCounter = 0
+
+    dribbling(db,1)
 
     while(True):
         if serialCounter > 100:
@@ -130,6 +133,8 @@ def arahBolaKameraAtas():
                 elif cenX >= cenX_frame-5 and cenX <= cenX_frame+5 and cenY <= cenY_frame:
                     print("MAJU")
                     maju(motor, 120)
+                    if cenY >= cenY_frame:
+                        state = "FINISH"
                     # stop(motor)
                     # cv2.destroyAllWindows()
                     # arahBolaKameraDepan()
@@ -139,6 +144,9 @@ def arahBolaKameraAtas():
 
         if DISPLAY == True:
             cv2.imshow("Arah Bola Kamera Atas", frame)
+
+        if state == "FINISH":
+            break
         
         k = cv2.waitKey(1) & 0xFF
         if k == 27:
@@ -260,6 +268,8 @@ def arahBolaKameraDepan():
             cv2.imshow("Arah Bola Kamera Depan", frame)
 
         if state == "FINISH":
+            dribbling(db,0)
+            tendang(db)
             break
         
         k = cv2.waitKey(1) & 0xFF
