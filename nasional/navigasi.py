@@ -369,5 +369,3 @@ if __name__ == '__main__':
             reset(db)
         else:
             stop(motor)
-            db_off(db)
-            reset(db)
