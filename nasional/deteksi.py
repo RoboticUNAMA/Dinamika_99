@@ -216,19 +216,7 @@ def arahBolaKameraDepan():
                 cv2.rectangle(frame, (int(x), int(y)), (int(x+w), int(y+h)), [0,255,0], 2)
                 cv2.line(frame, (int(x+w), int(y+h)), (int((x+w) + 25), int(cenY)), [0,255,0], 2, 8)
                 cv2.putText(frame, "Bola", (int(x+w + 25), int(cenY)), FONT, 0.5, [0,255,0], 2)
-
-                # if db.isOpen() == False:
-                #     db.open()
-                # db.reset_input_buffer()
-                # reading = db.readline().decode('utf-8','ignore')
-                # if len(reading) > 0 :
-                #     head = reading[0:5]
-                #     print(head)
-                #     if head == "Dapat" :
-                #         print("DAPAT BOLA")
-                #         state = "FINISH" 
-                #         stop(motor)
-
+                
                 if cenX < cenX_frame-100:
                     print("KIRI BANYAK")
                     putarKiri(motor, 120)
@@ -242,11 +230,23 @@ def arahBolaKameraDepan():
                     print("KANAN DIKIT")
                     putarKanan(motor, 40)
                 elif cenX > cenX_frame-20 and cenX < cenX_frame+20:
+                    if db.isOpen() == False:
+                        db.open()
                     print("MAJU")
                     maju(motor, 120)
                 else:
                     print("STOP")
                     stop(motor)
+
+                db.reset_input_buffer()
+                reading = db.readline().decode('utf-8','ignore')
+                if len(reading) > 0 :
+                    head = reading[0:5]
+                    print(head)
+                    if head == "Dapat" :
+                        print("DAPAT BOLA")
+                        state = "FINISH" 
+                        stop(motor)
                 break
 
         if ada == True:
