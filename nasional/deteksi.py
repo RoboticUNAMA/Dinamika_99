@@ -1,7 +1,7 @@
 import cv2, numpy as np
 
 from server import *
-from controller import *
+from nasional.controller import *
 
 # set imshow
 DISPLAY         = True
