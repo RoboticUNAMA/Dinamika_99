@@ -21,8 +21,8 @@ OMNI_CAP.set(cv2.CAP_PROP_EXPOSURE, -5)
 # set frame size
 FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, RESOLUTION[0])
 FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, RESOLUTION[1])
-FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, RESOLUTION[0])
-FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, RESOLUTION[1])
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, RESOLUTION[0])
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, RESOLUTION[1])
 
 def getBallInfo():
     infoFile = open("ballColor.txt","r")
@@ -203,9 +203,9 @@ def arahBolaKameraDepan():
                 cv2.line(frame, (int(x+w), int(y+h)), (int((x+w) + 25), int(cenY)), [0,255,0], 2, 8)
                 cv2.putText(frame, "Bola", (int(x+w + 25), int(cenY)), FONT, 0.5, [0,255,0], 2)
 
-                if db.isOpen() == False:
-                    db.open()
-                db.reset_input_buffer()
+                # if db.isOpen() == False:
+                #     db.open()
+                # db.reset_input_buffer()
                 reading = db.readline().decode('utf-8','ignore')
                 if len(reading) > 0 :
                     head = reading[0:5]
