@@ -111,16 +111,16 @@ def arahBolaKameraAtas():
                 if cenX < cenX_frame-100 and cenY > cenY_frame+50:
                     print("KANAN BANYAK")
                     putarKanan(motor, 120)
-                elif cenX < cenX_frame-20 and cenY > cenY_frame-50:
+                elif cenX < cenX_frame-5 and cenY > cenY_frame-50:
                     print("KANAN DIKIT")
                     putarKanan(motor, 40)
                 elif cenX > cenX_frame+100 and cenY > cenY_frame+50:
                     print("KIRI BANYAK")
                     putarKiri(motor, 120)
-                elif cenX > cenX_frame+20 and cenY > cenY_frame-50:
+                elif cenX > cenX_frame+5 and cenY > cenY_frame-50:
                     print("KIRI DIKIT")
                     putarKiri(motor, 40)
-                elif cenX >= cenX_frame-20 and cenX <= cenX_frame+20 and cenY <= cenY_frame-50:
+                elif cenX >= cenX_frame-5 and cenX <= cenX_frame+5 and cenY <= cenY_frame-50:
                     print("MAJU")
                     stop(motor)
                     cv2.destroyAllWindows()
