@@ -42,7 +42,7 @@ void displaySensorDetails(void)
 
 void setup(void)
 {
-  Serial.begin(57600);
+  Serial.begin(115200);
   //Serial.println("HMC5883 Magnetometer Test"); Serial.println("");
   pinMode(dribble_cw, OUTPUT);
   pinMode(dribble_ccw, OUTPUT);

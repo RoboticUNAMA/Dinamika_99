@@ -16,11 +16,13 @@ import threading
 import queue
 import requests
 
+br = 115200
+
 # serial motor driver
-motor = serial.Serial(port='/dev/ttyUSB1', baudrate=9600, timeout=1)
+motor = serial.Serial(port='/dev/ttyUSB1', baudrate=br, timeout=1)
 
 # serial dribble
-db = serial.Serial(port='/dev/ttyUSB0', baudrate=9600, timeout=1)
+db = serial.Serial(port='/dev/ttyUSB0', baudrate=br, timeout=1)
 
 
 #serial OpeCM
@@ -182,7 +184,6 @@ def tendangKuat(ser) :
     ser.write(b"TEND1\n")
         
     while True : 
-       
         reading = ser.readline().decode('utf-8','ignore')
         if len(reading) > 0 :
             head = reading[0:2]

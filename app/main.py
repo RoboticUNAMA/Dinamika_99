@@ -15,12 +15,12 @@ from time import sleep
 # webserver
 ip_server = "192.168.10.244"
 
-br = 57600
+br = 115200
 
-kamera = 0
+kamera = 1
 
 # serial motor driver
-motor = serial.Serial(port='/dev/ttyACM0', baudrate=br, timeout=1)
+motor = serial.Serial(port='/dev/ttyUSB1', baudrate=br, timeout=1)
 
 # serial dribble
 db = serial.Serial(port='/dev/ttyUSB0', baudrate=br, timeout=1)
@@ -34,8 +34,8 @@ db = serial.Serial(port='/dev/ttyUSB0', baudrate=br, timeout=1)
 
 # initialize
 font = cv2.FONT_HERSHEY_SIMPLEX
-FRONT_CAM = 1   # front camera
-OMNI_CAM = 0   # omni camera
+FRONT_CAM = 0   # front camera
+OMNI_CAM = 2   # omni camera
 
 # create opencv video capture object
 FRONT_CAP = cv2.VideoCapture(FRONT_CAM) 
@@ -2948,12 +2948,7 @@ def main():
 
         elif dummy1 == "0":
             while gameStatus == "START":
-                if kiper == "3":
-                    arahKiperKanan()
-                else:
-                    arahKiperKiri()
-                tendang(db)
-                setGame("STOP")
+                lurusBolaAtas()
                 break
         dribbling(db,0)
         sleep(0.1)
