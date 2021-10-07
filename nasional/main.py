@@ -1,4 +1,5 @@
 from deteksi import *
+from server import getGame
 
 def main():
     while True:
