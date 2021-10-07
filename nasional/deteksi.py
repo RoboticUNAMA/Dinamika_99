@@ -150,6 +150,7 @@ def arahBolaKameraDepan():
 
     ada = False
     count = 0
+    state = ""
 
     while(True):
         if ada == False:
