@@ -6,7 +6,7 @@ def main():
         game = getGame()
         print(game)
         if game == "START":
-            db_on
+            db_on()
             break
         sleep(1)
         db_off()
