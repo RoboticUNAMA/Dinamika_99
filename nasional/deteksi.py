@@ -238,7 +238,7 @@ def arahBolaKameraDepan():
                     print("STOP")
                     stop(motor)
 
-                if db.isOpen == False:
+                if db.isOpen() == False:
                     db.open()
                 db.reset_input_buffer()
                 reading = db.readline().decode('utf-8','ignore')
