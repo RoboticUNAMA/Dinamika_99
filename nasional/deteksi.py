@@ -133,8 +133,9 @@ def arahBolaKameraAtas():
                 elif cenX >= cenX_frame-5 and cenX <= cenX_frame+5 and cenY <= cenY_frame:
                     print("MAJU")
                     maju(motor, 120)
-                    if cenY >= cenY_frame:
+                    if cenY >= cenY_frame-5:
                         state = "FINISH"
+                        print(state)
                     # stop(motor)
                     # cv2.destroyAllWindows()
                     # arahBolaKameraDepan()
