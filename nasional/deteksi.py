@@ -133,7 +133,7 @@ def arahBolaKameraAtas():
                 elif cenX >= 110 and cenX <= 118 and cenY < cenY_frame:
                     print("MAJU")
                     maju(motor, 120)
-                    if cenY >= cenY_frame-5:
+                    if cenY >= cenY_frame:
                         state = "FINISH"
                         print(state)
                     # stop(motor)
