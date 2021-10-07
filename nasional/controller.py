@@ -7,8 +7,8 @@ PORT_DRIBBLE    = '/dev/ttyUSB0'
 BAUDRATE        = 115200
 
 motor = serial.Serial(PORT_MOTOR, BAUDRATE, timeout=1)
-motor.close()
 db = serial.Serial(PORT_DRIBBLE, 115200, timeout=1)
+motor.close()
 db.close()
 
 def setMotor(ser,dki,dka,bki,bka) :
@@ -294,7 +294,11 @@ def reset(db):
     db.close()
 
 if __name__ == '__main__':
-    spd = 120
+    motor = serial.Serial(PORT_MOTOR, BAUDRATE, timeout=1)
+    db = serial.Serial(PORT_DRIBBLE, 115200, timeout=1)
+    motor.close()
+    db.close()
+    spd = 140
     while True:
         key = input("Input = ")
         if key == 'w':

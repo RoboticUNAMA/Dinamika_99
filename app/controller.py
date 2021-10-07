@@ -1,6 +1,8 @@
 import serial
-motor = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-db = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+
+br = 115200
+motor = serial.Serial('/dev/ttyACM0', br, timeout=1)
+db = serial.Serial('/dev/ttyUSB0', br, timeout=1)
 
 def maju(motor, pwm):
     dki = -pwm-(pwm*0.5)
@@ -110,11 +112,11 @@ def PID(centerObj, centerFrame):
     return PID
 
 def main():
-    motor = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
-    db = serial.Serial('/dev/ttyUSB0', 9600, timeout=1)
+    motor = serial.Serial('/dev/ttyACM0', br, timeout=1)
+    db = serial.Serial('/dev/ttyUSB0', br, timeout=1)
     motor.close()
     db.close()
-    spd = 70
+    spd = 140
     while True:
         key = input("Input = ")
         if key == 'w':
