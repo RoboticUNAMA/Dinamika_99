@@ -19,13 +19,11 @@ def setMotor(ser,dki,dka,bki,bka) :
     bki = bki + (bki * 0)
     bka = bka + (bka * 0.3) 
     ser.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-    ser.close()
 
 def stop(motor):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, 0,0,0,0)
-    motor.close()
 
 def maju(motor, speed):
     if motor.isOpen() == False:
@@ -40,13 +38,11 @@ def maju2(motor, speed, delay):
     setMotor(motor, speed,-speed,speed,-speed)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
-    motor.close()
 
 def mundur(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, speed,-speed,speed,-speed)
-    motor.close()
 
 def mundur2(motor, speed, delay):
     if motor.isOpen() == False:
@@ -56,14 +52,12 @@ def mundur2(motor, speed, delay):
     setMotor(motor, -speed,speed,-speed,speed)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
-    motor.close()
 
 def geserKiri(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     adj = speed*0.2
     setMotor(motor, speed,speed,-speed-adj,-speed)
-    motor.close()
 
 def geserKiri2(motor, speed, delay):
     if motor.isOpen() == False:
@@ -74,13 +68,11 @@ def geserKiri2(motor, speed, delay):
     setMotor(motor, -speed,-speed,speed+adj,speed)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
-    motor.close()
 
 def geserKanan(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, -speed,-speed,speed,speed)
-    motor.close()
 
 def geserKanan2(motor, speed, delay):
     if motor.isOpen() == False:
@@ -90,13 +82,11 @@ def geserKanan2(motor, speed, delay):
     setMotor(motor, speed,speed,-speed,-speed)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
-    motor.close()
 
 def putarKiri(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, speed,speed,speed,speed)
-    motor.close()
 
 def putarKiri2(motor, speed, delay):
     if motor.isOpen() == False:
@@ -106,13 +96,11 @@ def putarKiri2(motor, speed, delay):
     setMotor(motor, -speed,-speed,-speed,-speed)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
-    motor.close()
 
 def putarKanan(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, -speed,-speed,-speed,-speed)
-    motor.close()
 
 def putarKanan2(motor, speed, delay):
     if motor.isOpen() == False:
@@ -122,13 +110,11 @@ def putarKanan2(motor, speed, delay):
     setMotor(motor, speed,speed,speed,speed)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
-    motor.close()
 
 def serongKiri(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, 0,speed,-speed,0)
-    motor.close()
 
 def serongKiri2(motor, speed, delay):
     if motor.isOpen() == False:
@@ -138,13 +124,11 @@ def serongKiri2(motor, speed, delay):
     setMotor(motor, 0,-speed,speed,0)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
-    motor.close()
 
 def serongKanan(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, -speed,0,0,speed)
-    motor.close()
 
 def serongKanan2(motor, speed, delay):
     if motor.isOpen() == False:
@@ -154,13 +138,11 @@ def serongKanan2(motor, speed, delay):
     setMotor(motor, speed,0,0,-speed)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
-    motor.close()
 
 def mundurSerongKanan(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, 0,-speed,speed,0)
-    motor.close()
 
 def mundurSerongKanan2(motor, speed, delay):
     if motor.isOpen() == False:
@@ -170,13 +152,11 @@ def mundurSerongKanan2(motor, speed, delay):
     setMotor(motor, 0,speed,-speed,0)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
-    motor.close()
 
 def mundurSerongKiri(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, speed,0,0,-speed)
-    motor.close()
 
 def mundurSerongKiri2(motor, speed, delay):
     if motor.isOpen() == False:
@@ -186,7 +166,6 @@ def mundurSerongKiri2(motor, speed, delay):
     setMotor(motor, -speed,0,0,speed)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
-    motor.close()
 
 def compass(ser, val) :
     if ser.isOpen() == False:
@@ -195,13 +174,11 @@ def compass(ser, val) :
         ser.write(b"COMPASS ON\n")
     else:
         ser.write(b"COMPASS OFF\n")
-    ser.close()
 
 def bacaCompass(ser):
     if ser.isOpen() == False:
         ser.open()
     read = ser.readline().decode('utf-8','ignore')
-    ser.close()
     return read
 
 def putarDerajat(derajat_tujuan, dribble) :
@@ -285,7 +262,6 @@ def dribbling(ser,val) :
         ser.write(b"DB ON\n")
     else : 
         ser.write(b"DB OFF\n")
-    ser.close()
 
 def tendang(ser):
     if ser.isOpen() == False:
@@ -300,7 +276,6 @@ def tendang(ser):
     sleep(0.2)
     ser.write(b"TEND0\n")
     sleep(2)
-    ser.close()
 
 def oper_pelan(ser):
     if ser.isOpen() == False:
@@ -315,7 +290,6 @@ def oper_pelan(ser):
     sleep(0.2)
     ser.write(b"TEND1\n")
     sleep(1)
-    ser.close()
 
 def oper(ser):
     if ser.isOpen() == False:
@@ -331,31 +305,26 @@ def oper(ser):
     sleep(0.2)
     ser.write(b"TEND2\n")
     sleep(1)
-    ser.close()
 
 def db_on(db):
     if db.isOpen() == False:
         db.open()
     db.write(b"DB ON\n")
-    db.close()
 
 def db_off(db):
     if db.isOpen() == False:
         db.open()
     db.write(b"DB OFF\n")
-    db.close()
 
 def passing(db):
     if db.isOpen() == False:
         db.open()
     db.write(b"PASSING\n")
-    db.close()
 
 def reset(db):
     if db.isOpen() == False:
         db.open()
     db.write(b"RESET\n")
-    db.close()
 
 if __name__ == '__main__':
     # motor = serial.Serial(PORT_MOTOR, BAUDRATE, timeout=1)
