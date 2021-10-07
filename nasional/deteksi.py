@@ -67,7 +67,7 @@ def arahBolaKameraAtas():
     state = ""
     serialCounter = 0
 
-    db_on()
+    db_on(db)
 
     while(True):
         if serialCounter > 100:
