@@ -133,9 +133,18 @@ def arahBolaKameraAtas():
                 elif cenX >= 110 and cenX <= 118 and cenY < cenY_frame:
                     print("MAJU")
                     maju(motor, 120)
-                    if cenY >= cenY_frame:
-                        state = "FINISH"
-                        print(state)
+                    
+                    if db.isOpen() == False:
+                        db.open()
+                    db.reset_input_buffer()
+                    reading = db.readline().decode('utf-8','ignore')
+                    if len(reading) > 0 :
+                        head = reading[0:5]
+                        print(head)
+                        if head == "Dapat" :
+                            print("DAPAT BOLA")
+                            state = "FINISH" 
+                            stop(motor)
                     # stop(motor)
                     # cv2.destroyAllWindows()
                     # arahBolaKameraDepan()
