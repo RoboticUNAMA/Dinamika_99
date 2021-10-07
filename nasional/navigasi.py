@@ -308,12 +308,20 @@ def oper(ser):
 def db_on(db):
     if db.isOpen() == False:
         db.open()
-    db.write(b"DB ON\n")
+    dribbling(db,1)
+    sleep(0.5)
+    dribbling(db,1)
+    sleep(0.5)
+    dribbling(db,1)
 
 def db_off(db):
     if db.isOpen() == False:
         db.open()
-    db.write(b"DB OFF\n")
+    dribbling(db,0)
+    sleep(0.5)
+    dribbling(db,0)
+    sleep(0.5)
+    dribbling(db,0)
 
 def passing(db):
     if db.isOpen() == False:

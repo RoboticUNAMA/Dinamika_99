@@ -6,12 +6,10 @@ def main():
         game = getGame()
         print(game)
         if game == "START":
-            dribbling(db,1)
-            sleep(0.25)
-            dribbling(db,1)
-            sleep(0.25)
-            dribbling(db,1)
+            db_on
             break
+        sleep(1)
+        db_off()
 
 if __name__ == '__main__':
     main()
