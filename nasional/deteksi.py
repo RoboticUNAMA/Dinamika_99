@@ -170,7 +170,7 @@ def arahBolaKameraDepan():
         if ada == False:
             count += 1
             print("Pindah kamera atas dalam:",count)
-            if count >= 1:
+            if count >= 30:
                 count = 0
                 cv2.destroyAllWindows()
                 arahBolaKameraAtas()
