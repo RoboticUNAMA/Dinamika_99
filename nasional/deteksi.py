@@ -8,7 +8,7 @@ DISPLAY         = True
 
 # konfigurasi
 FRONT_CAM       = 0
-OMNI_CAM        = 2
+OMNI_CAM        = 1
 RESOLUTION      = [300,200]
 FONT            = cv2.FONT_HERSHEY_SIMPLEX
 
