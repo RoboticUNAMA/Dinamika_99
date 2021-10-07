@@ -64,8 +64,15 @@ def arahBolaKameraAtas():
 
     ada = False
     count = 0
+    serialCounter = 0
 
     while(True):
+        if serialCounter > 10:
+            serialCounter = 0
+            motor.close()
+            db.close()
+        serialCounter += 1
+        
         # skip frame
         for i in range(0):
             OMNI_CAP.grab()
@@ -151,8 +158,15 @@ def arahBolaKameraDepan():
     ada = False
     count = 0
     state = ""
+    serialCounter = 0
 
     while(True):
+        if serialCounter > 10:
+            serialCounter = 0
+            motor.close()
+            db.close()
+        serialCounter += 1
+
         if ada == False:
             count += 1
             print("Pindah kamera atas dalam:",count)
