@@ -8,8 +8,8 @@ BAUDRATE        = 115200
 
 motor = serial.Serial(PORT_MOTOR, BAUDRATE, timeout=1)
 db = serial.Serial(PORT_DRIBBLE, 115200, timeout=1)
-motor.close()
-db.close()
+# motor.close()
+# db.close()
 
 def setMotor(ser,dki,dka,bki,bka) :
     if ser.isOpen() == False:
