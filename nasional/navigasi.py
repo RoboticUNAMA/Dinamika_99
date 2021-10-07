@@ -23,12 +23,14 @@ def stop(motor):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, 0,0,0,0)
+    sleep(1)
     motor.close()
 
 def maju(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, -speed,speed,-speed,speed)
+    sleep(1)
     motor.close()
 
 def maju2(motor, speed, delay):
