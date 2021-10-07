@@ -7,8 +7,8 @@ from navigasi import *
 DISPLAY         = True
 
 # konfigurasi
-FRONT_CAM       = 0
-OMNI_CAM        = 1
+FRONT_CAM       = 1
+OMNI_CAM        = 0
 RESOLUTION      = [300,200]
 FONT            = cv2.FONT_HERSHEY_SIMPLEX
 
