@@ -14,10 +14,10 @@ db = serial.Serial(PORT_DRIBBLE, 115200, timeout=1)
 def setMotor(ser,dki,dka,bki,bka) :
     if ser.isOpen() == False:
         ser.open()
-    dki = dki + (dki * 0.3)
-    dka = dka + (dka * 0)
-    bki = bki + (bki * 0)
-    bka = bka + (bka * 0.3) 
+    # dki = dki + (dki * 0.3)
+    # dka = dka + (dka * 0)
+    # bki = bki + (bki * 0)
+    # bka = bka + (bka * 0.3) 
     ser.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
 
 def stop(motor):
