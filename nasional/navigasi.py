@@ -7,8 +7,8 @@ BAUDRATE        = 115200
 
 motor = serial.Serial(PORT_MOTOR, BAUDRATE, timeout=1)
 db = serial.Serial(PORT_DRIBBLE, 115200, timeout=1)
-# motor.close()
-# db.close()
+motor.close()
+db.close()
 
 def setMotor(motor,dki,dka,bki,bka) :
     if motor.isOpen() == False:
@@ -18,17 +18,18 @@ def setMotor(motor,dki,dka,bki,bka) :
     bki = bki + (bki * 0)
     bka = bka + (bka * 0.3) 
     motor.write(("#M|RUN|" + str(dki) + "|" + str(dka) + "|"+ str(bka) + "|"  + str(bki) + "\n").encode('utf-8'))
-    motor.close()
 
 def stop(motor):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, 0,0,0,0)
+    motor.close()
 
 def maju(motor, speed):
     if motor.isOpen() == False:
         motor.open()
     setMotor(motor, -speed,speed,-speed,speed)
+    motor.close()
 
 def maju2(motor, speed, delay):
     if motor.isOpen() == False:
