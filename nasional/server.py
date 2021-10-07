@@ -4,15 +4,15 @@ ip_server = '192.168.10.244'
 
 def getDummy1():
     dummy1 = requests.post("http://"+ip_server+"/robot/getdummy1.php")
-    return dummy1
+    return dummy1.text.strip()
 
 def getDummy2():
     dummy2 = requests.post("http://"+ip_server+"/robot/getdummy2.php")
-    return dummy2
+    return dummy2.text.strip()
 
 def getKiper():
     kiper = requests.post("http://"+ip_server+"/robot/getkiper.php")
-    return kiper
+    return kiper.text.strip()
 
 def setStatus(id, status):
     requests.post("http://"+ip_server+"/robot/setstatus.php?"+"id="+str(id)+"&status="+str(status))
@@ -26,11 +26,11 @@ def setGame(status):
 
 def getGame():
     game = requests.post("http://"+ip_server+"/robot/getgame.php")
-    return game
+    return game.text.strip()
 
 def getMode():
     mode = requests.post("http://"+ip_server+"/robot/getmode.php")
-    return mode
+    return mode.text.strip()
 
 def getGameInfo():
     dummy1 = requests.post("http://"+ip_server+"/robot/getdummy1.php")
