@@ -71,6 +71,7 @@ def arahBolaKameraAtas():
 
     while(True):
         if serialCounter > 100:
+            print("Serial:",serialCounter)
             serialCounter = 0
             motor.close()
             db.close()
@@ -149,8 +150,6 @@ def arahBolaKameraAtas():
                     # cv2.destroyAllWindows()
                     # arahBolaKameraDepan()
                 break
-
-        ada = False
 
         if DISPLAY == True:
             cv2.imshow("Arah Bola Kamera Atas", frame)
