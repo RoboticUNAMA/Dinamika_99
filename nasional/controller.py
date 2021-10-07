@@ -347,9 +347,9 @@ if __name__ == '__main__':
         elif key == 'e':
             serongKanan(motor, spd)
         elif key == 'z':
-            putarKiri(motor, spd-(spd/2))
+            putarKiri(motor, spd)
         elif key == 'x':
-            putarKanan(motor, -spd+(spd/2))
+            putarKanan(motor, -spd)
         elif key == '9':
             db_on(db)
         elif key == '0':
