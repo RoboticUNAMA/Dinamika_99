@@ -4,6 +4,7 @@ from server import getGame
 def main():
     while True:
         game = getGame()
+        print(game)
         if game == "START":
             arahBolaKameraDepan()
             break
