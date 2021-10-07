@@ -55,8 +55,8 @@ def getDummyInfo():
 def arahBolaKameraAtas():
     _, frame = OMNI_CAP.read()
     rows, cols, _ = frame.shape
-    cenX_frame = int(cols/2)
-    cenY_frame = int(rows/2)
+    cenX_frame = 114
+    cenY_frame = 94
 
     info = getBallInfo()
     lower = np.array([info[0],info[1],info[2]])
@@ -108,19 +108,19 @@ def arahBolaKameraAtas():
                 cv2.line(frame, (int(x+w), int(y+h)), (int((x+w) + 25), int(cenY)), [0,255,0], 2, 8)
                 cv2.putText(frame, "Bola", (int(x+w + 25), int(cenY)), FONT, 0.5, [0,255,0], 2)
 
-                if cenX < cenX_frame-100 and cenY > cenY_frame+50:
+                if cenX < cenX_frame-50 and cenY > cenY_frame+10:
                     print("KANAN BANYAK")
                     putarKanan(motor, 120)
-                elif cenX < cenX_frame-5 and cenY > cenY_frame-50:
+                elif cenX < cenX_frame-5 and cenY < cenY_frame+10:
                     print("KANAN DIKIT")
                     putarKanan(motor, 40)
-                elif cenX > cenX_frame+100 and cenY > cenY_frame+50:
+                elif cenX > cenX_frame+50 and cenY > cenY_frame+10:
                     print("KIRI BANYAK")
                     putarKiri(motor, 120)
-                elif cenX > cenX_frame+5 and cenY > cenY_frame-50:
+                elif cenX > cenX_frame+5 and cenY < cenY_frame+10:
                     print("KIRI DIKIT")
                     putarKiri(motor, 40)
-                elif cenX >= cenX_frame-5 and cenX <= cenX_frame+5 and cenY <= cenY_frame-50:
+                elif cenX >= cenX_frame-5 and cenX <= cenX_frame+5 and cenY <= cenY_frame:
                     print("MAJU")
                     stop(motor)
                     cv2.destroyAllWindows()
