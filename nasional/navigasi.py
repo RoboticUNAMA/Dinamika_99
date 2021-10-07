@@ -1,4 +1,3 @@
-# METHOD NAVIGASI ROBOT
 import serial
 from time import sleep
 
