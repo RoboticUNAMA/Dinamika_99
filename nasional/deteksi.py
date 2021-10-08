@@ -190,10 +190,10 @@ def arahBolaKameraAtas():
                             state = "FINISH"
                     elif cenX < 137-50:
                         print("SERONG KANAN BANYAK")
-                        serongKanan(motor, 60)
+                        serongKanan(motor, 120)
                     elif cenX > 137+50:
                         print("SERONG KIRI BANYAK")
-                        serongKiri(motor, 60)
+                        serongKiri(motor, 120)
                     elif cenX < 137-5:
                         print("SERONG KANAN DIKIT")
                         serongKanan(motor, 60)
