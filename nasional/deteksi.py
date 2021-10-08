@@ -123,8 +123,8 @@ def kameraAtas():
 def arahBolaKameraAtas():
     _, frame = OMNI_CAP.read()
     rows, cols, _ = frame.shape
-    cenX_frame = 114
-    cenY_frame = 90
+    cenX_frame = 137
+    cenY_frame = 52
 
     info = getBallInfo2()
     lower = np.array([info[0],info[1],info[2]])
@@ -199,10 +199,10 @@ def arahBolaKameraAtas():
                 elif cenX > cenX_frame+10 and cenY < cenY_frame:
                     print("KIRI DIKIT")
                     putarKiri(motor, 30)
-                elif cenX >= 110 and cenX <= 118 and cenY < cenY_frame:
+                elif cenX >= cenX_frame-10 and cenX <= cenX_frame+10 and cenY < cenY_frame:
                     print("MAJU")
                     maju(motor, 60)
-                    if cenY >= 89:
+                    if cenY >= cenY_frame-5:
                         state = "FINISH"
                     
                     # if db.isOpen() == False:
