@@ -20,7 +20,7 @@ br = 115200
 kamera = 1
 
 # serial motor driver
-motor = serial.Serial(port='/dev/ttyUSB1', baudrate=br, timeout=1)
+motor = serial.Serial(port='/dev/ttyACM0', baudrate=br, timeout=1)
 
 # serial dribble
 db = serial.Serial(port='/dev/ttyUSB0', baudrate=br, timeout=1)
@@ -2224,16 +2224,16 @@ def lurusBolaAtas():
     #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
 
     while(True):
-        # if gameStatus == "RETRY":
-        #     cv2.destroyAllWindows()
-        #     break
+        if gameStatus == "RETRY":
+            cv2.destroyAllWindows()
+            break
         if count <= 0:
             motor.close()
             #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
             count = startCount
         count -= 1
         #print(state)
-        for i in range(3):
+        for i in range(0):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
@@ -2949,7 +2949,9 @@ def main():
         elif dummy1 == "0":
             while gameStatus == "START":
                 lurusBolaAtas()
-                break
+                putarKiri(90,1)
+                tendang(db)
+                # break
         dribbling(db,0)
         sleep(0.1)
         dribbling(db,0)
