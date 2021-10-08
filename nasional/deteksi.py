@@ -58,7 +58,7 @@ def arahBolaKameraAtas():
     cenX_frame = 114
     cenY_frame = 90
 
-    info = getBallInfo()
+    info = getBallInfo2()
     lower = np.array([info[0],info[1],info[2]])
     upper = np.array([info[3],info[4],info[5]])
 
