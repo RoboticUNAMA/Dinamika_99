@@ -2248,7 +2248,7 @@ def lurusBolaAtas():
             count = startCount
         count -= 1
         #print(state)
-        for i in range(7):
+        for i in range(4):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
@@ -2286,7 +2286,7 @@ def lurusBolaAtas():
         if db.isOpen() == False:
             db.open()
         reading = db.readline().decode('utf-8','ignore')
-        # db.reset_input_buffer()
+        db.reset_input_buffer()
         if len(reading) > 0 :
             head = reading[0:5]
             print(head)
