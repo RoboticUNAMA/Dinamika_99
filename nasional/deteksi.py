@@ -173,8 +173,6 @@ def arahBolaKameraAtas():
             ada = True
             area = cv2.contourArea(c)
             if area > 10:
-                cenX_frame = 137
-                cenY_frame = 52
                 (x, y, w, h) = cv2.boundingRect(c)
                 cv2.putText(frame, "X: "+str(x)+" Y: "+str(y), (10,20), FONT, 0.5, (0,0,255),2)
                 cenX = (x+x+w)/2
@@ -184,22 +182,22 @@ def arahBolaKameraAtas():
                 cv2.line(frame, (int(x+w), int(y+h)), (int((x+w) + 25), int(cenY)), [0,255,0], 2, 8)
                 cv2.putText(frame, "Bola", (int(x+w + 25), int(cenY)), FONT, 0.5, [0,255,0], 2)
 
-                if cenX < (cenX_frame-50) and cenY > (cenY_frame+10):
+                if cenX < (137-50) and cenY > (52+10):
                     print("KANAN BANYAK")
                     putarKanan(motor, 60)
-                elif cenX < (cenX_frame-10) and cenY < cenY_frame:
+                elif cenX < (137-10) and cenY < 52:
                     print("KANAN DIKIT")
                     putarKanan(motor, 30)
-                elif cenX > (cenX_frame+50) and cenY > (cenY_frame+10):
+                elif cenX > (137+50) and cenY > (52+10):
                     print("KIRI BANYAK")
                     putarKiri(motor, 60)
-                elif cenX > (cenX_frame+10) and cenY < cenY_frame:
+                elif cenX > (137+10) and cenY < 52:
                     print("KIRI DIKIT")
                     putarKiri(motor, 30)
-                elif cenX >= (cenX_frame-10) and cenX <= (cenX_frame+10) and cenY < cenY_frame:
+                elif cenX >= (137-10) and cenX <= (137+10) and cenY < 52:
                     print("MAJU")
                     maju(motor, 60)
-                    if cenY >= (cenY_frame-5):
+                    if cenY >= 52:
                         state = "FINISH"
                     
                     # if db.isOpen() == False:
