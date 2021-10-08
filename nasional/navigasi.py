@@ -6,7 +6,7 @@ PORT_DRIBBLE    = '/dev/ttyUSB0'
 BAUDRATE        = 115200
 
 motor = serial.Serial(PORT_MOTOR, BAUDRATE, timeout=1)
-db = serial.Serial(PORT_DRIBBLE, 115200, timeout=1)
+db = serial.Serial(PORT_DRIBBLE, BAUDRATE, timeout=1)
 motor.close()
 db.close()
 
