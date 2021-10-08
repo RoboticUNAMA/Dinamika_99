@@ -67,8 +67,6 @@ def kameraAtas():
     state = ""
     serialCounter = 0
 
-    db_on(db)
-
     while(True):
         # skip frame
         for i in range(0):
