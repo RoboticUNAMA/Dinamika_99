@@ -35,7 +35,7 @@ db = serial.Serial(port='/dev/ttyUSB0', baudrate=br, timeout=1)
 # initialize
 font = cv2.FONT_HERSHEY_SIMPLEX
 FRONT_CAM = 0   # front camera
-OMNI_CAM = 2   # omni camera
+OMNI_CAM = 1   # omni camera
 
 # create opencv video capture object
 FRONT_CAP = cv2.VideoCapture(FRONT_CAM) 
