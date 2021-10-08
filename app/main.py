@@ -83,21 +83,31 @@ def setMotor(ser,dki,dka,bki,bka) :
 def stop():
     setMotor(motor, 0,0,0,0)
 
-def maju(speed, delay):
+def maju(speed):
+    setMotor(motor, -speed,speed,-speed,speed)
+
+def maju2(speed, delay):
     setMotor(motor, -speed,speed,-speed,speed)
     sleep(delay)
     setMotor(motor, 50,-50,50,-50)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
-def mundur(speed, delay):
+def mundur(speed):
+    setMotor(motor, speed,-speed,speed,-speed)
+
+def mundur2(speed, delay):
     setMotor(motor, speed,-speed,speed,-speed)
     sleep(delay)
     setMotor(motor, -50,50,-50,50)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
-def geserKiri(speed, delay):
+def geserKiri(speed):
+    adj = speed*0.2
+    setMotor(motor, speed,speed,-speed-adj,-speed)
+
+def geserKiri2(speed, delay):
     adj = speed*0.2
     setMotor(motor, speed,speed,-speed-adj,-speed)
     sleep(delay)
@@ -105,49 +115,70 @@ def geserKiri(speed, delay):
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
-def geserKanan(speed, delay):
+def geserKanan(speed):
+    setMotor(motor, -speed,-speed,speed,speed)
+
+def geserKanan2(speed, delay):
     setMotor(motor, -speed,-speed,speed,speed)
     sleep(delay)
     setMotor(motor, 50,50,-50,-50)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
-def putarKiri(speed, delay):
+def putarKiri(speed):
+    setMotor(motor, speed,speed,speed,speed)
+
+def putarKiri2(speed, delay):
     setMotor(motor, speed,speed,speed,speed)
     sleep(delay) 
     setMotor(motor, -50,-50,-50,-50)
     sleep(0.05)
     setMotor(motor, 0,0,0,0)
 
-def putarKanan(speed, delay):
+def putarKanan(speed):
+    setMotor(motor, -speed,-speed,-speed,-speed)
+
+def putarKanan2(speed, delay):
     setMotor(motor, -speed,-speed,-speed,-speed)
     sleep(delay) 
     setMotor(motor, 50,50,50,50)
     sleep(0.05)
     setMotor(motor, 0,0,0,0)
 
-def serongKiri(speed, delay):
+def serongKiri(speed):
+    setMotor(motor, 0,speed,-speed,0)
+
+def serongKiri2(speed, delay):
     setMotor(motor, 0,speed,-speed,0)
     sleep(delay)
     setMotor(motor, 0,-50,50,0)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
-def serongKanan(speed, delay):
+def serongKanan(speed):
+    setMotor(motor, -speed,0,0,speed)
+
+def serongKanan2(speed, delay):
     setMotor(motor, -speed,0,0,speed)
     sleep(delay)
     setMotor(motor, 50,0,0,-50)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
-def mundurSerongKanan(speed, delay):
+def mundurSerongKanan(speed):
+    setMotor(motor, 0,-speed,speed,0)
+
+def mundurSerongKanan2(speed, delay):
     setMotor(motor, 0,-speed,speed,0)
     sleep(delay)
     setMotor(motor, 0,50,-50,0)
     sleep(0.1)
     setMotor(motor, 0,0,0,0)
 
-def mundurSerongKiri(speed, delay):
+def mundurSerongKiri(speed):
+    setMotor(motor, speed,0,0,-speed)
+
+def mundurSerongKiri2(speed, delay):
     setMotor(motor, speed,0,0,-speed)
     sleep(delay)
     setMotor(motor, -50,0,0,50)
@@ -2233,7 +2264,7 @@ def lurusBolaAtas():
             count = startCount
         count -= 1
         #print(state)
-        for i in range(0):
+        for i in range(4):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
