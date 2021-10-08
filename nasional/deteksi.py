@@ -197,7 +197,7 @@ def arahBolaKameraAtas():
                 elif cenX >= (137-5) and cenX <= (137+5) and cenY < 52:
                     print("MAJU")
                     maju(motor, 60)
-                    if cenY >= 52:
+                    if cenY > 50:
                         state = "FINISH"
                     
                     # if db.isOpen() == False:
