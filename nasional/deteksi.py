@@ -187,22 +187,22 @@ def arahBolaKameraAtas():
                 cv2.line(frame, (int(x+w), int(y+h)), (int((x+w) + 25), int(cenY)), [0,255,0], 2, 8)
                 cv2.putText(frame, "Bola", (int(x+w + 25), int(cenY)), FONT, 0.5, [0,255,0], 2)
 
-                if cenX < cenX_frame-50 and cenY > cenY_frame+10:
+                if cenX < (cenX_frame-50) and cenY > (cenY_frame+10):
                     print("KANAN BANYAK")
                     putarKanan(motor, 60)
-                elif cenX < cenX_frame-10 and cenY < cenY_frame:
+                elif cenX < (cenX_frame-10) and cenY < cenY_frame:
                     print("KANAN DIKIT")
                     putarKanan(motor, 30)
-                elif cenX > cenX_frame+50 and cenY > cenY_frame+10:
+                elif cenX > (cenX_frame+50) and cenY > (cenY_frame+10):
                     print("KIRI BANYAK")
                     putarKiri(motor, 60)
-                elif cenX > cenX_frame+10 and cenY < cenY_frame:
+                elif cenX > (cenX_frame+10) and cenY < cenY_frame:
                     print("KIRI DIKIT")
                     putarKiri(motor, 30)
-                elif cenX >= cenX_frame-10 and cenX <= cenX_frame+10 and cenY < cenY_frame:
+                elif cenX >= (cenX_frame-10) and cenX <= (cenX_frame+10) and cenY < cenY_frame:
                     print("MAJU")
                     maju(motor, 60)
-                    if cenY >= cenY_frame-5:
+                    if cenY >= (cenY_frame-5):
                         state = "FINISH"
                     
                     # if db.isOpen() == False:
