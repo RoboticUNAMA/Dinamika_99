@@ -183,7 +183,10 @@ def arahBolaKameraAtas():
                 cv2.putText(frame, "Bola", (int(x+w + 25), int(cenY)), FONT, 0.5, [0,255,0], 2)
 
                 if cenY < 60:
-                    if cenX < 137-50:
+                    if cenX > 136 and cenX < 140 and cenY >= 52:
+                        stop(motor)
+                        state = "FINISH"
+                    elif cenX < 137-50:
                         print("KANAN BANYAK")
                         putarKanan(motor, 60)
                     elif cenX > 137+50:
