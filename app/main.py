@@ -45,11 +45,11 @@ FRONT_CAP.set(cv2.CAP_PROP_EXPOSURE, -10)
 OMNI_CAP.set(cv2.CAP_PROP_EXPOSURE, -10)
 
 # set frame size
-FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
-FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 270)
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 300)
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 200)
 
-OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
-OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 320)
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 300)
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 200)
 
 def setStatus(id, status):
     requests.post("http://"+ip_server+"/robot/setstatus.php?"+"id="+str(id)+"&status="+str(status))
@@ -2338,36 +2338,36 @@ def lurusBolaAtas():
                 
                 if cenY_ball < 60:
                     if cenX_ball > 136 and cenX_ball < 140:
-                        maju(motor, 60)
+                        maju(60)
                         if cenY_ball > 55:
-                            stop(motor)
+                            stop()
                             state = "FINISH"
                     elif cenX_ball < 137-20:
                         print("PUTAR KANAN BANYAK")
-                        putarKanan(motor, 120)
+                        putarKanan(120)
                     elif cenX_ball > 137+20:
                         print("PUTAR KIRI BANYAK")
-                        putarKiri(motor, 120)
+                        putarKiri(120)
                     elif cenX_ball < 137-5:
                         print("SERONG KANAN DIKIT")
-                        serongKanan(motor, 60)
+                        serongKanan(60)
                     elif cenX_ball > 137+5:
                         print("SERONG KIRI DIKIT")
-                        serongKiri(motor, 60)
+                        serongKiri(60)
 
                 elif cenY_ball >= 60:
                     if cenX_ball < 137-50:
                         print("PUTAR KANAN BANYAK")
-                        putarKanan(motor, 60)
+                        putarKanan(120)
                     elif cenX_ball > 137+50:
                         print("PUTAR KIRI BANYAK")
-                        putarKiri(motor, 60)
+                        putarKiri(120)
                     elif cenX_ball < 137-5:
                         print("PUTAR KANAN DIKIT")
-                        putarKanan(motor, 30)
+                        putarKanan(60)
                     elif cenX_ball > 137+5:
                         print("PUTAR KIRI DIKIT")
-                        putarKiri(motor, 30)
+                        putarKiri(60)
                 break
         
         if state == "FINISH": 
@@ -2990,7 +2990,7 @@ def main():
         elif dummy1 == "0":
             while gameStatus == "START":
                 lurusBolaAtas()
-                putarKiri(90,1)
+                putarKiri2(90,1)
                 tendang(db)
                 # break
         dribbling(db,0)
