@@ -2264,7 +2264,7 @@ def lurusBolaAtas():
             count = startCount
         count -= 1
         #print(state)
-        for i in range(3):
+        for i in range(0):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
@@ -2344,10 +2344,10 @@ def lurusBolaAtas():
                             state = "FINISH"
                     elif cenX_ball < 137-20:
                         print("PUTAR KANAN BANYAK")
-                        putarKanan(120)
+                        putarKanan(60)
                     elif cenX_ball > 137+20:
                         print("PUTAR KIRI BANYAK")
-                        putarKiri(120)
+                        putarKiri(60)
                     elif cenX_ball < 137-5:
                         print("SERONG KANAN DIKIT")
                         serongKanan(60)
@@ -2358,16 +2358,16 @@ def lurusBolaAtas():
                 elif cenY_ball >= 60:
                     if cenX_ball < 137-50:
                         print("PUTAR KANAN BANYAK")
-                        putarKanan(120)
+                        putarKanan(60)
                     elif cenX_ball > 137+50:
                         print("PUTAR KIRI BANYAK")
-                        putarKiri(120)
+                        putarKiri(60)
                     elif cenX_ball < 137-5:
                         print("PUTAR KANAN DIKIT")
-                        putarKanan(60)
+                        putarKanan(30)
                     elif cenX_ball > 137+5:
                         print("PUTAR KIRI DIKIT")
-                        putarKiri(60)
+                        putarKiri(30)
                 break
         
         if state == "FINISH": 
