@@ -277,8 +277,8 @@ def mulaiKickoff():
     geserKiri(255, 1.5)
     maju(90,0)
     sleep(0.5)
-    maju(255, 1.3)
-    putarKanan(90,0.3)
+    maju(255, 1.2)
+    putarKanan(90, 0)
     lurusBolaAtas()
 
 def putarDerajat(derajat_tujuan, dribble) :
