@@ -15,7 +15,7 @@ from time import sleep
 # webserver
 ip_server = "192.168.10.244"
 
-br = 115200
+br = 115200 
 
 kamera = 1
 
@@ -45,11 +45,11 @@ FRONT_CAP.set(cv2.CAP_PROP_EXPOSURE, -10)
 OMNI_CAP.set(cv2.CAP_PROP_EXPOSURE, -10)
 
 # set frame size
-FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 300)
-FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 200)
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 270)
 
-OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 300)
-OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 200)
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 320)
 
 def setStatus(id, status):
     requests.post("http://"+ip_server+"/robot/setstatus.php?"+"id="+str(id)+"&status="+str(status))
@@ -83,107 +83,86 @@ def setMotor(ser,dki,dka,bki,bka) :
 def stop():
     setMotor(motor, 0,0,0,0)
 
-def maju(speed):
+def maju(speed, delay):
     setMotor(motor, -speed,speed,-speed,speed)
+    if delay > 0:
+        sleep(delay)
+        setMotor(motor, 50,-50,50,-50)
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
 
-def maju2(speed, delay):
-    setMotor(motor, -speed,speed,-speed,speed)
-    sleep(delay)
-    setMotor(motor, 50,-50,50,-50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def mundur(speed):
+def mundur(speed, delay):
     setMotor(motor, speed,-speed,speed,-speed)
+    if delay > 0:        
+        sleep(delay)
+        setMotor(motor, -50,50,-50,50)
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
 
-def mundur2(speed, delay):
-    setMotor(motor, speed,-speed,speed,-speed)
-    sleep(delay)
-    setMotor(motor, -50,50,-50,50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def geserKiri(speed):
+def geserKiri(speed, delay):
     adj = speed*0.2
     setMotor(motor, speed,speed,-speed-adj,-speed)
+    if delay > 0:
+        sleep(delay)
+        setMotor(motor, -50,-50,50,50)
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
 
-def geserKiri2(speed, delay):
-    adj = speed*0.2
-    setMotor(motor, speed,speed,-speed-adj,-speed)
-    sleep(delay)
-    setMotor(motor, -50,-50,50,50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def geserKanan(speed):
+def geserKanan(speed, delay):
     setMotor(motor, -speed,-speed,speed,speed)
+    if delay > 0:
+        sleep(delay)
+        setMotor(motor, 50,50,-50,-50)
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
 
-def geserKanan2(speed, delay):
-    setMotor(motor, -speed,-speed,speed,speed)
-    sleep(delay)
-    setMotor(motor, 50,50,-50,-50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def putarKiri(speed):
+def putarKiri(speed, delay):
     setMotor(motor, speed,speed,speed,speed)
+    if delay > 0:
+        sleep(delay) 
+        setMotor(motor, -50,-50,-50,-50)
+        sleep(0.05)
+        setMotor(motor, 0,0,0,0)
 
-def putarKiri2(speed, delay):
-    setMotor(motor, speed,speed,speed,speed)
-    sleep(delay) 
-    setMotor(motor, -50,-50,-50,-50)
-    sleep(0.05)
-    setMotor(motor, 0,0,0,0)
-
-def putarKanan(speed):
+def putarKanan(speed, delay):
     setMotor(motor, -speed,-speed,-speed,-speed)
+    if delay > 0:
+        sleep(delay) 
+        setMotor(motor, 50,50,50,50)
+        sleep(0.05)
+        setMotor(motor, 0,0,0,0)
 
-def putarKanan2(speed, delay):
-    setMotor(motor, -speed,-speed,-speed,-speed)
-    sleep(delay) 
-    setMotor(motor, 50,50,50,50)
-    sleep(0.05)
-    setMotor(motor, 0,0,0,0)
-
-def serongKiri(speed):
+def serongKiri(speed, delay):
     setMotor(motor, 0,speed,-speed,0)
+    if delay > 0:
+        sleep(delay)
+        setMotor(motor, 0,-50,50,0)
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
 
-def serongKiri2(speed, delay):
-    setMotor(motor, 0,speed,-speed,0)
-    sleep(delay)
-    setMotor(motor, 0,-50,50,0)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def serongKanan(speed):
+def serongKanan(speed, delay):
     setMotor(motor, -speed,0,0,speed)
+    if delay > 0:
+        sleep(delay)
+        setMotor(motor, 50,0,0,-50)
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
 
-def serongKanan2(speed, delay):
-    setMotor(motor, -speed,0,0,speed)
-    sleep(delay)
-    setMotor(motor, 50,0,0,-50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def mundurSerongKanan(speed):
+def mundurSerongKanan(speed, delay):
     setMotor(motor, 0,-speed,speed,0)
+    if delay > 0:        
+        sleep(delay)
+        setMotor(motor, 0,50,-50,0)
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
 
-def mundurSerongKanan2(speed, delay):
-    setMotor(motor, 0,-speed,speed,0)
-    sleep(delay)
-    setMotor(motor, 0,50,-50,0)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
-
-def mundurSerongKiri(speed):
+def mundurSerongKiri(speed, delay):
     setMotor(motor, speed,0,0,-speed)
-
-def mundurSerongKiri2(speed, delay):
-    setMotor(motor, speed,0,0,-speed)
-    sleep(delay)
-    setMotor(motor, -50,0,0,50)
-    sleep(0.1)
-    setMotor(motor, 0,0,0,0)
+    if delay > 0:
+        sleep(delay)
+        setMotor(motor, -50,0,0,50)
+        sleep(0.1)
+        setMotor(motor, 0,0,0,0)
 
 def dribbling(ser,val) :
     if ser.isOpen() == False:
@@ -233,7 +212,8 @@ def oper_pelan(ser):
     sleep(0.2)
     dribbling(ser, 0)
     sleep(0.2)
-    ser.write(b"TEND1\n")
+    #ser.write(b"TEND1\n")
+    ser.write(b"TEND2\n")
     sleep(1)
 
 def oper(ser):
@@ -434,7 +414,7 @@ def arahBolaDepan():
         #print(state)
         second += 1
         #print(second)
-        for i in range(7):
+        for i in range(3):
             FRONT_CAP.grab()
             #OMNI_CAP.grab()
         ## read frame
@@ -2264,7 +2244,7 @@ def lurusBolaAtas():
             count = startCount
         count -= 1
         #print(state)
-        for i in range(0):
+        for i in range(7):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
@@ -2336,38 +2316,28 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenY_ball < 60:
-                    if cenX_ball > 136 and cenX_ball < 140:
-                        maju(60)
-                        if cenY_ball > 55:
-                            stop()
-                            state = "FINISH"
-                    elif cenX_ball < 137-20:
-                        print("PUTAR KANAN BANYAK")
-                        putarKanan(60)
-                    elif cenX_ball > 137+20:
-                        print("PUTAR KIRI BANYAK")
-                        putarKiri(60)
-                    elif cenX_ball < 137-5:
-                        print("SERONG KANAN DIKIT")
-                        serongKanan(60)
-                    elif cenX_ball > 137+5:
-                        print("SERONG KIRI DIKIT")
-                        serongKiri(60)
+                if cenX_ball < 236-30  and cenY_ball < 95 :
+                    putarKanan(speed, 0.4)
+                    
+                elif cenX_ball > 236+30 and cenY_ball < 95 :
+                    putarKiri(speed, 0.4)
+                    
+                elif cenX_ball < 236-10 and cenY_ball < 95 :
+                    putarKanan(speed, 0.2)
+                
+                elif cenX_ball > 236+10 and cenY_ball < 95 :
+                    putarKiri(speed, 0.2)
+                else :
+                    if cenY_ball < 95:
+                        setMotor(motor,-55,50,-50,55)
+                    # elif cenY_ball < 90 and cenX_ball < 230 or cenX_ball > 235:
+                    #     setMotor(motor,50,-50,50,-50)
 
-                elif cenY_ball >= 60:
-                    if cenX_ball < 137-50:
-                        print("PUTAR KANAN BANYAK")
-                        putarKanan(60)
-                    elif cenX_ball > 137+50:
-                        print("PUTAR KIRI BANYAK")
-                        putarKiri(60)
-                    elif cenX_ball < 137-5:
-                        print("PUTAR KANAN DIKIT")
-                        putarKanan(30)
-                    elif cenX_ball > 137+5:
-                        print("PUTAR KIRI DIKIT")
-                        putarKiri(30)
+                # if cenX_ball > 200 and cenX_ball < 220 and cenY_ball >= 155:
+                #     setMotor(motor, 0,0,0,0)
+                #     #pas = 1
+                #     #state = "FINISH"
+                #     setStatus(2, "READY")
                 break
         
         if state == "FINISH": 
@@ -2990,9 +2960,9 @@ def main():
         elif dummy1 == "0":
             while gameStatus == "START":
                 lurusBolaAtas()
-                putarKiri2(90,1)
                 tendang(db)
-                # break
+                setGame("STOP")
+                break
         dribbling(db,0)
         sleep(0.1)
         dribbling(db,0)
