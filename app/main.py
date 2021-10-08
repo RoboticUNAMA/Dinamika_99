@@ -2264,7 +2264,7 @@ def lurusBolaAtas():
             count = startCount
         count -= 1
         #print(state)
-        for i in range(4):
+        for i in range(3):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
@@ -2336,28 +2336,38 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball < 170 and cenY_ball < 135 :
-                    putarKanan(speed, 0.4)
-                    
-                elif cenX_ball > 245 and cenY_ball < 135 :
-                    putarKiri(speed, 0.4)
-                    
-                elif cenX_ball < 200 and cenY_ball < 155 :
-                    putarKanan(speed, 0.2)
-                
-                elif cenX_ball > 220 and cenY_ball < 155 :
-                    putarKiri(speed, 0.2)
-                else :
-                    if cenY_ball < 180:
-                        setMotor(motor,-55,50,-50,55)
-                    # elif cenY_ball < 90 and cenX_ball < 230 or cenX_ball > 235:
-                    #     setMotor(motor,50,-50,50,-50)
+                if cenY_ball < 60:
+                    if cenX_ball > 136 and cenX_ball < 140:
+                        maju(motor, 60)
+                        if cenY_ball > 55:
+                            stop(motor)
+                            state = "FINISH"
+                    elif cenX_ball < 137-20:
+                        print("PUTAR KANAN BANYAK")
+                        putarKanan(motor, 120)
+                    elif cenX_ball > 137+20:
+                        print("PUTAR KIRI BANYAK")
+                        putarKiri(motor, 120)
+                    elif cenX_ball < 137-5:
+                        print("SERONG KANAN DIKIT")
+                        serongKanan(motor, 60)
+                    elif cenX_ball > 137+5:
+                        print("SERONG KIRI DIKIT")
+                        serongKiri(motor, 60)
 
-                # if cenX_ball > 200 and cenX_ball < 220 and cenY_ball >= 155:
-                #     setMotor(motor, 0,0,0,0)
-                #     #pas = 1
-                #     #state = "FINISH"
-                #     setStatus(2, "READY")
+                elif cenY_ball >= 60:
+                    if cenX_ball < 137-50:
+                        print("PUTAR KANAN BANYAK")
+                        putarKanan(motor, 60)
+                    elif cenX_ball > 137+50:
+                        print("PUTAR KIRI BANYAK")
+                        putarKiri(motor, 60)
+                    elif cenX_ball < 137-5:
+                        print("PUTAR KANAN DIKIT")
+                        putarKanan(motor, 30)
+                    elif cenX_ball > 137+5:
+                        print("PUTAR KIRI DIKIT")
+                        putarKiri(motor, 30)
                 break
         
         if state == "FINISH": 
