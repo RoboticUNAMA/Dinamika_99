@@ -121,11 +121,6 @@ def kameraAtas():
             break
 
 def arahBolaKameraAtas():
-    _, frame = OMNI_CAP.read()
-    rows, cols, _ = frame.shape
-    cenX_frame = 137
-    cenY_frame = 52
-
     info = getBallInfo2()
     lower = np.array([info[0],info[1],info[2]])
     upper = np.array([info[3],info[4],info[5]])
@@ -138,6 +133,8 @@ def arahBolaKameraAtas():
     db_on(db)
 
     while(True):
+        cenX_frame = 137
+        cenY_frame = 52
         if serialCounter > 300:
             print("Serial:",serialCounter)
             serialCounter = 0
