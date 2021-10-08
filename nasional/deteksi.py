@@ -121,19 +121,19 @@ def arahBolaKameraAtas():
 
                 if cenX < cenX_frame-50 and cenY > cenY_frame+10:
                     print("KANAN BANYAK")
-                    putarKanan(motor, 120)
+                    putarKanan(motor, 60)
                 elif cenX < cenX_frame-10 and cenY < cenY_frame:
                     print("KANAN DIKIT")
-                    putarKanan(motor, 40)
+                    putarKanan(motor, 30)
                 elif cenX > cenX_frame+50 and cenY > cenY_frame+10:
                     print("KIRI BANYAK")
-                    putarKiri(motor, 120)
+                    putarKiri(motor, 60)
                 elif cenX > cenX_frame+10 and cenY < cenY_frame:
                     print("KIRI DIKIT")
-                    putarKiri(motor, 40)
+                    putarKiri(motor, 30)
                 elif cenX >= 110 and cenX <= 118 and cenY < cenY_frame:
                     print("MAJU")
-                    maju(motor, 120)
+                    maju(motor, 60)
                     
                     if db.isOpen() == False:
                         db.open()
