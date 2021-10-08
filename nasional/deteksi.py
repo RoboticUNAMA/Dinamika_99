@@ -52,6 +52,76 @@ def getDummyInfo():
         info.append(int(i))
     return info
 
+def kameraAtas():
+    _, frame = OMNI_CAP.read()
+    rows, cols, _ = frame.shape
+    cenX_frame = 114
+    cenY_frame = 90
+
+    info = getBallInfo2()
+    lower = np.array([info[0],info[1],info[2]])
+    upper = np.array([info[3],info[4],info[5]])
+
+    ada = False
+    count = 0
+    state = ""
+    serialCounter = 0
+
+    db_on(db)
+
+    while(True):
+        # skip frame
+        for i in range(0):
+            OMNI_CAP.grab()
+
+        # read frame
+        _, frame = OMNI_CAP.read()
+        
+        # convert frame from BGR to HSV
+        hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+        #hsv1 = cv2.cvtColor(frame2, cv2.COLOR_BGR2HSV)
+
+        # blur the frame
+        blur = cv2.medianBlur(hsv, 5)
+        #blur1 = cv2.medianBlur(hsv1, 5)
+
+        # create a mask from blurred frame
+        mask = cv2.inRange(blur, lower, upper)
+
+        # convert to black and white image
+        _, thresh = cv2.threshold(mask, info[6], 255, 0)
+
+        # refine the image using morphological transformation
+        kernal = np.ones((5,5), np.uint8)
+        morph = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernal, iterations = 2)
+
+        # find contours
+        contours, _ = cv2.findContours(morph, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
+        contours = sorted(contours, key=lambda x:cv2.contourArea(x), reverse=True)
+
+        for c in contours:
+            ada = True
+            area = cv2.contourArea(c)
+            if area > 10:
+                (x, y, w, h) = cv2.boundingRect(c)
+                cv2.putText(frame, "X: "+str(x)+" Y: "+str(y), (10,20), FONT, 0.5, (0,0,255),2)
+                cenX = (x+x+w)/2
+                cenY = (y+y+h)/2
+                # cv2.circle(frame, (int(cenX), int(cenY)), 10, [0,255,0], 2, 8)
+                cv2.rectangle(frame, (int(x), int(y)), (int(x+w), int(y+h)), [0,255,0], 2)
+                cv2.line(frame, (int(x+w), int(y+h)), (int((x+w) + 25), int(cenY)), [0,255,0], 2, 8)
+                cv2.putText(frame, "Bola", (int(x+w + 25), int(cenY)), FONT, 0.5, [0,255,0], 2)
+                break
+
+        if DISPLAY == True:
+            cv2.imshow("Arah Bola Kamera Atas", frame)
+
+        k = cv2.waitKey(1) & 0xFF
+        if k == 27:
+            FRONT_CAP.release()
+            cv2.destroyAllWindows()
+            break
+
 def arahBolaKameraAtas():
     _, frame = OMNI_CAP.read()
     rows, cols, _ = frame.shape

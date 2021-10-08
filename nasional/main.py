@@ -10,6 +10,8 @@ def main():
             putarKiri2(motor, 90, 1)
             db_off(db)
             tendang(db)
+        elif game == "RETRY":
+            kameraAtas()
         elif game == "STOP":
             break  
 
