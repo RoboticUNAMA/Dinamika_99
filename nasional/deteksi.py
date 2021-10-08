@@ -138,7 +138,7 @@ def arahBolaKameraAtas():
     db_on(db)
 
     while(True):
-        if serialCounter > 100:
+        if serialCounter > 300:
             print("Serial:",serialCounter)
             serialCounter = 0
             motor.close()
