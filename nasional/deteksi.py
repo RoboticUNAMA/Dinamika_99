@@ -185,15 +185,15 @@ def arahBolaKameraAtas():
                 if cenY < 60:
                     if cenX > 136 and cenX < 140:
                         maju(motor, 60)
-                        if cenY > 53:
+                        if cenY > 55:
                             stop(motor)
                             state = "FINISH"
-                    elif cenX < 137-50:
-                        print("SERONG KANAN BANYAK")
-                        serongKanan(motor, 120)
-                    elif cenX > 137+50:
-                        print("SERONG KIRI BANYAK")
-                        serongKiri(motor, 120)
+                    elif cenX < 137-20:
+                        print("PUTAR KANAN BANYAK")
+                        putarKanan(motor, 120)
+                    elif cenX > 137+20:
+                        print("PUTAR KIRI BANYAK")
+                        putarKiri(motor, 120)
                     elif cenX < 137-5:
                         print("SERONG KANAN DIKIT")
                         serongKanan(motor, 60)
