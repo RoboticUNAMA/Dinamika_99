@@ -254,6 +254,7 @@ def arahBolaKameraAtas():
 
         if state == "FINISH":
             stop(motor)
+            cv2.destroyAllWindows()
             break
         
         k = cv2.waitKey(1) & 0xFF
