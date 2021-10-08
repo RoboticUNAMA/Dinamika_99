@@ -2224,9 +2224,9 @@ def lurusBolaAtas():
     #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
 
     while(True):
-        if gameStatus == "RETRY":
-            cv2.destroyAllWindows()
-            break
+        # if gameStatus == "RETRY":
+        #     cv2.destroyAllWindows()
+        #     break
         if count <= 0:
             motor.close()
             #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
