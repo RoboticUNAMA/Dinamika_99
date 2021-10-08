@@ -133,8 +133,6 @@ def arahBolaKameraAtas():
     db_on(db)
 
     while(True):
-        cenX_frame = 137
-        cenY_frame = 52
         if serialCounter > 300:
             print("Serial:",serialCounter)
             serialCounter = 0
@@ -175,6 +173,8 @@ def arahBolaKameraAtas():
             ada = True
             area = cv2.contourArea(c)
             if area > 10:
+                cenX_frame = 137
+                cenY_frame = 52
                 (x, y, w, h) = cv2.boundingRect(c)
                 cv2.putText(frame, "X: "+str(x)+" Y: "+str(y), (10,20), FONT, 0.5, (0,0,255),2)
                 cenX = (x+x+w)/2
