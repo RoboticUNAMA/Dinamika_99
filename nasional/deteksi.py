@@ -197,8 +197,7 @@ def arahBolaKameraAtas():
                         putarKiri(motor, 30)
                     else:
                         print("MAJU")
-                        # maju(motor, 60)
-                        stop(motor)
+                        maju(motor, 60)
 
                 elif cenY >= 60:
                     if cenX < 137-50:
@@ -215,8 +214,7 @@ def arahBolaKameraAtas():
                         putarKiri(motor, 30)
                     else:
                         print("MAJU")
-                        # maju(motor, 60)
-                        stop(motor)
+                        maju(motor, 60)
 
                 # if cenX < (137-50) and cenY > (52+10):
                 #     print("KANAN BANYAK")
