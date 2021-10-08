@@ -132,9 +132,9 @@ def main():
         elif key == 'e':
             serongKanan(motor, spd)
         elif key == 'z':
-            putar(motor, spd)
+            putar(motor, spd/2)
         elif key == 'x':
-            putar(motor, -spd)
+            putar(motor, -(spd/2))
         elif key == '9':
             db_on(db)
         elif key == '0':

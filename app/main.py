@@ -273,10 +273,12 @@ def read_from_port(ser,que_output):
 def mulaiKickoff():
     maju(90,0.3)
     geserKiri(90, 0)
-    sleep(1)
-    geserKiri(140, 1.5)
-    maju(255, 1.4)
-    putarKanan(90,0.2)
+    sleep(0.3)
+    geserKiri(255, 1.5)
+    maju(90,0)
+    sleep(0.3)
+    maju(255, 1.2)
+    putarKanan(90,0.3)
     lurusBolaAtas()
 
 def putarDerajat(derajat_tujuan, dribble) :
