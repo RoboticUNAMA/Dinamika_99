@@ -87,7 +87,7 @@ def maju(speed, delay):
     setMotor(motor, -speed,speed,-speed,speed)
     if delay > 0:
         sleep(delay)
-        setMotor(motor, 50,-50,50,-50)
+        setMotor(motor, speed,-speed,speed,-speed)
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
@@ -95,7 +95,7 @@ def mundur(speed, delay):
     setMotor(motor, speed,-speed,speed,-speed)
     if delay > 0:        
         sleep(delay)
-        setMotor(motor, -50,50,-50,50)
+        setMotor(motor, -speed,speed,-speed,speed)
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
@@ -104,7 +104,7 @@ def geserKiri(speed, delay):
     setMotor(motor, speed,speed,-speed-adj,-speed)
     if delay > 0:
         sleep(delay)
-        setMotor(motor, -50,-50,50,50)
+        setMotor(motor, -speed,-speed,speed,speed)
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
@@ -112,7 +112,7 @@ def geserKanan(speed, delay):
     setMotor(motor, -speed,-speed,speed,speed)
     if delay > 0:
         sleep(delay)
-        setMotor(motor, 50,50,-50,-50)
+        setMotor(motor, speed,speed,-speed,-speed)
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
@@ -120,7 +120,7 @@ def putarKiri(speed, delay):
     setMotor(motor, speed,speed,speed,speed)
     if delay > 0:
         sleep(delay) 
-        setMotor(motor, -50,-50,-50,-50)
+        setMotor(motor, -speed,-speed,-speed,-speed)
         sleep(0.05)
         setMotor(motor, 0,0,0,0)
 
@@ -128,14 +128,14 @@ def putarKanan(speed, delay):
     setMotor(motor, -speed,-speed,-speed,-speed)
     if delay > 0:
         sleep(delay) 
-        setMotor(motor, 50,50,50,50)
+        setMotor(motor, speed,speed,speed,speed)
         sleep(0.05)
         setMotor(motor, 0,0,0,0)
 
 def serongKiri(speed, delay):
     setMotor(motor, 0,speed,-speed,0)
     if delay > 0:
-        setMotor(motor, 0,-50,50,0)
+        setMotor(motor, 0,-speed,speed,0)
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
@@ -143,7 +143,7 @@ def serongKanan(speed, delay):
     setMotor(motor, -speed,0,0,speed)
     if delay > 0:
         sleep(delay)
-        setMotor(motor, 50,0,0,-50)
+        setMotor(motor, speed,0,0,-speed)
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
@@ -151,7 +151,7 @@ def mundurSerongKanan(speed, delay):
     setMotor(motor, 0,-speed,speed,0)
     if delay > 0:        
         sleep(delay)
-        setMotor(motor, 0,50,-50,0)
+        setMotor(motor, 0,speed,-speed,0)
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
@@ -159,7 +159,7 @@ def mundurSerongKiri(speed, delay):
     setMotor(motor, speed,0,0,-speed)
     if delay > 0:
         sleep(delay)
-        setMotor(motor, -50,0,0,50)
+        setMotor(motor, -speed,0,0,speed)
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
 
@@ -2230,7 +2230,7 @@ def lurusBolaAtas():
 
     startCount = 10
     count = startCount
-    speed = 35
+    speed = 40
     state = "START"
 
     dribbling(db,1)
@@ -2324,15 +2324,19 @@ def lurusBolaAtas():
                 cenY = 60
 
                 if cenX_ball < cenX-30  and cenY_ball < cenY :
+                    print("PUTAR KANAN JAUH")
                     putarKanan(speed, 0)
                     
                 elif cenX_ball > cenX+30 and cenY_ball < cenY :
+                    print("PUTAR KIRI JAUH")
                     putarKiri(speed, 0)
                     
                 elif cenX_ball < cenX-10 and cenY_ball < cenY :
+                    print("PUTAR KANAN DEKAT")
                     putarKanan(speed, 0.1)
                 
                 elif cenX_ball > cenX+10 and cenY_ball < cenY :
+                    print("PUTAR KIRI DEKAT")
                     putarKiri(speed, 0.1)
                 else :
                     if cenY_ball < cenY:
