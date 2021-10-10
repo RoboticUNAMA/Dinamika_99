@@ -2324,16 +2324,16 @@ def lurusBolaAtas():
                 cenY = 60
 
                 if cenX_ball < cenX-30  and cenY_ball < cenY :
-                    putarKanan(speed, 0.4)
+                    putarKanan(speed, 0)
                     
                 elif cenX_ball > cenX+30 and cenY_ball < cenY :
-                    putarKiri(speed, 0.4)
+                    putarKiri(speed, 0)
                     
                 elif cenX_ball < cenX-10 and cenY_ball < cenY :
-                    putarKanan(speed, 0.2)
+                    putarKanan(speed, 0.1)
                 
                 elif cenX_ball > cenX+10 and cenY_ball < cenY :
-                    putarKiri(speed, 0.2)
+                    putarKiri(speed, 0.1)
                 else :
                     if cenY_ball < cenY:
                         setMotor(motor,-55,50,-50,55)
@@ -2350,6 +2350,7 @@ def lurusBolaAtas():
         if state == "FINISH": 
             setMotor(motor,0,0,0,0)
             motor.close()
+            db.close()
             cv2.destroyAllWindows()
             break        
 
