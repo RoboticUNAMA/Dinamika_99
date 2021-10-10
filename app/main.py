@@ -2248,7 +2248,7 @@ def lurusBolaAtas():
             count = startCount
         count -= 1
         #print(state)
-        for i in range(4):
+        for i in range(7):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
