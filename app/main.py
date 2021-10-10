@@ -2310,14 +2310,14 @@ def lurusBolaAtas():
 
         for ballContour in ballContours1:
             ball_area = cv2.contourArea(ballContour)
-            if ball_area > 5:
+            if ball_area > 0:
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame2, "X: "+str(x_ball)+" Y: "+str(y_ball), (20, 20), font, 0.5, (0,0,255),2)
                 cenX_ball = (x_ball+x_ball+w_ball)/2
                 cenY_ball = (y_ball+y_ball+h_ball)/2   
                 #print("X: "+str(cenX_ball)+" Y: "+str(cenY_ball))
                 # draw actual coordinate from segmentation
-                cv2.circle(frame2, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+                cv2.circle(frame2, (int(cenX_ball), int(cenY_ball)), 5, [0,255,0], 2, 8)
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
@@ -2361,7 +2361,7 @@ def lurusBolaAtas():
 
         # displays
         ## uncomment this to show center area of the frame 1
-        cv2.rectangle(frame2, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
+        # cv2.rectangle(frame2, (inner_left, inner_top), (inner_right, inner_bottom), (0,255,0), 2)
         #cv2.rectangle(frame2, (outer_left, outer_top), (outer_right, outer_bottom), (0,255,255), 2)
         #cv2.rectangle(frame2, (xAwal, yAwal), (xAkhir, yAkhir), (0,255,0), 2)
 
