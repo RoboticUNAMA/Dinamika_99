@@ -136,6 +136,7 @@ def putarKanan(speed, delay):
 def serongKiri(speed, delay):
     setMotor(motor, 0,speed,-speed,0)
     if delay > 0:
+        sleep(delay)
         setMotor(motor, 0,-speed,speed,0)
         sleep(0.1)
         setMotor(motor, 0,0,0,0)
@@ -2609,9 +2610,7 @@ def main():
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
-                    maju(90, 2)
-                    print("Serong Kiri")
-                    serongKiri(180, 3)
+                    serongKiri(180, 2)
                     putarKiri(90, 0.3)
                     sleep(3)
                     arahBolaDepan()
