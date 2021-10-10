@@ -23,7 +23,7 @@ kamera = 1
 motor = serial.Serial(port='/dev/ttyACM0', baudrate=br, timeout=1)
 
 # serial dribble
-db = serial.Serial(port='/dev/ttyUSB0', baudrate=br, timeout=1)
+db = serial.Serial(port='/dev/ttyUSB0', baudrate=br, timeout=0.1)
 
 # STM
 # stm = serial.Serial(port='/dev/ttyACM2', baudrate=9600, timeout=1)
