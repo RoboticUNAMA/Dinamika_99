@@ -2427,7 +2427,7 @@ def kameraAtas():
             count = startCount
         count -= 1
         #print(state)
-        for i in range(0):
+        for i in range(5):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
