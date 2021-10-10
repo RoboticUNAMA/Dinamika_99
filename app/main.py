@@ -2284,8 +2284,8 @@ def lurusBolaAtas():
 
         if db.isOpen() == False:
             db.open()
-        reading = db.readline().decode('utf-8','ignore')
         db.reset_input_buffer()
+        reading = db.readline().decode('utf-8','ignore')
         if len(reading) > 0 :
             head = reading[0:5]
             print(head)
@@ -2410,7 +2410,7 @@ def kameraAtas():
     speed = 35
     state = "START"
 
-    dribbling(db,1)
+    # dribbling(db,1)
     #db.flush()
     #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
 
