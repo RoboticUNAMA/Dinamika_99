@@ -2293,7 +2293,7 @@ def lurusBolaAtas():
             if  head == "Dapat" :
                 print("DAPAT BOLA")
                 state = "FINISH"    
-
+        db.close()
         # if stm.isOpen() == False:
         #     stm.open()
         # reading = stm.readline().decode('utf-8','ignore')
@@ -2320,19 +2320,22 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball < 236-30  and cenY_ball < 95 :
+                cenX = 140
+                cenY = 60
+
+                if cenX_ball < cenX-30  and cenY_ball < cenY :
                     putarKanan(speed, 0.4)
                     
-                elif cenX_ball > 236+30 and cenY_ball < 95 :
+                elif cenX_ball > cenX+30 and cenY_ball < cenY :
                     putarKiri(speed, 0.4)
                     
-                elif cenX_ball < 236-10 and cenY_ball < 95 :
+                elif cenX_ball < cenX-10 and cenY_ball < cenY :
                     putarKanan(speed, 0.2)
                 
-                elif cenX_ball > 236+10 and cenY_ball < 95 :
+                elif cenX_ball > cenX+10 and cenY_ball < cenY :
                     putarKiri(speed, 0.2)
                 else :
-                    if cenY_ball < 95:
+                    if cenY_ball < cenY:
                         setMotor(motor,-55,50,-50,55)
                     # elif cenY_ball < 90 and cenX_ball < 230 or cenX_ball > 235:
                     #     setMotor(motor,50,-50,50,-50)
