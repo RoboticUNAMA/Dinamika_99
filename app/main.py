@@ -2461,16 +2461,17 @@ def kameraAtas():
         ballContours1, _ = cv2.findContours(BALL_MORPH1, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
         ballContours1 = sorted(ballContours1, key=lambda x:cv2.contourArea(x), reverse=True)
 
-        # if db.isOpen() == False:
-        #     db.open()
-        # reading = db.readline().decode('utf-8','ignore')
-        # db.reset_input_buffer()
-        # if len(reading) > 0 :
-        #     head = reading[0:5]
-        #     print(head)
-        #     if  head == "Dapat" :
-        #         print("DAPAT BOLA")
-        #         state = "FINISH"    
+        if db.isOpen() == False:
+            db.open()
+        db.reset_input_buffer()
+        reading = db.readline().decode('utf-8','ignore')
+        print(reading)
+        if len(reading) > 0 :
+            head = reading[0:5]
+            print(head)
+            if  head == "Dapat" :
+                print("DAPAT BOLA")
+                state = "FINISH"    
 
         # if stm.isOpen() == False:
         #     stm.open()
