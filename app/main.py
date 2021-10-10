@@ -277,8 +277,8 @@ def mulaiKickoff():
     geserKiri(255, 1.5)
     maju(90,0)
     sleep(0.5)
-    maju(255, 1.2)
-    putarKanan(90, 0.15)
+    maju(255, 1.1)
+    putarKanan(90, 0.3)
     lurusBolaAtas()
 
 def putarDerajat(derajat_tujuan, dribble) :
@@ -2248,7 +2248,7 @@ def lurusBolaAtas():
             count = startCount
         count -= 1
         #print(state)
-        for i in range(7):
+        for i in range(0):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
