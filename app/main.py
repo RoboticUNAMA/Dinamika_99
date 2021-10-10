@@ -2310,7 +2310,7 @@ def lurusBolaAtas():
         for ballContour in ballContours1:
             ball_area = cv2.contourArea(ballContour)
             if ball_area > 5:
-                print(area)
+                print(ball_area)
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame2, "X: "+str(x_ball)+" Y: "+str(y_ball), (20, 20), font, 0.5, (0,0,255),2)
                 cenX_ball = (x_ball+x_ball+w_ball)/2
