@@ -480,33 +480,36 @@ def arahBolaDepan():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                if cenX_ball < 100  :
-                    putarKiri(50, 0.15)
+                cenX = 150
+
+                if cenX_ball < cenX - 50  :
+                    putarKiri(40, 0)
                     dari = "kanan"
                     setStatus(2, "LURUS BOLA")
-                    print("PUTAR KANAN")
+                    # print("PUTAR KIRI BANYAK")
                     
-                elif cenX_ball > 300  :
-                    putarKanan(50, 0.15)
+                elif cenX_ball > cenX + 50  :
+                    putarKanan(40, 0.15)
                     dari = "kiri"
                     setStatus(2, "LURUS BOLA")
-                    print("PUTAR KIRI")
+                    # print("PUTAR KANAN BANYAK")
                     
                     
-                elif cenX_ball < 180  :
-                    putarKiri(50, 0.15)
+                elif cenX_ball < cenX - 20  :
+                    putarKiri(30, 0)
                     dari = "kanan"
                     setStatus(2, "LURUS BOLA")
-                    print("PUTAR KANAN")
+                    # print("PUTAR KIRI DIKIT")
                 
-                elif cenX_ball > 220 :
-                    putarKanan(50, 0.15)
+                elif cenX_ball > cenX + 20 :
+                    putarKanan(30, 0)
                     dari = "kiri"
                     setStatus(2, "LURUS BOLA")
-                    print("PUTAR KIRI")
+                    # print("PUTAR KANAN DIKIT")
                 else :
                     #pas = 1
                     setStatus(2, "READY")
+                    stop()
                 break
 
         if state == "FINISH": 
@@ -666,26 +669,28 @@ def arahRobotDepan():
                 cv2.circle(frame1, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+
+                cenX = 150
                 
-                if cenX_ball > 300  :
+                if cenX_ball > cenX + 50  :
                     setMotor(motor,-30,-30,-30,-30)
                     dari = "kiri"
                     count = startCount
 
-                elif cenX_ball > 0 and cenX_ball < 100  :
+                elif cenX_ball > 0 and cenX_ball < cenX - 50  :
                     setMotor(motor,30,30,30,30)
                     dari = "kanan"
                     count = startCount
                     
-                elif cenX_ball > 0 and cenX_ball < 200  :
-                    putarKiri(40,0.15)
+                elif cenX_ball > 0 and cenX_ball < cenX - 20  :
+                    putarKiri(30,0)
                     dari = "kanan"
                     count = startCount
                     setStatus(2, "LURUS BOLA")
                     print("PUTAR KANAN")
                 
-                elif cenX_ball > 210 :
-                    putarKanan(40,0.15)
+                elif cenX_ball > cenX + 20 :
+                    putarKanan(30,0)
                     dari = "kiri"
                     count = startCount
                     setStatus(2, "LURUS BOLA")
