@@ -674,12 +674,12 @@ def arahRobotDepan():
                 cenX = 150
                 
                 if cenX_ball > cenX + 50  :
-                    setMotor(motor,-30,-30,-30,-30)
+                    putarKanan(40, 0)
                     dari = "kiri"
                     count = startCount
 
                 elif cenX_ball > 0 and cenX_ball < cenX - 50  :
-                    setMotor(motor,30,30,30,30)
+                    putarKiri(90, 0)
                     dari = "kanan"
                     count = startCount
                     
@@ -2625,14 +2625,14 @@ def main():
                             break
                     oper_pelan(db)
                     setStatus(2, "RUNNING")
-                    geserKanan(90, 1.5)
+                    geserKanan(90, 2)
                     putarKiri(90, 0.2)
                     arahBolaDepan()
                     setGame("STOP")
                     setStatus(2, "RUNNING")
                     putarKanan(90, 0.7)
                     sleep(0.5)
-                    maju(90,0.5)
+                    maju(90,1)
                     putarKiri(90,0.1)
                     # arahKiper()
                     if kiper == "3":
