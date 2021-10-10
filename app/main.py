@@ -45,11 +45,11 @@ FRONT_CAP.set(cv2.CAP_PROP_EXPOSURE, -10)
 OMNI_CAP.set(cv2.CAP_PROP_EXPOSURE, -10)
 
 # set frame size
-FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
-FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 270)
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 300)
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 200)
 
-OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 480)
-OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 320)
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 300)
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 200)
 
 def setStatus(id, status):
     requests.post("http://"+ip_server+"/robot/setstatus.php?"+"id="+str(id)+"&status="+str(status))
@@ -2424,7 +2424,7 @@ def kameraAtas():
             count = startCount
         count -= 1
         #print(state)
-        for i in range(4):
+        for i in range(0):
             #FRONT_CAP.grab()
             OMNI_CAP.grab()
         ## read frame
