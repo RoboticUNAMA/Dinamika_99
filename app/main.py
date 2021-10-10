@@ -20,7 +20,7 @@ br = 115200
 kamera = 1
 
 # serial motor driver
-motor = serial.Serial(port='/dev/ttyACM0', baudrate=br, timeout=1)
+motor = serial.Serial(port='/dev/ttyACM0', baudrate=br, timeout=0.1)
 
 # serial dribble
 db = serial.Serial(port='/dev/ttyUSB0', baudrate=br, timeout=0.1)
@@ -2414,7 +2414,6 @@ def kameraAtas():
     # dribbling(db,1)
     #db.flush()
     #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
-    putarKanan(70,0)
 
     while(True):
         # if gameStatus == "RETRY":
@@ -2463,7 +2462,7 @@ def kameraAtas():
 
         if db.isOpen() == False:
             db.open()
-        # db.reset_input_buffer()
+        db.reset_input_buffer()
         reading = db.readline().decode('utf-8','ignore')
         print(reading)
         if len(reading) > 0 :
@@ -2471,7 +2470,7 @@ def kameraAtas():
             print(head)
             if  head == "Dapat" :
                 print("DAPAT BOLA")
-                state = "FINISH"    
+                # state = "FINISH"    
 
         # if stm.isOpen() == False:
         #     stm.open()
