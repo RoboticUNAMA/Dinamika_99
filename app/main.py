@@ -2610,6 +2610,7 @@ def main():
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
                     maju(90, 2)
+                    print("Serong Kiri")
                     serongKiri(180, 3)
                     putarKiri(90, 0.3)
                     sleep(3)
