@@ -2411,8 +2411,6 @@ def kameraAtas():
     speed = 35
     state = "START"
 
-    putarKanan(70,0)
-
     # dribbling(db,1)
     #db.flush()
     #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
