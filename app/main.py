@@ -2463,7 +2463,7 @@ def kameraAtas():
 
         if db.isOpen() == False:
             db.open()
-        db.reset_input_buffer()
+        # db.reset_input_buffer()
         reading = db.readline().decode('utf-8','ignore')
         print(reading)
         if len(reading) > 0 :
