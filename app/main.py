@@ -2462,7 +2462,7 @@ def kameraAtas():
 
         if db.isOpen() == False:
             db.open()
-        # db.reset_input_buffer()
+        db.reset_input_buffer()
         reading = db.readline().decode('utf-8','ignore')
         print(reading)
         if len(reading) > 0 :
@@ -2470,7 +2470,8 @@ def kameraAtas():
             print(head)
             if  head == "Dapat" :
                 print("DAPAT BOLA")
-                # state = "FINISH"    
+                # state = "FINISH" 
+        db.close()   
 
         # if stm.isOpen() == False:
         #     stm.open()
