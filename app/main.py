@@ -75,7 +75,6 @@ def setMotor(ser,dki,dka,bki,bka) :
     if ser.isOpen() == False:
         ser.open()
     ser.write(("#M|RUN|0|0|0|0\n").encode('utf-8'))
-    sleep(0.1)
     dki = dki + (dki * 0.3)
     dka = dka + (dka * 0)
     bki = bki + (bki * 0)
