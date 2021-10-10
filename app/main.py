@@ -2286,6 +2286,7 @@ def lurusBolaAtas():
             db.open()
         db.reset_input_buffer()
         reading = db.readline().decode('utf-8','ignore')
+        print(reading)
         if len(reading) > 0 :
             head = reading[0:5]
             print(head)
