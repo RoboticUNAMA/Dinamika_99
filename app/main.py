@@ -2341,7 +2341,7 @@ def lurusBolaAtas():
                     putarKiri(speed-10, 0)
                 else :
                     if cenY_ball < cenY:
-                        setMotor(motor,-55,50,-50,55)
+                        setMotor(motor,-80,75,-75,80)
                     # elif cenY_ball < 90 and cenX_ball < 230 or cenX_ball > 235:
                     #     setMotor(motor,50,-50,50,-50)
 
