@@ -2414,6 +2414,7 @@ def kameraAtas():
     # dribbling(db,1)
     #db.flush()
     #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
+    putarKanan(70,0)
 
     while(True):
         # if gameStatus == "RETRY":
