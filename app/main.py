@@ -866,7 +866,7 @@ def arahKiper():
                 cenX = 148
                 cenY = 95
 
-                if cenX_ball > 130 and cenX_ball < 150:
+                if cenX_ball > 140 and cenX_ball < 170:
                     state = "FINISH"
                 break
             
