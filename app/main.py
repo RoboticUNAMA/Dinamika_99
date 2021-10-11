@@ -923,11 +923,11 @@ def arahKiper():
 
                     if cenX_ball < 100:
                         putarKanan(40,0)
-                    elif cenX_ball <= 160:
+                    elif cenX_ball <= 180:
                         putarKanan(40,0.15)
                     elif cenX_ball > 210:
                         putarKiri(40,0)
-                    elif cenX_ball >= 170:
+                    elif cenX_ball >= 190:
                         putarKiri(40,0.15)
                     else:
                         stop()
