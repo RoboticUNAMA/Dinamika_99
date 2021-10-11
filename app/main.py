@@ -780,12 +780,12 @@ def arahKiper():
     startCount = 10
     count = startCount
     speed = 60
-    state = "START"
+    state = "sSTART"
 
     dribbling(db,1)
+    dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
 
     while(True):
-        #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
         
         # if gameStatus == "RETRY":
         #     break
@@ -866,8 +866,9 @@ def arahKiper():
                 cenX = 148
                 cenY = 95
 
-                if cenX_ball > 140 and cenX_ball < 170:
-                    state = "FINISH"
+                if kiper == "1":
+                    if cenX_ball > 160 and cenX_ball < 170:
+                        state = "FINISH"
                 break
             
 
