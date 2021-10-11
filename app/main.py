@@ -273,9 +273,9 @@ def read_from_port(ser,que_output):
 
 def mulaiKickoff():
     maju(90,0.3)
-    geserKiri(90, 0)
+    geserKiri(60, 0)
     sleep(0.5)
-    geserKiri(255, 1.8)
+    geserKiri(255, 1.7)
     maju(90,0)
     sleep(0.5)
     maju(255, 1.1)
