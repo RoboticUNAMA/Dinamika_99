@@ -867,7 +867,16 @@ def arahKiper():
                 cenY = 95
 
                 if kiper == "1":
-                    if cenX_ball > 160 and cenX_ball < 170:
+                    if cenX_ball < 100:
+                        putarKanan(40,0)
+                    elif cenX_ball < 160:
+                        putarKanan(40,0.1)
+                    elif cenX_ball > 210:
+                        putarKiri(40,0)
+                    elif cenX_ball > 170:
+                        putarKiri(40,0.1)
+                    else:
+                        stop()
                         state = "FINISH"
                 break
             
