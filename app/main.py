@@ -2327,8 +2327,8 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                cenX = 140
-                cenY = 60
+                cenX = 148
+                cenY = 95
 
                 if cenX_ball < cenX-30  and cenY_ball < cenY :
                     print("PUTAR KANAN JAUH")
@@ -2513,8 +2513,8 @@ def arahBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                cenX = 240
-                cenY = 60
+                cenX = 148
+                cenY = 95
 
                 if cenX_ball < cenX and cenY_ball > cenY + 20:
                     print("PUTAR KANAN 180")
