@@ -868,12 +868,16 @@ def arahKiper():
 
                 if kiper == "1":
                     if cenX_ball < 100:
+                        print("Kanan Jauh")
                         putarKanan(40,0)
                     elif cenX_ball < 160:
+                        print("Kanan Dekat")
                         putarKanan(40,0.1)
                     elif cenX_ball > 210:
+                        print("Kiri Jauh")
                         putarKiri(40,0)
                     elif cenX_ball > 170:
+                        print("Kiri Dekat")
                         putarKiri(40,0.1)
                     else:
                         stop()
