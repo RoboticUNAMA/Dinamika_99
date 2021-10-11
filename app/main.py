@@ -275,7 +275,7 @@ def mulaiKickoff():
     maju(90,0.3)
     geserKiri(90, 0)
     sleep(0.5)
-    geserKiri(255, 1.5)
+    geserKiri(255, 1.8)
     maju(90,0)
     sleep(0.5)
     maju(255, 1.1)
