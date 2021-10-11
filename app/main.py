@@ -850,7 +850,7 @@ def arahKiper():
             (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
             cenX_ball = (x_ball+x_ball+w_ball)//2
             cenY_ball = (y_ball+y_ball+h_ball)//2   
-            if cenY_ball < 35:
+            if cenY_ball < 40:
                 cv2.putText(frame2, "X: "+str(cenX_ball)+" Y: "+str(cenY_ball), (10, 10), font, 0.5, (0,0,255),2)
                 print(cenX_ball)
                 # draw actual coordinate from segmentation
