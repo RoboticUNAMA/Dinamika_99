@@ -495,14 +495,14 @@ def arahBolaDepan():
                     # print("PUTAR KANAN BANYAK")
                     
                     
-                elif cenX_ball < cenX - 30  :
-                    putarKiri(30, 0)
+                elif cenX_ball < cenX - 20  :
+                    putarKiri(30, 0.2)
                     dari = "kanan"
                     setStatus(2, "LURUS BOLA")
                     # print("PUTAR KIRI DIKIT")
                 
-                elif cenX_ball > cenX + 30 :
-                    putarKanan(30, 0)
+                elif cenX_ball > cenX + 20 :
+                    putarKanan(30, 0.2)
                     dari = "kiri"
                     setStatus(2, "LURUS BOLA")
                     # print("PUTAR KANAN DIKIT")
