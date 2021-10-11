@@ -863,6 +863,7 @@ def arahKiper():
             
             cenX = 148
             cenY = 95
+            break
 
         if state == "FINISH": 
             setMotor(motor,0,0,0,0)
