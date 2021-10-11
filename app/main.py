@@ -2518,13 +2518,13 @@ def arahBolaAtas():
 
                 if cenX_ball < cenX and cenY_ball > cenY + 20:
                     print("PUTAR KANAN 180")
-                    putarKanan(speed, 0)
+                    putarKanan(speed-10, 0)
                     
                 elif cenX_ball > cenX and cenY_ball > cenY + 20:
                     print("PUTAR KIRI 180")
-                    putarKiri(speed, 0)
+                    putarKiri(speed-10, 0)
 
-                elif cenX_ball < cenX-30  and cenY_ball < cenY :
+                if cenX_ball < cenX-30  and cenY_ball < cenY :
                     print("PUTAR KANAN JAUH")
                     putarKanan(speed, 0)
                     
@@ -3323,8 +3323,8 @@ def main():
         elif dummy1 == "0":
             while gameStatus == "START":
                 kameraAtas()
-                tendang(db)
-                setGame("STOP")
+                # tendang(db)
+                # setGame("STOP")
                 break
         dribbling(db,0)
         sleep(0.1)
