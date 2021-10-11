@@ -199,7 +199,7 @@ def tendang(ser):
     dribbling(ser, 0)
     sleep(0.2)
     dribbling(ser, 0)
-    sleep(0.2)
+    sleep(0.5)
     ser.write(b"TEND1\n")
     sleep(2)
 
