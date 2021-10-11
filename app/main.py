@@ -869,7 +869,7 @@ def arahKiper():
                 if kiper == "1":
                     if cenX_ball < 100:
                         putarKanan(40,0)
-                    elif cenX_ball < 170:
+                    elif cenX_ball <= 165:
                         putarKanan(40,0.1)
                     elif cenX_ball > 210:
                         putarKiri(40,0)
