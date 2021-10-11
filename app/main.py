@@ -605,7 +605,7 @@ def arahRobotDepan():
     state = "START"
 
     dribbling(db,1)
-    db.flush()
+    # db.flush()
 
     setMotor(motor,0,0,0,0)
 
@@ -622,7 +622,7 @@ def arahRobotDepan():
         #print(state)
         second += 1
         #print(second)
-        for i in range(7):
+        for i in range(3):
             FRONT_CAP.grab()
             #OMNI_CAP.grab()
         ## read frame
@@ -698,6 +698,7 @@ def arahRobotDepan():
                     print("PUTAR KIRI")
                 else :
                     pas = 1
+                    stop()
                     state = "FINISH"
                     setStatus(2, "READY")
                 break
