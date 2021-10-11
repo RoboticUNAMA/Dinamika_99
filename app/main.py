@@ -3322,7 +3322,7 @@ def main():
 
         elif dummy1 == "0":
             while gameStatus == "START":
-                kameraAtas()
+                arahBolaAtas()
                 # tendang(db)
                 # setGame("STOP")
                 break
