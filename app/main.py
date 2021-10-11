@@ -45,10 +45,10 @@ FRONT_CAP.set(cv2.CAP_PROP_EXPOSURE, -10)
 OMNI_CAP.set(cv2.CAP_PROP_EXPOSURE, -10)
 
 # set frame size
-FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 300)
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 400)
 FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 200)
 
-OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 300)
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 400)
 OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 200)
 
 def setStatus(id, status):
@@ -2516,13 +2516,13 @@ def arahBolaAtas():
                 cenX = 140
                 cenY = 60
 
-                if cenX_ball < cenX-30 and cenY_ball > cenY + 20:
+                if cenX_ball < cenX and cenY_ball > cenY + 20:
                     print("PUTAR KANAN 180")
-                    putarKanan(speed, 0)
+                    putarKanan(speed*2, 0)
                     
-                elif cenX_ball > cenX+30 and cenY_ball > cenY + 20:
+                elif cenX_ball > cenX and cenY_ball > cenY + 20:
                     print("PUTAR KIRI 180")
-                    putarKiri(speed, 0)
+                    putarKiri(speed*2, 0)
 
                 elif cenX_ball < cenX-30  and cenY_ball < cenY :
                     print("PUTAR KANAN JAUH")
