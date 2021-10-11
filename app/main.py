@@ -196,7 +196,7 @@ def tendang(ser):
     # ser.reset_input_buffer()
     dribbling(ser, 0)
     sleep(0.2)
-    ser.write(b"TEND0\n")
+    ser.write(b"TEND1\n")
     sleep(2)
 
 def oper_pelan(ser):
@@ -211,7 +211,7 @@ def oper_pelan(ser):
     dribbling(ser, 0)
     sleep(0.2)
     #ser.write(b"TEND1\n")
-    ser.write(b"TEND2\n")
+    ser.write(b"TEND3\n")
     sleep(1)
 
 def oper(ser):
