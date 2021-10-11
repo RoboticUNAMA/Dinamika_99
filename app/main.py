@@ -46,10 +46,10 @@ OMNI_CAP.set(cv2.CAP_PROP_EXPOSURE, -10)
 
 # set frame size
 FRONT_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 400)
-FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 200)
+FRONT_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 300)
 
 OMNI_CAP.set(cv2.CAP_PROP_FRAME_WIDTH, 400)
-OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 200)
+OMNI_CAP.set(cv2.CAP_PROP_FRAME_HEIGHT, 300)
 
 def setStatus(id, status):
     requests.post("http://"+ip_server+"/robot/setstatus.php?"+"id="+str(id)+"&status="+str(status))
