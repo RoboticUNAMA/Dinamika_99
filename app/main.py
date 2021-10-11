@@ -845,11 +845,6 @@ def arahKiper():
         dummyContour = []
         dummyObj = None
 
-        # count -= 1
-        # if count <= 0:
-        #     putarKiri(90,0.2)
-        #     count = startCount
-
         for ballContour in ballContours1:
             ada = 1
             (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
@@ -879,7 +874,6 @@ def arahKiper():
                         stop()
                         state = "FINISH"
                 break
-            
 
         if state == "FINISH": 
             setMotor(motor,0,0,0,0)
