@@ -79,7 +79,7 @@ def db_off(db):
 
 def tendang(db):
     db.open()
-    db.write(b"TEND0\n")
+    db.write(b"TEND1\n")
     db.close()
 
 def passing(db):
