@@ -8,6 +8,7 @@
 
 import cv2
 import numpy as np
+from requests.models import ChunkedEncodingError
 import serial
 import requests
 from time import sleep
@@ -864,6 +865,9 @@ def arahKiper():
                 
                 cenX = 148
                 cenY = 95
+
+                if cenX_ball > 130 and cenX_ball < 150:
+                    state = "FINISH"
                 break
             
 
@@ -3278,7 +3282,7 @@ def main():
         elif dummy1 == "0":
             while gameStatus == "START":
                 arahKiper()
-                # tendang(db)
+                tendang(db)
                 # setGame("STOP")
                 break
         dribbling(db,0)
