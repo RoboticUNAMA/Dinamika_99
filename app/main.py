@@ -402,7 +402,6 @@ def arahBolaDepan():
     state = "START"
 
     dribbling(db,1)
-    db.flush()
 
     while(True):
         #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
@@ -459,17 +458,17 @@ def arahBolaDepan():
 
         if db.isOpen() == False:
             db.open()
-        db.reset_input_buffer()
         reading = db.readline().decode('utf-8','ignore')
         if len(reading) > 0 :
             head = reading[0:5]
             if  head == "Dapat" :
                 print("DAPAT BOLA")
                 state = "FINISH" 
+        db.close()
 
         for ballContour in ballContours:
             ball_area = cv2.contourArea(ballContour)
-            if ball_area > 500:
+            if ball_area > 100:
                 ada = 1
                 (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
                 cv2.putText(frame1, "X: "+str(x_ball)+" Y: "+str(y_ball), (520, 20), font, 0.5, (0,0,255),2)
@@ -483,26 +482,26 @@ def arahBolaDepan():
                 
                 cenX = 150
 
-                if cenX_ball < cenX - 50  :
+                if cenX_ball < cenX - 100  :
                     putarKiri(40, 0)
                     dari = "kanan"
                     setStatus(2, "LURUS BOLA")
                     # print("PUTAR KIRI BANYAK")
                     
-                elif cenX_ball > cenX + 50  :
+                elif cenX_ball > cenX + 100  :
                     putarKanan(40, 0.15)
                     dari = "kiri"
                     setStatus(2, "LURUS BOLA")
                     # print("PUTAR KANAN BANYAK")
                     
                     
-                elif cenX_ball < cenX - 20  :
+                elif cenX_ball < cenX - 30  :
                     putarKiri(30, 0)
                     dari = "kanan"
                     setStatus(2, "LURUS BOLA")
                     # print("PUTAR KIRI DIKIT")
                 
-                elif cenX_ball > cenX + 20 :
+                elif cenX_ball > cenX + 30 :
                     putarKanan(30, 0)
                     dari = "kiri"
                     setStatus(2, "LURUS BOLA")
