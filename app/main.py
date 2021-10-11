@@ -2843,10 +2843,11 @@ def main():
                     maju(90,1)
                     putarKiri(90,0.1)
                     # arahKiper()
-                    if kiper == "3":
-                        arahKiperKanan()
-                    else:
-                        arahKiperKiri()
+                    # if kiper == "3":
+                    #     arahKiperKanan()
+                    # else:
+                    #     arahKiperKiri()
+                    arahKiper()
                     tendang(db)
                     setStatus(2, "IDLE")
                     break
