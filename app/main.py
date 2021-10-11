@@ -2340,11 +2340,11 @@ def lurusBolaAtas():
                     
                 elif cenX_ball < cenX-10 and cenY_ball < cenY :
                     print("PUTAR KANAN DEKAT")
-                    putarKanan(speed-10, 0)
+                    putarKanan(speed, 0.15)
                 
                 elif cenX_ball > cenX+10 and cenY_ball < cenY :
                     print("PUTAR KIRI DEKAT")
-                    putarKiri(speed-10, 0)
+                    putarKiri(speed, 0.15)
                 else :
                     if cenY_ball < cenY:
                         setMotor(motor,-60,55,-55,60)
