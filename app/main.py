@@ -845,23 +845,23 @@ def arahKiper():
         dummyContour = []
         dummyObj = None
 
-        for ballContour in ballContours1:
-            ada = 1
-            (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
-            cenX_ball = (x_ball+x_ball+w_ball)//2
-            cenY_ball = (y_ball+y_ball+h_ball)//2   
-            if cenY_ball < 40:
-                cv2.putText(frame2, "X: "+str(cenX_ball)+" Y: "+str(cenY_ball), (10, 10), font, 0.5, (0,0,255),2)
-                print(cenX_ball)
-                # draw actual coordinate from segmentation
-                cv2.circle(frame2, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
-                cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
-                cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
-                
-                cenX = 148
-                cenY = 95
+        if kiper == "1":
+            for ballContour in ballContours1:
+                ada = 1
+                (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
+                cenX_ball = (x_ball+x_ball+w_ball)//2
+                cenY_ball = (y_ball+y_ball+h_ball)//2   
+                if cenY_ball < 40:
+                    cv2.putText(frame2, "X: "+str(cenX_ball)+" Y: "+str(cenY_ball), (10, 10), font, 0.5, (0,0,255),2)
+                    print(cenX_ball)
+                    # draw actual coordinate from segmentation
+                    cv2.circle(frame2, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+                    cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
+                    cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+                    
+                    cenX = 148
+                    cenY = 95
 
-                if kiper == "1":
                     if cenX_ball < 100:
                         putarKanan(40,0)
                     elif cenX_ball <= 165:
@@ -873,20 +873,66 @@ def arahKiper():
                     else:
                         stop()
                         state = "FINISH"
-                else:
-                    # if cenX_ball < 100:
-                    #     putarKanan(40,0)
-                    # elif cenX_ball <= 160:
-                    #     putarKanan(40,0.15)
-                    # elif cenX_ball > 210:
-                    #     putarKiri(40,0)
-                    # elif cenX_ball >= 170:
-                    #     putarKiri(40,0.15)
-                    # else:
-                    #     stop()
-                    putarDerajat(83,1)
-                    state = "FINISH"
-                break
+                    break
+
+        elif kiper == "2":
+            for ballContour in ballContours1:
+                ada = 1
+                (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
+                cenX_ball = (x_ball+x_ball+w_ball)//2
+                cenY_ball = (y_ball+y_ball+h_ball)//2   
+                if cenY_ball < 40:
+                    cv2.putText(frame2, "X: "+str(cenX_ball)+" Y: "+str(cenY_ball), (10, 10), font, 0.5, (0,0,255),2)
+                    print(cenX_ball)
+                    # draw actual coordinate from segmentation
+                    cv2.circle(frame2, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+                    cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
+                    cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+                    
+                    cenX = 148
+                    cenY = 95
+
+                    if cenX_ball < 100:
+                        putarKanan(40,0)
+                    elif cenX_ball <= 160:
+                        putarKanan(40,0.15)
+                    elif cenX_ball > 210:
+                        putarKiri(40,0)
+                    elif cenX_ball >= 170:
+                        putarKiri(40,0.15)
+                    else:
+                        stop()
+                        state = "FINISH"
+                    break
+        else:
+            for ballContour in ballContours1:
+                ada = 1
+                (x_ball, y_ball, w_ball, h_ball) = cv2.boundingRect(ballContour)
+                cenX_ball = (x_ball+x_ball+w_ball)//2
+                cenY_ball = (y_ball+y_ball+h_ball)//2   
+                if cenY_ball < 45:
+                    cv2.putText(frame2, "X: "+str(cenX_ball)+" Y: "+str(cenY_ball), (10, 10), font, 0.5, (0,0,255),2)
+                    print(cenX_ball)
+                    # draw actual coordinate from segmentation
+                    cv2.circle(frame2, (int(cenX_ball), int(cenY_ball)), 20, [0,255,0], 2, 8)
+                    cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
+                    cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
+                    
+                    cenX = 148
+                    cenY = 95
+
+                    if cenX_ball < 100:
+                        putarKanan(40,0)
+                    elif cenX_ball <= 160:
+                        putarKanan(40,0.15)
+                    elif cenX_ball > 210:
+                        putarKiri(40,0)
+                    elif cenX_ball >= 170:
+                        putarKiri(40,0.15)
+                    else:
+                        stop()
+                        state = "FINISH"
+                    break
 
         if state == "FINISH": 
             setMotor(motor,0,0,0,0)
