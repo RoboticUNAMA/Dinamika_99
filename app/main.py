@@ -868,16 +868,12 @@ def arahKiper():
 
                 if kiper == "1":
                     if cenX_ball < 100:
-                        print("Kanan Jauh")
                         putarKanan(40,0)
-                    elif cenX_ball < 160:
-                        print("Kanan Dekat")
+                    elif cenX_ball < 165:
                         putarKanan(40,0.1)
                     elif cenX_ball > 210:
-                        print("Kiri Jauh")
                         putarKiri(40,0)
-                    elif cenX_ball > 170:
-                        print("Kiri Dekat")
+                    elif cenX_ball > 175:
                         putarKiri(40,0.1)
                     else:
                         stop()
@@ -3297,7 +3293,7 @@ def main():
             while gameStatus == "START":
                 arahKiper()
                 tendang(db)
-                # setGame("STOP")
+                setGame("STOP")
                 break
         dribbling(db,0)
         sleep(0.1)
