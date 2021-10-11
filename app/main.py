@@ -2516,14 +2516,6 @@ def arahBolaAtas():
                 cenX = 148
                 cenY = 95
 
-                if cenX_ball < cenX and cenY_ball > cenY + 20:
-                    print("PUTAR KANAN 180")
-                    putarKanan(speed, 0)
-                    
-                elif cenX_ball > cenX and cenY_ball > cenY + 20:
-                    print("PUTAR KIRI 180")
-                    putarKiri(speed, 0)
-
                 if cenX_ball < cenX-30  and cenY_ball < cenY :
                     print("PUTAR KANAN JAUH")
                     putarKanan(speed, 0)
@@ -2539,9 +2531,16 @@ def arahBolaAtas():
                 elif cenX_ball > cenX+10 and cenY_ball < cenY :
                     print("PUTAR KIRI DEKAT")
                     putarKiri(speed-10, 0)
-                else :
-                    stop()
-                    setStatus(2, "READY")
+                else:
+                    if cenX_ball < cenX and cenY_ball > cenY + 20:
+                        print("PUTAR KANAN 180")
+                        putarKanan(speed, 0)    
+                    elif cenX_ball > cenX and cenY_ball > cenY + 20:
+                        print("PUTAR KIRI 180")
+                        putarKiri(speed, 0)
+                    else:
+                        stop()
+                        setStatus(2, "READY")
                 break
         
         if state == "FINISH": 
