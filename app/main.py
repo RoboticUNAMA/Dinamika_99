@@ -605,7 +605,8 @@ def arahRobotDepan():
     state = "START"
 
     dribbling(db,1)
-    # db.flush()
+    #db.flush()
+    db.reset_input_buffer()
 
     setMotor(motor,0,0,0,0)
 
@@ -2265,6 +2266,7 @@ def lurusBolaAtas():
 
     dribbling(db,1)
     #db.flush()
+    db.reset_input_buffer()
     #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
 
     while(True):
@@ -2818,9 +2820,8 @@ def main():
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
-                    serongKiri(50, 0)
-                    sleep(0.5)
-                    serongKiri(255,2)
+                    serongKiri(90, 1.5)
+                    maju(90,1)
                     putarKiri(90, 0.3)
                     arahBolaAtas()
                     setStatus(2, "RUNNING")
@@ -2832,7 +2833,6 @@ def main():
                         if getStatus(1) == "READY":
                             break
                     oper(db)
-                    db.reset_input_buffer()
                     setStatus(2, "RUNNING")
                     geserKanan(90, 1.5)
                     putarKiri(90, 0.2)
