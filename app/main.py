@@ -2842,7 +2842,6 @@ def main():
                     setStatus(2, "RUNNING")
                     putarKanan(90, 0.7)
                     sleep(0.5)
-                    maju(90,1)
                     putarKiri(90,0.1)
                     # arahKiper()
                     # if kiper == "3":
