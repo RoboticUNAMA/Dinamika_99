@@ -673,7 +673,7 @@ def arahRobotDepan():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
 
-                cenX = 130
+                cenX = 170
                 
                 if cenX_ball > cenX + 100  :
                     putarKanan(40, 0)
@@ -2850,6 +2850,8 @@ def main():
                     #     arahKiperKiri()
                     arahKiper()
                     tendang(db)
+                    putarKiri(90, 0.4)
+                    mundur(120,1.5)
                     setStatus(2, "IDLE")
                     break
 
