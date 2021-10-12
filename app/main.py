@@ -955,6 +955,9 @@ def arahKiper():
             # cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
+
+        if cenX_ball is None:
+            geserKiri(40,0.1)
         
         k = cv2.waitKey(1) & 0xFF
         if k == 27:
