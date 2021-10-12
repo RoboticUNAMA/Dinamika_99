@@ -2361,11 +2361,11 @@ def lurusBolaAtas():
                     print("PUTAR KIRI JAUH")
                     putarKiri(speed, 0)
                     
-                elif cenX_ball < cenX-15 and cenY_ball < cenY :
+                elif cenX_ball < cenX-10 and cenY_ball < cenY :
                     print("PUTAR KANAN DEKAT")
                     putarKanan(speed, 0.15)
                 
-                elif cenX_ball > cenX+15 and cenY_ball < cenY :
+                elif cenX_ball > cenX+10 and cenY_ball < cenY :
                     print("PUTAR KIRI DEKAT")
                     putarKiri(speed, 0.15)
                 else :
@@ -2547,13 +2547,13 @@ def arahBolaAtas():
                     print("PUTAR KIRI JAUH")
                     putarKiri(speed, 0)
                     
-                elif cenX_ball < cenX-15 and cenY_ball < cenY :
+                elif cenX_ball < cenX-10 and cenY_ball < cenY :
                     print("PUTAR KANAN DEKAT")
-                    putarKanan(speed, 0.15)
+                    putarKanan(speed, 0.2)
                 
-                elif cenX_ball > cenX+15 and cenY_ball < cenY :
+                elif cenX_ball > cenX+10 and cenY_ball < cenY :
                     print("PUTAR KIRI DEKAT")
-                    putarKiri(speed, 0.15)
+                    putarKiri(speed, 0.2)
                 else:
                     if cenX_ball < cenX and cenY_ball > cenY + 20:
                         print("PUTAR KANAN 180")
