@@ -571,6 +571,7 @@ def arahBolaDepan():
 def arahRobotDepan():
     print("==>> ARAH ROBOT DEPAN")
     setStatus(2, "RUNNING")
+    
     # get center of the frame
     _, frame1 = FRONT_CAP.read()
     rows, cols, _ = frame1.shape
@@ -673,8 +674,6 @@ def arahRobotDepan():
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
 
                 cenX = 150
-
-                sleep(0.2)
                 
                 if cenX_ball > cenX + 50  :
                     putarKanan(40, 0)
