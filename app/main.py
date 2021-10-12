@@ -955,9 +955,6 @@ def arahKiper():
             # cv2.moveWindow("Kamera Atas" ,0,0)
         
         #print(ballColor)
-
-        if cenX_ball is None:
-            geserKiri(40,0.1)
         
         k = cv2.waitKey(1) & 0xFF
         if k == 27:
@@ -2838,12 +2835,12 @@ def main():
                             break
                     oper(db)
                     setStatus(2, "RUNNING")
-                    geserKanan(90, 1.5)
+                    geserKanan(90, 1.4)
                     putarKiri(90, 0.2)
                     arahBolaAtas()
                     setGame("STOP")
                     setStatus(2, "RUNNING")
-                    putarKanan(90, 0.7)
+                    putarKanan(90, 0.8)
                     sleep(0.5)
                     putarKiri(90,0.1)
                     # arahKiper()
