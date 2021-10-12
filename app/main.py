@@ -2831,7 +2831,7 @@ def main():
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-                    oper_pelan(db)
+                    oper(db)
                     setStatus(2, "RUNNING")
                     geserKanan(90, 2)
                     putarKiri(90, 0.2)
