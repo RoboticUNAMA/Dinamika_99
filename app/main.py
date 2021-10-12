@@ -785,6 +785,7 @@ def arahKiper():
 
     dribbling(db,1)
     dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
+    putarKiri(30,0)
 
     while(True):
         
