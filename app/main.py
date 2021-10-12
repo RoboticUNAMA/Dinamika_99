@@ -2842,7 +2842,7 @@ def main():
                     putarKanan(90, 0.7)
                     sleep(0.5)
                     maju(90,1)
-                    putarKiri(90,0.1)
+                    putarKiri(90,0.2)
                     # arahKiper()
                     # if kiper == "3":
                     #     arahKiperKanan()
