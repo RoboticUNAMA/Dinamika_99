@@ -2452,6 +2452,7 @@ def arahBolaAtas():
     state = "START"
 
     dribbling(db,1)
+    db.reset_input_buffer()
     #db.flush()
     #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
 
