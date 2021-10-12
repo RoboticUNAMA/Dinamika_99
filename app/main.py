@@ -2835,7 +2835,7 @@ def main():
                             break
                     oper(db)
                     setStatus(2, "RUNNING")
-                    geserKanan(90, 1.4)
+                    geserKanan(120, 1.2)
                     putarKiri(90, 0.2)
                     arahBolaAtas()
                     setGame("STOP")
@@ -2850,8 +2850,8 @@ def main():
                     #     arahKiperKiri()
                     arahKiper()
                     tendang(db)
-                    putarKiri(90, 0.4)
-                    mundur(120,1.5)
+                    putarKiri(90, 0.5)
+                    mundur(120,1.7)
                     setStatus(2, "IDLE")
                     break
 
