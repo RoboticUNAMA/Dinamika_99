@@ -713,7 +713,7 @@ def arahRobotDepan():
             cv2.destroyAllWindows()
             break   
 
-        if ada == 0:
+        # if ada == 0:
             # counter += 1
             # if counter > 15 and dari == "kanan":
             #     counter = 0
@@ -722,13 +722,13 @@ def arahRobotDepan():
             #     counter = 0
             #     dari = "kanan"
 
-            if dari == "kiri":
-                setMotor(motor,30,30,30,30)
+            # if dari == "kiri":
+            #     setMotor(motor,30,30,30,30)
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)     
                 # dari = ""
-            else:
-                setMotor(motor,-30,-30,-30,-30)
+            # else:
+            #     setMotor(motor,-30,-30,-30,-30)
                 # sleep(0.1)
                 # setMotor(motor,0,0,0,0)
                 # dari = ""
