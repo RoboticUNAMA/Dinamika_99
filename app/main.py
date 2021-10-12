@@ -2823,7 +2823,7 @@ def main():
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
-                    serongKiri(120, 1.4)
+                    serongKiri(120, 1.5)
                     maju(120,1.1)
                     putarKiri(90, 0.3)
                     arahBolaAtas()
