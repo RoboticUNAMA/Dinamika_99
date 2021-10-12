@@ -685,14 +685,14 @@ def arahRobotDepan():
                     count = startCount
                     
                 elif cenX_ball > 0 and cenX_ball < cenX - 20  :
-                    putarKiri(30,0)
+                    putarKiri(40,0.15)
                     dari = "kanan"
                     count = startCount
                     setStatus(2, "LURUS BOLA")
                     print("PUTAR KANAN")
                 
                 elif cenX_ball > cenX + 20 :
-                    putarKanan(30,0)
+                    putarKanan(40,0.15)
                     dari = "kiri"
                     count = startCount
                     setStatus(2, "LURUS BOLA")
