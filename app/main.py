@@ -2832,8 +2832,9 @@ def main():
                         if getStatus(1) == "READY":
                             break
                     oper(db)
+                    db.reset_input_buffer()
                     setStatus(2, "RUNNING")
-                    geserKanan(90, 2)
+                    geserKanan(90, 1.2)
                     putarKiri(90, 0.2)
                     arahBolaAtas()
                     setGame("STOP")
