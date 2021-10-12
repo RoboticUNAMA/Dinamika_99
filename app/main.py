@@ -2538,7 +2538,7 @@ def arahBolaAtas():
                 #print("X: "+str(cenX_ball)+" Y: "+str(cenY_ball))
                 # draw actual coordinate from segmentation
                 cv2.circle(frame2, (int(cenX_ball), int(cenY_ball)), 5, [0,255,0], 2, 8)
-                cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 5)), [0,255,0], 2, 8)
+                cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 50)), (int(cenX_ball + 20), int(cenY_ball + 5)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
                 cenX = 148
@@ -3348,9 +3348,10 @@ def main():
 
         elif dummy1 == "0":
             while gameStatus == "START":
-                arahKiper()
-                tendang(db)
-                setGame("STOP")
+                arahBolaAtas()
+                # arahKiper()
+                # tendang(db)
+                # setGame("STOP")
                 break
         dribbling(db,0)
         sleep(0.1)
