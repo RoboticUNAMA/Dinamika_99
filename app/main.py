@@ -680,19 +680,19 @@ def arahRobotDepan():
                     dari = "kiri"
                     count = startCount
 
-                elif cenX_ball > 0 and cenX_ball < cenX - 100  :
+                elif cenX_ball < cenX - 100  :
                     putarKiri(40, 0)
                     dari = "kanan"
                     count = startCount
                     
-                elif cenX_ball > 0 and cenX_ball < cenX - 20  :
+                elif cenX_ball < cenX - 15  :
                     putarKiri(40,0.15)
                     dari = "kanan"
                     count = startCount
                     setStatus(2, "LURUS BOLA")
                     print("PUTAR KANAN")
                 
-                elif cenX_ball > cenX + 20 :
+                elif cenX_ball > cenX + 15 :
                     putarKanan(40,0.15)
                     dari = "kiri"
                     count = startCount
