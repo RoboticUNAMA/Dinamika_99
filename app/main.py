@@ -679,7 +679,7 @@ def arahRobotDepan():
                     count = startCount
 
                 elif cenX_ball > 0 and cenX_ball < cenX - 50  :
-                    putarKiri(90, 0)
+                    putarKiri(40, 0)
                     dari = "kanan"
                     count = startCount
                     
