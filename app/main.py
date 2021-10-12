@@ -2863,23 +2863,20 @@ def main():
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-                    oper(db)
+                    tendang(db)
                     setStatus(2, "RUNNING")
-                    putarKiri(90,0.5)
+                    putarKiri(90,0.4)
                     mundurSerongKanan(120,1.8)
-                    sleep(1)
                     arahBolaAtas()
-                    sleep(4)
                     maju(90,1.5)
-                    putarKanan(90, 0.2)
+                    putarKanan(90, 0.5)
                     arahRobotDepan()
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
                     dribbling(db,0)
-                    oper(db)
-                    sleep(2)
+                    tendang(db)
                     dribbling(db,0)
                     putarKiri(90, 0.3)
                     mundur(90, 1.5)
