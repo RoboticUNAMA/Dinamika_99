@@ -2865,10 +2865,10 @@ def main():
                             break
                     oper(db)
                     setStatus(2, "RUNNING")
-                    putarKiri(90,0.3)
+                    putarKiri(90,0.5)
                     mundurSerongKanan(120,1.8)
                     sleep(1)
-                    arahBolaDepan()
+                    arahBolaAtas()
                     sleep(4)
                     maju(90,1.5)
                     putarKanan(90, 0.2)
