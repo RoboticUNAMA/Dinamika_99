@@ -2822,7 +2822,7 @@ def main():
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
                     serongKiri(120, 1.3)
-                    maju(120,1.2)
+                    maju(120,1.1)
                     putarKiri(90, 0.3)
                     arahBolaAtas()
                     setStatus(2, "RUNNING")
@@ -2840,9 +2840,9 @@ def main():
                     arahBolaAtas()
                     setGame("STOP")
                     setStatus(2, "RUNNING")
-                    putarKanan(90, 0.8)
-                    sleep(0.5)
-                    putarKiri(90,0.1)
+                    putarKanan(90, 1)
+                    # sleep(0.5)
+                    # putarKiri(90,0.1)
                     # arahKiper()
                     # if kiper == "3":
                     #     arahKiperKanan()
