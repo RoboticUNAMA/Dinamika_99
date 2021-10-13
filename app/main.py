@@ -2866,7 +2866,7 @@ def main():
                     tendang(db)
                     setStatus(2, "RUNNING")
                     putarKiri(90,0.4)
-                    mundurSerongKanan(120,1.8)
+                    mundurSerongKanan(180,1.4)
                     arahBolaAtas()
                     maju(90,1.5)
                     putarKanan(90, 0.5)
