@@ -609,7 +609,7 @@ def arahRobotDepan():
     #db.flush()
     db.reset_input_buffer()
 
-    setMotor(motor,0,0,0,0)
+    putarKanan(30,0)
 
     while(True):
         #dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
