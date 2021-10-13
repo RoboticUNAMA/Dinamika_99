@@ -673,7 +673,7 @@ def arahRobotDepan():
                 cv2.line(frame1, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame1, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
 
-                cenX = 170
+                cenX = 140
                 
                 if cenX_ball > cenX + 100  :
                     putarKanan(40, 0)
@@ -2951,7 +2951,7 @@ def main():
                     setStatus(2, "RUNNING")
                     putarKiri(90,0.3)
                     geserKanan(120,1.4)
-                    mundur(120,0.3)
+                    mundur(120,0.5)
                     arahBolaAtas()
                     #maju(90,1.5)
                     #putarKanan(90, 0.5)
@@ -2963,9 +2963,8 @@ def main():
                     dribbling(db,0)
                     tendang(db)
                     dribbling(db,0)
-                    putarKiri(90, 0.3)
-                    mundurSerongKanan(120,2.2)
-                    mundur(120,1.7)
+                    mundur(120,2.3)
+                    geserKanan(120,1.2)
                     setGame("STOP")
                     break
 
