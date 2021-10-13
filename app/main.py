@@ -2949,7 +2949,7 @@ def main():
                             break
                     tendang(db)
                     setStatus(2, "RUNNING")
-                    putarKiri(90,0.4)
+                    putarKiri(90,0.3)
                     geserKanan(120,1.4)
                     arahBolaAtas()
                     #maju(90,1.5)
