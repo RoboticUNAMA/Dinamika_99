@@ -2863,7 +2863,7 @@ def main():
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-                    tendang(db)
+                    oper(db)
                     setStatus(2, "RUNNING")
                     putarKiri(90,0.4)
                     mundurSerongKanan(180,1.5)
