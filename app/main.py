@@ -280,7 +280,7 @@ def mulaiKickoff():
     maju(90,0)
     sleep(0.5)
     maju(255, 1)
-    putarKanan(90, 0.2)
+    # putarKanan(90, 0.2)
     lurusBolaAtas()
 
 def putarDerajat(derajat_tujuan, dribble) :
