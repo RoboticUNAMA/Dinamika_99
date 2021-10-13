@@ -2354,7 +2354,7 @@ def lurusBolaAtas():
                 cv2.line(frame2, (int(cenX_ball), int(cenY_ball + 20)), (int(cenX_ball + 50), int(cenY_ball + 20)), [0,255,0], 2, 8)
                 cv2.putText(frame2, "Actual", (int(cenX_ball + 50), int(cenY_ball + 20)), font, 0.5, [0,255,0], 2)
                 
-                cenX = 158
+                cenX = 150
                 cenY = 100
 
                 if cenX_ball < cenX-30  and cenY_ball < cenY :
