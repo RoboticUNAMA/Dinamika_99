@@ -18,7 +18,7 @@ ip_server = "192.168.10.244"
 
 br = 115200 
 
-kamera = 1
+kamera = 0
 
 # serial motor driver
 motor = serial.Serial(port='/dev/ttyACM0', baudrate=br, timeout=0.1)
