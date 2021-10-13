@@ -2834,7 +2834,7 @@ def main():
                         if getStatus(1) == "READY":
                             break
                     setStatus(2, "RUNNING")
-                    tendang(db)
+                    oper(db)
                     geserKanan(120, 1.2)
                     putarKiri(90, 0.2)
                     arahBolaAtas()
