@@ -2374,7 +2374,7 @@ def lurusBolaAtas():
                     putarKiri(speed, 0.15)
                 else :
                     if cenY_ball < cenY:
-                        setMotor(motor,-80,75,-75,80)
+                        setMotor(motor,-90,85,-85,90)
                     # elif cenY_ball < 90 and cenX_ball < 230 or cenX_ball > 235:
                     #     setMotor(motor,50,-50,50,-50)
 
@@ -2866,7 +2866,7 @@ def main():
                     tendang(db)
                     setStatus(2, "RUNNING")
                     putarKiri(90,0.4)
-                    mundurSerongKanan(180,1.4)
+                    mundurSerongKanan(180,1.5)
                     arahBolaAtas()
                     maju(90,1.5)
                     putarKanan(90, 0.5)
