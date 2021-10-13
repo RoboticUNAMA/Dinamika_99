@@ -2879,7 +2879,7 @@ def main():
                     dribbling(db,0)
                     tendang(db)
                     dribbling(db,0)
-                    putarKiri(90, 0.5)
+                    putarKiri(90, 0.3)
                     mundurSerongKanan(120,2.2)
                     mundur(120,2)
                     setGame("STOP")
