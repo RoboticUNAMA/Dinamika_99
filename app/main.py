@@ -2867,6 +2867,7 @@ def main():
                     setStatus(2, "RUNNING")
                     putarKiri(90,0.4)
                     mundurSerongKanan(180,1.5)
+                    geserKanan(120,0.5)
                     arahBolaAtas()
                     maju(90,1.5)
                     putarKanan(90, 0.5)
