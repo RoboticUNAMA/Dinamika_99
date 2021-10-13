@@ -2879,7 +2879,8 @@ def main():
                     tendang(db)
                     dribbling(db,0)
                     putarKiri(90, 0.5)
-                    mundurSerongKanan(120,2)
+                    mundurSerongKanan(120,2.2)
+                    mundur(120,2)
                     setGame("STOP")
                     break
                 
