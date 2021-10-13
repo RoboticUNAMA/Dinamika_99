@@ -2917,7 +2917,7 @@ def main():
                     putarKiri(90, 0.3)
                     arahBolaAtas()
                     setStatus(2, "RUNNING")
-                    putarKanan(90, 0.3)
+                    # putarKanan(90, 0.2)
                     sleep(2)
                     arahRobotDepan()
                     while getStatus(1) != "READY":
