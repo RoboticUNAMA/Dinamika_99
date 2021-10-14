@@ -2994,7 +2994,7 @@ def main():
                 arahBolaAtas()
                 if kiper != "1":
                     putarKiri(90,0.85)
-                    serongKanan(120,0.6)
+                    serongKanan(120,0.75)
                 else:
                     putarKiri(90,0.6)
                     #arahKiper()
