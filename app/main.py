@@ -2802,11 +2802,8 @@ def main():
                 arahBolaAtas()
                 putarKiri(90,0.6)
                 # maju(90,0.8)
-                if kiper == "3":
-                    arahKiper()
-                else:
-                    arahKiper()
-                    putarKiri(90,0.15)
+                arahKiper()
+                putarKiri(90,0.15)
                 tendang(db)
                 # geserKiri(90,2)
                 setGame("STOP")
