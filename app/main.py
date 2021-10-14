@@ -3165,7 +3165,7 @@ def main():
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
                     serongKiri(120, 1.5)
-                    maju(120,1.1)
+                    maju(120,1.2)
                     putarKiri(90, 0.3)
                     arahBolaAtas()
                     setStatus(2, "RUNNING")
@@ -3189,7 +3189,6 @@ def main():
                     putarKiri(90, 0.5)
                     geserKiri(120,1)
                     mundur(120,1.7)
-                    geserKanan(120,1)
                     setStatus(2, "IDLE")
                     break
 
