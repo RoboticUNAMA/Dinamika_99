@@ -2999,7 +2999,6 @@ def main():
                     putarKiri(90,0.6)
                     #arahKiper()
                 tendang(db)
-                # geserKiri(90,2)
                 setGame("STOP")
                 break
 
