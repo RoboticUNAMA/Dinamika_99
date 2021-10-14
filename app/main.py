@@ -2789,8 +2789,8 @@ def main():
         if mode == "KICKOFF CORNER":
             while gameStatus == "START":
                 setStatus(2,"RUNNING")
-                serongKiri(120,1.3)
-                putarKanan(90,0.4)
+                serongKiri(120,1.1)
+                putarKanan(90,0.5)
                 # sleep(2)
                 # putarDerajat(128,1)
                 lurusBolaAtas()
