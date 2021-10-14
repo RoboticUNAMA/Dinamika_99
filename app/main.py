@@ -3386,7 +3386,7 @@ def main():
 
         elif dummy1 == "0":
             while gameStatus == "START":
-                kameraDepan()
+                arahRobotDepan()
                 # arahKiper()
                 tendang(db)
                 # setGame("STOP")
