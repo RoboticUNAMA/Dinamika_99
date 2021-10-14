@@ -2803,6 +2803,8 @@ def main():
                 putarKiri(90,0.6)
                 # maju(90,0.8)
                 arahKiper()
+                if kiper != "1":
+                    serongKanan(120,0.5)
                 putarKiri(90,0.1)
                 tendang(db)
                 # geserKiri(90,2)
