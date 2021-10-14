@@ -2803,7 +2803,7 @@ def main():
                 putarKiri(90,0.6)
                 # maju(90,0.8)
                 arahKiper()
-                putarKiri(90,0.15)
+                putarKiri(90,0.2)
                 tendang(db)
                 # geserKiri(90,2)
                 setGame("STOP")
