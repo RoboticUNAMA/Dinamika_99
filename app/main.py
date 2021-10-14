@@ -2996,10 +2996,7 @@ def main():
                     putarKiri(90,0.8)
                 else:
                     putarKiri(90,0.6)
-                # maju(90,0.8)
-                arahKiper()
-                if kiper != "1":
-                    maju(120,0.6)
+                    #arahKiper()
                 tendang(db)
                 # geserKiri(90,2)
                 setGame("STOP")
