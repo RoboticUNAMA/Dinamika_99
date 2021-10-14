@@ -3094,6 +3094,7 @@ def main():
                     setStatus(2, "RUNNING")
                     tendang(db)
                     geserKanan(120, 1.2)
+                    mundur(120,0.5)
                     putarKiri(90, 0.3)
                     arahBolaAtas()
                     setGame("STOP")
