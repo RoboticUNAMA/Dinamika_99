@@ -2796,7 +2796,6 @@ def main():
                 lurusBolaAtas()
                 arahRobotDepan()
                 tendang(db)
-                sleep(0.5)
                 setStatus(2, "RUNNING")
                 maju(120,1.3)
                 putarKanan(90,0.3)
