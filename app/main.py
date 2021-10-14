@@ -2801,10 +2801,13 @@ def main():
                 maju(120,1.3)
                 putarKanan(90,0.3)
                 arahBolaAtas()
-                putarKiri(90,0.5)
+                putarKiri(90,0.6)
                 # maju(90,0.8)
                 if kiper == "3":
                     arahKiper()
+                else:
+                    arahKiper()
+                    putarKiri(90,0.3)
                 tendang(db)
                 # geserKiri(90,2)
                 setGame("STOP")
