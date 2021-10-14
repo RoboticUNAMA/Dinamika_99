@@ -3079,7 +3079,7 @@ def main():
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
                     maju(120, 2)
-                    geserKiri(120,1.1)
+                    geserKiri(120,1)
                     putarKiri(90, 0.3)
                     arahBolaAtas()
                     setStatus(2, "RUNNING")
