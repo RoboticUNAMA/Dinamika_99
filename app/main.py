@@ -3074,9 +3074,9 @@ def main():
                     dribbling(db,0)
                     tendang(db)
                     dribbling(db,0)
-                    putarKiri(90, 0.3)
-                    mundurSerongKanan(120,2.2)
-                    mundur(120,1.7)
+                    # putarKiri(90, 0.3)
+                    # mundurSerongKanan(120,2.2)
+                    # mundur(120,1.7)
                     setGame("STOP")
                     break
 
@@ -3136,8 +3136,8 @@ def main():
                     dribbling(db,0)
                     tendang(db)
                     dribbling(db,0)
-                    mundur(120,2.3)
-                    geserKanan(120,1.2)
+                    # mundur(120,2.3)
+                    # geserKanan(120,1.2)
                     setGame("STOP")
                     break
 
@@ -3168,6 +3168,7 @@ def main():
                     putarKanan(90, 1)
                     arahKiper()
                     tendang(db)
+                    dribbling(db,0)
                     putarKiri(90, 0.5)
                     mundur(120,1.7)
                     setStatus(2, "IDLE")
@@ -3197,8 +3198,8 @@ def main():
                     dribbling(db,0)
                     tendang(db)
                     dribbling(db,0)
-                    mundur(120,2.3)
-                    geserKanan(120,1.2)
+                    # mundur(120,2.3)
+                    # geserKanan(120,1.2)
                     setGame("STOP")
                     break
 
@@ -3260,9 +3261,9 @@ def main():
                     dribbling(db,0)
                     tendang(db)
                     dribbling(db,0)
-                    putarKiri(90,0.3)
-                    mundurSerongKanan(120,1.3)
-                    mundur(120,2.3)
+                    # putarKiri(90,0.3)
+                    # mundurSerongKanan(120,1.3)
+                    # mundur(120,2.3)
                     setGame("STOP")
                     break
 
@@ -3323,8 +3324,8 @@ def main():
                     dribbling(db,0)
                     tendang(db)
                     dribbling(db,0)
-                    mundur(120,2.3)
-                    geserKanan(120,1.2)
+                    # mundur(120,2.3)
+                    # geserKanan(120,1.2)
                     setGame("STOP")
                     break
 
@@ -3385,8 +3386,8 @@ def main():
                     dribbling(db,0)
                     tendang(db)
                     dribbling(db,0)
-                    mundur(120,2.3)
-                    geserKanan(120,1.2)
+                    # mundur(120,2.3)
+                    # geserKanan(120,1.2)
                     setGame("STOP")
                     break
 
