@@ -2797,7 +2797,7 @@ def main():
                 arahRobotDepan()
                 tendang(db)
                 setStatus(2, "RUNNING")
-                maju(120,1.2)
+                maju(120,1.3)
                 putarKanan(90,0.3)
                 arahBolaAtas()
                 putarKiri(90,0.6)
