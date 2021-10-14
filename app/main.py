@@ -3044,6 +3044,8 @@ def main():
                     # else:
                     #     arahKiperKiri()
                     arahKiper()
+                    if kiper == "3":
+                        putarKanan(90, 0.15)
                     tendang(db)
                     putarKiri(90, 0.5)
                     mundur(120,1.7)
