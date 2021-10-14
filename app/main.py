@@ -3130,7 +3130,7 @@ def main():
                     dribbling(db,0)
                     tendang(db)
                     dribbling(db,0)
-                    geserKanan(120,1.2)
+                    mundurSerongKanan(120,1.2)
                     mundur(120,2.3)
                     setGame("STOP")
                     break
