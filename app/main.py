@@ -2798,10 +2798,10 @@ def main():
                 tendang(db)
                 sleep(0.5)
                 setStatus(2, "RUNNING")
-                maju(120,1.5)
+                maju(120,1.3)
                 putarKanan(90,0.3)
                 arahBolaAtas()
-                putarKiri(90,0.7)
+                putarKiri(90,0.5)
                 # maju(90,0.8)
                 if kiper == "3":
                     arahKiper()
