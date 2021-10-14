@@ -2995,35 +2995,30 @@ def main():
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
-                    maju(90, 1)
-                    serongKiri(180, 1.5)
-                    putarKiri(90, 0.25)
-                    arahBolaDepan()
+                    serongKiri(120, 1.5)
+                    maju(120,1.1)
+                    putarKiri(90, 0.3)
+                    arahBolaAtas()
                     setStatus(2, "RUNNING")
-                    putarKanan(90, 0.3)
+                    # putarKanan(90, 0.2)
                     sleep(2)
                     arahRobotDepan()
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-                    oper(db)
                     setStatus(2, "RUNNING")
-                    geserKanan(90, 1.5)
+                    tendang(db)
+                    geserKanan(120, 1.2)
                     putarKiri(90, 0.2)
-                    arahBolaDepan()
+                    arahBolaAtas()
                     setGame("STOP")
                     setStatus(2, "RUNNING")
-                    putarKanan(90, 0.7)
-                    maju(90,1)
-                    # arahKiper()
-                    if kiper == "3":
-                        arahKiperKanan()
-                    else:
-                        arahKiperKiri()
+                    putarKanan(90, 1)
+                    arahKiper()
                     tendang(db)
-                    putarKiri(80, 0.2)
-                    mundur(140, 1.5)
+                    putarKiri(90, 0.5)
+                    mundur(120,1.7)
                     setStatus(2, "IDLE")
                     break
 
@@ -3035,25 +3030,27 @@ def main():
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-                    oper(db)
+                    tendang(db)
                     setStatus(2, "RUNNING")
-                    serongKanan(180, 1.2)
-                    putarKiri(90, 0.2)
-                    mundur(90,0.5)
-                    arahBolaDepan()
-                    sleep(5)
-                    maju(90,0.5)
-                    putarKanan(90, 0.3)
+                    putarKiri(90,0.3)
+                    geserKanan(120,1.4)
+                    mundur(120,0.5)
+                    arahBolaAtas()
+                    #maju(90,1.5)
+                    #putarKanan(90, 0.5)
                     arahRobotDepan()
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-                    oper(db)
                     dribbling(db,0)
+                    tendang(db)
+                    dribbling(db,0)
+                    mundur(120,2.3)
+                    geserKanan(120,1.2)
                     setGame("STOP")
                     break
-                
+
             elif mode == "KICKOFF CORNER":
                 while gameStatus == "START":
                     setStatus(2,"RUNNING")
@@ -3061,19 +3058,17 @@ def main():
                     putarDerajat(128,1)
                     maju(60,1.2)
                     oper(db)
-                    sleep(1)
-                    serongKiri(120,1.5)
+                    sleep(2)
+                    serongKiri(120,2)
                     maju(90,2)
-                    putarDerajat(87,1)
-                    mundur(90,0.5)
-                    arahBolaDepan()
-                    putarKanan(90,0.6)
+                    putarKanan(90,0.7)
                     sleep(0.5)
-                    arahKiper()
+                    arahBolaDepan()
+                    putarDerajat(177,1)
                     if kiper == "1":
-                        putarKanan(60, 0.25)
+                        arahKiperKiriCorner()
                     else:
-                        putarKiri(60, 0.25)
+                        arahKiperKananCorner()
                     tendang(db)
                     # geserKiri(90,2)
                     setGame("STOP")
@@ -3083,36 +3078,31 @@ def main():
             if mode == "KICKOFF KANAN":
                 while gameStatus == "START":
                     setStatus(2, "RUNNING")
-                    maju(90, 2.2)
-                    geserKiri(90, 1)
-                    putarKiri(90,0.3)
-                    arahBolaDepan()
+                    maju(120, 2)
+                    geserKiri(120,1.3)
+                    putarKiri(90, 0.3)
+                    arahBolaAtas()
                     setStatus(2, "RUNNING")
-                    putarKanan(90, 0.3)
+                    # putarKanan(90, 0.2)
+                    putarKanan(90,0.3)
                     sleep(2)
                     arahRobotDepan()
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-                    putarKiri(40,0.2)
-                    oper(db)
                     setStatus(2, "RUNNING")
-                    mundurSerongKanan(120, 1.5)
-                    putarKiri(90, 0.2)
-                    arahBolaDepan()
+                    tendang(db)
+                    geserKanan(120, 1.2)
+                    putarKiri(90, 0.3)
+                    arahBolaAtas()
                     setGame("STOP")
                     setStatus(2, "RUNNING")
-                    putarKanan(80, 0.7)
-                    maju(90,1.2)
-                    # arahKiper()
-                    if kiper == "3":
-                        arahKiperKanan()
-                    else:
-                        arahKiperKiri()
+                    putarKanan(90, 1)
+                    arahKiper()
                     tendang(db)
-                    putarKiri(90, 0.3)
-                    mundur(180, 1)
+                    putarKiri(90, 0.5)
+                    mundur(120,1.7)
                     setStatus(2, "IDLE")
                     break
 
@@ -3124,23 +3114,27 @@ def main():
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-                    oper(db)
+                    tendang(db)
                     setStatus(2, "RUNNING")
-                    serongKanan(180, 1.2)
-                    putarKiri(90, 0.2)
-                    arahBolaDepan()
-                    sleep(3)
-                    putarKanan(90, 0.2)
+                    putarKiri(90,0.3)
+                    geserKanan(120,1.4)
+                    mundur(120,0.5)
+                    arahBolaAtas()
+                    #maju(90,1.5)
+                    #putarKanan(90, 0.5)
                     arahRobotDepan()
                     while getStatus(1) != "READY":
                         setMotor(motor, 0,0,0,0)
                         if getStatus(1) == "READY":
                             break
-                    oper(db)
                     dribbling(db,0)
+                    tendang(db)
+                    dribbling(db,0)
+                    geserKanan(120,1.2)
+                    mundur(120,2.3)
                     setGame("STOP")
                     break
-                
+
             elif mode == "KICKOFF CORNER":
                 while gameStatus == "START":
                     setStatus(2,"RUNNING")
@@ -3148,19 +3142,17 @@ def main():
                     putarDerajat(128,1)
                     maju(60,1.2)
                     oper(db)
-                    sleep(1)
-                    serongKiri(120,1.5)
+                    sleep(2)
+                    serongKiri(120,2)
                     maju(90,2)
-                    putarDerajat(87,1)
-                    mundur(90,0.5)
-                    arahBolaDepan()
-                    putarKanan(90,0.6)
+                    putarKanan(90,0.7)
                     sleep(0.5)
-                    arahKiper()
+                    arahBolaDepan()
+                    putarDerajat(177,1)
                     if kiper == "1":
-                        putarKanan(60, 0.25)
+                        arahKiperKiriCorner()
                     else:
-                        putarKiri(60, 0.25)
+                        arahKiperKananCorner()
                     tendang(db)
                     # geserKiri(90,2)
                     setGame("STOP")
