@@ -786,7 +786,7 @@ def arahKiper():
 
     dribbling(db,1)
     dummy1, dummy2, kiper, mode, gameStatus = getGameInfo()
-    putarKiri(30,0)
+    putarKiri(35,0)
 
     while(True):
         
@@ -2803,7 +2803,7 @@ def main():
                 putarKiri(90,0.6)
                 # maju(90,0.8)
                 arahKiper()
-                putarKiri(90,0.15)
+                putarKiri(90,0.1)
                 tendang(db)
                 # geserKiri(90,2)
                 setGame("STOP")
