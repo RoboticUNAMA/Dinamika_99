@@ -893,7 +893,7 @@ def kameraDepan():
                 else :
                     pas = 1
                     stop()
-                    # state = "FINISH"
+                    state = "FINISH"
                     setStatus(2, "READY")
                 break
 
@@ -3388,7 +3388,7 @@ def main():
             while gameStatus == "START":
                 kameraDepan()
                 # arahKiper()
-                # tendang(db)
+                tendang(db)
                 # setGame("STOP")
                 break
         dribbling(db,0)
