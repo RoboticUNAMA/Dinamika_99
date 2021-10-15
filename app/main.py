@@ -2997,8 +2997,8 @@ def main():
                     serongKanan(120,0.75)
 
                 elif kiper == "3":
-                    putarKiri(90,0.9)
-                    serongKanan(120,0.8)
+                    putarKiri(90,0.8)
+                    serongKanan(140,0.8)
 
                 else:
                     putarKiri(90,0.8)
