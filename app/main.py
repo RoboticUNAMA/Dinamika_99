@@ -2996,8 +2996,8 @@ def main():
                     putarKiri(90,0.9)
                     serongKanan(120,0.75)
                 else:
-                    putarKiri(90,0.9)
-                    serongKanan(120,0.75)
+                    putarKiri(90,0.7)
+                    serongKanan(120,0.8)
                     #arahKiper()
                 tendang(db)
                 setGame("STOP")
