@@ -2992,9 +2992,14 @@ def main():
                 maju(120,1.3)
                 putarKanan(90,0.3)
                 arahBolaAtas()
-                if kiper != "1":
+                if kiper == "2":
                     putarKiri(90,0.9)
                     serongKanan(120,0.75)
+
+                elif kiper == "3":
+                    putarKiri(90,0.9)
+                    serongKanan(120,0.8)
+
                 else:
                     putarKiri(90,0.8)
                     serongKanan(120,0.8)
