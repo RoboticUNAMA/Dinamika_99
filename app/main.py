@@ -2993,8 +2993,8 @@ def main():
                 putarKanan(90,0.3)
                 arahBolaAtas()
                 if kiper == "2":
-                    putarKiri(90,0.9)
-                    serongKanan(120,0.75)
+                    putarKiri(90,0.8)
+                    serongKanan(140,0.8)
 
                 elif kiper == "3":
                     putarKiri(90,0.82)
