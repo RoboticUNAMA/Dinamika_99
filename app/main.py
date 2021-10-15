@@ -3350,7 +3350,6 @@ def main():
                     arahKiper()
                     tendang(db)
                     putarKiri(90, 0.5)
-                    geserKiri(120,1)
                     mundur(120,1.7)
                     setStatus(2, "IDLE")
                     break
